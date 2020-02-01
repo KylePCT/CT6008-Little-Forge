@@ -9,17 +9,32 @@ public class PlayerZoomIn : MonoBehaviour
     private Vector3 origPos;
     private Quaternion origRot;
     public bool zoomIn;
+    public Weapon gun;
     [SerializeField] private float zoomSpeed = 5.0f;
+
+    public Animator placeholderAnims;
 
 
     private void Start() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         crossHair.SetActive(false);
         origPos = cam.transform.localPosition;
+
+        //placeholderAnims = GetComponent<Animator>();
     }
 
     private void Update() {
         if (zoomIn) {
+            if(gun.isShooting)
+            {
+                //shooting
+                placeholderAnims.SetBool("isShooting", true);
+                Debug.Log("blap");
+            }
+            else
+            {
+                placeholderAnims.SetBool("isShooting", false);
+            }
             cam.transform.localPosition = Vector3.Lerp(cam.transform.localPosition, new Vector3(1.3f, 1.6f, -2.5f), zoomSpeed * Time.deltaTime);
         } else {
             cam.transform.localPosition = Vector3.Lerp(cam.transform.localPosition, origPos, zoomSpeed * Time.deltaTime);

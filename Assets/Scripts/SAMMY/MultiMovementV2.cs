@@ -23,6 +23,8 @@ public class MultiMovementV2 : MonoBehaviour
 
     private Controls controls = null;
 
+    [SerializeField] private Animator placeholderAnims;
+
     private void Awake() => controls = new Controls();
 
     private void OnEnable() => controls.Player.Enable();
@@ -31,7 +33,6 @@ public class MultiMovementV2 : MonoBehaviour
 
     private void Start() {
         leftStickPress = false;
-        rb = GetComponent<Rigidbody>();
         jump = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
     }
 
@@ -86,6 +87,16 @@ public class MultiMovementV2 : MonoBehaviour
         transform.position += (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime;
         //Variable for Tom
         playerAccelaration = rotF * movementInput.y + rotR * movementInput.x *moveSpeed;
+
+        if (movementInput.magnitude == 0)
+        {
+            placeholderAnims.SetBool("isRunning", false);
+        }
+
+        else
+        {
+            placeholderAnims.SetBool("isRunning", true);
+        }
     }
 
     void OnCollisionStay(Collision col) {
