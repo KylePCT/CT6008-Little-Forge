@@ -118,6 +118,5 @@ public class MultiMovementV2 : MonoBehaviour
         if (col.gameObject.tag == "Ground") {
             isGrounded = true;
         }
-        isGrounded = true;
     }
 }
