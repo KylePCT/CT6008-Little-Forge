@@ -8,7 +8,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float fireRate = 0.1f;
     [SerializeField] private float damage = 5;
     public GameObject orientaion;
-    public GameObject bulletObject;
     public WEAPON_TYPE weaponType;
     public bool isShooting;
     private float timer;
@@ -45,7 +44,7 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100.0f)) {
             if (hit.transform.tag == "Enemy") {
-                //hit.transform.GetComponent<Enemy>().TakeBulletDamage(damage);
+                hit.transform.GetComponent<Enemy>().TakeBulletDamage(damage);
             } else {
                 //DO NOTHING
             }
