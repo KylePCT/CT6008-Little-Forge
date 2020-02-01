@@ -11,15 +11,17 @@ public class MultiMovementV2 : MonoBehaviour
     public float moveSpeed = 7.5f;
 
     private Vector3 jump;
-    [SerializeField] private float jumpForce = 2.0f;
+    [SerializeField] private float jumpForce = 8.0f;
     private bool isGrounded;
-    private Rigidbody rb;
+    //private Rigidbody rb;
     private bool leftStickPress;
 
     public GameObject playerOrientation;
     public GameObject playerFace;
 
     private float heading;
+
+    private CharacterController controller;
 
     private Controls controls = null;
 
@@ -34,6 +36,8 @@ public class MultiMovementV2 : MonoBehaviour
     private void Start() {
         leftStickPress = false;
         jump = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
+        controller = GetComponent<CharacterController>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     private void Update() {
@@ -48,7 +52,7 @@ public class MultiMovementV2 : MonoBehaviour
             if (isGrounded) {
                 Debug.Log("jump");
                 isGrounded = false;
-                rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+                //rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             }
         }
     }
@@ -84,17 +88,15 @@ public class MultiMovementV2 : MonoBehaviour
         } else {
             transform.LookAt(playerFace.transform.position);
         }
-        transform.position += (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime;
+        //transform.position += (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime;
+        controller.Move((rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime);
         //Variable for Tom
         playerAccelaration = rotF * movementInput.y + rotR * movementInput.x *moveSpeed;
 
-        if (movementInput.magnitude == 0)
-        {
+        //Animation conntroller
+        if (movementInput.magnitude == 0) {
             placeholderAnims.SetBool("isRunning", false);
-        }
-
-        else
-        {
+        } else {
             placeholderAnims.SetBool("isRunning", true);
         }
     }
