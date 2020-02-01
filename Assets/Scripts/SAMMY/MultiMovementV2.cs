@@ -12,7 +12,8 @@ public class MultiMovementV2 : MonoBehaviour
 
     private Vector3 jump;
     [SerializeField] private float jumpForce = 8.0f;
-    private bool isGrounded;
+    [SerializeField] private float gravity = 20.0f;
+    public bool isGrounded;
     //private Rigidbody rb;
     private bool leftStickPress;
 
@@ -21,6 +22,8 @@ public class MultiMovementV2 : MonoBehaviour
 
     private float heading;
 
+    private Vector3 moveDirection = Vector3.zero;
+    private bool shouldJump = false;
     private CharacterController controller;
 
     private Controls controls = null;
@@ -51,8 +54,11 @@ public class MultiMovementV2 : MonoBehaviour
         if (ctx.performed) {
             if (isGrounded) {
                 Debug.Log("jump");
+                shouldJump = true;
                 isGrounded = false;
+                transform.position = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
                 //rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+                GetComponent<Rigidbody>().AddForce(jump * jumpForce, ForceMode.Impulse);
             }
         }
     }
@@ -89,7 +95,13 @@ public class MultiMovementV2 : MonoBehaviour
             transform.LookAt(playerFace.transform.position);
         }
         //transform.position += (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime;
-        controller.Move((rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime);
+        moveDirection = (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed;
+        //if(shouldJump) {
+        //    moveDirection.y = jumpForce;
+        //    shouldJump = false;
+        //}
+        //moveDirection.y -= gravity * Time.deltaTime;
+        controller.Move(moveDirection * Time.deltaTime);
         //Variable for Tom
         playerAccelaration = rotF * movementInput.y + rotR * movementInput.x *moveSpeed;
 
@@ -105,5 +117,7 @@ public class MultiMovementV2 : MonoBehaviour
         if (col.gameObject.tag == "Ground") {
             isGrounded = true;
         }
+        isGrounded = true;
+
     }
 }
