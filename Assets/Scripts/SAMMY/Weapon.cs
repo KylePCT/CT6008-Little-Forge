@@ -46,6 +46,8 @@ public class Weapon : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100.0f)) {
             if (hit.transform.tag == "Enemy") {
                 hit.transform.GetComponent<Enemy>().TakeBulletDamage(damage);
+            } else if (hit.transform.tag == "Boss") {
+                hit.transform.GetComponentInParent<BossHealth>().TakeBulletDamage(damage);
             } else {
                 //DO NOTHING
             }
