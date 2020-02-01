@@ -15,15 +15,9 @@ public class Weapon : MonoBehaviour
     private GameObject cam;
     public ParticleSystem muzzleFlash;
 
-    Animator placeholderAnims;
-
-
-
     private void Start() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         timer = fireRate;
-
-        placeholderAnims = GetComponent<Animator>();
     }
 
     private void Update() {
@@ -68,15 +62,10 @@ public class Weapon : MonoBehaviour
         if (ctx.performed) {
             if (isShooting) {
                 isShooting = false;
-                placeholderAnims.SetBool("isShooting", false);
-
             } else {
                 if (GameObject.FindGameObjectWithTag("Player") != null) {
                     if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerZoomIn>().zoomIn) {
                         isShooting = true;
-
-                        placeholderAnims.SetBool("isShooting", true);
-
                     } else {
                         return;
                     }
