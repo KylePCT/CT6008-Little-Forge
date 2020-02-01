@@ -23,6 +23,7 @@ public class MultiMovementV2 : MonoBehaviour
     private float heading;
 
     private Vector3 moveDirection = Vector3.zero;
+    private Vector3 jumpDirection = Vector3.zero;
     private bool shouldJump = false;
     private CharacterController controller;
 
@@ -56,9 +57,9 @@ public class MultiMovementV2 : MonoBehaviour
                 Debug.Log("jump");
                 shouldJump = true;
                 isGrounded = false;
-                transform.position = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
+                //transform.position = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
                 //rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-                GetComponent<Rigidbody>().AddForce(jump * jumpForce, ForceMode.Impulse);
+                //GetComponent<Rigidbody>().AddForce(jump * jumpForce, ForceMode.Impulse);
             }
         }
     }
@@ -96,12 +97,12 @@ public class MultiMovementV2 : MonoBehaviour
         }
         //transform.position += (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime;
         moveDirection = (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed;
-        //if(shouldJump) {
-        //    moveDirection.y = jumpForce;
-        //    shouldJump = false;
-        //}
-        //moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
+        if (shouldJump) {
+            jumpDirection.y = jumpForce;
+            shouldJump = false;
+        }
+        jumpDirection.y -= gravity * Time.deltaTime;
+        controller.Move((moveDirection + jumpDirection) * Time.deltaTime);
         //Variable for Tom
         playerAccelaration = rotF * movementInput.y + rotR * movementInput.x *moveSpeed;
 
@@ -118,6 +119,5 @@ public class MultiMovementV2 : MonoBehaviour
             isGrounded = true;
         }
         isGrounded = true;
-
     }
 }
