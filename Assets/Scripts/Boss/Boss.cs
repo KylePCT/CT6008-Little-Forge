@@ -11,18 +11,20 @@ public class Boss : MonoBehaviour
     public float runSpeed;
     public float turnSpeed;
 
+    private GameObject player;
 
     public NavMeshAgent navAgent;
     [SerializeField] private Animator animator;
 
-    [SerializeField] private BossAbilityGoHome abilityGoHome;
-    [SerializeField] private BossAbilityHeal abilityHeal;
-    [SerializeField] private BossAbilityShoot abilityShoot;
+    //[SerializeField] private BossAbilityGoHome abilityGoHome;
+    //[SerializeField] private BossAbilityHeal abilityHeal;
+    //[SerializeField] private BossAbilityShoot abilityShoot;
 
-    [SerializeField] private MultiMovementV2 playerMovement;
+    //[SerializeField] private MultiMovementV2 playerMovement;
 
     public LayerMask pillarLayer;
     public LayerMask playerLayer;
+
 
     private enum BossState {
         Idle,
@@ -39,15 +41,18 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        //if (playerMovement == null)
+        //{
+        //    playerMovement = FindObjectOfType<MultiMovementV2>();
+        //}
 
-        if (playerMovement == null)
-        {
-            playerMovement = FindObjectOfType<MultiMovementV2>();
-        }
+        //abilityGoHome.AbilitySetUp(this, playerMovement);
+        //abilityHeal.AbilitySetUp(this, playerMovement);
+        //abilityShoot.AbilitySetUp(this, playerMovement);
 
-        abilityGoHome.AbilitySetUp(this, playerMovement);
-        abilityHeal.AbilitySetUp(this, playerMovement);
-        abilityShoot.AbilitySetUp(this, playerMovement);
+        player = GameObject.FindGameObjectWithTag("Player");
+        navAgent.baseOffset = -0.125f;
 
         ChooseAbility();
     }
@@ -55,30 +60,32 @@ public class Boss : MonoBehaviour
     void ChooseAbility()
     {
         currentState = BossState.ShootAttack;
-        abilityShoot.AbilityStart();
+        //abilityShoot.AbilityStart();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        switch (currentState)
-        {
-            case BossState.Idle:
+        MoveToPlayer();
 
-                break;
-            case BossState.GoHome:
-                abilityGoHome.AbilityUpdate();
-                break;
-            case BossState.Heal:
-                abilityHeal.AbilityUpdate();
-                break;
-            case BossState.ShootAttack:
-                abilityShoot.AbilityUpdate();
-                break;
-            default:
-                break;
-        }
+        //switch (currentState)
+        //{
+        //    case BossState.Idle:
+
+        //        break;
+        //    case BossState.GoHome:
+        //        abilityGoHome.AbilityUpdate();
+        //        break;
+        //    case BossState.Heal:
+        //        abilityHeal.AbilityUpdate();
+        //        break;
+        //    case BossState.ShootAttack:
+        //        abilityShoot.AbilityUpdate();
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
 
     public void TakeDamage(float ammount)
@@ -100,14 +107,37 @@ public class Boss : MonoBehaviour
     }
 
 
-    private BoxCollider movemenCollider;
-    private void MoveToRandomLocation()
+    //private BoxCollider movemenCollider;
+    //private void MoveToRandomLocation()
+    //{
+    //    navAgent.enabled = true;
+    //    navAgent.SetDestination(new Vector3(Random.Range(movemenCollider.bounds.min.x, movemenCollider.bounds.max.x), 0f, Random.Range(movemenCollider.bounds.min.z, movemenCollider.bounds.max.z)));
+    //}
+
+    private void MoveToPlayer()
     {
-        navAgent.enabled = true;
-        navAgent.SetDestination(new Vector3(Random.Range(movemenCollider.bounds.min.x, movemenCollider.bounds.max.x), 0f, Random.Range(movemenCollider.bounds.min.z, movemenCollider.bounds.max.z)));
+        var pLocation = player.transform.position;
+
+        float bossDistance = Vector3.Distance(gameObject.transform.position,pLocation);
+
+        Debug.Log(bossDistance);
+
+        if (bossDistance > 10f)
+        {
+            navAgent.enabled = true;
+            navAgent.SetDestination(pLocation);
+            animator.SetBool("isAttacking", false);
+
+        }
+
+        else
+        {
+            navAgent.enabled = false;
+            animator.SetBool("isAttacking", true);
+            //animator.SetBool("isAttacking", false);
+
+        }
     }
-
-
 
     #endregion
 

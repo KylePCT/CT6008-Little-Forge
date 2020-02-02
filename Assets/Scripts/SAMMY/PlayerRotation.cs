@@ -32,7 +32,7 @@ public class PlayerRotation : MonoBehaviour
             //    locked = false;
             //}
         } else {
-            Debug.Log("Unlocked");
+            //Debug.Log("Unlocked");
             Rotate();
         }
     }

@@ -47,7 +47,7 @@ public class Weapon : MonoBehaviour
             if (hit.transform.tag == "Enemy") {
                 hit.transform.GetComponent<Enemy>().TakeBulletDamage(damage);
             } else if (hit.transform.tag == "Boss") {
-                hit.transform.GetComponentInParent<BossHealth>().TakeBulletDamage(damage);
+                hit.transform.GetComponentInParent<Health>().TakeBulletDamage(damage);
             } else {
                 //DO NOTHING
             }
