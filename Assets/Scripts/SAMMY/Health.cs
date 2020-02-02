@@ -4,7 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float startHealth = 250.0f;
-    private float currentHealth;
+    public float currentHealth;
     public GameObject damageIndication;
     public HitObject hitObject; //0=Boss, 1=player, 2=pillar
 
