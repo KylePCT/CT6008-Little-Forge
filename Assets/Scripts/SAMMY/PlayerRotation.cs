@@ -8,6 +8,7 @@ public class PlayerRotation : MonoBehaviour
     public float origSensitivity;
     public Transform player;
     private float xAxisClamp;
+    private PlayerZoomIn zoomInScript;
 
     private bool locked = false;
     //private GameObject enemy;
@@ -20,7 +21,12 @@ public class PlayerRotation : MonoBehaviour
 
     private void OnDisable() => controls.Player.Disable();
 
-    private void Start() => origSensitivity = rotSensitivity;
+    private void Start() {
+        origSensitivity = rotSensitivity;
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerZoomIn>()) {
+            zoomInScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerZoomIn>();
+        }
+    }
 
     private void Update() {
         transform.position = player.position;
@@ -39,14 +45,23 @@ public class PlayerRotation : MonoBehaviour
 
     private void Rotate() {
         var rotationInput = controls.Player.Rotation.ReadValue<Vector2>();
-
         xAxisClamp += -1.0f * rotationInput.y * rotSensitivity * Time.deltaTime;
-        if (xAxisClamp <= -15.0f) {
-            xAxisClamp = -15.0f;
-            ClampXAxisRotationToValue(-15.0f);
-        } else if (xAxisClamp >= 45.0f) {
-            xAxisClamp = 45.0f;
-            ClampXAxisRotationToValue(45.0f);
+        if (zoomInScript.zoomIn) {
+            if (xAxisClamp <= -45.0f) {
+                xAxisClamp = -45.0f;
+                ClampXAxisRotationToValue(-45.0f);
+            } else if (xAxisClamp >= 70.0f) {
+                xAxisClamp = 70.0f;
+                ClampXAxisRotationToValue(70.0f);
+            }
+        } else {
+            if (xAxisClamp <= -15.0f) {
+                xAxisClamp = -15.0f;
+                ClampXAxisRotationToValue(-15.0f);
+            } else if (xAxisClamp >= 45.0f) {
+                xAxisClamp = 45.0f;
+                ClampXAxisRotationToValue(45.0f);
+            }
         }
 
         var cameraRotation = new Vector3 {

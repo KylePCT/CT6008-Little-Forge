@@ -41,7 +41,7 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         //if (playerMovement == null)
         //{
         //    playerMovement = FindObjectOfType<MultiMovementV2>();
@@ -120,7 +120,7 @@ public class Boss : MonoBehaviour
 
         float bossDistance = Vector3.Distance(gameObject.transform.position,pLocation);
 
-        Debug.Log(bossDistance);
+        //Debug.Log(bossDistance);
 
         if (bossDistance > 10f)
         {

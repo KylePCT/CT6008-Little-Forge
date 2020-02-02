@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeBulletDamage(float f_dmg) {
+    public void TakeBulletDamage(float f_dmg, Vector3 v3_pos) {
 
         Debug.Log("Damaging: " + hitObject);
 
@@ -24,22 +24,22 @@ public class Health : MonoBehaviour
         {
             case HitObject.Boss:
                 currentHealth -= f_dmg;
-                DamageNumbers(f_dmg, Color.red);
+                DamageNumbers(f_dmg, v3_pos, Color.red);
                 break;
             case HitObject.Player:
                 currentHealth -= f_dmg;
-                DamageNumbers(f_dmg, Color.white);
+                DamageNumbers(f_dmg, v3_pos, Color.white);
                 break;
             case HitObject.Pillar:
                 currentHealth -= f_dmg;
-                DamageNumbers(f_dmg, Color.blue);
+                DamageNumbers(f_dmg, v3_pos, Color.blue);
                 break;
         }
     }
 
-    private void DamageNumbers(float f_dmg, Color color)
+    private void DamageNumbers(float f_dmg, Vector3 v3_pos, Color color)
     {
-        Vector3 spawnPos = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f), transform.position.y, transform.position.z + Random.Range(-0.5f, 0.5f));
+        Vector3 spawnPos = new Vector3(v3_pos.x + Random.Range(-0.5f, 0.5f), v3_pos.y, v3_pos.z + Random.Range(-0.5f, 0.5f));
         GameObject dmgIndication = Instantiate(damageIndication, spawnPos, Quaternion.identity);
 
         dmgIndication.transform.GetChild(0).GetComponent<TextMesh>().fontSize = 128;
