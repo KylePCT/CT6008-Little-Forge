@@ -12,13 +12,17 @@ public class Health : MonoBehaviour
 
     private void Update() {
         if(currentHealth <= 0) {
-            Destroy(gameObject);
+            if (hitObject == HitObject.Pillar) {
+                transform.parent.gameObject.SetActive(false);
+            } else {
+                Destroy(gameObject);
+            }
         }
     }
 
     public void TakeBulletDamage(float f_dmg, Vector3 v3_pos) {
 
-        Debug.Log("Damaging: " + hitObject);
+        //Debug.Log("Damaging: " + hitObject);
 
         switch (hitObject)
         {

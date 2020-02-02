@@ -26,12 +26,14 @@ public class Crosshair : MonoBehaviour
 
     private void Update() {
         RaycastHit hit;
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 250.0f)) {
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100.0f)) {
             Debug.Log(hit.transform.name);
             if (hit.transform.tag == "Boss") {
                 EnemyOnCrossHair();
             } else if (hit.transform.tag == "Enemy") {
                 enemyTarget = hit.transform.gameObject;
+                EnemyOnCrossHair();
+            } else if (hit.transform.tag == "Pillar") {
                 EnemyOnCrossHair();
             } else if (hit.transform.tag == "Follower") {
                 FriendlyOnCrossHair();
