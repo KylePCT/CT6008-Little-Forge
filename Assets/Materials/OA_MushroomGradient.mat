@@ -33,8 +33,24 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - AlbedoMap:
+        m_Texture: {fileID: 2800000, guid: 251acb65bfd2cc948a46db2bc8939b11, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Emission_Mask:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_13F2BFC:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_4C80D7D7:
+        m_Texture: {fileID: 2800000, guid: 251acb65bfd2cc948a46db2bc8939b11, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_9CCDFFCF:
@@ -42,6 +58,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_C6B54A71:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_E17F8773:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -69,11 +89,25 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_179404C6_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 26a328b872a6b5142ac2cd4065708ec6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - DabsOpacity: 0.5
+    - DabsRotation: 0
+    - DabsSize: 1
+    - EmissionMultiplier: 0.5
+    - SpecularSize: 0
+    - SpecularStrength: 0.5
+    - UseEmission: 1
+    - UseNormalMap: 1
+    - UseSpec: 0
+    - Vector1_13CA9076: 0.5
     - Vector1_330486B4: 0.5
     - Vector1_3E2F163E: 0
     - Vector1_579F5930: 1
@@ -104,6 +138,7 @@ Material:
     m_Colors:
     - Color_A4376733: {r: 0.32133317, g: 0.6649662, b: 0.8207547, a: 0}
     - Color_AD8D843D: {r: 1, g: 1, b: 1, a: 0}
+    - ColourTint: {r: 30, g: 30, b: 30, a: 30}
     - Vector2_FD6B72F3: {r: 1, g: 1, b: 0, a: 0}
     - Vector3_34F43E7A: {r: 0, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
