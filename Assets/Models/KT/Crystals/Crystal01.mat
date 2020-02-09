@@ -33,6 +33,22 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - AlbedoMap:
+        m_Texture: {fileID: 2800000, guid: f73a3787dee67d744bfa116103020e72, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - NormalMap:
+        m_Texture: {fileID: 2800000, guid: d99f66fa189594a4eb3a4839bb079b87, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_13F2BFC:
+        m_Texture: {fileID: 2800000, guid: 7d5e6b97b3cbea1429923c765c175407, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_4C80D7D7:
+        m_Texture: {fileID: 2800000, guid: 99f9b86d0a0536f44ba39ebcb1f32a79, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: f73a3787dee67d744bfa116103020e72, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -57,11 +73,23 @@ Material:
         m_Texture: {fileID: 2800000, guid: 884c4779e0d1b8043882e567066fe962, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_179404C6_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 4d15b0addf8704f4f898b420fb83c01c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - DabsOpacity: 5
+    - DabsRotation: 118
+    - DabsSize: 0.9
+    - SpecularSize: 7.21
+    - SpecularStrength: 1.92
+    - UseEmission: 1
+    - UseNormalMap: 1
+    - UseSpec: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -84,6 +112,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - ColourTint: {r: 30, g: 30, b: 30, a: 30}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
