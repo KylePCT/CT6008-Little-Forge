@@ -1,6 +1,7 @@
 ﻿//Sam Baker
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class MultiMovementV2 : MonoBehaviour
@@ -117,6 +118,10 @@ public class MultiMovementV2 : MonoBehaviour
     void OnCollisionStay(Collision col) {
         if (col.gameObject.tag == "Ground") {
             isGrounded = true;
+        }
+        if (col.gameObject.tag == "DeathBox")
+        {
+            SceneManager.LoadScene("BossLevel");
         }
     }
 
