@@ -119,4 +119,12 @@ public class MultiMovementV2 : MonoBehaviour
             isGrounded = true;
         }
     }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "Ground")
+        {
+            shouldJump = true;
+        }
+    }
 }
