@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 43048652}
   - component: {fileID: 43048651}
   - component: {fileID: 43048650}
+  - component: {fileID: 43048654}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Ground
@@ -359,7 +360,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &43048651
@@ -423,6 +424,22 @@ Transform:
   m_Father: {fileID: 1767403236}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &43048654
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43048649}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &62405666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11590,6 +11607,7 @@ GameObject:
   - component: {fileID: 777245383}
   - component: {fileID: 777245382}
   - component: {fileID: 777245381}
+  - component: {fileID: 777245384}
   m_Layer: 0
   m_Name: Floor (2)
   m_TagString: Ground
@@ -11622,7 +11640,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &777245382
@@ -11672,6 +11690,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777245379}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &777245384
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777245379}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &787119162
 GameObject:
   m_ObjectHideFlags: 0
@@ -27292,6 +27326,11 @@ PrefabInstance:
       propertyPath: placeholderAnims
       value: 
       objectReference: {fileID: 1391230404}
+    - target: {fileID: 6134830722524546027, guid: 3950a7acce99b1c49ae41aa883de2417,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 6134830722524546029, guid: 3950a7acce99b1c49ae41aa883de2417,
         type: 3}
       propertyPath: m_Name
@@ -32761,6 +32800,7 @@ GameObject:
   - component: {fileID: 1638409260}
   - component: {fileID: 1638409259}
   - component: {fileID: 1638409258}
+  - component: {fileID: 1638409261}
   m_Layer: 0
   m_Name: Floor (1)
   m_TagString: Ground
@@ -32793,7 +32833,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1638409259
@@ -32843,6 +32883,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638409256}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1638409261
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638409256}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1685467768
 GameObject:
   m_ObjectHideFlags: 0
@@ -32855,6 +32911,7 @@ GameObject:
   - component: {fileID: 1685467772}
   - component: {fileID: 1685467771}
   - component: {fileID: 1685467770}
+  - component: {fileID: 1685467773}
   m_Layer: 0
   m_Name: Floor (3)
   m_TagString: Ground
@@ -32887,7 +32944,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1685467771
@@ -32937,6 +32994,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685467768}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1685467773
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685467768}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1689713625
 GameObject:
   m_ObjectHideFlags: 0
