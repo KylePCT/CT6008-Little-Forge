@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class Follower : MonoBehaviour
 {
     [SerializeField] private Transform destination;
@@ -10,7 +11,7 @@ public class Follower : MonoBehaviour
     public string followerName;
     public GameObject nameText;
     public GameObject nameTextHolder;
-    public GameObject uiActionText;
+    //public GameObject uiActionText;
 
     [SerializeField] private GameObject player;
 
@@ -87,13 +88,13 @@ public class Follower : MonoBehaviour
 
     public void OnTriggerStay(Collider col) {
         if (col.tag == "Player") {
-            if (isAcquired == false) {
-                uiActionText.SetActive(true);
-                if (controls.Player.Interaction.triggered) {
+            if (controls.Player.Interaction.triggered) {
+                //uiActionText.SetActive(true);
+                if (isAcquired == false) {
                     destination = player.transform;
                     SetDestination();
                     currentState = AI_FOLLOWER_STATES.FOLLOWER_FOLLOWING;
-                    uiActionText.SetActive(false);
+                    //uiActionText.SetActive(false);
                     isAcquired = true;
                 }
             }
@@ -105,7 +106,7 @@ public class Follower : MonoBehaviour
 
     public void OnTriggerExit(Collider col) {
         if (col.tag == "Player") {
-            uiActionText.SetActive(false);
+            //uiActionText.SetActive(false);
         }
     }
 
