@@ -1,5 +1,6 @@
 ﻿//Sam Baker
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -14,16 +15,30 @@ public class Health : MonoBehaviour
         if(currentHealth <= 0) {
             if (hitObject == HitObject.Pillar) {
                 transform.parent.gameObject.SetActive(false);
-            } else {
+            }
+            if (hitObject == HitObject.Player)
+            {
+                SceneManager.LoadScene("BossLevel");
+            }
+            else
+            {
                 Destroy(gameObject);
+            }
+        }
+        if(hitObject == HitObject.Player)
+        {
+            if(Input.GetKey (KeyCode.C))
+            {
+                currentHealth -= 33 * Time.deltaTime;
+            }
+            if(Input.GetKey (KeyCode.V))
+            {
+                currentHealth += 33 * Time.deltaTime;
             }
         }
     }
 
     public void TakeBulletDamage(float f_dmg, Vector3 v3_pos) {
-
-        //Debug.Log("Damaging: " + hitObject);
-
         switch (hitObject)
         {
             case HitObject.Boss:
@@ -54,12 +69,6 @@ public class Health : MonoBehaviour
     }
 
     public enum HitObject
-    {
-        Boss,
-        Player,
-        Pillar
-    }
-    public enum Type
     {
         Boss,
         Player,
