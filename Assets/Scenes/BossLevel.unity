@@ -6140,6 +6140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pillar
+      objectReference: {fileID: 0}
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11168,6 +11173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pillar
+      objectReference: {fileID: 0}
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11395,13 +11405,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 103586f693a59f349b01446e93a8c972, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &491410449
@@ -12614,7 +12624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1128001869}
+  weapon: {fileID: 1392263684}
   healthIndication: {fileID: 454292781}
+  chargeIndication: {fileID: 491410448}
 --- !u!1 &969320255
 GameObject:
   m_ObjectHideFlags: 0
@@ -17680,6 +17692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pillar
+      objectReference: {fileID: 0}
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22675,6 +22692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar1
       objectReference: {fileID: 0}
+    - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pillar
+      objectReference: {fileID: 0}
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22770,6 +22792,18 @@ MonoBehaviour:
   damageIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
   hitObject: 1
+--- !u!114 &1128001873 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6134830722524546025, guid: 3950a7acce99b1c49ae41aa883de2417,
+    type: 3}
+  m_PrefabInstance: {fileID: 1244872528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128001868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad40a6198ba196f448e8bedaa374ecc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1134641020
 GameObject:
   m_ObjectHideFlags: 0
@@ -27766,6 +27800,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1877447885}
     m_Modifications:
+    - target: {fileID: 6134830722305803675, guid: 3950a7acce99b1c49ae41aa883de2417,
+        type: 3}
+      propertyPath: chargeTakenPerFire
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134830722305803675, guid: 3950a7acce99b1c49ae41aa883de2417,
+        type: 3}
+      propertyPath: chargeRate
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134830722305803675, guid: 3950a7acce99b1c49ae41aa883de2417,
+        type: 3}
+      propertyPath: placeholderAnims
+      value: 
+      objectReference: {fileID: 1391230404}
+    - target: {fileID: 6134830722305803675, guid: 3950a7acce99b1c49ae41aa883de2417,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1128001873}
+    - target: {fileID: 6134830722305803675, guid: 3950a7acce99b1c49ae41aa883de2417,
+        type: 3}
+      propertyPath: orientaion
+      value: 
+      objectReference: {fileID: 1751549473}
     - target: {fileID: 6134830722524546024, guid: 3950a7acce99b1c49ae41aa883de2417,
         type: 3}
       propertyPath: cam
@@ -34399,6 +34458,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pillar
+      objectReference: {fileID: 0}
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34890,6 +34954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pillar1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Pillar
       objectReference: {fileID: 0}
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
