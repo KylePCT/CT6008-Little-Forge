@@ -1,4 +1,4 @@
-﻿Shader "Unlit/Outline"
+﻿Shader "Custom/Outline"
 {
     Properties
     {
@@ -96,7 +96,8 @@
 
                 return col;
             }
-            ENDCG
+
+			ENDCG
         }
     }
 }
