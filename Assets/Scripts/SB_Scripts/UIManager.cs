@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Health player;
+    public Weapon weapon;
     public Image healthIndication;
+    public Image chargeIndication;
     private float startHealth;
+    private float startCharge;
 
     private void Start()
     {
@@ -25,8 +28,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(player.currentHealth / startHealth);
-
-        healthIndication.GetComponent<Image>().fillAmount = player.currentHealth / startHealth;
+        healthIndication.fillAmount = player.currentHealth / startHealth;
+        chargeIndication.fillAmount = weapon.weaponCharge / 100;
     }
 }
