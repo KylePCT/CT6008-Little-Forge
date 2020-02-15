@@ -8,16 +8,22 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private float fireRate = 0.1f;
     [SerializeField] private float damage = 5;
+    public MultiMovementV2 player;
     public GameObject orientaion;
     public WEAPON_TYPE weaponType;
     public bool isShooting;
     private float timer;
     private GameObject cam;
     public ParticleSystem muzzleFlash;
+    public float weaponCharge;
+    public float chargeTakenPerFire;
+    public float chargeRate;
+    [SerializeField] private Animator placeholderAnims;
 
     private void Start() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         timer = fireRate;
+        weaponCharge = 100.0f;
     }
 
     private void Update() {
@@ -30,12 +36,25 @@ public class Weapon : MonoBehaviour
                 }
                 timer -= Time.deltaTime;
                 if (timer <= 0.0f) {
+                    if (weaponCharge <= 0) {
+                        placeholderAnims.SetBool("isShooting", false);
+                        return;
+                    } else{
+                        weaponCharge -= chargeTakenPerFire;
+                        placeholderAnims.SetBool("isShooting", true);
+                    }
                     ShootAction();
                     timer = fireRate;
                 }
             }
         } else {
             //No Shoot
+        }
+        if (player.shouldCharge) {
+            weaponCharge += chargeRate * Time.deltaTime;
+            if(weaponCharge > 100) {
+                weaponCharge = 100;
+            }
         }
     }
 

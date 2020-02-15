@@ -28,6 +28,8 @@ public class MultiMovementV2 : MonoBehaviour
     private bool shouldJump = false;
     private CharacterController controller;
 
+    public bool shouldCharge;
+
     private Controls controls = null;
 
     [SerializeField] private Animator placeholderAnims;
@@ -55,7 +57,6 @@ public class MultiMovementV2 : MonoBehaviour
     public void Jump(InputAction.CallbackContext ctx) {
         if (ctx.performed) {
             if (isGrounded) {
-                Debug.Log("jump");
                 shouldJump = true;
                 isGrounded = false;
                 //transform.position = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
@@ -67,7 +68,6 @@ public class MultiMovementV2 : MonoBehaviour
 
     public void LeftStickPress(InputAction.CallbackContext ctx) {
         if (ctx.performed) {
-            Debug.Log("Press");
             if (leftStickPress) {
                 moveSpeed = 7.5f;
                 leftStickPress = false;
@@ -125,12 +125,22 @@ public class MultiMovementV2 : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag == "Ground")
-        {
+    void OnCollisionExit(Collision col){
+        if (col.gameObject.tag == "Ground"){
             shouldJump = true;
             isGrounded = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider col) {
+        if(col.gameObject.tag == "Pillar"){
+            shouldCharge = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider col) {
+        if (col.gameObject.tag == "Pillar") {
+            shouldCharge = false;
         }
     }
 }
