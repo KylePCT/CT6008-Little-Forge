@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6442666572689053663
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KT_AztecTile
-  m_Shader: {fileID: -6465566751694194690, guid: 2899343c3baa9a24b91f644910aaaba7,
+  m_Name: KT_LavaFall
+  m_Shader: {fileID: -6465566751694194690, guid: 18afbd34fb431c644bca33d72fe39398,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -33,32 +20,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - AlbedoMap:
-        m_Texture: {fileID: 0}
+    - Texture2D_9014379D:
+        m_Texture: {fileID: 2800000, guid: cd7f3189fe366da44a26b5cf9f4b9155, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - Emission_Mask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - NormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_13F2BFC:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_4C80D7D7:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_9CCDFFCF:
-        m_Texture: {fileID: 2800000, guid: 1412f5243063a244dbfdc427cf8a02d0, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_C6B54A71:
-        m_Texture: {fileID: 2800000, guid: 1412f5243063a244dbfdc427cf8a02d0, type: 3}
+    - Texture2D_9682625D:
+        m_Texture: {fileID: 2800000, guid: 96531811548cf5a40b89f7a92b6f5345, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -85,29 +52,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_179404C6_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 4d15b0addf8704f4f898b420fb83c01c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - DabsOpacity: 0.5
-    - DabsRotation: 23
-    - DabsSize: 5
-    - SpecularSize: 0.1
-    - SpecularStrength: 5
-    - UseEmission: 0
-    - UseNormalMap: 0
-    - UseSpec: 1
-    - Vector1_330486B4: 0.5
-    - Vector1_3E2F163E: 0.096
-    - Vector1_579F5930: 0.277
-    - Vector1_8BF0819E: 0.493
-    - Vector1_DAD207C0: 0
-    - Vector1_E3E4CBE1: 0.168
+    - Boolean_564283A7: 1
+    - Vector1_1D5137ED: 50
+    - Vector1_20515ADD: 0.058
+    - Vector1_2E5F5C69: 20
+    - Vector1_49B77939: 0.853
+    - Vector1_4F453E91: 0.6
+    - Vector1_7A17544B: 0.526
+    - Vector1_8B3FCCE9: 0.637
+    - Vector1_9EF486D5: 0
+    - Vector1_ADCED438: 0.5
+    - Vector1_D13E333D: 1.22
+    - Vector1_E6D5E98: 0.55
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -130,12 +91,28 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_A4376733: {r: 1, g: 1, b: 1, a: 0}
-    - Color_AD8D843D: {r: 1, g: 1, b: 1, a: 0}
-    - ColourTint: {r: 10, g: 10, b: 10, a: 10}
-    - Vector2_FD6B72F3: {r: 5, g: 5, b: 0, a: 0}
-    - Vector3_34F43E7A: {r: 2, g: 3, b: 0, a: 0}
+    - Color_16A7E08B: {r: 0.8705506, g: 0.092175946, b: 0, a: 1}
+    - Color_FF5D0A55: {r: 1.39772, g: 0.40980273, b: 0.095132776, a: 1}
+    - Vector2_2D70352D: {r: 1.63, g: 3.25, b: 0, a: 0}
+    - Vector2_3150036: {r: 0, g: 0.01, b: 0, a: 0}
+    - Vector2_3C15A18D: {r: 0.7, g: 12, b: 0, a: 0}
+    - Vector2_3C872C02: {r: 0, g: 0.07, b: 0, a: 0}
+    - Vector2_5132265B: {r: 0, g: 1.14, b: 0, a: 0}
+    - Vector2_B1E0587: {r: -0.01, g: 0.02, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+--- !u!114 &7244539553733322227
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
