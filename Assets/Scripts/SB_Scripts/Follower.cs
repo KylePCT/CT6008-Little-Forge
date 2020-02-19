@@ -104,7 +104,19 @@ public class Follower : MonoBehaviour
             }
         }
         if (col.tag == "Enemy") {
-            col.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+            //col.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+        }
+    }
+
+    public void OnCollisionStay(Collision col)
+    {
+        if (col.gameObject.tag == "Boss")
+        {
+            col.gameObject.GetComponent<Health>().TakeBulletDamage(damage, col.transform.position);
+        }
+        if (col.gameObject.tag == "Pillar")
+        {
+            col.gameObject.GetComponent<Health>().TakeBulletDamage(damage, col.transform.position);
         }
     }
 

@@ -109,8 +109,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 1
     agentHeight: 3
-    agentSlope: 60
-    agentClimb: 20
+    agentSlope: 50
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -910,7 +910,7 @@ MonoBehaviour:
   player: {fileID: 1128001868}
   health: 100
   speed: 20
-  damage: 10
+  damage: 25
   enemyTarget: {fileID: 0}
 --- !u!195 &51724354
 NavMeshAgent:
@@ -1560,6 +1560,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 132349442}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &143118665
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/Shockwave
+  m_Shader: {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ShockSize: 0
+    - _ShockStrength: 1
+    - _ShockThickness: 50
+    m_Colors: []
 --- !u!1001 &166113097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2571,34 +2599,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251217575}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!21 &251937000
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/Shockwave
-  m_Shader: {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ShockSize: 0
-    - _ShockStrength: 1
-    - _ShockThickness: 50
-    m_Colors: []
 --- !u!1001 &259572360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15810,6 +15810,8 @@ GameObject:
   - component: {fileID: 777245380}
   - component: {fileID: 777245382}
   - component: {fileID: 777245381}
+  - component: {fileID: 777245385}
+  - component: {fileID: 777245384}
   m_Layer: 0
   m_Name: Floor (2)
   m_TagString: Ground
@@ -15825,7 +15827,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777245379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4954, y: 151.1, z: 0}
+  m_LocalPosition: {x: 1.5152, y: 151.1, z: 0}
   m_LocalScale: {x: 0.63537, y: 0.63537, z: 0.63537}
   m_Children: []
   m_Father: {fileID: 43048653}
@@ -15892,6 +15894,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964431819}
   m_Mesh: {fileID: 0}
+--- !u!54 &777245384
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777245379}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!33 &777245385
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777245379}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &810043629
 Transform:
   m_ObjectHideFlags: 0
@@ -21033,32 +21059,32 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.980324
+      value: 47.58
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -59.37311
+      value: -59.41
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.65272665
+      value: -0.65001506
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.28542957
+      value: -0.291552
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.31322512
+      value: 0.3191138
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6279872
+      value: -0.62501544
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
@@ -21078,7 +21104,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 23.275986
+      value: 22.19899
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
@@ -21094,6 +21120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 55.592262
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -67.97
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 6babe9f6b3be0414788bed25e4ca8ca5,
         type: 3}
@@ -48461,7 +48492,7 @@ MonoBehaviour:
   m_imageEffectsList:
   - {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
   m_materials:
-  - {fileID: 251937000}
+  - {fileID: 143118665}
   DisableEffects: 0
 --- !u!114 &1751549475
 MonoBehaviour:
