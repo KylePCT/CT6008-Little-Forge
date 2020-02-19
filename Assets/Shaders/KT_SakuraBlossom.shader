@@ -3,7 +3,7 @@
 // Shader created with Shader Forge v1.40 
 // Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.40;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,cpap:True,lico:1,lgpr:1,limd:2,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:2,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:True,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-6343-OUT,clip-7736-A,voffset-5327-OUT;n:type:ShaderForge.SFN_Multiply,id:6343,x:32115,y:32766,varname:node_6343,prsc:2|A-7736-RGB,B-6665-RGB;n:type:ShaderForge.SFN_Color,id:6665,x:31921,y:32846,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:0,c3:0,c4:1;n:type:ShaderForge.SFN_Tex2d,id:7736,x:31921,y:32620,ptovrint:True,ptlb:Base Diffuse Texture,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:fada89a33ef15a0438748e87b41548c9,ntxv:0,isnm:False;n:type:ShaderForge.SFN_VertexColor,id:1955,x:32074,y:32980,varname:node_1955,prsc:2;n:type:ShaderForge.SFN_Multiply,id:5327,x:32310,y:33033,varname:node_5327,prsc:2|A-1955-R,B-3056-OUT;n:type:ShaderForge.SFN_TexCoord,id:2662,x:31451,y:33005,varname:node_2662,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_OneMinus,id:7791,x:31665,y:33015,varname:node_7791,prsc:2|IN-2662-V;n:type:ShaderForge.SFN_Time,id:4412,x:31338,y:33196,varname:node_4412,prsc:2;n:type:ShaderForge.SFN_Cos,id:3245,x:31743,y:33181,varname:node_3245,prsc:2|IN-8674-OUT;n:type:ShaderForge.SFN_Multiply,id:5898,x:31893,y:33077,varname:node_5898,prsc:2|A-7791-OUT,B-3245-OUT;n:type:ShaderForge.SFN_FragmentPosition,id:5198,x:31653,y:33430,varname:node_5198,prsc:2;n:type:ShaderForge.SFN_Sin,id:3753,x:31859,y:33430,varname:node_3753,prsc:2|IN-5198-X;n:type:ShaderForge.SFN_Multiply,id:3056,x:32342,y:33219,varname:node_3056,prsc:2|A-9410-OUT,B-5833-OUT;n:type:ShaderForge.SFN_Multiply,id:9410,x:32057,y:33199,varname:node_9410,prsc:2|A-3753-OUT,B-5898-OUT;n:type:ShaderForge.SFN_Slider,id:5833,x:31874,y:33632,ptovrint:False,ptlb:Wind Intensity,ptin:_WindIntensity,varname:node_5833,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.06897079,max:1;n:type:ShaderForge.SFN_Slider,id:9893,x:31222,y:33379,ptovrint:False,ptlb:Wind Speed,ptin:_WindSpeed,varname:node_9893,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:3.924815,max:20;n:type:ShaderForge.SFN_Multiply,id:8674,x:31546,y:33249,varname:node_8674,prsc:2|A-4412-T,B-9893-OUT;proporder:7736-6665-5833-9893;pass:END;sub:END;*/
+/*SF_DATA;ver:1.40;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,cpap:True,lico:1,lgpr:1,limd:2,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:True,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:2,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:True,rfrpo:True,rfrpn:Refraction,coma:15,ufog:False,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:32719,y:32712,varname:node_2865,prsc:2|diff-6343-OUT,clip-7736-A,voffset-5327-OUT;n:type:ShaderForge.SFN_Multiply,id:6343,x:32115,y:32766,varname:node_6343,prsc:2|A-7736-RGB,B-6665-RGB;n:type:ShaderForge.SFN_Color,id:6665,x:31921,y:32846,ptovrint:False,ptlb:Color,ptin:_Color,varname:_Color,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:0,c3:0,c4:1;n:type:ShaderForge.SFN_Tex2d,id:7736,x:31921,y:32620,ptovrint:True,ptlb:Base Diffuse Texture,ptin:_MainTex,varname:_MainTex,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:fada89a33ef15a0438748e87b41548c9,ntxv:0,isnm:False;n:type:ShaderForge.SFN_VertexColor,id:1955,x:32074,y:32980,varname:node_1955,prsc:2;n:type:ShaderForge.SFN_Multiply,id:5327,x:32310,y:33033,varname:node_5327,prsc:2|A-1955-R,B-3056-OUT;n:type:ShaderForge.SFN_TexCoord,id:2662,x:31451,y:33005,varname:node_2662,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_OneMinus,id:7791,x:31665,y:33015,varname:node_7791,prsc:2|IN-2662-V;n:type:ShaderForge.SFN_Time,id:4412,x:31338,y:33196,varname:node_4412,prsc:2;n:type:ShaderForge.SFN_Cos,id:3245,x:31743,y:33181,varname:node_3245,prsc:2|IN-8674-OUT;n:type:ShaderForge.SFN_Multiply,id:5898,x:31893,y:33077,varname:node_5898,prsc:2|A-7791-OUT,B-3245-OUT;n:type:ShaderForge.SFN_FragmentPosition,id:5198,x:31653,y:33430,varname:node_5198,prsc:2;n:type:ShaderForge.SFN_Sin,id:3753,x:31859,y:33430,varname:node_3753,prsc:2|IN-5198-X;n:type:ShaderForge.SFN_Multiply,id:3056,x:32342,y:33219,varname:node_3056,prsc:2|A-9410-OUT,B-5833-OUT;n:type:ShaderForge.SFN_Multiply,id:9410,x:32057,y:33199,varname:node_9410,prsc:2|A-3753-OUT,B-5898-OUT;n:type:ShaderForge.SFN_Slider,id:5833,x:31874,y:33632,ptovrint:False,ptlb:Wind Intensity,ptin:_WindIntensity,varname:node_5833,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.06897079,max:1;n:type:ShaderForge.SFN_Slider,id:9893,x:31222,y:33379,ptovrint:False,ptlb:Wind Speed,ptin:_WindSpeed,varname:node_9893,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:3.924815,max:20;n:type:ShaderForge.SFN_Multiply,id:8674,x:31546,y:33249,varname:node_8674,prsc:2|A-4412-T,B-9893-OUT;proporder:7736-6665-5833-9893;pass:END;sub:END;*/
 
 Shader "Shader Forge/KT_SakuraBlossom" {
     Properties {
@@ -42,7 +42,6 @@ Shader "Shader Forge/KT_SakuraBlossom" {
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
-            #pragma multi_compile_fog
             #pragma target 3.0
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
@@ -72,9 +71,8 @@ Shader "Shader Forge/KT_SakuraBlossom" {
                 float3 bitangentDir : TEXCOORD6;
                 float4 vertexColor : COLOR;
                 LIGHTING_COORDS(7,8)
-                UNITY_FOG_COORDS(9)
                 #if defined(LIGHTMAP_ON) || defined(UNITY_SHOULD_SAMPLE_SH)
-                    float4 ambientOrLightmapUV : TEXCOORD10;
+                    float4 ambientOrLightmapUV : TEXCOORD9;
                 #endif
             };
             VertexOutput vert (VertexInput v) {
@@ -104,7 +102,6 @@ Shader "Shader Forge/KT_SakuraBlossom" {
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityObjectToClipPos( v.vertex );
-                UNITY_TRANSFER_FOG(o,o.pos);
                 TRANSFER_VERTEX_TO_FRAGMENT(o)
                 return o;
             }
@@ -125,6 +122,8 @@ Shader "Shader Forge/KT_SakuraBlossom" {
 ////// Lighting:
                 float attenuation = LIGHT_ATTENUATION(i);
                 float3 attenColor = attenuation * _LightColor0.xyz;
+                float Pi = 3.141592654;
+                float InvPi = 0.31830988618;
 /////// GI Data:
                 UnityLight light;
                 #ifdef LIGHTMAP_OFF
@@ -163,9 +162,7 @@ Shader "Shader Forge/KT_SakuraBlossom" {
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 /// Final Color:
                 float3 finalColor = diffuse;
-                fixed4 finalRGBA = fixed4(finalColor,(_MainTex_var.a) * 2.0 - 1.0);
-                UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
-                return finalRGBA;
+                return fixed4(finalColor,(_MainTex_var.a) * 2.0 - 1.0);
             }
             ENDCG
         }
@@ -193,7 +190,6 @@ Shader "Shader Forge/KT_SakuraBlossom" {
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
-            #pragma multi_compile_fog
             #pragma target 3.0
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
@@ -223,7 +219,6 @@ Shader "Shader Forge/KT_SakuraBlossom" {
                 float3 bitangentDir : TEXCOORD6;
                 float4 vertexColor : COLOR;
                 LIGHTING_COORDS(7,8)
-                UNITY_FOG_COORDS(9)
             };
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
@@ -244,7 +239,6 @@ Shader "Shader Forge/KT_SakuraBlossom" {
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityObjectToClipPos( v.vertex );
-                UNITY_TRANSFER_FOG(o,o.pos);
                 TRANSFER_VERTEX_TO_FRAGMENT(o)
                 return o;
             }
@@ -264,6 +258,8 @@ Shader "Shader Forge/KT_SakuraBlossom" {
 ////// Lighting:
                 float attenuation = LIGHT_ATTENUATION(i);
                 float3 attenColor = attenuation * _LightColor0.xyz;
+                float Pi = 3.141592654;
+                float InvPi = 0.31830988618;
 /////// Diffuse:
                 float NdotL = max(0.0,dot( normalDirection, lightDirection ));
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
@@ -272,9 +268,7 @@ Shader "Shader Forge/KT_SakuraBlossom" {
                 float3 diffuse = directDiffuse * diffuseColor;
 /// Final Color:
                 float3 finalColor = diffuse;
-                fixed4 finalRGBA = fixed4(finalColor * 1,0);
-                UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
-                return finalRGBA;
+                return fixed4(finalColor * 1,0);
             }
             ENDCG
         }
@@ -301,7 +295,6 @@ Shader "Shader Forge/KT_SakuraBlossom" {
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
-            #pragma multi_compile_fog
             #pragma target 3.0
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
@@ -378,7 +371,6 @@ Shader "Shader Forge/KT_SakuraBlossom" {
             #pragma multi_compile LIGHTMAP_OFF LIGHTMAP_ON
             #pragma multi_compile DIRLIGHTMAP_OFF DIRLIGHTMAP_COMBINED DIRLIGHTMAP_SEPARATE
             #pragma multi_compile DYNAMICLIGHTMAP_OFF DYNAMICLIGHTMAP_ON
-            #pragma multi_compile_fog
             #pragma target 3.0
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
