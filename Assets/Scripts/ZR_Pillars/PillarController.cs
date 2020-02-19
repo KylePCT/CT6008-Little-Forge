@@ -81,6 +81,10 @@ public class PillarController : MonoBehaviour
     {
         if (other.TryGetComponent(out HealthController controller))
         {
+            if (other.TryGetComponent(out Health health))
+            {
+                health.AddHealer();
+            }
             m_healables.Add(new Healable(controller, lrm.Activate()));
         }
     }
@@ -89,6 +93,11 @@ public class PillarController : MonoBehaviour
     {
         if (other.TryGetComponent(out HealthController controller))
         {
+            if (other.TryGetComponent(out Health health))
+            {
+                health.RemoveHealer();
+            }
+
             for (int i = 0; i < m_healables.Count; ++i)
             {
                 if (controller == m_healables[i].hc)
@@ -98,6 +107,14 @@ public class PillarController : MonoBehaviour
                     return;
                 }
             }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach(Healable h in m_healables)
+        {
+            lrm.Deactivate(h.lr);
         }
     }
 }

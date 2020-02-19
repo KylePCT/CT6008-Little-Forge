@@ -4,16 +4,33 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    public float startHealth = 250.0f;
+    public float startHealth = 2000.0f;
     public float currentHealth;
     public GameObject damageIndication;
     public HitObject hitObject; //0=Boss, 1=player, 2=pillar
 
+    private float m_healAmount = 25f;
+    private int m_healers = 0;
+    private float m_healFrequency = 2f;
+    private float m_lastHeal = 0f;
+
     private void Start() => currentHealth = startHealth;
 
     private void Update() {
-        if(currentHealth <= 0) {
-            if (hitObject == HitObject.Pillar) {
+
+        CheckHealth();
+
+        UpdateHeal();
+
+        CheatsIGuess();
+    }
+
+    private void CheckHealth()
+    {
+        if (currentHealth <= 0)
+        {
+            if (hitObject == HitObject.Pillar)
+            {
                 gameObject.SetActive(false);
             }
             if (hitObject == HitObject.Player)
@@ -25,13 +42,26 @@ public class Health : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        if(hitObject == HitObject.Player)
+    }
+
+    private void UpdateHeal()
+    {
+        if (Time.time - m_lastHeal > m_healFrequency)
         {
-            if(Input.GetKey (KeyCode.C))
+            m_lastHeal = Time.time;
+            Heal();
+        }
+    }
+
+    private void CheatsIGuess()
+    {
+        if (hitObject == HitObject.Player)
+        {
+            if (Input.GetKey(KeyCode.C))
             {
                 currentHealth -= 33 * Time.deltaTime;
             }
-            if(Input.GetKey (KeyCode.V))
+            if (Input.GetKey(KeyCode.V))
             {
                 currentHealth += 33 * Time.deltaTime;
             }
@@ -66,6 +96,21 @@ public class Health : MonoBehaviour
         dmgIndication.transform.GetChild(0).GetComponent<TextMesh>().color = color;  
         dmgIndication.transform.LookAt(Camera.main.transform.position);
         Destroy(dmgIndication, 0.25f);
+    }
+
+    public void AddHealer()
+    {
+        ++m_healers;
+    }
+
+    public void RemoveHealer()
+    {
+        m_healers = Mathf.Clamp(--m_healers, 0, int.MaxValue);
+    }
+
+    private void Heal()
+    {
+        currentHealth = Mathf.Clamp(currentHealth + (m_healAmount * m_healers), 0f, startHealth);
     }
 
     public enum HitObject
