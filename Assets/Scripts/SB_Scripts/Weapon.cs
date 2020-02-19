@@ -1,13 +1,16 @@
 ﻿//Sam Baker
 //Animation implementation by Kyle Tugwell
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private float fireRate = 0.1f;
-    [SerializeField] private float damage = 5;
+    [SerializeField] private float baseDamage = 10;
+    [SerializeField] private float damage;
     public MultiMovementV2 player;
     public GameObject orientaion;
     public WEAPON_TYPE weaponType;
@@ -60,6 +63,9 @@ public class Weapon : MonoBehaviour
 
     private void ShootAction() {
         MuzzleFlash();
+
+        //Added some damage variation - KT/AP 19/2
+        damage = Random.Range((int)(baseDamage * 0.8f), (int)(baseDamage * 1.2f));
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100.0f)) {

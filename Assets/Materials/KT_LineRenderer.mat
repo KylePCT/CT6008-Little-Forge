@@ -21,9 +21,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: KT_LineRenderer
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF _GLOSSYREFLECTIONS_OFF
-  m_LightmapFlags: 4
+  m_Shader: {fileID: 4800000, guid: 125119b03599a4d4bb3d365503c3b7ab, type: 3}
+  m_ShaderKeywords: _ALPHATEST_ON _ENVIRONMENTREFLECTIONS_OFF _GLOSSYREFLECTIONS_OFF
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -42,6 +42,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BeamTexture:
+        m_Texture: {fileID: 2800000, guid: 5fc8dd95f91ebc04b9b8685c168fa330, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -65,7 +69,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b756aa1b0975fbd4caa65e91cb0c9772, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5fc8dd95f91ebc04b9b8685c168fa330, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -88,6 +92,7 @@ Material:
     - LineOpacity: 0
     - Vector1_839EC603: 1
     - _AlphaClip: 0
+    - _BeamSpeed: 1
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -100,7 +105,7 @@ Material:
     - _GlossyReflections: 0
     - _InvFade: 0.01
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
@@ -119,7 +124,7 @@ Material:
     - ScrollDirection: {r: -5, g: 0, b: 0, a: 0}
     - Vector2_AACAC1BC: {r: -3.73, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.07066631, g: 1, b: 0, a: 1}
+    - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TintColor: {r: 0.54512286, g: 0.6603774, b: 0.6258321, a: 0.5}
