@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     private void Update() {
         if(currentHealth <= 0) {
             if (hitObject == HitObject.Pillar) {
-                transform.parent.gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
             if (hitObject == HitObject.Player)
             {
