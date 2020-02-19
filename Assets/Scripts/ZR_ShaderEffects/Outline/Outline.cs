@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////
+/// File: Outline.cs
+/// Author: Zack Raeburn
+/// Date Created: 19/02/20
+/// Description: 
+//////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

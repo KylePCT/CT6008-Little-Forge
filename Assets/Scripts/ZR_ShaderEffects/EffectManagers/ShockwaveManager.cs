@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////
+/// File: ShockwaveManager.cs
+/// Author: Zack Raeburn
+/// Date Created: 23/01/20
+/// Description: 
+//////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +27,14 @@ public class ShockwaveManager : MonoBehaviour
 
     private void Awake()
     {
+        InitialiseVariables();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void InitialiseVariables()
+    {
         m_shockSizeID = Shader.PropertyToID("_ShockSize");
         m_shockThicknessID = Shader.PropertyToID("_ShockThickness");
         m_shockStrengthID = Shader.PropertyToID("_ShockStrength");
@@ -27,14 +42,10 @@ public class ShockwaveManager : MonoBehaviour
         FullScreenEffects.OnConstructMaterials += OnConstructMaterials;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CreateShockwave();
-        }
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="a_sender"></param>
     private void OnConstructMaterials(FullScreenEffects a_sender)
     {
         for (int i = 0; i < a_sender.Materials.Count; ++i)
@@ -47,6 +58,9 @@ public class ShockwaveManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void CreateShockwave()
     {
         if (m_shockwaveMat == null)
@@ -59,6 +73,10 @@ public class ShockwaveManager : MonoBehaviour
         StartCoroutine(m_currentCoroutine);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShockwaveIE()
     {
         float shockSize = m_shockwaveMat.GetFloat(m_shockSizeID);
