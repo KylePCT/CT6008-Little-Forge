@@ -45,6 +45,10 @@ public class MultiMovementV2 : MonoBehaviour
         jump = new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z);
         controller = GetComponent<CharacterController>();
         //rb = GetComponent<Rigidbody>();
+
+        //Lock the cursor
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     private void Update() {
@@ -94,7 +98,12 @@ public class MultiMovementV2 : MonoBehaviour
             playerYRot.z = transform.eulerAngles.z;
             transform.eulerAngles = playerYRot;
         } else {
-            transform.LookAt(playerFace.transform.position);
+
+            Vector3 relativePos = playerFace.transform.position - transform.position;
+            Quaternion toRotation = Quaternion.LookRotation(relativePos);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 5 * Time.deltaTime);
+
+            //transform.LookAt(playerFace.transform.position);
         }
         //transform.position += (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed * Time.deltaTime;
         moveDirection = (rotF * movementInput.y + rotR * movementInput.x) * moveSpeed;

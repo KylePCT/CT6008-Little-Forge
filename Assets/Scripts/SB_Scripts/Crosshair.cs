@@ -50,7 +50,7 @@ public class Crosshair : MonoBehaviour
 
     private void EnemyOnCrossHair() {
         crosshair.color = Color.red;
-        playerRotation.GetComponent<PlayerRotation>().rotSensitivity = playerRotation.GetComponent<PlayerRotation>().origSensitivity - 25.0f;
+        playerRotation.GetComponent<PlayerRotation>().rotSensitivity = playerRotation.GetComponent<PlayerRotation>().origSensitivity / 2.0f;
     }
 
     private void ReturnCrossHair() {
