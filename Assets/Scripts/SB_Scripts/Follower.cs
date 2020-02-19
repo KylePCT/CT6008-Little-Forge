@@ -48,7 +48,7 @@ public class Follower : MonoBehaviour
     private void Update() {
         nameTextHolder.transform.LookAt(Camera.main.transform.position);
         if (isAcquired) {
-            if (controls.Player.TriangleorY.triggered) {
+            if (controls.Player.SendFollowerAttack.triggered) {
                 if (GameObject.FindGameObjectWithTag("CrossHair").GetComponent<Crosshair>().enemyTarget != null) {
                     enemyTarget = GameObject.FindGameObjectWithTag("CrossHair").GetComponent<Crosshair>().enemyTarget;
                     if (enemyTarget != null) {
@@ -58,6 +58,10 @@ public class Follower : MonoBehaviour
                         Debug.Log("No Target!");
                     }
                 }
+            }
+            if (controls.Player.SendFollowerAway.triggered) {
+                isAcquired = false;
+                currentState = AI_FOLLOWER_STATES.FOLLOWER_IDLE;
             }
         }
         switch (currentState) {

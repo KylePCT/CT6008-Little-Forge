@@ -107,7 +107,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 5
+    agentRadius: 1
     agentHeight: 3
     agentSlope: 60
     agentClimb: 20
@@ -115,7 +115,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 1.6666666
+    cellSize: 0.33333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -1380,34 +1380,6 @@ Transform:
   m_Father: {fileID: 443366949}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &115608612
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/Shockwave
-  m_Shader: {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _ShockSize: 0
-    - _ShockStrength: 1
-    - _ShockThickness: 50
-    m_Colors: []
 --- !u!1001 &118978260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2599,6 +2571,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251217575}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!21 &251937000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/Shockwave
+  m_Shader: {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ShockSize: 0
+    - _ShockStrength: 1
+    - _ShockThickness: 50
+    m_Colors: []
 --- !u!1001 &259572360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48418,7 +48418,7 @@ PrefabInstance:
     - target: {fileID: 1931979635090632477, guid: 8a04c3f1d7190fa488b4779f09e2001c,
         type: 3}
       propertyPath: rotSensitivity
-      value: 45
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1931979635090632479, guid: 8a04c3f1d7190fa488b4779f09e2001c,
         type: 3}
@@ -48461,7 +48461,7 @@ MonoBehaviour:
   m_imageEffectsList:
   - {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
   m_materials:
-  - {fileID: 115608612}
+  - {fileID: 251937000}
   DisableEffects: 0
 --- !u!114 &1751549475
 MonoBehaviour:
