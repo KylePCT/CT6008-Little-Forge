@@ -60,7 +60,7 @@ public class PillarController : MonoBehaviour
         {
             Vector3[] trajectory = new Vector3[lrm.ArcResolution];
 
-            float height = Mathf.Max(BeamOrigin.y, h.hc.transform.position.y);
+            float height = Mathf.Max(BeamOrigin.y, h.hc.transform.position.y);      //This causing errors when the boss is dead.
             Vector3 middlePos = Vector3.Lerp(BeamOrigin, h.hc.transform.position, 0.5f);
             middlePos.y = height + m_arcYOffset;
 
