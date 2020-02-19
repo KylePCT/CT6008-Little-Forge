@@ -13,6 +13,7 @@ public class PillarHealthIndication : MonoBehaviour
     {
         health = gameObject.transform.parent.GetComponent<Health>();
         startHealth = health.startHealth;
+        cam = Camera.main;
     }
 
     private void Update()

@@ -106,6 +106,8 @@ public class Follower : MonoBehaviour
         if (col.tag == "Enemy") {
             //col.gameObject.GetComponent<Enemy>().TakeDamage(damage);
         }
+
+        
     }
 
     public void OnCollisionStay(Collision col)
@@ -116,7 +118,8 @@ public class Follower : MonoBehaviour
         }
         if (col.gameObject.tag == "Pillar")
         {
-            col.gameObject.GetComponent<Health>().TakeBulletDamage(damage, col.transform.position);
+            col.gameObject.GetComponentInParent<Health>().TakeBulletDamage(damage, col.transform.position);
+            Debug.Log(col.gameObject.transform.parent.name);
         }
     }
 

@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 3633900784741058241}
   m_Layer: 0
   m_Name: Pillar1Collide
-  m_TagString: Untagged
+  m_TagString: Pillar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,9 +320,7 @@ GameObject:
   - component: {fileID: 3633900785356596511}
   - component: {fileID: 1439339507}
   - component: {fileID: 1439339509}
-  - component: {fileID: 1867162087}
-  - component: {fileID: 1867162086}
-  - component: {fileID: 1867162088}
+  - component: {fileID: 1439339508}
   m_Layer: 2
   m_Name: Pillar1
   m_TagString: Pillar
@@ -454,8 +452,8 @@ MonoBehaviour:
   currentHealth: 0
   damageIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
-  hitObject: 0
---- !u!54 &1867162087
+  hitObject: 2
+--- !u!54 &1439339508
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,35 +469,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1867162086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706218268235045510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009299b938bb63e44828439b32a75d1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_arcYOffset: 5
-  m_beamOriginOffset: {x: 0, y: 0, z: 0}
-  m_healables: []
---- !u!114 &1867162088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706218268235045510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85ce88371a35d414d96eda4a06abcda5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startHealth: 250
-  currentHealth: 0
-  damageIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
-    type: 3}
-  hitObject: 0
