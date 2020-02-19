@@ -11,7 +11,7 @@ public class Follower : MonoBehaviour
     public string followerName;
     public GameObject nameText;
     public GameObject nameTextHolder;
-    //public GameObject uiActionText;
+    public GameObject uiActionText;
 
     [SerializeField] private GameObject player;
 
@@ -88,13 +88,13 @@ public class Follower : MonoBehaviour
 
     public void OnTriggerStay(Collider col) {
         if (col.tag == "Player") {
-            if (controls.Player.Interaction.triggered) {
-                //uiActionText.SetActive(true);
-                if (isAcquired == false) {
+            if (isAcquired == false) {  //swapped brackets here
+                uiActionText.SetActive(true);
+                if (controls.Player.Interaction.triggered) {    //with here - Alice (18/2 10:27)
                     destination = player.transform;
                     SetDestination();
                     currentState = AI_FOLLOWER_STATES.FOLLOWER_FOLLOWING;
-                    //uiActionText.SetActive(false);
+                    uiActionText.SetActive(false);
                     isAcquired = true;
                 }
             }
@@ -106,7 +106,7 @@ public class Follower : MonoBehaviour
 
     public void OnTriggerExit(Collider col) {
         if (col.tag == "Player") {
-            //uiActionText.SetActive(false);
+            uiActionText.SetActive(false);
         }
     }
 
