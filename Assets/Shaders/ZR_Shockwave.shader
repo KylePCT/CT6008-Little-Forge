@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////
 // Author: Zack Raeburn
 // Date created: 23/01/20
-// Last edit: 23/01/20
+// Last edit: 19/02/20
 // Description: A shader for a screen space shockwave
 // Comments: I need to finish the maths on this shader and add a system to dynamically add multiple shockwaves
 //////////////////////////////////////////////////
@@ -55,10 +55,16 @@ Shader "Hidden/Shockwave"
 			float _ShockThickness;
 			float _ShockStrength;
 
-            fixed4 frag (v2f i) : SV_Target
-            {
+			uniform float3 _WorldPos;
+
+			fixed4 frag(v2f i) : SV_Target
+			{
+				float3 screenPos = _WorldPos - _WorldSpaceCameraPos;
+				//screenPos.y *= _ProjectionParams.x;
+				float2 worldPointUV = (screenPos.xy / screenPos.z) * 0.5 + 0.5;
+
 				// Big math time lets go
-				float2 targetPixelPos = float2(0.5, 0.5) * _ScreenParams.xy;
+				float2 targetPixelPos = worldPointUV * _ScreenParams.xy;
 				float2 screenPixelCoords = i.uv * _ScreenParams.xy;
 
 				float2 targetDir = normalize(screenPixelCoords - targetPixelPos);

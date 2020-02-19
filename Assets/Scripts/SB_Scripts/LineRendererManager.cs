@@ -69,7 +69,7 @@ public class LineRendererManager : MonoBehaviour
             m_inactiveLR.Add(lr.GetComponent<LineRenderer>());
         }
 
-        m_lineColourShaderID = Shader.PropertyToID("LineOpacity");
+        m_lineColourShaderID = Shader.PropertyToID("_LineOpacity");
     }
 
     public LineRenderer Activate()

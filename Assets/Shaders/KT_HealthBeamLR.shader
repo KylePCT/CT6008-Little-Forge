@@ -1,14 +1,14 @@
 // Shader created with Shader Forge v1.40 
 // Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.40;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,cpap:True,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:3,bdst:7,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.7169812,fgcg:0.1555714,fgcb:0.1555714,fgca:1,fgde:0.002,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:4013,x:32719,y:32712,varname:node_4013,prsc:2|diff-3314-OUT,emission-3314-OUT,alpha-5630-A;n:type:ShaderForge.SFN_Color,id:1304,x:32203,y:32838,ptovrint:False,ptlb:Color,ptin:_Color,varname:node_1304,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:0.08433735,c3:0,c4:1;n:type:ShaderForge.SFN_Tex2d,id:5630,x:32203,y:32633,ptovrint:False,ptlb:Beam Texture,ptin:_BeamTexture,varname:node_5630,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:1412f5243063a244dbfdc427cf8a02d0,ntxv:0,isnm:False|UVIN-5353-UVOUT;n:type:ShaderForge.SFN_Multiply,id:3314,x:32388,y:32703,varname:node_3314,prsc:2|A-5630-RGB,B-1304-RGB;n:type:ShaderForge.SFN_Slider,id:1937,x:31330,y:32509,ptovrint:False,ptlb:Beam U Speed,ptin:_BeamUSpeed,varname:node_1937,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:20,max:20;n:type:ShaderForge.SFN_Slider,id:7235,x:31330,y:32636,ptovrint:False,ptlb:Beam V Speed,ptin:_BeamVSpeed,varname:node_7235,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:20,max:20;n:type:ShaderForge.SFN_Append,id:126,x:31670,y:32555,varname:node_126,prsc:2|A-1937-OUT,B-7235-OUT;n:type:ShaderForge.SFN_Time,id:5261,x:31652,y:32712,varname:node_5261,prsc:2;n:type:ShaderForge.SFN_Multiply,id:8592,x:31836,y:32648,varname:node_8592,prsc:2|A-126-OUT,B-5261-T;n:type:ShaderForge.SFN_TexCoord,id:8936,x:31775,y:32389,varname:node_8936,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Panner,id:5353,x:32001,y:32516,varname:node_5353,prsc:2,spu:20,spv:1|UVIN-2271-OUT,DIST-5261-TSL;n:type:ShaderForge.SFN_Time,id:9866,x:31775,y:32250,varname:node_9866,prsc:2;n:type:ShaderForge.SFN_Multiply,id:2271,x:31938,y:32306,varname:node_2271,prsc:2|A-9866-TSL,B-8936-UVOUT;proporder:5630-1304-1937-7235;pass:END;sub:END;*/
+/*SF_DATA;ver:1.40;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,cpap:True,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:3,bdst:7,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:4013,x:32719,y:32712,varname:node_4013,prsc:2|diff-3314-OUT,emission-3314-OUT,alpha-1896-OUT;n:type:ShaderForge.SFN_Color,id:1304,x:32203,y:32838,ptovrint:False,ptlb:Color,ptin:_Color,varname:node_1304,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:1,c2:0.08433735,c3:0,c4:1;n:type:ShaderForge.SFN_Tex2d,id:5630,x:32203,y:32633,ptovrint:False,ptlb:Beam Texture,ptin:_BeamTexture,varname:node_5630,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:1412f5243063a244dbfdc427cf8a02d0,ntxv:0,isnm:False|UVIN-5353-UVOUT;n:type:ShaderForge.SFN_Multiply,id:3314,x:32388,y:32703,varname:node_3314,prsc:2|A-5630-RGB,B-1304-RGB;n:type:ShaderForge.SFN_Panner,id:5353,x:32001,y:32516,varname:node_5353,prsc:2,spu:2,spv:0|UVIN-6309-UVOUT,DIST-2271-OUT;n:type:ShaderForge.SFN_Time,id:9866,x:31648,y:32168,varname:node_9866,prsc:2;n:type:ShaderForge.SFN_Multiply,id:2271,x:31844,y:32249,varname:node_2271,prsc:2|A-9866-T,B-4886-OUT;n:type:ShaderForge.SFN_Slider,id:3477,x:32124,y:33061,ptovrint:False,ptlb:Line Opacity,ptin:_LineOpacity,varname:node_3477,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1,max:1;n:type:ShaderForge.SFN_Multiply,id:1896,x:32432,y:32925,varname:node_1896,prsc:2|A-5630-A,B-3477-OUT;n:type:ShaderForge.SFN_TexCoord,id:6309,x:31633,y:32518,varname:node_6309,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Slider,id:4886,x:31476,y:32337,ptovrint:False,ptlb:Tiling Speed,ptin:_TilingSpeed,varname:node_4886,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.156522,max:1;proporder:5630-1304-3477-4886;pass:END;sub:END;*/
 
 Shader "Shader Forge/KT_HealthBeamLR" {
     Properties {
         _BeamTexture ("Beam Texture", 2D) = "white" {}
         _Color ("Color", Color) = (1,0.08433735,0,1)
-        _BeamUSpeed ("Beam U Speed", Range(0, 20)) = 20
-        _BeamVSpeed ("Beam V Speed", Range(0, 20)) = 20
+        _LineOpacity ("Line Opacity", Range(0, 1)) = 1
+        _TilingSpeed ("Tiling Speed", Range(0, 1)) = 0.156522
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
@@ -37,6 +37,8 @@ Shader "Shader Forge/KT_HealthBeamLR" {
             uniform sampler2D _BeamTexture; uniform float4 _BeamTexture_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
                 UNITY_DEFINE_INSTANCED_PROP( float4, _Color)
+                UNITY_DEFINE_INSTANCED_PROP( float, _LineOpacity)
+                UNITY_DEFINE_INSTANCED_PROP( float, _TilingSpeed)
             UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
                 UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -78,9 +80,9 @@ Shader "Shader Forge/KT_HealthBeamLR" {
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
                 float3 indirectDiffuse = float3(0,0,0);
                 indirectDiffuse += UNITY_LIGHTMODEL_AMBIENT.rgb; // Ambient Light
-                float4 node_5261 = _Time;
                 float4 node_9866 = _Time;
-                float2 node_5353 = ((node_9866.r*i.uv0)+node_5261.r*float2(20,1));
+                float _TilingSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _TilingSpeed );
+                float2 node_5353 = (i.uv0+(node_9866.g*_TilingSpeed_var)*float2(2,0));
                 float4 _BeamTexture_var = tex2D(_BeamTexture,TRANSFORM_TEX(node_5353, _BeamTexture));
                 float4 _Color_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Color );
                 float3 node_3314 = (_BeamTexture_var.rgb*_Color_var.rgb);
@@ -90,7 +92,8 @@ Shader "Shader Forge/KT_HealthBeamLR" {
                 float3 emissive = node_3314;
 /// Final Color:
                 float3 finalColor = diffuse + emissive;
-                fixed4 finalRGBA = fixed4(finalColor,_BeamTexture_var.a);
+                float _LineOpacity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _LineOpacity );
+                fixed4 finalRGBA = fixed4(finalColor,(_BeamTexture_var.a*_LineOpacity_var));
                 UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
                 return finalRGBA;
             }
@@ -117,6 +120,8 @@ Shader "Shader Forge/KT_HealthBeamLR" {
             uniform sampler2D _BeamTexture; uniform float4 _BeamTexture_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
                 UNITY_DEFINE_INSTANCED_PROP( float4, _Color)
+                UNITY_DEFINE_INSTANCED_PROP( float, _LineOpacity)
+                UNITY_DEFINE_INSTANCED_PROP( float, _TilingSpeed)
             UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
                 UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -158,9 +163,9 @@ Shader "Shader Forge/KT_HealthBeamLR" {
 /////// Diffuse:
                 float NdotL = max(0.0,dot( normalDirection, lightDirection ));
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
-                float4 node_5261 = _Time;
                 float4 node_9866 = _Time;
-                float2 node_5353 = ((node_9866.r*i.uv0)+node_5261.r*float2(20,1));
+                float _TilingSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _TilingSpeed );
+                float2 node_5353 = (i.uv0+(node_9866.g*_TilingSpeed_var)*float2(2,0));
                 float4 _BeamTexture_var = tex2D(_BeamTexture,TRANSFORM_TEX(node_5353, _BeamTexture));
                 float4 _Color_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Color );
                 float3 node_3314 = (_BeamTexture_var.rgb*_Color_var.rgb);
@@ -168,7 +173,8 @@ Shader "Shader Forge/KT_HealthBeamLR" {
                 float3 diffuse = directDiffuse * diffuseColor;
 /// Final Color:
                 float3 finalColor = diffuse;
-                fixed4 finalRGBA = fixed4(finalColor * _BeamTexture_var.a,0);
+                float _LineOpacity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _LineOpacity );
+                fixed4 finalRGBA = fixed4(finalColor * (_BeamTexture_var.a*_LineOpacity_var),0);
                 UNITY_APPLY_FOG(i.fogCoord, finalRGBA);
                 return finalRGBA;
             }

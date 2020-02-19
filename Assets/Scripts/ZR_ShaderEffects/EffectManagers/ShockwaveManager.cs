@@ -8,10 +8,12 @@ public class ShockwaveManager : MonoBehaviour
     private int m_shockThicknessID = 0;
     private int m_shockStrengthID = 0;
 
-    [SerializeField] private float m_targetShockSize = 500;
-    [SerializeField] private float m_shockSizeSpeed = 1f;
-    [SerializeField] private float m_targetShockStrength = 0f;
-    [SerializeField] private float m_shockStrengthSpeed = 1f;
+    [SerializeField] private float m_targetShockSize = 500f;
+    [SerializeField] private float m_shockSizeSpeed = 2000f;
+    [SerializeField] private float m_targetShockStrength = 1f;
+    [SerializeField] private float m_shockStrengthSpeed = 10f;
+
+    [SerializeField] private Transform m_shockwavePos = null;
 
     private IEnumerator m_currentCoroutine = null;
     private Material m_shockwaveMat = null;
@@ -23,6 +25,14 @@ public class ShockwaveManager : MonoBehaviour
         m_shockStrengthID = Shader.PropertyToID("_ShockStrength");
 
         FullScreenEffects.OnConstructMaterials += OnConstructMaterials;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CreateShockwave();
+        }
     }
 
     private void OnConstructMaterials(FullScreenEffects a_sender)
@@ -53,6 +63,8 @@ public class ShockwaveManager : MonoBehaviour
     {
         float shockSize = m_shockwaveMat.GetFloat(m_shockSizeID);
         float shockStrength = m_shockwaveMat.GetFloat(m_shockStrengthID);
+
+        m_shockwaveMat.SetVector("_WorldPos", m_shockwavePos.position);
 
         yield return null;
 

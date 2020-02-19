@@ -43,7 +43,6 @@ public class PillarController : MonoBehaviour
         if (lrm == null)
         {
             GameObject lrm = new GameObject("LineRendererManager");
-            lrm.transform.parent = transform;
             PillarController.lrm = lrm.AddComponent<LineRendererManager>();
         }
 
