@@ -122,6 +122,13 @@ public class Boss : MonoBehaviour
 
         //Debug.Log(bossDistance);
 
+        //If the player is past a distance of 125 aka the boss can not see the player,
+        //  the boss should idle. (Temp fix to stop the boss from coming to the start area)
+        if (bossDistance > 125.0f)
+        {
+            return;
+        }
+
         if (bossDistance > 10f)
         {
             navAgent.enabled = true;

@@ -22,6 +22,7 @@ public class Weapon : MonoBehaviour
     public float chargeTakenPerFire;
     public float chargeRate;
     [SerializeField] private Animator placeholderAnims;
+    public PlayerSoundsManager audioManager;
 
     private void Start() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -41,10 +42,16 @@ public class Weapon : MonoBehaviour
                 if (timer <= 0.0f) {
                     if (weaponCharge <= 0) {
                         placeholderAnims.SetBool("isShooting", false);
+                        audioManager.gunAudioSource.pitch = 1.0f;
+                        audioManager.gunAudioSource.clip = audioManager.gunclick;
+                        audioManager.gunAudioSource.Play();
                         return;
                     } else{
                         weaponCharge -= chargeTakenPerFire;
                         placeholderAnims.SetBool("isShooting", true);
+                        audioManager.gunAudioSource.pitch = Random.Range(0.85f, 1.15f);
+                        audioManager.gunAudioSource.clip = audioManager.laser;
+                        audioManager.gunAudioSource.Play();
                     }
                     ShootAction();
                     timer = fireRate;
