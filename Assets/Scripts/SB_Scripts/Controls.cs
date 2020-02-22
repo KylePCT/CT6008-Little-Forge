@@ -137,6 +137,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ScrollWeaponUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c26f30d-e17a-432f-90b9-45d47bcea497"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ScrollWeaponDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f22ea9e-49e5-42f5-8298-b09eafe84194"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -645,6 +661,61 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""SendFollowerAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d228151-984c-4288-8a78-ea4b5e0056c3"",
+                    ""path"": ""<DualShockGamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollWeaponUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4d512ef-3174-4ced-a5d2-aebb25f5c4aa"",
+                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollWeaponUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d2a9793-458b-4055-9202-92d69bc898b8"",
+                    ""path"": ""<DualShockGamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollWeaponDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a333e7d-fcb0-4821-bd30-93ca388db4d9"",
+                    ""path"": ""<XInputController>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollWeaponDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd330e40-115f-4170-bac5-2242ce097cf4"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollWeaponDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -668,6 +739,8 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_ShootOut = m_Player.FindAction("ShootOut", throwIfNotFound: true);
         m_Player_SendFollowerAway = m_Player.FindAction("SendFollowerAway", throwIfNotFound: true);
         m_Player_SendFollowerAttack = m_Player.FindAction("SendFollowerAttack", throwIfNotFound: true);
+        m_Player_ScrollWeaponUp = m_Player.FindAction("ScrollWeaponUp", throwIfNotFound: true);
+        m_Player_ScrollWeaponDown = m_Player.FindAction("ScrollWeaponDown", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -732,6 +805,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_ShootOut;
     private readonly InputAction m_Player_SendFollowerAway;
     private readonly InputAction m_Player_SendFollowerAttack;
+    private readonly InputAction m_Player_ScrollWeaponUp;
+    private readonly InputAction m_Player_ScrollWeaponDown;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -751,6 +826,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @ShootOut => m_Wrapper.m_Player_ShootOut;
         public InputAction @SendFollowerAway => m_Wrapper.m_Player_SendFollowerAway;
         public InputAction @SendFollowerAttack => m_Wrapper.m_Player_SendFollowerAttack;
+        public InputAction @ScrollWeaponUp => m_Wrapper.m_Player_ScrollWeaponUp;
+        public InputAction @ScrollWeaponDown => m_Wrapper.m_Player_ScrollWeaponDown;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -805,6 +882,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @SendFollowerAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendFollowerAttack;
                 @SendFollowerAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendFollowerAttack;
                 @SendFollowerAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSendFollowerAttack;
+                @ScrollWeaponUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeaponUp;
+                @ScrollWeaponUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeaponUp;
+                @ScrollWeaponUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeaponUp;
+                @ScrollWeaponDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeaponDown;
+                @ScrollWeaponDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeaponDown;
+                @ScrollWeaponDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnScrollWeaponDown;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -854,6 +937,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @SendFollowerAttack.started += instance.OnSendFollowerAttack;
                 @SendFollowerAttack.performed += instance.OnSendFollowerAttack;
                 @SendFollowerAttack.canceled += instance.OnSendFollowerAttack;
+                @ScrollWeaponUp.started += instance.OnScrollWeaponUp;
+                @ScrollWeaponUp.performed += instance.OnScrollWeaponUp;
+                @ScrollWeaponUp.canceled += instance.OnScrollWeaponUp;
+                @ScrollWeaponDown.started += instance.OnScrollWeaponDown;
+                @ScrollWeaponDown.performed += instance.OnScrollWeaponDown;
+                @ScrollWeaponDown.canceled += instance.OnScrollWeaponDown;
             }
         }
     }
@@ -875,5 +964,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnShootOut(InputAction.CallbackContext context);
         void OnSendFollowerAway(InputAction.CallbackContext context);
         void OnSendFollowerAttack(InputAction.CallbackContext context);
+        void OnScrollWeaponUp(InputAction.CallbackContext context);
+        void OnScrollWeaponDown(InputAction.CallbackContext context);
     }
 }

@@ -30,9 +30,9 @@ public class MultiMovementV2 : MonoBehaviour
 
     public bool shouldCharge;
 
-    private Controls controls = null;
-
     [SerializeField] private Animator placeholderAnims;
+
+    private Controls controls = null;
 
     private void Awake() => controls = new Controls();
 

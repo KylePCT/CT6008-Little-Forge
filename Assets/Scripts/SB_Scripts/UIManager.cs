@@ -1,6 +1,7 @@
 ﻿//Sam Baker
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -15,9 +16,19 @@ public class UIManager : MonoBehaviour
     private float startHealth;
     private float startCharge;
     private float startBossHealth;
+    private int weaponID;
+
+    private Controls controls = null;
+
+    private void Awake() => controls = new Controls();
+
+    private void OnEnable() => controls.Player.Enable();
+
+    private void OnDisable() => controls.Player.Disable();
 
     private void Start()
     {
+        weaponID = (int)weapon.weaponType;
         if(player == null)
         {
             if(GameObject.FindGameObjectWithTag("Player"))
@@ -30,6 +41,7 @@ public class UIManager : MonoBehaviour
         }
         startHealth = player.startHealth;
         startBossHealth = boss.startHealth;
+        UpdateWeaponUI();
     }
 
     private void Update()
@@ -40,9 +52,6 @@ public class UIManager : MonoBehaviour
         {
             bossHealthIndication.fillAmount = boss.currentHealth / startBossHealth;
         }
-
-        //Sort this to detect and execute when the weapon has been changed. Not constantly
-        UpdateWeaponUI();
     }
 
     private void UpdateWeaponUI()
@@ -52,5 +61,38 @@ public class UIManager : MonoBehaviour
             wUI.color = Color.grey;
         }
         m_weaponUI[(int)weapon.weaponType].color = Color.white;
+    }
+
+    //L1
+    public void ChangeWeaponUp(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            weaponID -= 1;
+            if(weaponID <= -1)
+            {
+                weaponID = 2;
+            }
+            weapon.weaponType = (Weapon.WEAPON_TYPE)weaponID;
+            UpdateWeaponUI();
+        }
+    }
+
+    //R1
+    public void ChangeWeaponDown(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (ctx.performed)
+            {
+                weaponID += 1;
+                if (weaponID >= 3)
+                {
+                    weaponID = 0;
+                }
+            }
+            weapon.weaponType = (Weapon.WEAPON_TYPE)weaponID;
+            UpdateWeaponUI();
+        }
     }
 }
