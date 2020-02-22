@@ -1,9 +1,20 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: Crosshair.cs
+/// Author: Sam Baker
+/// Date created: 02/02/20
+/// Last edit: 22/02/20
+/// Description: For the use of the onscreen UI for the crosshair. Using raycasts to
+///             detect what the player is aimed at
+/// Comments:
+//////////////////////////////////////////////////
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Crosshair : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     public Camera cam;
     public Image crosshair;
 
@@ -13,6 +24,8 @@ public class Crosshair : MonoBehaviour
 
     private Controls controls = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Awake() => controls = new Controls();
 
     private void OnEnable() => controls.Player.Enable();

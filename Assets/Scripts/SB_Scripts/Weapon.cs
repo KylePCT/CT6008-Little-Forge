@@ -1,5 +1,13 @@
-﻿//Sam Baker
-//Animation implementation by Kyle Tugwell
+﻿//////////////////////////////////////////////////
+/// File: Weapon.cs
+/// Author: Sam Baker
+/// Date created: 02/02/20
+/// Last edit: 22/02/20
+/// Description: A script to control the gun. How fast it shoot, how much damage,
+///             how much charge is taken.
+/// Comments:
+//////////////////////////////////////////////////
+
 using System;
 using System.Collections;
 using UnityEngine;
@@ -8,6 +16,8 @@ using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     [SerializeField] private float[] m_fireRates = new float[3];
     [SerializeField] private float[] m_baseDamages = new float[3];
     [SerializeField] private float[] m_chargeTaken = new float[3];
@@ -24,6 +34,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Animator placeholderAnims;
     public PlayerSoundsManager audioManager;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Start() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         timer = m_fireRates[(int)weaponType];
