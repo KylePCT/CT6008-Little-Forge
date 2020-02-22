@@ -1,0 +1,258 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4875275965698921963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4875275965698921965}
+  - component: {fileID: 4875275965698921964}
+  m_Layer: 0
+  m_Name: ZodiacSpriteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4875275965698921965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875275965698921963}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4875275965698921964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875275965698921963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b738a0c9225c94ebc675ca1a0387c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_spritePrefab: {fileID: 7928583154316280533, guid: 0dc520e1ce07ab54d8f204e0d81c1042,
+    type: 3}
+  m_spriteHolder: {fileID: 0}
+  m_prefabInstantiateCount: 25
+  m_spriteWanderDistance: 1
+  m_spriteWanderTolerance: 0.1
+  m_spriteSpeed: 3
+  m_spriteData:
+  - name: Aries
+    positions:
+    - {x: -0.39, y: 2.61}
+    - {x: 1.29, y: 1.99}
+    - {x: 1.81, y: 1.57}
+    - {x: 1.88, y: 1.28}
+    scale: 2
+    globalOffset: {x: 0, y: -1}
+    debug: 0
+  - name: Taurus
+    positions:
+    - {x: -1.59, y: 3.7}
+    - {x: 0.68, y: 2.04}
+    - {x: 0.91, y: 1.78}
+    - {x: 1.01, y: 1.46}
+    - {x: 0.67, y: 1.5}
+    - {x: -2.11, y: 2.44}
+    - {x: 1.84, y: 0.93}
+    - {x: 3.26, y: 0.59}
+    - {x: 1.79, y: -0.21}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Gemini
+    positions:
+    - {x: 0.21, y: 0.3}
+    - {x: -1.17, y: 0.92}
+    - {x: -1.19, y: 1.89}
+    - {x: 0.52, y: 0.89}
+    - {x: -1.76, y: 2.75}
+    - {x: -2.12, y: 2.35}
+    - {x: -2.1, y: 2.97}
+    - {x: -1.36, y: 2.88}
+    - {x: -0.78, y: 3.27}
+    - {x: -1.65, y: 3.61}
+    - {x: -0.1, y: 3.9}
+    - {x: 0.24, y: 2.4}
+    - {x: 0.84, y: 1.56}
+    - {x: 1.07, y: 1.96}
+    - {x: 1.39, y: 1.98}
+    - {x: 1.81, y: 2.13}
+    - {x: -0.56, y: 1.61}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Cancer
+    positions:
+    - {x: -1.17, y: 0.13}
+    - {x: 0.6, y: -0.37}
+    - {x: -0.57, y: 1.19}
+    - {x: -0.5, y: 1.75}
+    - {x: -0.6, y: 3}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Leo
+    positions:
+    - {x: -1.73, y: 0.89}
+    - {x: -1.81, y: 1.49}
+    - {x: -1.39, y: 2.15}
+    - {x: -2.84, y: 2.08}
+    - {x: -1.36, y: 2.83}
+    - {x: 0.85, y: 2.73}
+    - {x: 1.37, y: 2.33}
+    - {x: 1.35, y: 1.67}
+    - {x: 0.96, y: 3.2}
+    - {x: 1.91, y: 3.59}
+    - {x: 3.04, y: 3.66}
+    - {x: 2.77, y: 3.2}
+    - {x: 2.2, y: 3.3}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Virgo
+    positions:
+    - {x: -2.98, y: 2.15}
+    - {x: -1.44, y: 2.1}
+    - {x: -0.51, y: 1.79}
+    - {x: -1.92, y: 0.95}
+    - {x: -2.86, y: 0.99}
+    - {x: 1.32, y: 1.66}
+    - {x: 0.35, y: 1.03}
+    - {x: -0.18, y: 0.18}
+    - {x: 2.09, y: 1.76}
+    - {x: 2.6, y: 3.2}
+    - {x: 3.26, y: 2.86}
+    - {x: 3.09, y: 2.13}
+    - {x: 0.85, y: 2.4}
+    - {x: 0.62, y: 3.56}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Libra
+    positions:
+    - {x: -0.69, y: -1.06}
+    - {x: -0.63, y: -0.77}
+    - {x: -0.61, y: 1.54}
+    - {x: 0.16, y: 2.47}
+    - {x: 1.22, y: 1.31}
+    - {x: 0.65, y: -0.27}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Scorpio
+    positions:
+    - {x: -2.2, y: 0.04}
+    - {x: -1.65, y: 0.1}
+    - {x: -1.55, y: 0.06}
+    - {x: -1.92, y: -0.2}
+    - {x: -2.05, y: -0.36}
+    - {x: -1.67, y: -0.71}
+    - {x: -0.85, y: -0.7}
+    - {x: -0.28, y: -0.57}
+    - {x: -0.21, y: 0.02}
+    - {x: -0.16, y: 0.53}
+    - {x: 0.37, y: 1.34}
+    - {x: 0.63, y: 1.59}
+    - {x: 0.95, y: 1.69}
+    - {x: 1.8, y: 2.04}
+    - {x: 1.8, y: 1.57}
+    - {x: 1.83, y: 1.15}
+    - {x: 1.63, y: 2.43}
+    - {x: 1.37, y: 2.5}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Sagittarius
+    positions:
+    - {x: 1.49, y: 0.42}
+    - {x: 1.3, y: 0.77}
+    - {x: -0.07, y: 1.42}
+    - {x: -0.24, y: 1.72}
+    - {x: 0.2, y: 1.89}
+    - {x: 0.57, y: 1.8}
+    - {x: 1.26, y: 1.99}
+    - {x: 1.47, y: 1.38}
+    - {x: 2.02, y: 1.25}
+    - {x: 1.88, y: 2.54}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Capricorn
+    positions:
+    - {x: 0.33, y: 0.3}
+    - {x: 0.13, y: 0.41}
+    - {x: -0.27, y: 0.64}
+    - {x: -1.05, y: 1.06}
+    - {x: -1.13, y: 1.15}
+    - {x: -1.39, y: 1.44}
+    - {x: -1.49, y: 1.55}
+    - {x: -1.93, y: 2.09}
+    - {x: -1.65, y: 2.03}
+    - {x: -0.92, y: 2}
+    - {x: -0.24, y: 1.97}
+    - {x: 1.78, y: 2.72}
+    - {x: 1.63, y: 2.34}
+    - {x: 0.55, y: 0.59}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Aquarius
+    positions:
+    - {x: -1.9, y: 0.25}
+    - {x: -1.82, y: 1.62}
+    - {x: -1.53, y: 0.15}
+    - {x: -1.14, y: 0.84}
+    - {x: -1.74, y: 2.02}
+    - {x: -1, y: 1.1}
+    - {x: -1.11, y: 1.85}
+    - {x: -0.07, y: 1.84}
+    - {x: 0.25, y: 2.76}
+    - {x: -0.33, y: 2.97}
+    - {x: -0.22, y: 2.64}
+    - {x: -0.43, y: 2.8}
+    - {x: -0.62, y: 2.79}
+    - {x: 1.23, y: 2.1}
+    - {x: 0.22, y: 1.08}
+    - {x: 2.33, y: 1.61}
+    - {x: 2.47, y: 1.55}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  - name: Pisces
+    positions:
+    - {x: 1.56, y: 0.1}
+    - {x: 2.01, y: 0.07}
+    - {x: 2.27, y: 0.35}
+    - {x: 1.93, y: 0.7}
+    - {x: 1.59, y: 0.59}
+    - {x: 1.02, y: 0.71}
+    - {x: -0.4, y: 0.78}
+    - {x: -0.81, y: 0.83}
+    - {x: -1.93, y: 0.59}
+    - {x: -2.56, y: 0.3}
+    - {x: -2.02, y: 1.06}
+    - {x: -1.58, y: 1.8}
+    - {x: -1.04, y: 2.93}
+    - {x: -1.18, y: 3.26}
+    - {x: -0.96, y: 3.6}
+    scale: 1
+    globalOffset: {x: 0, y: 0}
+    debug: 0
+  m_state: 0
+  m_displayIndex: 11
+  m_stateSwitchFrequency: 4
