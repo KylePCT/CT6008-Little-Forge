@@ -1,4 +1,5 @@
 ﻿//Sam Baker
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     public Image healthIndication;
     public Image chargeIndication;
     public Image bossHealthIndication;
+    public Image[] m_weaponUI = new Image[3];
     private float startHealth;
     private float startCharge;
     private float startBossHealth;
@@ -38,5 +40,17 @@ public class UIManager : MonoBehaviour
         {
             bossHealthIndication.fillAmount = boss.currentHealth / startBossHealth;
         }
+
+        //Sort this to detect and execute when the weapon has been changed. Not constantly
+        UpdateWeaponUI();
+    }
+
+    private void UpdateWeaponUI()
+    {
+        foreach (Image wUI in m_weaponUI)
+        {
+            wUI.color = Color.grey;
+        }
+        m_weaponUI[(int)weapon.weaponType].color = Color.white;
     }
 }
