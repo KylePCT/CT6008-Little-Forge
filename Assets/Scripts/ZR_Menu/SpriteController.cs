@@ -130,17 +130,17 @@ public class SpriteController : MonoBehaviour
                 case SpriteControllerState.Wander:
                     m_state = SpriteControllerState.Display;
                     m_displayIndex = (m_displayIndex + 1) % m_spriteData.Count;
-
+        
                     if (m_sprites != null)
                         m_sprites.Shuffle();
-
+        
                     break;
                 case SpriteControllerState.Display:
                     m_state = SpriteControllerState.Wander;
                     DisableLineRenderers();
                     break;
             }
-
+        
             m_lastStateSwitchTime = Time.time;
         }
 
@@ -189,12 +189,14 @@ public class SpriteController : MonoBehaviour
         for (int i = 0; i < m_spriteData[m_displayIndex].positions.Count; ++i)
         {
             Vector2 targetPos = (m_spriteData[m_displayIndex].positions[i] + m_spriteData[m_displayIndex].globalOffset) * m_spriteData[m_displayIndex].scale;
-            Vector2 currentPos = new Vector2(m_sprites[i].transform.localPosition.x, m_sprites[i].transform.localPosition.y);
+            //Vector2 currentPos = new Vector2(m_sprites[i].transform.localPosition.x, m_sprites[i].transform.localPosition.y);
+            //
+            //m_sprites[i].velocity = Vector2.Lerp(m_sprites[i].velocity, targetPos - currentPos, m_spriteWanderTolerance).normalized;
+            //Vector2 dir = (m_sprites[i].velocity * Time.deltaTime * m_spriteSpeed);
 
-            m_sprites[i].velocity = Vector2.Lerp(m_sprites[i].velocity, targetPos - currentPos, m_spriteWanderTolerance);
-            Vector2 dir = (m_sprites[i].velocity * Time.deltaTime * m_spriteSpeed);
             float zPos = Mathf.MoveTowards(m_sprites[i].transform.localPosition.z, -1f, Time.deltaTime);
-            m_sprites[i].transform.localPosition = new Vector3(m_sprites[i].transform.localPosition.x + dir.x, m_sprites[i].transform.localPosition.y + dir.y, zPos);
+            m_sprites[i].transform.localPosition = Vector3.MoveTowards(m_sprites[i].transform.localPosition, new Vector3(targetPos.x, targetPos.y, zPos), Time.deltaTime * m_spriteSpeed);
+            //m_sprites[i].transform.localPosition = new Vector3(m_sprites[i].transform.localPosition.x + dir.x, m_sprites[i].transform.localPosition.y + dir.y, zPos);
         }
 
         for (int i = 0; i < m_spriteData[m_displayIndex].lineRendererIndices.Count; ++i)
