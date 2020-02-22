@@ -1,9 +1,19 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: UIManager.cs
+/// Author: Sam Baker / Zack
+/// Date created: 01/02/20
+/// Last edit: 
+/// Description: Script utilised by any object that can take damage.
+/// Comments:
+//////////////////////////////////////////////////
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     public float startHealth = 2000.0f;
     public float currentHealth;
     public GameObject damageIndication;
@@ -14,6 +24,8 @@ public class Health : MonoBehaviour
     private float m_healFrequency = 2f;
     private float m_lastHeal = 0f;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Start() => currentHealth = startHealth;
 
     private void Update() {

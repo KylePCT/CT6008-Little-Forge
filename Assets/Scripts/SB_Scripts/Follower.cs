@@ -1,10 +1,20 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: Follower.cs
+/// Author: Sam Baker
+/// Date created: 02/02/20
+/// Last edit: 18/02/20
+/// Description: Simple script used to control the follower, a quick state machine.
+/// Comments:
+//////////////////////////////////////////////////
+
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Follower : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     [SerializeField] private Transform destination;
     NavMeshAgent navMeshAgent;
 
@@ -27,6 +37,8 @@ public class Follower : MonoBehaviour
 
     private Controls controls = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Awake() => controls = new Controls();
 
     private void OnEnable() => controls.Player.Enable();

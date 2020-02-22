@@ -1,15 +1,28 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: AmbientSoundPlayer.cs
+/// Author: Sam Baker
+/// Date created: 19/02/20
+/// Last edit: 19/02/20
+/// Description: Used to play ambient sound around the map in 3D space. Allows for multiple sounds
+///             and changes the pitch slightly so they dont sound repetative.
+/// Comments:
+//////////////////////////////////////////////////
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AmbientSoundPlayer : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     private AudioSource audioSource;
     private float timer;
 
     public AudioClip[] sounds;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();

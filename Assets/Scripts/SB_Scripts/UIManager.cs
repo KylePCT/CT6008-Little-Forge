@@ -1,4 +1,13 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: UIManager.cs
+/// Author: Sam Baker
+/// Date created: 14/02/20
+/// Last edit: 22/02/20
+/// Description: Used to manage the onscreen UI. Adjust health and charge accordingly
+///             and displays the current weapon of choice
+/// Comments:
+//////////////////////////////////////////////////
+
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +15,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     public Health player;
     public Weapon weapon;
     public Health boss;
@@ -20,6 +31,8 @@ public class UIManager : MonoBehaviour
 
     private Controls controls = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Awake() => controls = new Controls();
 
     private void OnEnable() => controls.Player.Enable();

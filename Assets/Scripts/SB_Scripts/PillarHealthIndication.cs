@@ -1,14 +1,27 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: PillarHealthIndication.cs
+/// Author: Sam Baker
+/// Date created: 19/02/20
+/// Last edit: 19/02/20
+/// Description: Used to display the current health of each pillar.
+/// Comments:
+//////////////////////////////////////////////////
+
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PillarHealthIndication : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     public Camera cam;
     private Health health;
     private float startHealth;
     private float currentHealth;
     public Image healthBar;
+
+    //////////////////////////////////////////////////
+    //// Functions
     private void Start()
     {
         health = gameObject.transform.parent.GetComponent<Health>();

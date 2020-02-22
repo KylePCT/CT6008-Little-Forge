@@ -4,7 +4,7 @@
 /// Date created: 02/02/20
 /// Last edit: 22/02/20
 /// Description: For the use of the onscreen UI for the crosshair. Using raycasts to
-///             detect what the player is aimed at
+///             detect what the player is aimed at.
 /// Comments:
 //////////////////////////////////////////////////
 

@@ -1,4 +1,11 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: MultiMovementV2.cs
+/// Author: Sam Baker
+/// Date created: 01/02/20
+/// Last edit: 20/02/20
+/// Description: Script used to utilise multiple controls to operate the player.
+/// Comments:
+//////////////////////////////////////////////////
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +16,8 @@ public class MultiMovementV2 : MonoBehaviour
     //Variable for Tom
     public Vector3 playerAccelaration;
 
+    //////////////////////////////////////////////////
+    //// Variables
     public float moveSpeed = 7.5f;
 
     private Vector3 jump;
@@ -34,6 +43,8 @@ public class MultiMovementV2 : MonoBehaviour
 
     private Controls controls = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Awake() => controls = new Controls();
 
     private void OnEnable() => controls.Player.Enable();

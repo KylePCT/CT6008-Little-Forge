@@ -1,7 +1,7 @@
 ﻿//////////////////////////////////////////////////
 /// File: Weapon.cs
 /// Author: Sam Baker
-/// Date created: 02/02/20
+/// Date created: 01/02/20
 /// Last edit: 22/02/20
 /// Description: A script to control the gun. How fast it shoot, how much damage,
 ///             how much charge is taken.
