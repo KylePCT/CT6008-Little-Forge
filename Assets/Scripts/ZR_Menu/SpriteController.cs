@@ -145,7 +145,14 @@ public class SpriteController : MonoBehaviour
                     if (Time.time - m_lastStateSwitchTime > m_stateSwitchFrequency)
                     {
                         m_state = SpriteControllerState.DisplaySetup;
-                        m_displayIndex = (m_displayIndex + 1) % m_spriteData.Count;
+
+                        // Next displayIndex
+                        //m_displayIndex = (m_displayIndex + 1) % m_spriteData.Count;
+                        // Random displayIndex
+                        int index = m_displayIndex;
+                        while (index == m_displayIndex)
+                            m_displayIndex = UnityEngine.Random.Range(0, m_spriteData.Count);
+
                         m_lastStateSwitchTime = Time.time;
 
                         if (m_sprites != null)
@@ -195,19 +202,19 @@ public class SpriteController : MonoBehaviour
         if (m_spriteData == null)
         {
             m_state = SpriteControllerState.Wander;
-            Debug.Log("m_spriteData = null");
             return;
         }
 
         for (int i = 0; i < m_spriteData[m_displayIndex].positions.Count; ++i)
         {
-            float zPos = Mathf.MoveTowards(m_sprites[i].transform.localPosition.z, -1f, Time.deltaTime);
+            float zTarget = -1f;
+
             Vector2 target = (m_spriteData[m_displayIndex].positions[i] + m_spriteData[m_displayIndex].globalOffset) * m_spriteData[m_displayIndex].scale;
-            Vector3 targetPos = new Vector3(target.x, target.y, zPos);
+            Vector2 targetPos = Vector2.MoveTowards(new Vector2(m_sprites[i].transform.localPosition.x, m_sprites[i].transform.localPosition.y), target, Time.deltaTime * m_spriteSpeed);
+            float zPos = Mathf.MoveTowards(m_sprites[i].transform.localPosition.z, zTarget, Time.deltaTime * m_spriteSpeed);
+            m_sprites[i].transform.localPosition = new Vector3(targetPos.x, targetPos.y, zPos);
 
-            m_sprites[i].transform.localPosition = Vector3.MoveTowards(m_sprites[i].transform.localPosition, targetPos, Time.deltaTime * m_spriteSpeed);
-
-            if (Vector3.Distance(m_sprites[i].transform.localPosition, targetPos) == 0f)
+            if (Vector3.Distance(m_sprites[i].transform.localPosition, new Vector3(target.x, target.y, zTarget)) == 0f)
                 m_sprites[i].atTargetPosition = true;
         }
 
