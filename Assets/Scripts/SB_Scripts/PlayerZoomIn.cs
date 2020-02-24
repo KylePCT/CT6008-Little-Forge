@@ -1,9 +1,20 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: PlayerZoomIn.cs
+/// Author: Sam Baker
+/// Date created: 01/02/20
+/// Last edit: 12/02/20
+/// Description: A script used to allow the player to zoom in using the left trigger on
+///             a controller and the right mouse button
+/// Comments:
+//////////////////////////////////////////////////
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerZoomIn : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     [SerializeField] private GameObject cam;
     public GameObject crossHair;
     private Vector3 origPos;
@@ -14,7 +25,8 @@ public class PlayerZoomIn : MonoBehaviour
 
     public Animator placeholderAnims;
 
-
+    //////////////////////////////////////////////////
+    //// Functions
     private void Start() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         crossHair.SetActive(false);

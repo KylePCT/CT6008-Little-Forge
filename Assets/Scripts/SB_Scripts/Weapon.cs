@@ -1,5 +1,13 @@
-﻿//Sam Baker
-//Animation implementation by Kyle Tugwell
+﻿//////////////////////////////////////////////////
+/// File: Weapon.cs
+/// Author: Sam Baker
+/// Date created: 01/02/20
+/// Last edit: 22/02/20
+/// Description: A script to control the gun. How fast it shoot, how much damage,
+///             how much charge is taken.
+/// Comments:
+//////////////////////////////////////////////////
+
 using System;
 using System.Collections;
 using UnityEngine;
@@ -8,9 +16,12 @@ using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private float fireRate = 0.1f;
-    [SerializeField] private float baseDamage = 10;
-    [SerializeField] private float damage;
+    //////////////////////////////////////////////////
+    //// Variables
+    [SerializeField] private float[] m_fireRates = new float[3];
+    [SerializeField] private float[] m_baseDamages = new float[3];
+    [SerializeField] private float[] m_chargeTaken = new float[3];
+    private float damage;
     public MultiMovementV2 player;
     public GameObject orientaion;
     public WEAPON_TYPE weaponType;
@@ -18,15 +29,16 @@ public class Weapon : MonoBehaviour
     private float timer;
     private GameObject cam;
     public ParticleSystem muzzleFlash;
-    public float weaponCharge;
-    public float chargeTakenPerFire;
-    public float chargeRate;
+    public float weaponCharge = 100.0f;
+    [SerializeField] private float chargeRate = 10.0f;
     [SerializeField] private Animator placeholderAnims;
     public PlayerSoundsManager audioManager;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Start() {
         cam = GameObject.FindGameObjectWithTag("MainCamera");
-        timer = fireRate;
+        timer = m_fireRates[(int)weaponType];
         weaponCharge = 100.0f;
     }
 
@@ -40,21 +52,33 @@ public class Weapon : MonoBehaviour
                 }
                 timer -= Time.deltaTime;
                 if (timer <= 0.0f) {
+                    switch (weaponType)
+                    {
+                        case WEAPON_TYPE.AUTOMATIC:
+                            break;
+                        case WEAPON_TYPE.LAUNCHER:
+                            break;
+                        case WEAPON_TYPE.LASER:
+                            break;
+                        default:
+                            break;
+                    }
                     if (weaponCharge <= 0) {
                         placeholderAnims.SetBool("isShooting", false);
                         audioManager.gunAudioSource.pitch = 1.0f;
                         audioManager.gunAudioSource.clip = audioManager.gunclick;
                         audioManager.gunAudioSource.Play();
+                        timer = m_fireRates[(int)weaponType];
                         return;
                     } else{
-                        weaponCharge -= chargeTakenPerFire;
+                        weaponCharge -= m_chargeTaken[(int)weaponType];
                         placeholderAnims.SetBool("isShooting", true);
                         audioManager.gunAudioSource.pitch = Random.Range(0.85f, 1.15f);
                         audioManager.gunAudioSource.clip = audioManager.laser;
                         audioManager.gunAudioSource.Play();
                     }
                     ShootAction();
-                    timer = fireRate;
+                    timer = m_fireRates[(int)weaponType];
                 }
             }
         } else {
@@ -72,7 +96,7 @@ public class Weapon : MonoBehaviour
         MuzzleFlash();
 
         //Added some damage variation - KT/AP 19/2
-        damage = Random.Range((int)(baseDamage * 0.8f), (int)(baseDamage * 1.2f));
+        damage = Random.Range((int)(m_baseDamages[(int)weaponType] * 0.8f), (int)(m_baseDamages[(int)weaponType] * 1.2f));
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100.0f)) {
@@ -112,6 +136,7 @@ public class Weapon : MonoBehaviour
 
     public enum WEAPON_TYPE {
         AUTOMATIC,
-        SINGLE_FIRE
+        LAUNCHER,
+        LASER
     };
 }

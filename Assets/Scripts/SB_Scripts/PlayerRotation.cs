@@ -1,9 +1,20 @@
-﻿//Sam Baker
+﻿//////////////////////////////////////////////////
+/// File: PlayerRotation.cs
+/// Author: Sam Baker
+/// Date created: 01/02/20
+/// Last edit: 12/02/20
+/// Description: Allows to rotate the player using the left stick on a controller or the mouse
+///             clamps rotation to prevents awkward rotaion.
+/// Comments:
+//////////////////////////////////////////////////
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerRotation : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
     public float rotSensitivity = 100.0f;
     public float origSensitivity;
     public Transform player;
@@ -15,6 +26,8 @@ public class PlayerRotation : MonoBehaviour
 
     private Controls controls = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
     private void Awake() => controls = new Controls();
 
     private void OnEnable() => controls.Player.Enable();
