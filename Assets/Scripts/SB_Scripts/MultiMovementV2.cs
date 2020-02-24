@@ -136,7 +136,7 @@ public class MultiMovementV2 : MonoBehaviour
     }
 
     void OnCollisionStay(Collision col) {
-        Debug.Log(col.gameObject.tag);
+        //Debug.Log(col.gameObject.tag);
         if (col.gameObject.tag == "Ground") {
             isGrounded = true;
         }

@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private Vector3 m_beamOffset;
+    [SerializeField] private Vector3 m_beamOffset = Vector3.zero;
     public Vector3 ObjectBeamPos
     {
         get { return transform.position + m_beamOffset; }

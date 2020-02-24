@@ -20,8 +20,8 @@ public class SpriteController : MonoBehaviour
     [System.Serializable]
     private class IndexPair
     {
-        public int index1;
-        public int index2;
+        public int index1 = 0;
+        public int index2 = 0;
     }
 
     [System.Serializable]

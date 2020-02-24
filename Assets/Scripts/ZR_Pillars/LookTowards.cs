@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LookTowards : MonoBehaviour
 {
-    [SerializeField] private Vector3 m_pos;
+    [SerializeField] private Vector3 m_pos = Vector3.zero;
 
     // Update is called once per frame
     void Update()
