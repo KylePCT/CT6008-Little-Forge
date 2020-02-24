@@ -15,6 +15,7 @@ public class SpriteController : MonoBehaviour
     [SerializeField] private float m_spriteWanderDistance = 5f;
     [SerializeField] private float m_spriteWanderTolerance = 0.1f;
     [SerializeField] private float m_spriteSpeed = 1f;
+    [SerializeField] private float m_lineFadeSpeed = 1f;
 
     [System.Serializable]
     private class IndexPair
@@ -42,7 +43,8 @@ public class SpriteController : MonoBehaviour
     private enum SpriteControllerState
     {
         Wander,
-        Display
+        DisplaySetup,
+        DisplayWait
     }
 
     [Space(10f)]
@@ -55,12 +57,13 @@ public class SpriteController : MonoBehaviour
     [SerializeField] private float m_stateSwitchFrequency = 4f;
     private float m_lastStateSwitchTime = 0f;
 
-    private List<LineRenderer> m_lineRenderers = null;
+    private List<LineRendererController> m_lineRenderers = null;
   
     private class Sprite
     {
         public Transform transform;
         public Vector2 velocity;
+        public bool atTargetPosition = false;
 
         public Sprite(Transform a_transform, Vector2 a_velocity)
         {
@@ -80,11 +83,11 @@ public class SpriteController : MonoBehaviour
 
     private void CreateLineRenderers()
     {
-        m_lineRenderers = new List<LineRenderer>(m_prefabInstantiateCount);
+        m_lineRenderers = new List<LineRendererController>(m_prefabInstantiateCount);
 
         for (int i = 0; i < m_prefabInstantiateCount; ++i)
         {
-            LineRenderer lineRenderer = Instantiate(m_lineRendererPrefab, transform).GetComponent<LineRenderer>();
+            LineRendererController lineRenderer = Instantiate(m_lineRendererPrefab, transform).GetComponent<LineRendererController>();
             m_lineRenderers.Add(lineRenderer);
             lineRenderer.enabled = false;
         }
@@ -110,48 +113,57 @@ public class SpriteController : MonoBehaviour
 
     private void DisableLineRenderers()
     {
-        foreach(LineRenderer lr in m_lineRenderers)
+        foreach(LineRendererController lr in m_lineRenderers)
         {
-            lr.enabled = false;
+            lr.Fade(m_lineFadeSpeed, 0f);
+        }
+    }
+
+    private void ResetSpriteSettings()
+    {
+        foreach(Sprite s in m_sprites)
+        {
+            s.atTargetPosition = false;
         }
     }
 
     private void Update()
     {
+
+
         UpdateSprites();
     }
 
     private void UpdateSprites()
     {
-        if (Time.time - m_lastStateSwitchTime > m_stateSwitchFrequency)
-        {
-            switch(m_state)
-            {
-                case SpriteControllerState.Wander:
-                    m_state = SpriteControllerState.Display;
-                    m_displayIndex = (m_displayIndex + 1) % m_spriteData.Count;
-        
-                    if (m_sprites != null)
-                        m_sprites.Shuffle();
-        
-                    break;
-                case SpriteControllerState.Display:
-                    m_state = SpriteControllerState.Wander;
-                    DisableLineRenderers();
-                    break;
-            }
-        
-            m_lastStateSwitchTime = Time.time;
-        }
-
         switch(m_state)
         {
             case SpriteControllerState.Wander:
-                SpriteWander();
+                {
+                    SpriteWander();
+
+                    if (Time.time - m_lastStateSwitchTime > m_stateSwitchFrequency)
+                    {
+                        m_state = SpriteControllerState.DisplaySetup;
+                        m_displayIndex = (m_displayIndex + 1) % m_spriteData.Count;
+                        m_lastStateSwitchTime = Time.time;
+
+                        if (m_sprites != null)
+                            m_sprites.Shuffle();
+                    }
+
                     break;
-            case SpriteControllerState.Display:
-                SpriteDisplay();
-                break;
+                }
+            case SpriteControllerState.DisplaySetup:
+                {
+                    SpriteDisplaySetup();
+                    break;
+                }
+            case SpriteControllerState.DisplayWait:
+                {
+                    SpriteDisplayWait();
+                    break;
+                }
         }
     }
 
@@ -178,34 +190,65 @@ public class SpriteController : MonoBehaviour
         } 
     }
 
-    private void SpriteDisplay()
+    private void SpriteDisplaySetup()
     {
         if (m_spriteData == null)
         {
             m_state = SpriteControllerState.Wander;
+            Debug.Log("m_spriteData = null");
             return;
         }
 
         for (int i = 0; i < m_spriteData[m_displayIndex].positions.Count; ++i)
         {
-            Vector2 targetPos = (m_spriteData[m_displayIndex].positions[i] + m_spriteData[m_displayIndex].globalOffset) * m_spriteData[m_displayIndex].scale;
-            //Vector2 currentPos = new Vector2(m_sprites[i].transform.localPosition.x, m_sprites[i].transform.localPosition.y);
-            //
-            //m_sprites[i].velocity = Vector2.Lerp(m_sprites[i].velocity, targetPos - currentPos, m_spriteWanderTolerance).normalized;
-            //Vector2 dir = (m_sprites[i].velocity * Time.deltaTime * m_spriteSpeed);
-
             float zPos = Mathf.MoveTowards(m_sprites[i].transform.localPosition.z, -1f, Time.deltaTime);
-            m_sprites[i].transform.localPosition = Vector3.MoveTowards(m_sprites[i].transform.localPosition, new Vector3(targetPos.x, targetPos.y, zPos), Time.deltaTime * m_spriteSpeed);
-            //m_sprites[i].transform.localPosition = new Vector3(m_sprites[i].transform.localPosition.x + dir.x, m_sprites[i].transform.localPosition.y + dir.y, zPos);
+            Vector2 target = (m_spriteData[m_displayIndex].positions[i] + m_spriteData[m_displayIndex].globalOffset) * m_spriteData[m_displayIndex].scale;
+            Vector3 targetPos = new Vector3(target.x, target.y, zPos);
+
+            m_sprites[i].transform.localPosition = Vector3.MoveTowards(m_sprites[i].transform.localPosition, targetPos, Time.deltaTime * m_spriteSpeed);
+
+            if (Vector3.Distance(m_sprites[i].transform.localPosition, targetPos) == 0f)
+                m_sprites[i].atTargetPosition = true;
         }
+
+        bool allPointsInPosition = true;
 
         for (int i = 0; i < m_spriteData[m_displayIndex].lineRendererIndices.Count; ++i)
         {
-            m_lineRenderers[i].enabled = true;
-            m_lineRenderers[i].SetPosition(0, m_sprites[m_spriteData[m_displayIndex].lineRendererIndices[i].index1].transform.position);
-            m_lineRenderers[i].SetPosition(1, m_sprites[m_spriteData[m_displayIndex].lineRendererIndices[i].index2].transform.position);
+            int index1 = m_spriteData[m_displayIndex].lineRendererIndices[i].index1;
+            int index2 = m_spriteData[m_displayIndex].lineRendererIndices[i].index2;
+            if (m_sprites[index1].atTargetPosition && m_sprites[index2].atTargetPosition)
+            {
+                m_lineRenderers[i].Fade(m_lineFadeSpeed, 1f);
+                m_lineRenderers[i].SetPosition(0, m_sprites[index1].transform.position);
+                m_lineRenderers[i].SetPosition(1, m_sprites[index2].transform.position);
+            }
+            else
+            {
+                m_lineRenderers[i].Fade(m_lineFadeSpeed, 0f);
+                allPointsInPosition = false;
+            }
         }
 
+        if (allPointsInPosition)
+        {
+            m_state = SpriteControllerState.DisplayWait;
+            m_lastStateSwitchTime = Time.time;
+        }
+
+        SpriteWander(m_spriteData[m_displayIndex].positions.Count);
+    }
+
+    private void SpriteDisplayWait()
+    {
+        if (Time.time - m_lastStateSwitchTime > m_stateSwitchFrequency)
+        {
+            m_state = SpriteControllerState.Wander;
+            m_lastStateSwitchTime = Time.time;
+            ResetSpriteSettings();
+            DisableLineRenderers();
+        }
+        
         SpriteWander(m_spriteData[m_displayIndex].positions.Count);
     }
 
