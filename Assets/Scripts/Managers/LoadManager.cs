@@ -12,11 +12,14 @@ using UnityEngine.SceneManagement;
 
 public class LoadManager : MonoBehaviour
 {
-
     private FadeManager m_fader = null;
 
     private IEnumerator m_currentEnumerator = null;
     private Queue<IEnumerator> m_enumeratorQueue = null;
+
+    [SerializeField] private int m_sceneToLoadOnStart = -1;
+
+    [SerializeField] private float m_loadFadeSpeed = 1f;
 
     private void Awake()
     {
@@ -31,6 +34,20 @@ public class LoadManager : MonoBehaviour
             enabled = false;
 
         m_enumeratorQueue = new Queue<IEnumerator>();
+    }
+
+    private void Start()
+    {
+        LoadStartScene();
+    }
+
+    private void LoadStartScene()
+    {
+        Scene s = SceneManager.GetSceneByBuildIndex(m_sceneToLoadOnStart);
+        if (s == null)
+            return;
+
+        LoadScenesLoadingScreen(m_sceneToLoadOnStart);
     }
 
     private void Update()
@@ -100,7 +117,7 @@ public class LoadManager : MonoBehaviour
     public IEnumerator LoadScenesLoadingScreenIE(params int[] a_sceneIndices)
     {
         // Fade to loading screen
-        m_fader.Fade(1f, 1f);
+        m_fader.Fade(m_loadFadeSpeed, 1f);
         while (m_fader.Fading)
             yield return null;
 
@@ -142,7 +159,7 @@ public class LoadManager : MonoBehaviour
         // Fade from loading screen
         while (m_fader.Fading)
             yield return null;
-        m_fader.Fade(1f, 0f);
+        m_fader.Fade(m_loadFadeSpeed, 0f);
 
         m_currentEnumerator = null;
     }
