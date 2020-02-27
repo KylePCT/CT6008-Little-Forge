@@ -29,7 +29,7 @@ public class OptionsController : MonoBehaviour
         SaveGameManager.SetOptions(m_audioVolume.value, m_sensitivity.value);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         SaveGameManager.SaveHeader();
     }
