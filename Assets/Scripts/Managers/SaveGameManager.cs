@@ -19,7 +19,7 @@ public class SaveSlot
 
     // Save data
     public string m_name = null;
-    public int m_money = 0;
+    public float m_money = 0;
 
     public SaveSlot(int a_saveSlot)
     {
@@ -124,9 +124,6 @@ public static class SaveGameManager
     {
         // Saving
         BinaryFormatter m_formatter = new BinaryFormatter();
-
-        // Serialising current inventory data
-        //a_playInfo.m_inventory = InventoryManager.Serialise();
 
         FileStream stream = new FileStream(Header.data.m_characterFilePaths[a_playInfo.m_saveSlotID], FileMode.OpenOrCreate);
         m_formatter.Serialize(stream, a_playInfo);
