@@ -13,6 +13,12 @@ public class ButtonSelector : MonoBehaviour
 {
     [SerializeField] private float m_snapSpeed = 1f;
 
+    private Transform m_lastSnap = null;
+    public Transform LastSnap
+    {
+        get { return m_lastSnap; }
+    }
+
     private IEnumerator m_currentEnumerator = null;
 
     public void SnapTo(Transform a_transform)
@@ -26,6 +32,8 @@ public class ButtonSelector : MonoBehaviour
 
     private IEnumerator SnapToIE(Transform a_transform)
     {
+        m_lastSnap = a_transform;
+
         Vector3 startPos = transform.position;
         float startTime = Time.time;
         float distance = Vector3.Distance(startPos, a_transform.position);
