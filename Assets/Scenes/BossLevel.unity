@@ -13494,6 +13494,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6880554172343937326, guid: e72983d29985fdf44a286cc2ded78035,
         type: 3}
+    - target: {fileID: 2060048796, guid: ca601d9cc0044cd4bb7e56c9b39eacd5, type: 3}
+      propertyPath: m_cam
+      value: 
+      objectReference: {fileID: 1751549471}
     - target: {fileID: 3633900784741058243, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -18830,6 +18834,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1056159894}
     m_Modifications:
+    - target: {fileID: 2060048796, guid: ca601d9cc0044cd4bb7e56c9b39eacd5, type: 3}
+      propertyPath: m_cam
+      value: 
+      objectReference: {fileID: 1751549471}
     - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_Name
@@ -26347,7 +26355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3d7dd062d2d9644be5462a24b12a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
+  m_sounds:
   - {fileID: 8300000, guid: c00add08774799747ad17ebb7b3dd9a5, type: 3}
   - {fileID: 8300000, guid: c4840917723fb3f488f63b22eaba828f, type: 3}
   - {fileID: 8300000, guid: 58af213b964f3624fb5a660b182d64e0, type: 3}
@@ -33157,6 +33165,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1056159894}
     m_Modifications:
+    - target: {fileID: 2060048796, guid: ca601d9cc0044cd4bb7e56c9b39eacd5, type: 3}
+      propertyPath: m_cam
+      value: 
+      objectReference: {fileID: 1751549471}
     - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_Name
@@ -38745,6 +38757,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1056159894}
     m_Modifications:
+    - target: {fileID: 2060048796, guid: ca601d9cc0044cd4bb7e56c9b39eacd5, type: 3}
+      propertyPath: m_cam
+      value: 
+      objectReference: {fileID: 1751549471}
     - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_Name
@@ -53036,6 +53052,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587273377}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!21 &1589718982
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/Shockwave
+  m_Shader: {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _ShockSize: 0
+    - _ShockStrength: 1
+    - _ShockThickness: 50
+    m_Colors: []
 --- !u!1001 &1595734787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54357,7 +54401,7 @@ MonoBehaviour:
   m_imageEffectsList:
   - {fileID: 4800000, guid: 2d70c8d59050ce34cb18adba8e47922d, type: 3}
   m_materials:
-  - {fileID: 1669055862}
+  - {fileID: 1589718982}
   DisableEffects: 0
 --- !u!114 &1751549475
 MonoBehaviour:
@@ -60577,6 +60621,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1056159894}
     m_Modifications:
+    - target: {fileID: 2060048796, guid: ca601d9cc0044cd4bb7e56c9b39eacd5, type: 3}
+      propertyPath: m_cam
+      value: 
+      objectReference: {fileID: 1751549471}
     - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_Name
@@ -61481,6 +61529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1056159894}
     m_Modifications:
+    - target: {fileID: 2060048796, guid: ca601d9cc0044cd4bb7e56c9b39eacd5, type: 3}
+      propertyPath: m_cam
+      value: 
+      objectReference: {fileID: 1751549471}
     - target: {fileID: 4706218268235045510, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_Name
@@ -61524,7 +61576,7 @@ PrefabInstance:
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8580625355579877525, guid: ca601d9cc0044cd4bb7e56c9b39eacd5,
         type: 3}
