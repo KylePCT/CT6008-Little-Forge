@@ -11,7 +11,6 @@ using UnityEngine;
 
 public class SaveItemManager : MonoBehaviour
 {
-
     [SerializeField] private List<SaveItem> m_saveItems = null;
     private void Awake()
     {
@@ -38,9 +37,24 @@ public class SaveItemManager : MonoBehaviour
             }
 
             SaveSlot save = SaveGameManager.LoadCharacter(i);
+            m_saveItems[i].m_characterFile = save;
             m_saveItems[i].SetName(save.m_name);
             m_saveItems[i].SetMoney(save.m_money);
             
+        }
+    }
+
+    public void StartGame(int a_slot)
+    {
+        if (SaveGameManager.IsSaveSlotOccupied(a_slot) == true)
+        {
+            SaveGameManager.SetMainCharFile(m_saveItems[a_slot].m_characterFile);
+            // Load scenes
+        }
+        else
+        {
+            // Go to character creation
+            SceneLoadManager.Instance.LoadCharacterCreation();
         }
     }
 }

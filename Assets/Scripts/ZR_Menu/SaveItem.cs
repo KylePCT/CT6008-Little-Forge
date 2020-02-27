@@ -16,6 +16,8 @@ public class SaveItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_name = null;
     [SerializeField] private TextMeshProUGUI m_money = null;
 
+    public SaveSlot m_characterFile = null;
+
     public void SetEmpty()
     {
         m_name.text = "Empty";

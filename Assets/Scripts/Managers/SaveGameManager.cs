@@ -62,6 +62,9 @@ public static class SaveGameManager
         }
     }
 
+    // For saving save slots so they can be used repetedly without loading/saving more than once
+    private static SaveSlot m_mainSaveSlot = null;
+
     // Const file paths
     private static string m_filePath
     {
@@ -71,7 +74,7 @@ public static class SaveGameManager
     {
         get { return m_filePath + "header.bin"; }
     }
-
+    
     // Header saving/loading
     public static void SaveHeader()
     {
@@ -165,6 +168,16 @@ public static class SaveGameManager
         }
 
         return a_characterInfo;
+    }
+
+    public static void SetMainCharFile(SaveSlot a_slot)
+    {
+        m_mainSaveSlot = a_slot;
+    }
+
+    public static SaveSlot GetMainCharFile()
+    {
+        return m_mainSaveSlot;
     }
 
     public static bool IsSaveSlotOccupied(int a_saveSlot)

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadManager : MonoBehaviour
+public class SceneLoadManager : MonoBehaviour
 {
     private FadeManager m_fader = null;
 
@@ -21,6 +21,12 @@ public class LoadManager : MonoBehaviour
 
     [SerializeField] private float m_loadFadeSpeed = 1f;
 
+    private static SceneLoadManager m_instance = null;
+    public static SceneLoadManager Instance
+    {
+        get { return m_instance; }
+    }
+
     private void Awake()
     {
         InitialiseVariables();
@@ -28,6 +34,8 @@ public class LoadManager : MonoBehaviour
         
     private void InitialiseVariables()
     {
+        m_instance = this;
+
         m_fader = GetComponent<FadeManager>();
 
         if (m_fader == null)
@@ -48,6 +56,16 @@ public class LoadManager : MonoBehaviour
             return;
 
         LoadScenesLoadingScreen(m_sceneToLoadOnStart);
+    }
+
+    public void LoadCharacterCreation()
+    {
+        Scene s = SceneManager.GetSceneByName("CharacterCreation");
+        Debug.Log(s.name);
+        if (s == null)
+            return;
+
+        LoadScenesLoadingScreen(s.buildIndex);
     }
 
     private void Update()
