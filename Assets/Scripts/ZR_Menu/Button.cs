@@ -15,7 +15,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(MaskableGraphic))]
 public class Button : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler
 {
-    [SerializeField] private float m_fadeSpeed = 1f;
+    //[SerializeField] private float m_fadeSpeed = 1f;
 
     [SerializeField] private UnityEvent m_onMouseDown = null;
     [SerializeField] private UnityEvent m_onMouseEnter = null;
@@ -46,27 +46,27 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, 
             m_onMouseExit.Invoke();
     }
 
-    private void Fade(float a_alpha)
-    {
-        m_graphic.raycastTarget = false;
-        StopAllCoroutines();
-        StartCoroutine(FadeIE(m_fadeSpeed, a_alpha));
-    }
-
-    private IEnumerator FadeIE(float a_speed, float a_alpha)
-    {
-        Color c = m_graphic.color;
-        float startColour = c.a;
-        float startTime = Time.time;
-
-        while(c.a != a_alpha)
-        {
-            c.a = Mathf.MoveTowards(c.a, a_alpha, (Time.time - startTime) * a_speed);
-            m_graphic.color = c;
-
-            yield return null;
-        }
-
-        m_graphic.raycastTarget = true;
-    }
+    //private void Fade(float a_alpha)
+    //{
+    //    m_graphic.raycastTarget = false;
+    //    StopAllCoroutines();
+    //    StartCoroutine(FadeIE(m_fadeSpeed, a_alpha));
+    //}
+    //
+    //private IEnumerator FadeIE(float a_speed, float a_alpha)
+    //{
+    //    Color c = m_graphic.color;
+    //    float startColour = c.a;
+    //    float startTime = Time.time;
+    //
+    //    while(c.a != a_alpha)
+    //    {
+    //        c.a = Mathf.MoveTowards(c.a, a_alpha, (Time.time - startTime) * a_speed);
+    //        m_graphic.color = c;
+    //
+    //        yield return null;
+    //    }
+    //
+    //    m_graphic.raycastTarget = true;
+    //}
 }
