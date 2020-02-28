@@ -56,7 +56,7 @@ public class NPCPatrol : MonoBehaviour
     {
         m_cam = Camera.main.gameObject;
         m_nameObject = transform.GetChild(0).gameObject;
-        m_player = GameObject.Find("- ESSENTIALS/Sam'sTempCharacterController/Player");
+        m_player = GameObject.Find("---- ESSENTIALS/Sam'sTempCharacterController/Player");
         m_nameObject.GetComponentInChildren<TextMesh>().text = m_name;
         m_nameObject.GetComponentInChildren<TextMesh>().color = m_nameColour;
         m_currentState = NPCStates.NPC_FINDLOCATION;

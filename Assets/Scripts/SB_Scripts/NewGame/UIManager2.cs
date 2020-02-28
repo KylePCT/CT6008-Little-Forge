@@ -25,7 +25,7 @@ public class UIManager2 : MonoBehaviour
     //// Functions
     private void Start()
     {
-        m_forge = GameObject.Find("- FORGELAND ASSETS/Forge").GetComponent<ForgeRebuild>();
+        m_forge = GameObject.Find("---- FORGELAND ASSETS/Forge").GetComponent<ForgeRebuild>();
         m_moneyText.color = m_moneyColor;
         m_forgeText.color = m_forgeColor;
     }

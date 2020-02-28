@@ -47,7 +47,7 @@ public class PlayerControls : MonoBehaviour
     private void Start()
     {
         m_controller = GetComponent<CharacterController>();
-        m_playerOrientation = GameObject.Find("- ESSENTIALS/Sam'sTempCharacterController/PlayerOrientation");
+        m_playerOrientation = GameObject.Find("---- ESSENTIALS/Sam'sTempCharacterController/PlayerOrientation");
     }
 
     private void Update()
