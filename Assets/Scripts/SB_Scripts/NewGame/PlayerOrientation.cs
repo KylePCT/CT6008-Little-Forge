@@ -32,7 +32,7 @@ public class PlayerOrientation : MonoBehaviour
 
     private void Start()
     {
-        m_player = GameObject.Find("---- ESSENTIALS/Sam'sTempCharacterController/Player").transform;
+        m_player = GameObject.Find("- ESSENTIALS/Sam'sTempCharacterController/Player").transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
