@@ -17,7 +17,7 @@ public class ForgeRebuild : MonoBehaviour
     [Space(-20)]
     [Header(" > Forge generate currency based on level.")]
     [Space(-10)]
-    [Header(" > Walk up to forge and interact with E.")]
+    [Header(" > Walk up to forge and interact with F.")]
     [Space(-10)]
     [Header(" > Forge level in the top right.")]
     [Space(-10)]
@@ -134,9 +134,12 @@ public class ForgeRebuild : MonoBehaviour
     private void OnTriggerStay(Collider col)
     {
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if (col.gameObject.tag == "Player")
             {
-                m_upgrade = true;
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    m_upgrade = true;
+                }
             }
         }
     }

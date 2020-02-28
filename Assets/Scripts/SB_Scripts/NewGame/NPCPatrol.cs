@@ -36,6 +36,7 @@ public class NPCPatrol : MonoBehaviour
     private Vector3 m_randPosition;
     private GameObject m_nameObject = null;
     private GameObject m_cam = null;
+    private GameObject m_player = null;
     private float m_waitTimer = 2.0f;
     [Header("NPC Parameters")]
     [SerializeField] [Tooltip("Yellow circle indication")] private float m_wanderRadius = 15.0f;
@@ -55,6 +56,7 @@ public class NPCPatrol : MonoBehaviour
     {
         m_cam = Camera.main.gameObject;
         m_nameObject = transform.GetChild(0).gameObject;
+        m_player = GameObject.Find("- ESSENTIALS/Sam'sTempCharacterController/Player");
         m_nameObject.GetComponentInChildren<TextMesh>().text = m_name;
         m_nameObject.GetComponentInChildren<TextMesh>().color = m_nameColour;
         m_currentState = NPCStates.NPC_FINDLOCATION;
@@ -86,7 +88,6 @@ public class NPCPatrol : MonoBehaviour
             default:
                 break;
         }
-        Debug.Log(m_interacted);
         InteractionTrigger();
 
     }
@@ -189,6 +190,8 @@ public class NPCPatrol : MonoBehaviour
         //TO DO
         //  Look at player
         //  Dialogue pops up on screen
+        Vector3 m_lookAt = new Vector3(m_player.transform.position.x, transform.position.y, m_player.transform.position.z);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(m_lookAt), Time.deltaTime * 2.5f);
         m_navMeshAgent.isStopped = true;
         if (m_waitTimer <= 0)
         {
