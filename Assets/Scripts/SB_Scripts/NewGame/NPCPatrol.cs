@@ -149,14 +149,19 @@ public class NPCPatrol : MonoBehaviour
         //TO DO
         //  Look at player
         //  Dialogue pops up on screen
-        m_waitTimer -= Time.deltaTime;
-        if(m_waitTimer <= 0)
+        m_navMeshAgent.isStopped = true;
+        if (m_waitTimer <= 0)
         {
             if (Input.anyKey)
             {
                 m_currentState = NPCStates.NPC_FINDLOCATION;
+                m_navMeshAgent.isStopped = false;
             }
-        }   
+        }
+        else
+        {
+            m_waitTimer -= Time.deltaTime;
+        }
     }
 
     private enum NPCStates

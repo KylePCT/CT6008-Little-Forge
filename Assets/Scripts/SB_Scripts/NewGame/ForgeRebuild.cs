@@ -38,7 +38,6 @@ public class ForgeRebuild : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(m_forgeLevel);
         switch(m_forgeLevel)
         {
             case 0:
