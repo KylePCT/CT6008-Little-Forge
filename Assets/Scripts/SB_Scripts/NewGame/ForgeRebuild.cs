@@ -13,6 +13,15 @@ using UnityEngine;
 
 public class ForgeRebuild : MonoBehaviour
 {
+    [Header("_____________________________________________________")]
+    [Space(-20)]
+    [Header(" > Forge generate currency based on level.")]
+    [Space(-10)]
+    [Header(" > Walk up to forge and interact with E.")]
+    [Space(-10)]
+    [Header(" > Forge level in the top right.")]
+    [Space(-10)]
+    [Header("Forge Rebuild")]
     //////////////////////////////////////////////////
     //// Variables
     [SerializeField] private Mesh[] m_levelsOfMesh = new Mesh[0];
@@ -22,8 +31,14 @@ public class ForgeRebuild : MonoBehaviour
 
     //////////////////////////////////////////////////
     //// Functions
+
+    private void Start()
+    {
+        PlayersBank.Instance.SetMoney(100);
+    }
     private void Update()
     {
+        Debug.Log(m_forgeLevel);
         switch(m_forgeLevel)
         {
             case 0:
@@ -65,6 +80,10 @@ public class ForgeRebuild : MonoBehaviour
     {
         //Cost to upgrade : 30
         m_currentCost = 30;
+        if (m_upgrade)
+        {
+            CheckToBuy();
+        }
     }
     private void Level2Forge()
     {
@@ -91,6 +110,8 @@ public class ForgeRebuild : MonoBehaviour
         if (PlayersBank.Instance.GetMoney() >= m_currentCost)
         {
             //Has Enough
+            PlayersBank.Instance.TakeAwayMoney(m_currentCost);
+            m_forgeLevel++;
         }
         else
         {
@@ -102,10 +123,15 @@ public class ForgeRebuild : MonoBehaviour
     private void OnTriggerStay(Collider col)
     {
         {
-            if(Input.GetKey(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.E))
             {
                 m_upgrade = true;
             }
         }
+    }
+
+    public int GetForgeLevel() 
+    {
+        return m_forgeLevel;
     }
 }
