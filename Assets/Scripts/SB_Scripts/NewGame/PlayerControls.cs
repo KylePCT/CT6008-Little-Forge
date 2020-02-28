@@ -70,7 +70,6 @@ public class PlayerControls : MonoBehaviour
         {
             if (m_isGrounded)
             {
-                Debug.Log("Press");
                 m_yAxisVelocity = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
                 m_isGrounded = false;
             }
@@ -81,7 +80,6 @@ public class PlayerControls : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
-            Debug.Log("True");
             m_isGrounded = true;
             m_yAxisVelocity = -0.5f;
         }
@@ -91,7 +89,6 @@ public class PlayerControls : MonoBehaviour
     {
         if (col.gameObject.tag == "Ground")
         {
-            Debug.Log("False");
             m_isGrounded = false;
         }
     }
