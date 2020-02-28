@@ -33,6 +33,6 @@ public class UIManager2 : MonoBehaviour
     private void Update()
     {
         m_moneyText.text = PlayersBank.Instance.GetMoney().ToString();
-        m_forgeText.text = m_forge.GetForgeLevel().ToString();
+        //m_forgeText.text = m_forge.GetForgeLevel().ToString();
     }
 }

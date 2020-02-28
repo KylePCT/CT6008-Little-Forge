@@ -3,28 +3,31 @@
 // Shader created with Shader Forge v1.40 
 // Shader Forge (c) Freya Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.40;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,cpap:True,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:34754,y:32890,varname:node_2865,prsc:2|diff-4234-OUT,spec-1279-OUT,gloss-2806-OUT,alpha-4954-OUT,voffset-1120-OUT,tess-423-OUT;n:type:ShaderForge.SFN_ValueProperty,id:1279,x:34323,y:32955,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_1279,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0;n:type:ShaderForge.SFN_ValueProperty,id:2806,x:34323,y:33042,ptovrint:False,ptlb:Roughness,ptin:_Roughness,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0;n:type:ShaderForge.SFN_Color,id:3681,x:31862,y:32116,ptovrint:False,ptlb:River Base,ptin:_RiverBase,varname:node_3681,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5,c2:0,c3:0.5,c4:1;n:type:ShaderForge.SFN_Color,id:8607,x:31862,y:32282,ptovrint:False,ptlb:River Complementary,ptin:_RiverComplementary,varname:_RiverBase_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5,c2:1,c3:0.5,c4:1;n:type:ShaderForge.SFN_Lerp,id:9742,x:32156,y:32398,varname:node_9742,prsc:2|A-3681-RGB,B-8607-RGB,T-2943-OUT;n:type:ShaderForge.SFN_ValueProperty,id:8568,x:31185,y:32820,ptovrint:False,ptlb:Depth Value,ptin:_DepthValue,varname:node_8568,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:10;n:type:ShaderForge.SFN_DepthBlend,id:4369,x:31466,y:32826,varname:node_4369,prsc:2|DIST-8568-OUT;n:type:ShaderForge.SFN_Divide,id:7369,x:31720,y:32794,varname:node_7369,prsc:2|A-4369-OUT,B-3698-OUT;n:type:ShaderForge.SFN_Dot,id:3698,x:31428,y:33015,varname:node_3698,prsc:2,dt:0|A-3561-OUT,B-8493-OUT;n:type:ShaderForge.SFN_ViewVector,id:3561,x:31214,y:32948,varname:node_3561,prsc:2;n:type:ShaderForge.SFN_NormalVector,id:8493,x:31214,y:33107,prsc:2,pt:False;n:type:ShaderForge.SFN_RemapRangeAdvanced,id:5407,x:31707,y:33054,varname:node_5407,prsc:2|IN-2943-OUT,IMIN-2227-OUT,IMAX-2069-OUT,OMIN-2446-OUT,OMAX-704-OUT;n:type:ShaderForge.SFN_Clamp01,id:2943,x:31955,y:32794,varname:node_2943,prsc:2|IN-7369-OUT;n:type:ShaderForge.SFN_Slider,id:2227,x:31245,y:33358,ptovrint:False,ptlb:Foam Minimum,ptin:_FoamMinimum,varname:node_2227,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:2069,x:31245,y:33462,ptovrint:False,ptlb:Foam Maximum,ptin:_FoamMaximum,varname:_FoamMinimum_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Vector1,id:2446,x:31245,y:33554,varname:node_2446,prsc:2,v1:0;n:type:ShaderForge.SFN_Vector1,id:704,x:31402,y:33554,varname:node_704,prsc:2,v1:1;n:type:ShaderForge.SFN_RemapRangeAdvanced,id:5036,x:32424,y:33412,varname:node_5036,prsc:2|IN-2943-OUT,IMIN-7286-OUT,IMAX-8393-OUT,OMIN-552-OUT,OMAX-3187-OUT;n:type:ShaderForge.SFN_Vector1,id:552,x:31808,y:33835,varname:node_552,prsc:2,v1:0;n:type:ShaderForge.SFN_Vector1,id:3187,x:31960,y:33835,varname:node_3187,prsc:2,v1:1;n:type:ShaderForge.SFN_Slider,id:7286,x:31803,y:33639,ptovrint:False,ptlb:Depth Minimum,ptin:_DepthMinimum,varname:node_7286,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:8393,x:31803,y:33754,ptovrint:False,ptlb:Depth Maximum,ptin:_DepthMaximum,varname:node_8393,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Clamp01,id:3114,x:31872,y:33054,varname:node_3114,prsc:2|IN-5407-OUT;n:type:ShaderForge.SFN_ComponentMask,id:2880,x:32550,y:33019,varname:node_2880,prsc:2,cc1:0,cc2:-1,cc3:-1,cc4:-1|IN-8988-OUT;n:type:ShaderForge.SFN_Multiply,id:4505,x:32723,y:33019,varname:node_4505,prsc:2|A-2880-OUT,B-2498-OUT;n:type:ShaderForge.SFN_Vector1,id:2498,x:32550,y:33194,varname:node_2498,prsc:2,v1:0.5;n:type:ShaderForge.SFN_Clamp01,id:4954,x:33082,y:33019,varname:node_4954,prsc:2|IN-4969-OUT;n:type:ShaderForge.SFN_Multiply,id:6377,x:32339,y:33063,varname:node_6377,prsc:2|A-2515-OUT,B-4629-OUT;n:type:ShaderForge.SFN_ValueProperty,id:4629,x:32154,y:33204,ptovrint:False,ptlb:Foam Intensity,ptin:_FoamIntensity,varname:node_4629,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:8;n:type:ShaderForge.SFN_Add,id:4234,x:32737,y:32717,varname:node_4234,prsc:2|A-9742-OUT,B-8988-OUT;n:type:ShaderForge.SFN_Add,id:4969,x:32899,y:33019,varname:node_4969,prsc:2|A-4505-OUT,B-5036-OUT;n:type:ShaderForge.SFN_OneMinus,id:7200,x:32040,y:33054,varname:node_7200,prsc:2|IN-3114-OUT;n:type:ShaderForge.SFN_Clamp01,id:8988,x:32424,y:32859,varname:node_8988,prsc:2|IN-6377-OUT;n:type:ShaderForge.SFN_Multiply,id:6242,x:32365,y:32399,varname:node_6242,prsc:2|A-9742-OUT,B-3473-RGB;n:type:ShaderForge.SFN_Tex2d,id:3473,x:32126,y:32550,ptovrint:False,ptlb:Foam Texture,ptin:_FoamTexture,varname:node_3473,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:28c7aad1372ff114b90d330f8a2dd938,ntxv:0,isnm:False|UVIN-7418-UVOUT;n:type:ShaderForge.SFN_Multiply,id:2515,x:32545,y:32399,varname:node_2515,prsc:2|A-6242-OUT,B-7200-OUT;n:type:ShaderForge.SFN_Panner,id:7418,x:31934,y:32550,varname:node_7418,prsc:2,spu:0.01,spv:0.01|UVIN-7781-UVOUT;n:type:ShaderForge.SFN_TexCoord,id:7781,x:31755,y:32550,varname:node_7781,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Slider,id:423,x:32925,y:33199,ptovrint:False,ptlb:Plane Tessellation,ptin:_PlaneTessellation,varname:node_423,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:10;n:type:ShaderForge.SFN_TexCoord,id:7272,x:32779,y:33363,varname:node_7272,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Time,id:8728,x:32401,y:33560,varname:node_8728,prsc:2;n:type:ShaderForge.SFN_Panner,id:7278,x:33007,y:33466,varname:node_7278,prsc:2,spu:0.5,spv:0.5|UVIN-7272-UVOUT,DIST-8728-TSL;n:type:ShaderForge.SFN_Tex2d,id:2753,x:33192,y:33466,ptovrint:False,ptlb:Wave Noise,ptin:_WaveNoise,varname:node_2753,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:877bc628b69844ba081a63095156a6f1,ntxv:0,isnm:False|UVIN-7278-UVOUT;n:type:ShaderForge.SFN_FragmentPosition,id:6659,x:32806,y:33730,varname:node_6659,prsc:2;n:type:ShaderForge.SFN_Add,id:4808,x:32986,y:33667,varname:node_4808,prsc:2|A-249-OUT,B-6659-XYZ;n:type:ShaderForge.SFN_Multiply,id:554,x:33167,y:33667,varname:node_554,prsc:2|A-4808-OUT,B-1667-OUT;n:type:ShaderForge.SFN_ValueProperty,id:1667,x:32962,y:33897,ptovrint:False,ptlb:Wave Count,ptin:_WaveCount,varname:node_1667,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:10;n:type:ShaderForge.SFN_Sin,id:2396,x:33336,y:33667,varname:node_2396,prsc:2|IN-554-OUT;n:type:ShaderForge.SFN_Multiply,id:8373,x:33504,y:33667,varname:node_8373,prsc:2|A-2396-OUT,B-5244-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5244,x:33318,y:33901,ptovrint:False,ptlb:Wave Spread,ptin:_WaveSpread,varname:_WaveCount_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.3;n:type:ShaderForge.SFN_Add,id:339,x:33682,y:33667,varname:node_339,prsc:2|A-8373-OUT,B-8872-OUT;n:type:ShaderForge.SFN_ValueProperty,id:8872,x:33524,y:33901,ptovrint:False,ptlb:Wave Spread_copy,ptin:_WaveSpread_copy,varname:_WaveSpread_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:10;n:type:ShaderForge.SFN_RemapRange,id:2222,x:33870,y:33667,varname:node_2222,prsc:2,frmn:-1,frmx:1,tomn:0,tomx:1|IN-339-OUT;n:type:ShaderForge.SFN_Multiply,id:6003,x:33999,y:33491,varname:node_6003,prsc:2|A-2753-R,B-2222-OUT;n:type:ShaderForge.SFN_Multiply,id:2144,x:34209,y:33491,varname:node_2144,prsc:2|A-6003-OUT,B-1690-OUT;n:type:ShaderForge.SFN_Slider,id:1690,x:33760,y:33885,ptovrint:False,ptlb:Wave Height,ptin:_WaveHeight,varname:node_1690,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.5,max:1;n:type:ShaderForge.SFN_Multiply,id:249,x:32594,y:33652,varname:node_249,prsc:2|A-8728-TSL,B-7233-OUT;n:type:ShaderForge.SFN_ValueProperty,id:7233,x:32411,y:33788,ptovrint:False,ptlb:Wave Speed,ptin:_WaveSpeed,varname:node_7233,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0;n:type:ShaderForge.SFN_Vector1,id:4410,x:34209,y:33625,varname:node_4410,prsc:2,v1:0;n:type:ShaderForge.SFN_Append,id:1120,x:34398,y:33491,varname:node_1120,prsc:2|A-4410-OUT,B-2144-OUT;proporder:3681-8607-1279-2806-8568-2227-2069-4629-7286-8393-3473-423-2753-1667-5244-8872-1690-7233;pass:END;sub:END;*/
+/*SF_DATA;ver:1.40;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,cpap:True,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:True,hqlp:False,rprd:True,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:False,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:True,qofs:0,qpre:3,rntp:2,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,atwp:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:2865,x:34754,y:32890,varname:node_2865,prsc:2|diff-4234-OUT,spec-1279-OUT,gloss-2806-OUT,alpha-4954-OUT,voffset-1120-OUT,tess-423-OUT;n:type:ShaderForge.SFN_ValueProperty,id:1279,x:34323,y:32955,ptovrint:False,ptlb:Metallic,ptin:_Metallic,varname:node_1279,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0;n:type:ShaderForge.SFN_ValueProperty,id:2806,x:34323,y:33042,ptovrint:False,ptlb:Roughness,ptin:_Roughness,varname:_Metallic_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0;n:type:ShaderForge.SFN_Color,id:3681,x:31862,y:32116,ptovrint:False,ptlb:Foam Colour,ptin:_FoamColour,varname:node_3681,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5,c2:0,c3:0.5,c4:1;n:type:ShaderForge.SFN_Color,id:8607,x:31430,y:32289,ptovrint:False,ptlb:Water Colour,ptin:_WaterColour,varname:_RiverBase_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.5,c2:1,c3:0.5,c4:1;n:type:ShaderForge.SFN_Lerp,id:9742,x:32156,y:32398,varname:node_9742,prsc:2|A-3681-RGB,B-1385-OUT,T-2943-OUT;n:type:ShaderForge.SFN_ValueProperty,id:8568,x:31185,y:32820,ptovrint:False,ptlb:Depth Value,ptin:_DepthValue,varname:node_8568,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:10;n:type:ShaderForge.SFN_DepthBlend,id:4369,x:31466,y:32826,varname:node_4369,prsc:2|DIST-8568-OUT;n:type:ShaderForge.SFN_Divide,id:7369,x:31720,y:32794,varname:node_7369,prsc:2|A-4369-OUT,B-3698-OUT;n:type:ShaderForge.SFN_Dot,id:3698,x:31428,y:33015,varname:node_3698,prsc:2,dt:0|A-3561-OUT,B-8493-OUT;n:type:ShaderForge.SFN_ViewVector,id:3561,x:31214,y:32948,varname:node_3561,prsc:2;n:type:ShaderForge.SFN_NormalVector,id:8493,x:31214,y:33107,prsc:2,pt:False;n:type:ShaderForge.SFN_RemapRangeAdvanced,id:5407,x:31707,y:33054,varname:node_5407,prsc:2|IN-2943-OUT,IMIN-2227-OUT,IMAX-2069-OUT,OMIN-2446-OUT,OMAX-704-OUT;n:type:ShaderForge.SFN_Clamp01,id:2943,x:31955,y:32794,varname:node_2943,prsc:2|IN-7369-OUT;n:type:ShaderForge.SFN_Slider,id:2227,x:31245,y:33358,ptovrint:False,ptlb:Foam Minimum,ptin:_FoamMinimum,varname:node_2227,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:2069,x:31245,y:33462,ptovrint:False,ptlb:Foam Maximum,ptin:_FoamMaximum,varname:_FoamMinimum_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Vector1,id:2446,x:31245,y:33554,varname:node_2446,prsc:2,v1:0;n:type:ShaderForge.SFN_Vector1,id:704,x:31402,y:33554,varname:node_704,prsc:2,v1:1;n:type:ShaderForge.SFN_RemapRangeAdvanced,id:5036,x:32424,y:33412,varname:node_5036,prsc:2|IN-2943-OUT,IMIN-7286-OUT,IMAX-8393-OUT,OMIN-552-OUT,OMAX-3187-OUT;n:type:ShaderForge.SFN_Vector1,id:552,x:31808,y:33835,varname:node_552,prsc:2,v1:0;n:type:ShaderForge.SFN_Vector1,id:3187,x:31960,y:33835,varname:node_3187,prsc:2,v1:1;n:type:ShaderForge.SFN_Slider,id:7286,x:31803,y:33639,ptovrint:False,ptlb:Depth Minimum,ptin:_DepthMinimum,varname:node_7286,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Slider,id:8393,x:31803,y:33754,ptovrint:False,ptlb:Depth Maximum,ptin:_DepthMaximum,varname:node_8393,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:1;n:type:ShaderForge.SFN_Clamp01,id:3114,x:31872,y:33054,varname:node_3114,prsc:2|IN-5407-OUT;n:type:ShaderForge.SFN_ComponentMask,id:2880,x:32550,y:33019,varname:node_2880,prsc:2,cc1:0,cc2:-1,cc3:-1,cc4:-1|IN-8988-OUT;n:type:ShaderForge.SFN_Multiply,id:4505,x:32723,y:33019,varname:node_4505,prsc:2|A-2880-OUT,B-2498-OUT;n:type:ShaderForge.SFN_Vector1,id:2498,x:32550,y:33194,varname:node_2498,prsc:2,v1:0.5;n:type:ShaderForge.SFN_Clamp01,id:4954,x:33082,y:33019,varname:node_4954,prsc:2|IN-4969-OUT;n:type:ShaderForge.SFN_Multiply,id:6377,x:32339,y:33063,varname:node_6377,prsc:2|A-2515-OUT,B-4629-OUT;n:type:ShaderForge.SFN_ValueProperty,id:4629,x:32154,y:33204,ptovrint:False,ptlb:Foam Intensity,ptin:_FoamIntensity,varname:node_4629,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:8;n:type:ShaderForge.SFN_Add,id:4234,x:32737,y:32717,varname:node_4234,prsc:2|A-9742-OUT,B-8988-OUT;n:type:ShaderForge.SFN_Add,id:4969,x:32899,y:33019,varname:node_4969,prsc:2|A-4505-OUT,B-5036-OUT;n:type:ShaderForge.SFN_OneMinus,id:7200,x:32040,y:33054,varname:node_7200,prsc:2|IN-3114-OUT;n:type:ShaderForge.SFN_Clamp01,id:8988,x:32424,y:32859,varname:node_8988,prsc:2|IN-6377-OUT;n:type:ShaderForge.SFN_Multiply,id:6242,x:32365,y:32399,varname:node_6242,prsc:2|A-9742-OUT,B-3473-RGB;n:type:ShaderForge.SFN_Tex2d,id:3473,x:32156,y:32572,ptovrint:False,ptlb:Foam Texture,ptin:_FoamTexture,varname:node_3473,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:28c7aad1372ff114b90d330f8a2dd938,ntxv:0,isnm:False|UVIN-4125-OUT;n:type:ShaderForge.SFN_Multiply,id:2515,x:32545,y:32399,varname:node_2515,prsc:2|A-6242-OUT,B-7200-OUT;n:type:ShaderForge.SFN_Slider,id:423,x:34155,y:33293,ptovrint:False,ptlb:Plane Tessellation,ptin:_PlaneTessellation,varname:node_423,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:10;n:type:ShaderForge.SFN_TexCoord,id:7272,x:32779,y:33363,varname:node_7272,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Time,id:8728,x:32401,y:33560,varname:node_8728,prsc:2;n:type:ShaderForge.SFN_Panner,id:7278,x:33007,y:33466,varname:node_7278,prsc:2,spu:0.5,spv:0.5|UVIN-7272-UVOUT,DIST-8728-TSL;n:type:ShaderForge.SFN_Tex2d,id:2753,x:33192,y:33466,ptovrint:False,ptlb:Wave Noise,ptin:_WaveNoise,varname:node_2753,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:877bc628b69844ba081a63095156a6f1,ntxv:0,isnm:False|UVIN-7278-UVOUT;n:type:ShaderForge.SFN_FragmentPosition,id:6659,x:32806,y:33730,varname:node_6659,prsc:2;n:type:ShaderForge.SFN_Add,id:4808,x:32986,y:33667,varname:node_4808,prsc:2|A-249-OUT,B-6659-XYZ;n:type:ShaderForge.SFN_Multiply,id:554,x:33167,y:33667,varname:node_554,prsc:2|A-4808-OUT,B-1667-OUT;n:type:ShaderForge.SFN_ValueProperty,id:1667,x:32962,y:33897,ptovrint:False,ptlb:Wave Count,ptin:_WaveCount,varname:node_1667,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:10;n:type:ShaderForge.SFN_Sin,id:2396,x:33336,y:33667,varname:node_2396,prsc:2|IN-554-OUT;n:type:ShaderForge.SFN_Multiply,id:8373,x:33504,y:33667,varname:node_8373,prsc:2|A-2396-OUT,B-5244-OUT;n:type:ShaderForge.SFN_ValueProperty,id:5244,x:33318,y:33901,ptovrint:False,ptlb:Wave Spread,ptin:_WaveSpread,varname:_WaveCount_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0.3;n:type:ShaderForge.SFN_Add,id:339,x:33682,y:33667,varname:node_339,prsc:2|A-8373-OUT,B-8872-OUT;n:type:ShaderForge.SFN_ValueProperty,id:8872,x:33524,y:33901,ptovrint:False,ptlb:Wave Intensity,ptin:_WaveIntensity,varname:_WaveSpread_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:10;n:type:ShaderForge.SFN_RemapRange,id:2222,x:33870,y:33667,varname:node_2222,prsc:2,frmn:-1,frmx:1,tomn:0,tomx:1|IN-339-OUT;n:type:ShaderForge.SFN_Multiply,id:6003,x:33999,y:33491,varname:node_6003,prsc:2|A-2753-RGB,B-2222-OUT;n:type:ShaderForge.SFN_Multiply,id:2144,x:34209,y:33491,varname:node_2144,prsc:2|A-6003-OUT,B-819-OUT;n:type:ShaderForge.SFN_Slider,id:1690,x:33760,y:33885,ptovrint:False,ptlb:Wave Height,ptin:_WaveHeight,varname:node_1690,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0.5,max:1;n:type:ShaderForge.SFN_Multiply,id:249,x:32594,y:33652,varname:node_249,prsc:2|A-8728-TSL,B-7233-OUT;n:type:ShaderForge.SFN_ValueProperty,id:7233,x:32411,y:33788,ptovrint:False,ptlb:Wave Speed,ptin:_WaveSpeed,varname:node_7233,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:0;n:type:ShaderForge.SFN_Vector1,id:4410,x:34209,y:33625,varname:node_4410,prsc:2,v1:0;n:type:ShaderForge.SFN_Append,id:1120,x:34437,y:33491,varname:node_1120,prsc:2|A-4410-OUT,B-2144-OUT;n:type:ShaderForge.SFN_Tex2d,id:4698,x:31430,y:32109,ptovrint:False,ptlb:Water Texture,ptin:_WaterTexture,varname:node_4698,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:f92dae6af310c124c82b4c415dc12dd2,ntxv:0,isnm:False|UVIN-4125-OUT;n:type:ShaderForge.SFN_Multiply,id:1385,x:31618,y:32208,varname:node_1385,prsc:2|A-4698-RGB,B-8607-RGB;n:type:ShaderForge.SFN_TexCoord,id:8676,x:31033,y:32163,varname:node_8676,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Slider,id:4848,x:30484,y:32292,ptovrint:False,ptlb:U Tiling Amount,ptin:_UTilingAmount,varname:node_4848,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1,max:1;n:type:ShaderForge.SFN_Slider,id:6162,x:30484,y:32385,ptovrint:False,ptlb:V Tiling Amount,ptin:_VTilingAmount,varname:_node_4848_copy,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:1,max:1;n:type:ShaderForge.SFN_Append,id:4704,x:30842,y:32312,varname:node_4704,prsc:2|A-4848-OUT,B-6162-OUT;n:type:ShaderForge.SFN_Multiply,id:3456,x:31033,y:32312,varname:node_3456,prsc:2|A-4704-OUT,B-1838-TSL;n:type:ShaderForge.SFN_Time,id:1838,x:30842,y:32468,varname:node_1838,prsc:2;n:type:ShaderForge.SFN_Add,id:4125,x:31208,y:32312,varname:node_4125,prsc:2|A-8676-UVOUT,B-3456-OUT;n:type:ShaderForge.SFN_RemapRange,id:819,x:34103,y:33884,varname:node_819,prsc:2,frmn:0,frmx:1,tomn:0,tomx:0.05|IN-1690-OUT;proporder:4698-8607-3681-1279-2806-423-8568-7286-8393-3473-2227-2069-4629-2753-1667-5244-1690-7233-8872-4848-6162;pass:END;sub:END;*/
 
 Shader "Shader Forge/KT_Water" {
     Properties {
-        _RiverBase ("River Base", Color) = (0.5,0,0.5,1)
-        _RiverComplementary ("River Complementary", Color) = (0.5,1,0.5,1)
+        _WaterTexture ("Water Texture", 2D) = "white" {}
+        _WaterColour ("Water Colour", Color) = (0.5,1,0.5,1)
+        _FoamColour ("Foam Colour", Color) = (0.5,0,0.5,1)
         _Metallic ("Metallic", Float ) = 0
         _Roughness ("Roughness", Float ) = 0
+        _PlaneTessellation ("Plane Tessellation", Range(0, 10)) = 0
         _DepthValue ("Depth Value", Float ) = 10
-        _FoamMinimum ("Foam Minimum", Range(0, 1)) = 0
-        _FoamMaximum ("Foam Maximum", Range(0, 1)) = 0
-        _FoamIntensity ("Foam Intensity", Float ) = 8
         _DepthMinimum ("Depth Minimum", Range(0, 1)) = 0
         _DepthMaximum ("Depth Maximum", Range(0, 1)) = 0
         _FoamTexture ("Foam Texture", 2D) = "white" {}
-        _PlaneTessellation ("Plane Tessellation", Range(0, 10)) = 0
+        _FoamMinimum ("Foam Minimum", Range(0, 1)) = 0
+        _FoamMaximum ("Foam Maximum", Range(0, 1)) = 0
+        _FoamIntensity ("Foam Intensity", Float ) = 8
         _WaveNoise ("Wave Noise", 2D) = "white" {}
         _WaveCount ("Wave Count", Float ) = 10
         _WaveSpread ("Wave Spread", Float ) = 0.3
-        _WaveSpread_copy ("Wave Spread_copy", Float ) = 10
         _WaveHeight ("Wave Height", Range(0, 1)) = 0.5
         _WaveSpeed ("Wave Speed", Float ) = 0
+        _WaveIntensity ("Wave Intensity", Float ) = 10
+        _UTilingAmount ("U Tiling Amount", Range(0, 1)) = 1
+        _VTilingAmount ("V Tiling Amount", Range(0, 1)) = 1
         [HideInInspector]_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5
     }
     SubShader {
@@ -62,11 +65,12 @@ Shader "Shader Forge/KT_Water" {
             uniform sampler2D _CameraDepthTexture;
             uniform sampler2D _FoamTexture; uniform float4 _FoamTexture_ST;
             uniform sampler2D _WaveNoise; uniform float4 _WaveNoise_ST;
+            uniform sampler2D _WaterTexture; uniform float4 _WaterTexture_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
                 UNITY_DEFINE_INSTANCED_PROP( float, _Metallic)
                 UNITY_DEFINE_INSTANCED_PROP( float, _Roughness)
-                UNITY_DEFINE_INSTANCED_PROP( float4, _RiverBase)
-                UNITY_DEFINE_INSTANCED_PROP( float4, _RiverComplementary)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _FoamColour)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _WaterColour)
                 UNITY_DEFINE_INSTANCED_PROP( float, _DepthValue)
                 UNITY_DEFINE_INSTANCED_PROP( float, _FoamMinimum)
                 UNITY_DEFINE_INSTANCED_PROP( float, _FoamMaximum)
@@ -76,9 +80,11 @@ Shader "Shader Forge/KT_Water" {
                 UNITY_DEFINE_INSTANCED_PROP( float, _PlaneTessellation)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveCount)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread)
-                UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread_copy)
+                UNITY_DEFINE_INSTANCED_PROP( float, _WaveIntensity)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveHeight)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpeed)
+                UNITY_DEFINE_INSTANCED_PROP( float, _UTilingAmount)
+                UNITY_DEFINE_INSTANCED_PROP( float, _VTilingAmount)
             UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
                 UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -128,11 +134,11 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
+                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
-                float _WaveSpread_copy_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread_copy );
+                float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                float3 node_2144 = ((_WaveNoise_var.r*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveSpread_copy_var)*0.5+0.5))*_WaveHeight_var);
-                v.vertex.xyz += float4(0.0,node_2144).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityObjectToClipPos( v.vertex );
@@ -277,14 +283,17 @@ Shader "Shader Forge/KT_Water" {
                 float _Metallic_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Metallic );
                 float3 specularColor = _Metallic_var;
                 float specularMonochrome;
-                float4 _RiverBase_var = UNITY_ACCESS_INSTANCED_PROP( Props, _RiverBase );
-                float4 _RiverComplementary_var = UNITY_ACCESS_INSTANCED_PROP( Props, _RiverComplementary );
+                float4 _FoamColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamColour );
+                float _UTilingAmount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _UTilingAmount );
+                float _VTilingAmount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _VTilingAmount );
+                float4 node_1838 = _Time;
+                float2 node_4125 = (i.uv0+(float2(_UTilingAmount_var,_VTilingAmount_var)*node_1838.r));
+                float4 _WaterTexture_var = tex2D(_WaterTexture,TRANSFORM_TEX(node_4125, _WaterTexture));
+                float4 _WaterColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaterColour );
                 float _DepthValue_var = UNITY_ACCESS_INSTANCED_PROP( Props, _DepthValue );
                 float node_2943 = saturate((saturate((sceneZ-partZ)/_DepthValue_var)/dot(viewDirection,i.normalDir)));
-                float3 node_9742 = lerp(_RiverBase_var.rgb,_RiverComplementary_var.rgb,node_2943);
-                float4 node_744 = _Time;
-                float2 node_7418 = (i.uv0+node_744.g*float2(0.01,0.01));
-                float4 _FoamTexture_var = tex2D(_FoamTexture,TRANSFORM_TEX(node_7418, _FoamTexture));
+                float3 node_9742 = lerp(_FoamColour_var.rgb,(_WaterTexture_var.rgb*_WaterColour_var.rgb),node_2943);
+                float4 _FoamTexture_var = tex2D(_FoamTexture,TRANSFORM_TEX(node_4125, _FoamTexture));
                 float _FoamMinimum_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamMinimum );
                 float _FoamMaximum_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamMaximum );
                 float node_2446 = 0.0;
@@ -370,11 +379,12 @@ Shader "Shader Forge/KT_Water" {
             uniform sampler2D _CameraDepthTexture;
             uniform sampler2D _FoamTexture; uniform float4 _FoamTexture_ST;
             uniform sampler2D _WaveNoise; uniform float4 _WaveNoise_ST;
+            uniform sampler2D _WaterTexture; uniform float4 _WaterTexture_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
                 UNITY_DEFINE_INSTANCED_PROP( float, _Metallic)
                 UNITY_DEFINE_INSTANCED_PROP( float, _Roughness)
-                UNITY_DEFINE_INSTANCED_PROP( float4, _RiverBase)
-                UNITY_DEFINE_INSTANCED_PROP( float4, _RiverComplementary)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _FoamColour)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _WaterColour)
                 UNITY_DEFINE_INSTANCED_PROP( float, _DepthValue)
                 UNITY_DEFINE_INSTANCED_PROP( float, _FoamMinimum)
                 UNITY_DEFINE_INSTANCED_PROP( float, _FoamMaximum)
@@ -384,9 +394,11 @@ Shader "Shader Forge/KT_Water" {
                 UNITY_DEFINE_INSTANCED_PROP( float, _PlaneTessellation)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveCount)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread)
-                UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread_copy)
+                UNITY_DEFINE_INSTANCED_PROP( float, _WaveIntensity)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveHeight)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpeed)
+                UNITY_DEFINE_INSTANCED_PROP( float, _UTilingAmount)
+                UNITY_DEFINE_INSTANCED_PROP( float, _VTilingAmount)
             UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
                 UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -426,11 +438,11 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
+                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
-                float _WaveSpread_copy_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread_copy );
+                float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                float3 node_2144 = ((_WaveNoise_var.r*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveSpread_copy_var)*0.5+0.5))*_WaveHeight_var);
-                v.vertex.xyz += float4(0.0,node_2144).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityObjectToClipPos( v.vertex );
@@ -535,14 +547,17 @@ Shader "Shader Forge/KT_Water" {
                 float _Metallic_var = UNITY_ACCESS_INSTANCED_PROP( Props, _Metallic );
                 float3 specularColor = _Metallic_var;
                 float specularMonochrome;
-                float4 _RiverBase_var = UNITY_ACCESS_INSTANCED_PROP( Props, _RiverBase );
-                float4 _RiverComplementary_var = UNITY_ACCESS_INSTANCED_PROP( Props, _RiverComplementary );
+                float4 _FoamColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamColour );
+                float _UTilingAmount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _UTilingAmount );
+                float _VTilingAmount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _VTilingAmount );
+                float4 node_1838 = _Time;
+                float2 node_4125 = (i.uv0+(float2(_UTilingAmount_var,_VTilingAmount_var)*node_1838.r));
+                float4 _WaterTexture_var = tex2D(_WaterTexture,TRANSFORM_TEX(node_4125, _WaterTexture));
+                float4 _WaterColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaterColour );
                 float _DepthValue_var = UNITY_ACCESS_INSTANCED_PROP( Props, _DepthValue );
                 float node_2943 = saturate((saturate((sceneZ-partZ)/_DepthValue_var)/dot(viewDirection,i.normalDir)));
-                float3 node_9742 = lerp(_RiverBase_var.rgb,_RiverComplementary_var.rgb,node_2943);
-                float4 node_1255 = _Time;
-                float2 node_7418 = (i.uv0+node_1255.g*float2(0.01,0.01));
-                float4 _FoamTexture_var = tex2D(_FoamTexture,TRANSFORM_TEX(node_7418, _FoamTexture));
+                float3 node_9742 = lerp(_FoamColour_var.rgb,(_WaterTexture_var.rgb*_WaterColour_var.rgb),node_2943);
+                float4 _FoamTexture_var = tex2D(_FoamTexture,TRANSFORM_TEX(node_4125, _FoamTexture));
                 float _FoamMinimum_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamMinimum );
                 float _FoamMaximum_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamMaximum );
                 float node_2446 = 0.0;
@@ -618,7 +633,7 @@ Shader "Shader Forge/KT_Water" {
                 UNITY_DEFINE_INSTANCED_PROP( float, _PlaneTessellation)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveCount)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread)
-                UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread_copy)
+                UNITY_DEFINE_INSTANCED_PROP( float, _WaveIntensity)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveHeight)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpeed)
             UNITY_INSTANCING_BUFFER_END( Props )
@@ -651,11 +666,11 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
+                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
-                float _WaveSpread_copy_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread_copy );
+                float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                float3 node_2144 = ((_WaveNoise_var.r*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveSpread_copy_var)*0.5+0.5))*_WaveHeight_var);
-                v.vertex.xyz += float4(0.0,node_2144).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = UnityObjectToClipPos( v.vertex );
                 TRANSFER_SHADOW_CASTER(o)
@@ -767,11 +782,12 @@ Shader "Shader Forge/KT_Water" {
             uniform sampler2D _CameraDepthTexture;
             uniform sampler2D _FoamTexture; uniform float4 _FoamTexture_ST;
             uniform sampler2D _WaveNoise; uniform float4 _WaveNoise_ST;
+            uniform sampler2D _WaterTexture; uniform float4 _WaterTexture_ST;
             UNITY_INSTANCING_BUFFER_START( Props )
                 UNITY_DEFINE_INSTANCED_PROP( float, _Metallic)
                 UNITY_DEFINE_INSTANCED_PROP( float, _Roughness)
-                UNITY_DEFINE_INSTANCED_PROP( float4, _RiverBase)
-                UNITY_DEFINE_INSTANCED_PROP( float4, _RiverComplementary)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _FoamColour)
+                UNITY_DEFINE_INSTANCED_PROP( float4, _WaterColour)
                 UNITY_DEFINE_INSTANCED_PROP( float, _DepthValue)
                 UNITY_DEFINE_INSTANCED_PROP( float, _FoamMinimum)
                 UNITY_DEFINE_INSTANCED_PROP( float, _FoamMaximum)
@@ -779,9 +795,11 @@ Shader "Shader Forge/KT_Water" {
                 UNITY_DEFINE_INSTANCED_PROP( float, _PlaneTessellation)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveCount)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread)
-                UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpread_copy)
+                UNITY_DEFINE_INSTANCED_PROP( float, _WaveIntensity)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveHeight)
                 UNITY_DEFINE_INSTANCED_PROP( float, _WaveSpeed)
+                UNITY_DEFINE_INSTANCED_PROP( float, _UTilingAmount)
+                UNITY_DEFINE_INSTANCED_PROP( float, _VTilingAmount)
             UNITY_INSTANCING_BUFFER_END( Props )
             struct VertexInput {
                 UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -815,11 +833,11 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
+                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
-                float _WaveSpread_copy_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread_copy );
+                float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                float3 node_2144 = ((_WaveNoise_var.r*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveSpread_copy_var)*0.5+0.5))*_WaveHeight_var);
-                v.vertex.xyz += float4(0.0,node_2144).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = UnityMetaVertexPosition(v.vertex, v.texcoord1.xy, v.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST );
                 o.projPos = ComputeScreenPos (o.pos);
@@ -905,14 +923,17 @@ Shader "Shader Forge/KT_Water" {
                 
                 o.Emission = 0;
                 
-                float4 _RiverBase_var = UNITY_ACCESS_INSTANCED_PROP( Props, _RiverBase );
-                float4 _RiverComplementary_var = UNITY_ACCESS_INSTANCED_PROP( Props, _RiverComplementary );
+                float4 _FoamColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamColour );
+                float _UTilingAmount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _UTilingAmount );
+                float _VTilingAmount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _VTilingAmount );
+                float4 node_1838 = _Time;
+                float2 node_4125 = (i.uv0+(float2(_UTilingAmount_var,_VTilingAmount_var)*node_1838.r));
+                float4 _WaterTexture_var = tex2D(_WaterTexture,TRANSFORM_TEX(node_4125, _WaterTexture));
+                float4 _WaterColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaterColour );
                 float _DepthValue_var = UNITY_ACCESS_INSTANCED_PROP( Props, _DepthValue );
                 float node_2943 = saturate((saturate((sceneZ-partZ)/_DepthValue_var)/dot(viewDirection,i.normalDir)));
-                float3 node_9742 = lerp(_RiverBase_var.rgb,_RiverComplementary_var.rgb,node_2943);
-                float4 node_485 = _Time;
-                float2 node_7418 = (i.uv0+node_485.g*float2(0.01,0.01));
-                float4 _FoamTexture_var = tex2D(_FoamTexture,TRANSFORM_TEX(node_7418, _FoamTexture));
+                float3 node_9742 = lerp(_FoamColour_var.rgb,(_WaterTexture_var.rgb*_WaterColour_var.rgb),node_2943);
+                float4 _FoamTexture_var = tex2D(_FoamTexture,TRANSFORM_TEX(node_4125, _FoamTexture));
                 float _FoamMinimum_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamMinimum );
                 float _FoamMaximum_var = UNITY_ACCESS_INSTANCED_PROP( Props, _FoamMaximum );
                 float node_2446 = 0.0;
