@@ -19,7 +19,7 @@ public class NPCPatrol : MonoBehaviour
 {
     [Header("_____________________________________________________")]
     [Space(-20)]
-    [Header(" > Interaction will be triggered later on.")]
+    [Header(" > Space triggers interaction.")]
     [Space(-10)]
     [Header(" > Interaction is closed with any input.")]
     [Space(-10)]
@@ -35,6 +35,7 @@ public class NPCPatrol : MonoBehaviour
     private Vector3 m_randPosition;
     private GameObject m_nameObject = null;
     private GameObject m_cam = null;
+    private float m_waitTimer = 2.0f;
     [Header("NPC Parameters")]
     [SerializeField] [Tooltip("Yellow circle indication")] private float m_wanderRadius = 15.0f;
     [SerializeField] private float m_speed = 3.0f;
@@ -60,6 +61,12 @@ public class NPCPatrol : MonoBehaviour
 
     private void Update()
     {
+        //////////// *TEMP* //////////// DELETE LATER
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            m_currentState = NPCStates.NPC_INTERACT;
+        }
+        //////////// *TEMP* //////////// DELETE LATER
         m_nameObject.transform.LookAt(m_cam.transform.position);
         switch (m_currentState)
         {
@@ -134,6 +141,7 @@ public class NPCPatrol : MonoBehaviour
     private void InteractedWith()
     {
         Debug.Log("NPC Said: " + m_dialogue[Random.Range(0, m_dialogue.Length)]);
+        m_waitTimer = 2.0f;
         m_currentState = NPCStates.NPC_WAITFORPLAYER;
     }
     private void WaitForPlayerInput()
@@ -141,10 +149,14 @@ public class NPCPatrol : MonoBehaviour
         //TO DO
         //  Look at player
         //  Dialogue pops up on screen
-        if (Input.anyKey)
+        m_waitTimer -= Time.deltaTime;
+        if(m_waitTimer <= 0)
         {
-            m_currentState = NPCStates.NPC_FINDLOCATION;
-        }
+            if (Input.anyKey)
+            {
+                m_currentState = NPCStates.NPC_FINDLOCATION;
+            }
+        }   
     }
 
     private enum NPCStates
