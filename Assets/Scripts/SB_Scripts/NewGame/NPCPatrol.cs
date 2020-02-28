@@ -62,7 +62,7 @@ public class NPCPatrol : MonoBehaviour
     private void Update()
     {
         //////////// *TEMP* //////////// DELETE LATER
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             m_currentState = NPCStates.NPC_INTERACT;
         }
