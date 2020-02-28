@@ -19,7 +19,7 @@ public class NPCPatrol : MonoBehaviour
 {
     [Header("_____________________________________________________")]
     [Space(-20)]
-    [Header(" > Space triggers interaction.")]
+    [Header(" > 'F' triggers interaction.")]
     [Space(-10)]
     [Header(" > Interaction is closed with any input.")]
     [Space(-10)]

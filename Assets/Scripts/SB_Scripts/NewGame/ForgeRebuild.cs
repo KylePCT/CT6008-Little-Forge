@@ -34,7 +34,7 @@ public class ForgeRebuild : MonoBehaviour
 
     private void Start()
     {
-        PlayersBank.Instance.SetMoney(100);
+        PlayersBank.Instance.SetMoney(1000);
     }
     private void Update()
     {

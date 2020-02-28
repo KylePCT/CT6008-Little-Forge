@@ -14,17 +14,30 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
+    [Header("Player Parameters")]
+    [Header("_____________________________________________________")]
+    [Space(-20)]
+    [Header(" > RightMouseBut - Zoom")]
+    [Space(-10)]
+    [Header(" > 'F'- Trigger NPC")]
+    [Space(-10)]
+    [Header(" > 'E'- Intereact")]
+    [Space(-10)]
+    [Header(" > Space - Jump")]
+    [Space(-10)]
+    [Header(" > WSAD & MOUSE - Move & Look")]
+    [Space(-10)]
+    [Header("CONTROLS")]
     //////////////////////////////////////////////////
     //// Variables
-    private GameObject m_playerOrientation = null;
-    private Vector3 m_moveDirection = Vector3.zero;
-    [Header("Player Parameters")]
     [SerializeField] private float m_moveSpeed = 2.5f;
     [SerializeField]private bool m_isGrounded = true;
+    private GameObject m_playerOrientation = null;
+    private Vector3 m_moveDirection = Vector3.zero;
     private CharacterController m_controller;
     private InputSystem m_inputSystem = null;
-    [SerializeField] private float m_jumpHeight = 3f;
-    private float m_gravity = -5f;
+    [SerializeField] private float m_jumpHeight = 2f;
+    private float m_gravity = -10f;
     private float m_yAxisVelocity = 0;
 
     //////////////////////////////////////////////////
@@ -36,7 +49,7 @@ public class PlayerControls : MonoBehaviour
     private void Start()
     {
         m_controller = GetComponent<CharacterController>();
-        m_playerOrientation = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation");
+        m_playerOrientation = GameObject.Find("- ESSENTIALS/Sam'sTempCharacterController/PlayerOrientation");
     }
 
     private void Update()
