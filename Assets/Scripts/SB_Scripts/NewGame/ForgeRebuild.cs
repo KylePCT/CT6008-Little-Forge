@@ -88,16 +88,28 @@ public class ForgeRebuild : MonoBehaviour
     {
         //Cost to upgrade : 90
         m_currentCost = 90;
+        if (m_upgrade)
+        {
+            CheckToBuy();
+        }
     }
     private void Level3Forge()
     {
         //Cost to upgrade : 270
         m_currentCost = 270;
+        if (m_upgrade)
+        {
+            CheckToBuy();
+        }
     }
     private void Level4Forge()
     {
         //Cost to upgrade : 810
         m_currentCost = 810;
+        if (m_upgrade)
+        {
+            CheckToBuy();
+        }
     }
     private void Level5Forge()
     {
