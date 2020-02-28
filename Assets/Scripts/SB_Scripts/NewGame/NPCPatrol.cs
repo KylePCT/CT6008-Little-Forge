@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -41,9 +42,15 @@ public class NPCPatrol : MonoBehaviour
     [SerializeField] private float m_speed = 3.0f;
     [SerializeField] private string m_name = "m_NPCName";
     [SerializeField] private Color m_nameColour = Color.black;
+    private bool m_interacted = false;
+    private bool m_inRangeOfPlayer = false;
+    private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
     //// Functions
+    private void Awake() => m_inputSystem = new InputSystem();
+    private void OnEnable() => m_inputSystem.Player.Enable();
+    private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
         m_cam = Camera.main.gameObject;
@@ -61,12 +68,6 @@ public class NPCPatrol : MonoBehaviour
 
     private void Update()
     {
-        //////////// *TEMP* //////////// DELETE LATER
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            m_currentState = NPCStates.NPC_INTERACT;
-        }
-        //////////// *TEMP* //////////// DELETE LATER
         m_nameObject.transform.LookAt(m_cam.transform.position);
         switch (m_currentState)
         {
@@ -84,6 +85,18 @@ public class NPCPatrol : MonoBehaviour
                 break;
             default:
                 break;
+        }
+        Debug.Log(m_interacted);
+        InteractionTrigger();
+
+    }
+
+    private void InteractionTrigger()
+    {
+        if(m_inRangeOfPlayer && m_interacted)
+        {
+            m_currentState = NPCStates.NPC_INTERACT;
+            m_interacted = false;
         }
     }
 
@@ -119,6 +132,33 @@ public class NPCPatrol : MonoBehaviour
         // Draw a yellow sphere at the transform's position
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, m_wanderRadius);
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            m_inRangeOfPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            m_inRangeOfPlayer = false;
+        }
+    }
+
+    public void InteractKey(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (m_inRangeOfPlayer)
+            {
+                m_interacted = true;
+            }
+        }
     }
 
     //////////////////////////////////////////////////

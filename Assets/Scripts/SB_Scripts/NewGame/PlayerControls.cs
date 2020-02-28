@@ -19,9 +19,7 @@ public class PlayerControls : MonoBehaviour
     [Space(-20)]
     [Header(" > RightMouseBut - Zoom")]
     [Space(-10)]
-    [Header(" > 'F'- Trigger NPC")]
-    [Space(-10)]
-    [Header(" > 'E'- Intereact")]
+    [Header(" > 'F'- Intereact")]
     [Space(-10)]
     [Header(" > Space - Jump")]
     [Space(-10)]
@@ -35,10 +33,10 @@ public class PlayerControls : MonoBehaviour
     private GameObject m_playerOrientation = null;
     private Vector3 m_moveDirection = Vector3.zero;
     private CharacterController m_controller;
-    private InputSystem m_inputSystem = null;
     [SerializeField] private float m_jumpHeight = 2f;
     private float m_gravity = -10f;
     private float m_yAxisVelocity = 0;
+    private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
     //// Functions

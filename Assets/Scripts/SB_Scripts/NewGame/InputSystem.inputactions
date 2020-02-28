@@ -11,7 +11,7 @@
                     "id": "533c26a8-6f3f-43ff-9b9b-954ea3f8406a",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "Movement",
@@ -33,6 +33,14 @@
                     "name": "Zoom",
                     "type": "Button",
                     "id": "b14d5d77-9ae1-4011-8a6c-c14a80bd5d0c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "81750660-480b-4937-9b35-73ad8b183cce",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
@@ -124,6 +132,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4e43de6-cade-4ca0-b97d-8306c171b9f6",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
