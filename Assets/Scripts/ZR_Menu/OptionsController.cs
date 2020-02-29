@@ -2,7 +2,7 @@
 /// File: OptionsController.cs
 /// Author: Zack Raeburn
 /// Date Created: 27/02/20
-/// Description: 
+/// Description: Allows for controlling and saving options
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -12,14 +12,23 @@ using UnityEngine.UI;
 
 public class OptionsController : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+
     [SerializeField] private Slider m_audioVolume = null;
     [SerializeField] private Slider m_sensitivity = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
+
     private void Start()
     {
+        // Getting currently saved options from the game save file
         float audioVolume;
         float sensitivity;
         SaveGameManager.GetOptions(out audioVolume, out sensitivity);
+
+        // Setting the UI to the saved options
         m_audioVolume.value = audioVolume;
         m_sensitivity.value = sensitivity;
     }

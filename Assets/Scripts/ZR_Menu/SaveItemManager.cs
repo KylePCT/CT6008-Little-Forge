@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
-/// File: SaveItemManager.cs
-/// Author: Zack Raeburn
-/// Date Created: 27/02/20
-/// Description: 
+// File: SaveItemManager.cs
+// Author: Zack Raeburn
+// Date Created: 27/02/20
+// Description: Manages save items in the main menu UI
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -11,7 +11,15 @@ using UnityEngine;
 
 public class SaveItemManager : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+
     [SerializeField] private List<SaveItem> m_saveItems = null;
+    [SerializeField] private List<GameObject> m_deleteButtons = null;
+
+    //////////////////////////////////////////////////
+    //// Functions
+
     private void Awake()
     {
         if (m_saveItems == null)
@@ -26,6 +34,9 @@ public class SaveItemManager : MonoBehaviour
         AssignSaveSlotInfo();
     }
 
+    /// <summary>
+    /// Display save info in the main menu UI
+    /// </summary>
     private void AssignSaveSlotInfo()
     {
         for(int i = 0; i < m_saveItems.Count; ++i)
@@ -44,6 +55,10 @@ public class SaveItemManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When a save slot is clicked either create a new save by going to character creation or load the file
+    /// </summary>
+    /// <param name="a_slot"></param>
     public void StartGame(int a_slot)
     {
         if (SaveGameManager.IsSaveSlotOccupied(a_slot) == true)
@@ -53,6 +68,9 @@ public class SaveItemManager : MonoBehaviour
         }
         else
         {
+            // Save new file to be edited later
+            SaveGameManager.CreateCharacter(a_slot);
+
             // Go to character creation
             SceneLoadManager.Instance.LoadCharacterCreation();
         }

@@ -1,8 +1,9 @@
 ﻿//////////////////////////////////////////////////
-/// File: ShockwaveManager.cs
-/// Author: Zack Raeburn
-/// Date Created: 23/01/20
-/// Description: 
+// File: ShockwaveManager.cs
+// Author: Zack Raeburn
+// Date Created: 23/01/20
+// Description: Allows the animating of shockwave variables
+//              and sends them to the shader
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -31,7 +32,7 @@ public class ShockwaveManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Variable initialisation
     /// </summary>
     private void InitialiseVariables()
     {
@@ -43,7 +44,7 @@ public class ShockwaveManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// We are using a material from the FullScreenEffect script, when the material list is regenerated we need to find the shockwave shader in it
     /// </summary>
     /// <param name="a_sender"></param>
     private void OnConstructMaterials(FullScreenEffects a_sender)
@@ -59,7 +60,7 @@ public class ShockwaveManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Sends a shockwave to the shader
     /// </summary>
     public void CreateShockwave()
     {
@@ -74,18 +75,22 @@ public class ShockwaveManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Sends a shockwave to the shader
     /// </summary>
     /// <returns></returns>
     private IEnumerator ShockwaveIE()
     {
+        // Getting current values
         float shockSize = m_shockwaveMat.GetFloat(m_shockSizeID);
         float shockStrength = m_shockwaveMat.GetFloat(m_shockStrengthID);
 
+        // Setting the world position of the shockwave
         m_shockwaveMat.SetVector("_WorldPos", m_shockwavePos.position);
 
+        // Wait one frame
         yield return null;
 
+        // Animate the shockwave values
         while (shockSize != m_targetShockSize || shockStrength != m_targetShockStrength)
         {
             shockSize = Mathf.MoveTowards(shockSize, m_targetShockSize, Time.deltaTime * m_shockSizeSpeed);
@@ -97,6 +102,7 @@ public class ShockwaveManager : MonoBehaviour
             yield return null;
         }
 
+        // Clear the shockwave
         m_shockwaveMat.SetFloat(m_shockSizeID, 0f);
         m_shockwaveMat.SetFloat(m_shockStrengthID, 1f);
 

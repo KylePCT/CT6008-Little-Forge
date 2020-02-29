@@ -2,7 +2,7 @@
 /// File: SaveItem.cs
 /// Author: Zack Raeburn
 /// Date Created: 27/02/20
-/// Description: 
+/// Description: For setting save information into UI objects
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -13,10 +13,16 @@ using TMPro;
 
 public class SaveItem : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+    
     [SerializeField] private TextMeshProUGUI m_name = null;
     [SerializeField] private TextMeshProUGUI m_money = null;
 
     public SaveSlot m_characterFile = null;
+
+    //////////////////////////////////////////////////
+    //// Functions
 
     public void SetEmpty()
     {

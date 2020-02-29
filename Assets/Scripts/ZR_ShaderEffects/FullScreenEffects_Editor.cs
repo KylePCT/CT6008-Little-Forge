@@ -1,11 +1,11 @@
 ﻿//////////////////////////////////////////////////
-/// File: FullScreenEffects_Editor.cs
-/// Author: Zack Raeburn
-/// Date created: 23/01/20
-/// Last edit: 23/01/20
-/// Description: A custom editor for the FullScreenEffect script
-///              Allows for switching order in the fullscreen effects shader list
-/// Comments: I put way too much effort into this
+// File: FullScreenEffects_Editor.cs
+// Author: Zack Raeburn
+// Date created: 23/01/20
+// Last edit: 23/01/20
+// Description: A custom editor for the FullScreenEffect script
+//              Allows for switching order in the fullscreen effects shader list
+// Comments: I put way too much effort into this
 //////////////////////////////////////////////////
 
 using UnityEngine;

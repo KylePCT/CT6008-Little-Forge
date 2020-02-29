@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
-/// File: OptionsManager.cs
-/// Author: Zack Raeburn
-/// Date Created: 27/02/20
-/// Description: 
+// File: OptionsManager.cs
+// Author: Zack Raeburn
+// Date Created: 27/02/20
+// Description: 
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -11,6 +11,8 @@ using UnityEngine;
 
 public class OptionsManager : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
 
     private static OptionsManager m_instance = null;
     public static OptionsManager Instance
@@ -29,6 +31,9 @@ public class OptionsManager : MonoBehaviour
     {
         get { return m_options; }
     }
+
+    //////////////////////////////////////////////////
+    //// Functions
 
     public void SetOptions(GameOptions a_options)
     {

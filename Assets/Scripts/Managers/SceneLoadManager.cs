@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
-/// File: LoadManager.cs
-/// Author: Zack Raeburn
-/// Date Created: 19/02/20
-/// Description: 
+// File: SceneLoadManager.cs
+// Author: Zack Raeburn
+// Date Created: 19/02/20
+// Description: Manages loading between scenes
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -12,6 +12,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+
     private FadeManager m_fader = null;
 
     private IEnumerator m_currentEnumerator = null;
@@ -27,11 +30,17 @@ public class SceneLoadManager : MonoBehaviour
         get { return m_instance; }
     }
 
+    //////////////////////////////////////////////////
+    //// Functions
+
     private void Awake()
     {
         InitialiseVariables();
     }
-        
+    
+    /// <summary>
+    /// Initialise all script variables
+    /// </summary>
     private void InitialiseVariables()
     {
         m_instance = this;
@@ -49,6 +58,9 @@ public class SceneLoadManager : MonoBehaviour
         LoadStartScene();
     }
 
+    /// <summary>
+    /// Load the intial game scene, should be the main menu
+    /// </summary>
     private void LoadStartScene()
     {
         Scene s = SceneManager.GetSceneByBuildIndex(m_sceneToLoadOnStart);
@@ -58,14 +70,12 @@ public class SceneLoadManager : MonoBehaviour
         LoadScenesLoadingScreen(m_sceneToLoadOnStart);
     }
 
+    /// <summary>
+    /// Load the character creation scene by build index, should be 2, can be checked in build settings
+    /// </summary>
     public void LoadCharacterCreation()
     {
-        Scene s = SceneManager.GetSceneByName("CharacterCreation");
-        Debug.Log(s.name);
-        if (s == null)
-            return;
-
-        LoadScenesLoadingScreen(s.buildIndex);
+        LoadScenesLoadingScreen(2);
     }
 
     private void Update()
@@ -73,6 +83,9 @@ public class SceneLoadManager : MonoBehaviour
         UpdateEnumeratorQueue();
     }
 
+    /// <summary>
+    /// IEnumerators can be queued, this goes through and starts the next one if there is one available
+    /// </summary>
     private void UpdateEnumeratorQueue()
     {
         if (m_currentEnumerator != null || m_enumeratorQueue.Count == 0)
@@ -82,18 +95,31 @@ public class SceneLoadManager : MonoBehaviour
         StartCoroutine(m_currentEnumerator);
     }
 
+    /// <summary>
+    /// Queue an IEnumerator
+    /// </summary>
+    /// <param name="a_enumerator"></param>
     private void QueueEnumerator(IEnumerator a_enumerator)
     {
         m_enumeratorQueue.Enqueue(a_enumerator);
         UpdateEnumeratorQueue();
     }
 
+    /// <summary>
+    /// Load scenes asynchronously by build index
+    /// </summary>
+    /// <param name="a_sceneIndices"></param>
     public void LoadScenes(params int[] a_sceneIndices)
     {
         IEnumerator enumerator = LoadScenesIE(a_sceneIndices);
         QueueEnumerator(enumerator);
     }
 
+    /// <summary>
+    /// Loads scenes asynchronously and waits for them to complete loading before activating
+    /// </summary>
+    /// <param name="a_sceneIndices"></param>
+    /// <returns></returns>
     private IEnumerator LoadScenesIE(params int[] a_sceneIndices)
     {
         List<AsyncOperation> loadOperations = new List<AsyncOperation>(a_sceneIndices.Length);
@@ -126,12 +152,21 @@ public class SceneLoadManager : MonoBehaviour
         m_currentEnumerator = null;
     }
 
+    /// <summary>
+    /// Load scenes asynchronously by build index with a loading screen
+    /// </summary>
+    /// <param name="a_sceneIndices"></param>
     public void LoadScenesLoadingScreen(params int[] a_sceneIndices)
     {
         IEnumerator enumerator = LoadScenesLoadingScreenIE(a_sceneIndices);
         QueueEnumerator(enumerator);
     }
 
+    /// <summary>
+    /// Fades to a loading screen, unloads currently loaded screens (except the preloader scene we need that), then asynchronously loads the next scenes and unfades
+    /// </summary>
+    /// <param name="a_sceneIndices"></param>
+    /// <returns></returns>
     public IEnumerator LoadScenesLoadingScreenIE(params int[] a_sceneIndices)
     {
         // Fade to loading screen

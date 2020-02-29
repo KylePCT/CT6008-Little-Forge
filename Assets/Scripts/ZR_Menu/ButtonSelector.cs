@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
-/// File: ButtonSelector.cs
-/// Author: Zack Raeburn
-/// Date Created: 19/02/20
-/// Description: 
+// File: ButtonSelector.cs
+// Author: Zack Raeburn
+// Date Created: 19/02/20
+// Description: Makes a 'selector' image snap to certain points in a menu
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -11,6 +11,9 @@ using UnityEngine;
 
 public class ButtonSelector : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+
     [SerializeField] private float m_snapSpeed = 1f;
 
     private Transform m_lastSnap = null;
@@ -21,6 +24,13 @@ public class ButtonSelector : MonoBehaviour
 
     private IEnumerator m_currentEnumerator = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
+
+    /// <summary>
+    /// Snap to the target transform
+    /// </summary>
+    /// <param name="a_transform"></param>
     public void SnapTo(Transform a_transform)
     {
         if (m_currentEnumerator != null)
@@ -30,6 +40,11 @@ public class ButtonSelector : MonoBehaviour
         StartCoroutine(m_currentEnumerator);
     }
 
+    /// <summary>
+    /// Animates the transform snapping
+    /// </summary>
+    /// <param name="a_transform"></param>
+    /// <returns></returns>
     private IEnumerator SnapToIE(Transform a_transform)
     {
         m_lastSnap = a_transform;

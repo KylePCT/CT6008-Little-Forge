@@ -1,10 +1,20 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////
+// File: SpriteController.cs
+// Author: Zack Raeburn
+// Date Created: 10/02/20
+// Description: Displays wandering 'sprites' that
+//              periodically form shapes/constellations
+//////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteController : MonoBehaviour
 {
-
+    //////////////////////////////////////////////////
+    //// Variables
+    
     [SerializeField] private GameObject m_spritePrefab = null;
     [SerializeField] private GameObject m_lineRendererPrefab = null;
     [SerializeField] private Transform m_spriteHolder = null;
@@ -74,6 +84,9 @@ public class SpriteController : MonoBehaviour
 
     private List<Sprite> m_sprites = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
+
     private void Awake()
     {
         CreateLineRenderers();
@@ -81,6 +94,10 @@ public class SpriteController : MonoBehaviour
         CreateSprites();
     }
 
+    /// <summary>
+    /// Create line renderers that later will be needed for rendering lines between sprites.
+    /// One line renderer is need per 2 sprites as Unity does not allow rendering non-connected lines through one LineRenderer
+    /// </summary>
     private void CreateLineRenderers()
     {
         m_lineRenderers = new List<LineRendererController>(m_prefabInstantiateCount);
@@ -93,6 +110,9 @@ public class SpriteController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Create the sprite objects that will wander and form
+    /// </summary>
     private void CreateSprites()
     {
         m_sprites = new List<Sprite>(m_prefabInstantiateCount);
@@ -111,6 +131,9 @@ public class SpriteController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Disables line renderers duh
+    /// </summary>
     private void DisableLineRenderers()
     {
         foreach(LineRendererController lr in m_lineRenderers)
@@ -119,6 +142,9 @@ public class SpriteController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void ResetSpriteSettings()
     {
         foreach(Sprite s in m_sprites)
@@ -129,11 +155,12 @@ public class SpriteController : MonoBehaviour
 
     private void Update()
     {
-
-
         UpdateSprites();
     }
 
+    /// <summary>
+    /// Manages sprite states and updates them
+    /// </summary>
     private void UpdateSprites()
     {
         switch(m_state)
@@ -142,12 +169,14 @@ public class SpriteController : MonoBehaviour
                 {
                     SpriteWander();
 
+                    // If time for the next state - DisplaySetup
                     if (Time.time - m_lastStateSwitchTime > m_stateSwitchFrequency)
                     {
                         m_state = SpriteControllerState.DisplaySetup;
 
                         // Next displayIndex
                         //m_displayIndex = (m_displayIndex + 1) % m_spriteData.Count;
+
                         // Random displayIndex
                         int index = m_displayIndex;
                         while (index == m_displayIndex)
@@ -174,6 +203,10 @@ public class SpriteController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enables sprites to wander within the bounds of the wander radius
+    /// </summary>
+    /// <param name="a_indexOffset">The amount of sprites that are not wandering, these sprites will be skipped</param>
     private void SpriteWander(int a_indexOffset = 0)
     {
         Vector2 center = transform.position;
@@ -197,6 +230,9 @@ public class SpriteController : MonoBehaviour
         } 
     }
 
+    /// <summary>
+    /// Selected sprites start forming into the new form but no timer is started yet
+    /// </summary>
     private void SpriteDisplaySetup()
     {
         if (m_spriteData == null)
@@ -205,6 +241,7 @@ public class SpriteController : MonoBehaviour
             return;
         }
 
+        // For all not wandering sprites start moving towards the target position
         for (int i = 0; i < m_spriteData[m_displayIndex].positions.Count; ++i)
         {
             float zTarget = -1f;
@@ -218,8 +255,9 @@ public class SpriteController : MonoBehaviour
                 m_sprites[i].atTargetPosition = true;
         }
 
+        // Checking for sprites in position
+        // When they are all in position we will enable the lines to be drawn between them
         bool allPointsInPosition = true;
-
         for (int i = 0; i < m_spriteData[m_displayIndex].lineRendererIndices.Count; ++i)
         {
             int index1 = m_spriteData[m_displayIndex].lineRendererIndices[i].index1;
@@ -237,17 +275,23 @@ public class SpriteController : MonoBehaviour
             }
         }
 
+        // Checking if all sprites are in position
         if (allPointsInPosition)
         {
             m_state = SpriteControllerState.DisplayWait;
             m_lastStateSwitchTime = Time.time;
         }
 
+        // Wandering sprites not currently in the formation
         SpriteWander(m_spriteData[m_displayIndex].positions.Count);
     }
 
+    /// <summary>
+    /// Once all sprites are in location a timer is started here
+    /// </summary>
     private void SpriteDisplayWait()
     {
+        // If times up go back to wandering
         if (Time.time - m_lastStateSwitchTime > m_stateSwitchFrequency)
         {
             m_state = SpriteControllerState.Wander;
@@ -255,10 +299,14 @@ public class SpriteController : MonoBehaviour
             ResetSpriteSettings();
             DisableLineRenderers();
         }
-        
+
+        // Wandering sprites not currently in the formation
         SpriteWander(m_spriteData[m_displayIndex].positions.Count);
     }
 
+    /// <summary>
+    /// Debug stuff
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, m_spriteWanderDistance * 0.5f);
@@ -276,30 +324,6 @@ public class SpriteController : MonoBehaviour
                 Gizmos.DrawSphere((m_spriteData[i].positions[j] + m_spriteData[i].globalOffset) * m_spriteData[i].scale, 0.05f);
             }
 
-        }
-    }
-}
-
-
-///
-/// Source:
-/// https://forum.unity.com/threads/clever-way-to-shuffle-a-list-t-in-one-line-of-c-code.241052/
-/// 
-public static class IListExtensions
-{
-    /// <summary>
-    /// Shuffles the element order of the specified list.
-    /// </summary>
-    public static void Shuffle<T>(this IList<T> ts)
-    {
-        var count = ts.Count;
-        var last = count - 1;
-        for (var i = 0; i < last; ++i)
-        {
-            var r = UnityEngine.Random.Range(i, count);
-            var tmp = ts[i];
-            ts[i] = ts[r];
-            ts[r] = tmp;
         }
     }
 }

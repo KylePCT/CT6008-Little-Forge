@@ -1,6 +1,8 @@
 ﻿//////////////////////////////////////////////////
+// File: PillarController.cs
 // Author: Zack Raeburn
-// Description: 
+// Date created: 01/02/20
+// Description: Controls the beams coming off pilars
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -10,6 +12,9 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class PillarController : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+
     [SerializeField] private float m_arcYOffset = 5f;
     [SerializeField] private Vector3 m_beamOriginOffset = Vector3.zero;
     private Vector3 BeamOrigin
@@ -33,11 +38,17 @@ public class PillarController : MonoBehaviour
     }
     [SerializeField] private List<Healable> m_healables = null;
 
+    //////////////////////////////////////////////////
+    //// Functions
+
     private void Awake()
     {
         InitialiseVariables();
     }
 
+    /// <summary>
+    /// Initialising class variables
+    /// </summary>
     private void InitialiseVariables()
     {
         if (lrm == null)
@@ -55,13 +66,18 @@ public class PillarController : MonoBehaviour
         UpdateHealables();
     }
 
+    /// <summary>
+    /// If healable objects are in range then update the beams that connect them
+    /// </summary>
     private void UpdateHealables()
     {
+        // For each healable in range
         foreach(Healable h in m_healables)
         {
             Vector3[] trajectory = new Vector3[lrm.ArcResolution];
 
-            float height = Mathf.Max(BeamOrigin.y, h.hc.transform.position.y);      //This causing errors when the boss is dead.
+            // Calculate the arc of the beam
+            float height = Mathf.Max(BeamOrigin.y, h.hc.transform.position.y);
             Vector3 middlePos = Vector3.Lerp(BeamOrigin, h.hc.transform.position, 0.5f);
             middlePos.y = height + m_arcYOffset;
 
@@ -74,10 +90,15 @@ public class PillarController : MonoBehaviour
                 trajectory[i] = Vector3.Lerp(p1, p2, t);
             }
 
+            // Set the beam positions
             h.lr.SetPositions(trajectory);
         }
     }
 
+    /// <summary>
+    /// Adds a healable item when it enters within range
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out HealthController controller))
@@ -90,6 +111,10 @@ public class PillarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes a healable item when it gpes out of range
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out HealthController controller))
@@ -111,6 +136,9 @@ public class PillarController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Deactivate line renderers before the object is destroyed
+    /// </summary>
     private void OnDestroy()
     {
         foreach(Healable h in m_healables)

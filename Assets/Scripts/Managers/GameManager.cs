@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
-/// File: GameManager.cs
-/// Author: Zack Raeburn
-/// Date Created: 27/02/20
-/// Description: 
+// File: GameManager.cs
+// Author: Zack Raeburn
+// Date Created: 27/02/20
+// Description: A central manager for important managerial things
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -11,6 +11,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+
+
+
+    //////////////////////////////////////////////////
+    //// Functions
 
     private void Awake()
     {

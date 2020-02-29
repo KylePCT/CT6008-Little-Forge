@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
-/// File: SaveGameManager.cs
-/// Author: Zack Raeburn
-/// Date Created: 27/02/20
-/// Description: 
+// File: SaveGameManager.cs
+// Author: Zack Raeburn
+// Date Created: 27/02/20
+// Description: Manages saving and loading game save files
 //////////////////////////////////////////////////
 
 using UnityEngine;
@@ -10,7 +10,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-// A class to store individual character information, put values to be saved in here
+/// <summary>
+/// A class to store individual character information, put values to be saved in here
+/// </summary>
 [System.Serializable]
 public class SaveSlot
 {
@@ -29,7 +31,9 @@ public class SaveSlot
 
 public static class SaveGameManager
 {
-    // Header class to track all characters/save slots
+    /// <summary>
+    /// Header class to track all characters/save slots
+    /// </summary>
     [System.Serializable]
     private class Header
     {
@@ -62,6 +66,9 @@ public static class SaveGameManager
         }
     }
 
+    //////////////////////////////////////////////////
+    //// Variables
+
     // For saving save slots so they can be used repetedly without loading/saving more than once
     private static SaveSlot m_mainSaveSlot = null;
 
@@ -74,8 +81,13 @@ public static class SaveGameManager
     {
         get { return m_filePath + "header.bin"; }
     }
-    
-    // Header saving/loading
+
+    //////////////////////////////////////////////////
+    //// Functions
+
+    /// <summary>
+    /// Header saving
+    /// </summary>
     public static void SaveHeader()
     {
         Debug.Log("Saving header");
@@ -93,6 +105,9 @@ public static class SaveGameManager
         stream.Close();
     }
 
+    /// <summary>
+    /// Header loading
+    /// </summary>
     public static void LoadHeader()
     {
         if (File.Exists(m_headerPath))
@@ -110,13 +125,17 @@ public static class SaveGameManager
         }
     }
 
-    // Character saving, loading, and creation
-    // Returns the save slot of the character
+    /// <summary>
+    /// Character saving, loading, and creation
+    /// Returns the save slot of the character
+    /// </summary>
+    /// <param name="a_saveSlot"></param>
     public static void CreateCharacter(int a_saveSlot)
     {
         // Creating new char info
         SaveSlot newCharacter = new SaveSlot(a_saveSlot);
         Header.data.m_characterFilePaths[a_saveSlot] = m_filePath + "slot_" + a_saveSlot.ToString() + ".bin";
+        SetMainCharFile(newCharacter);
 
         SaveHeader();
 
@@ -133,7 +152,10 @@ public static class SaveGameManager
         stream.Close();
     }
 
-    // Removing character from header and deleting save file from disk
+    /// <summary>
+    /// Removing character from header and deleting save file from disk
+    /// </summary>
+    /// <param name="a_saveSlot"></param>
     public static void DeleteCharacter(int a_saveSlot)
     {
         string filePath = m_filePath + "slot_" + a_saveSlot.ToString() + ".bin";
@@ -145,7 +167,11 @@ public static class SaveGameManager
         Header.data.m_characterFilePaths[a_saveSlot] = "";
     }
 
-    // Loading character info from a save file
+    /// <summary>
+    /// Loading character info from a save file
+    /// </summary>
+    /// <param name="a_slot"></param>
+    /// <returns></returns>
     public static SaveSlot LoadCharacter(int a_slot)
     {
         SaveSlot a_characterInfo;
@@ -170,16 +196,30 @@ public static class SaveGameManager
         return a_characterInfo;
     }
 
+    /// <summary>
+    /// Stores a save file as the 'main' one
+    /// Basically so I can get it later if I need without reading the save file again
+    /// </summary>
+    /// <param name="a_slot"></param>
     public static void SetMainCharFile(SaveSlot a_slot)
     {
         m_mainSaveSlot = a_slot;
     }
 
+    /// <summary>
+    /// Returns the 'main' save file
+    /// </summary>
+    /// <returns></returns>
     public static SaveSlot GetMainCharFile()
     {
         return m_mainSaveSlot;
     }
 
+    /// <summary>
+    /// Checks if a save slot has character info or not
+    /// </summary>
+    /// <param name="a_saveSlot"></param>
+    /// <returns></returns>
     public static bool IsSaveSlotOccupied(int a_saveSlot)
     {
         if (Header.data.m_characterFilePaths[a_saveSlot] == "")
@@ -188,7 +228,9 @@ public static class SaveGameManager
         return true;
     }
 
-    // Options setters and getters
+    //////////////////////////////////////////////////
+    //// Options setters and getters
+
     public static void SetOptions(float a_audioVolume, float a_sensitivity)
     {
         Header.data.m_audioVolume = Mathf.Clamp(a_audioVolume, 0f, 10f);
@@ -201,7 +243,9 @@ public static class SaveGameManager
         a_sensitivity = Header.data.m_sensitivity;
     }
 
-    // Some debug info
+    /// <summary>
+    /// Outputs some debug info to the console
+    /// </summary>
     public static void DebugSaveManager()
     {
         if (Header.data.m_characterFilePaths == null)

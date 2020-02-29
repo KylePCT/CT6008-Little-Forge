@@ -1,8 +1,9 @@
 ﻿//////////////////////////////////////////////////
-/// File: Outline.cs
-/// Author: Zack Raeburn
-/// Date Created: 19/02/20
-/// Description: 
+// File: Outline.cs
+// Author: Zack Raeburn
+// Date Created: 19/02/20
+// Description: Tells the OutlineRenderer script to render
+//              an outline around this objects mesh
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -11,12 +12,16 @@ using UnityEngine;
 
 public class Outline : MonoBehaviour
 {
+
     private static List<Outline> m_outlines;
     public static List<Outline> Outlines
     {
         get { return m_outlines; }
     }
 
+    //////////////////////////////////////////////////
+    //// Variables
+    
     [SerializeField] private Color m_outlineColor = Color.black;
     public Color OutlineColor
     {
@@ -27,6 +32,9 @@ public class Outline : MonoBehaviour
     {
         get { return m_outlineRadius; }
     }
+
+    //////////////////////////////////////////////////
+    //// Functions
 
     private void Awake()
     {
