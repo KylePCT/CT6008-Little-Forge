@@ -25,7 +25,7 @@ public class PlayerZoom : MonoBehaviour
     //// Functions
     private void Start()
     {
-        m_cam = GameObject.Find("- ESSENTIALS/Sam'sTempCharacterController/PlayerOrientation/MainCamera");
+        m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
         m_origPos = m_cam.transform.localPosition;
     }
 
