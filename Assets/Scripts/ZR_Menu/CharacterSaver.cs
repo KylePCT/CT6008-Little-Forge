@@ -31,5 +31,6 @@ public class CharacterSaver : MonoBehaviour
         SaveGameManager.SaveCharacter(save);
 
         // Load default scenes
+        SceneLoadManager.Instance.LoadScenesLoadingScreen(3);
     }
 }

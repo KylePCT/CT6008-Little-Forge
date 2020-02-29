@@ -22,6 +22,13 @@ public class SaveItemManager : MonoBehaviour
 
     private void Awake()
     {
+        // DELETES ALL SAVES
+        //SaveGameManager.DeleteCharacter(0);
+        //SaveGameManager.DeleteCharacter(1);
+        //SaveGameManager.DeleteCharacter(2);
+        //SaveGameManager.DeleteCharacter(3);
+        //SaveGameManager.SaveHeader();
+
         if (m_saveItems == null)
             enabled = false;
 
@@ -65,6 +72,7 @@ public class SaveItemManager : MonoBehaviour
         {
             SaveGameManager.SetMainCharFile(m_saveItems[a_slot].m_characterFile);
             // Load scenes
+            SceneLoadManager.Instance.LoadScenesLoadingScreen(3);
         }
         else
         {
