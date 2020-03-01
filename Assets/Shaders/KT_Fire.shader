@@ -108,9 +108,9 @@ Shader "Shader Forge/KT_Fire" {
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
                 float3 normalDirection = i.normalDir;
                 float3 viewReflectDirection = reflect( -viewDirection, normalDirection );
-                float4 node_802 = _Time;
+                float4 node_8753 = _Time;
                 float4 node_5912 = _Time;
-                float2 node_6049 = ((i.uv0+node_5912.r)+node_802.g*float2(0.05,-0.2));
+                float2 node_6049 = ((i.uv0+node_5912.r)+node_8753.g*float2(0.05,-0.2));
                 float4 _NoiseTexture_var = tex2D(_NoiseTexture,TRANSFORM_TEX(node_6049, _NoiseTexture));
                 float4 _MainColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _MainColour );
                 float _DistortionIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _DistortionIntensity );
@@ -274,9 +274,9 @@ Shader "Shader Forge/KT_Fire" {
                 float3x3 tangentTransform = float3x3( i.tangentDir, i.bitangentDir, i.normalDir);
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
                 float3 normalDirection = i.normalDir;
-                float4 node_4057 = _Time;
+                float4 node_9750 = _Time;
                 float4 node_5912 = _Time;
-                float2 node_6049 = ((i.uv0+node_5912.r)+node_4057.g*float2(0.05,-0.2));
+                float2 node_6049 = ((i.uv0+node_5912.r)+node_9750.g*float2(0.05,-0.2));
                 float4 _NoiseTexture_var = tex2D(_NoiseTexture,TRANSFORM_TEX(node_6049, _NoiseTexture));
                 float4 _MainColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _MainColour );
                 float _DistortionIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _DistortionIntensity );
@@ -378,9 +378,9 @@ Shader "Shader Forge/KT_Fire" {
             float4 frag(VertexOutput i) : COLOR {
                 UNITY_SETUP_INSTANCE_ID( i );
                 float3 viewDirection = normalize(_WorldSpaceCameraPos.xyz - i.posWorld.xyz);
-                float4 node_5619 = _Time;
+                float4 node_5634 = _Time;
                 float4 node_5912 = _Time;
-                float2 node_6049 = ((i.uv0+node_5912.r)+node_5619.g*float2(0.05,-0.2));
+                float2 node_6049 = ((i.uv0+node_5912.r)+node_5634.g*float2(0.05,-0.2));
                 float4 _NoiseTexture_var = tex2D(_NoiseTexture,TRANSFORM_TEX(node_6049, _NoiseTexture));
                 float4 _MainColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _MainColour );
                 float _DistortionIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _DistortionIntensity );
@@ -462,9 +462,9 @@ Shader "Shader Forge/KT_Fire" {
                 UNITY_INITIALIZE_OUTPUT( UnityMetaInput, o );
                 
                 float4 _MainColour_var = UNITY_ACCESS_INSTANCED_PROP( Props, _MainColour );
-                float4 node_7598 = _Time;
+                float4 node_5151 = _Time;
                 float4 node_5912 = _Time;
-                float2 node_6049 = ((i.uv0+node_5912.r)+node_7598.g*float2(0.05,-0.2));
+                float2 node_6049 = ((i.uv0+node_5912.r)+node_5151.g*float2(0.05,-0.2));
                 float4 _NoiseTexture_var = tex2D(_NoiseTexture,TRANSFORM_TEX(node_6049, _NoiseTexture));
                 float _DistortionIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _DistortionIntensity );
                 float2 node_3725 = lerp(_NoiseTexture_var.rgb,float3(i.uv0,0.0),_DistortionIntensity_var).rg;
