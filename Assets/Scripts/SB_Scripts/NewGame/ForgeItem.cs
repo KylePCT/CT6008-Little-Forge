@@ -31,10 +31,6 @@ public class ForgeItem : MonoBehaviour
     private float m_currentCost = 0.0f;
     private int m_itemLevel = 0;
     private TextMesh m_itemText = null;
-    private bool m_inRangeOfPlayer = false;
-    private GameObject m_interactionText = null;
-    private bool m_interacted = false;
-    private float m_waitTimer = 0.0f;
     private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
@@ -44,7 +40,6 @@ public class ForgeItem : MonoBehaviour
     private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
-        m_interactionText = GameObject.Find("NewCanvas/InteractText");
         m_itemText = transform.GetChild(0).gameObject.GetComponent<TextMesh>();
         if(m_itemLevel > 0)
         {
@@ -60,23 +55,7 @@ public class ForgeItem : MonoBehaviour
 
     private void Update()
     {
-        InteractionTrigger();
-        if(m_waitTimer >= 0)
-        {
-            m_waitTimer -= Time.deltaTime;
-        }
-    }
-
-    private void InteractionTrigger()
-    {
-        if (m_inRangeOfPlayer && m_interacted)
-        {
-            if (m_waitTimer <= 0)
-            {
-                BuyUpgrade();
-                m_waitTimer = 1.5f;
-            }
-        }
+        UpdateItemText();
     }
 
     private void BuyUpgrade()
@@ -95,7 +74,6 @@ public class ForgeItem : MonoBehaviour
         {
             Debug.Log("Log: Not Enough To Purchase Upgrade!!!");
         }
-        m_interacted = false;
     }
 
     private void UpdateItemText()
@@ -113,36 +91,6 @@ public class ForgeItem : MonoBehaviour
         m_previousCost = m_currentCost;
         m_currentCost = Mathf.Ceil(m_previousCost * (m_itemLevel + 1));
         UpdateItemText();
-    }
-
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            m_inRangeOfPlayer = true;
-            m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to upgrade " + gameObject.name;
-            m_interactionText.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            m_inRangeOfPlayer = false;
-            m_interactionText.SetActive(false);
-        }
-    }
-
-    public void InteractKey(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            if (m_inRangeOfPlayer)
-            {
-                m_interacted = true;
-            }
-        }
     }
 
     public int GetLevel() => m_itemLevel;

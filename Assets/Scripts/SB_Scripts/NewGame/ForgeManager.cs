@@ -21,16 +21,22 @@ public class ForgeManager : MonoBehaviour
     //////////////////////////////////////////////////
     //// Variables
     //UI
+    private GameObject m_uiTheForge = null;
     private GameObject m_uiItemHolder = null;
     private GameObject[] m_uiItemID = new GameObject[7];
 
     private GameObject m_theForge = null;
     private GameObject[] m_theForgeItems = new GameObject[7];
+    private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
     //// Functions
+    private void Awake() => m_inputSystem = new InputSystem();
+    private void OnEnable() => m_inputSystem.Player.Enable();
+    private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
+        m_uiTheForge = gameObject.transform.Find("TheForgeUI").gameObject;
         m_uiItemHolder = gameObject.transform.Find("TheForgeUI/panel/UpgradeHolder").gameObject;
         m_theForge = GameObject.Find("---- FORGE");
         StartErrorChecks();
@@ -41,18 +47,36 @@ public class ForgeManager : MonoBehaviour
             Debug.Log(m_uiItemID[i].name + "   " + m_theForgeItems[i].name);
 
             Button btn = m_uiItemID[i].transform.GetChild(3).GetComponent<Button>();
-            //btn.onClick.AddListener(m_theForgeItems[i].GetComponent<ForgeItem>().ButtonBuyUpgrade());
+            btn.onClick.AddListener(m_theForgeItems[i].GetComponent<ForgeItem>().ButtonBuyUpgrade);
 
         }
         UpdateForgeUI();
+        m_uiTheForge.SetActive(false);
     }
 
     private void Update()
     {
         UpdateForgeUI();
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        CheckIfMenuShouldBeOpen();
+        
     }
+
+    private void CheckIfMenuShouldBeOpen()
+    {
+        if (m_theForge.transform.GetChild(0).gameObject.GetComponent<ForgeObject>().ShouldMenuBeOpen())
+        {
+            m_uiTheForge.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            m_uiTheForge.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
     private void UpdateForgeUI()
     {
         for (int i = 0; i < m_uiItemID.Length; i++)
