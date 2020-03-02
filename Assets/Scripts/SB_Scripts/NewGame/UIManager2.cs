@@ -17,22 +17,17 @@ public class UIManager2 : MonoBehaviour
     //// Variables
     [SerializeField] private Text m_moneyText = null;
     [SerializeField] private Color m_moneyColor = Color.black;
-    [SerializeField] private Text m_forgeText = null;
-    [SerializeField] private Color m_forgeColor = Color.black;
-    private ForgeRebuild m_forge;
 
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
-        m_forge = GameObject.Find("Forge").GetComponent<ForgeRebuild>();
+        PlayersBank.Instance.SetMoney(100000);
         m_moneyText.color = m_moneyColor;
-        m_forgeText.color = m_forgeColor;
     }
 
     private void Update()
     {
-        m_moneyText.text = PlayersBank.Instance.GetMoney().ToString();
-        m_forgeText.text = m_forge.GetForgeLevel().ToString();
+        m_moneyText.text = PlayersBank.Instance.GetMoney().ToString("n0");
     }
 }
