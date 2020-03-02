@@ -144,4 +144,8 @@ public class ForgeItem : MonoBehaviour
             }
         }
     }
+
+    public int GetLevel() => m_itemLevel;
+    public float GetUpgradeCost() => m_currentCost;
+    public void ButtonBuyUpgrade() => BuyUpgrade();
 }
