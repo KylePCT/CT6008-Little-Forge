@@ -60,7 +60,7 @@ public class ForgeItem : MonoBehaviour
 
     private void BuyUpgrade()
     {
-        if (m_itemLevel == 10)
+        if (m_itemLevel == 9)
         {
             return;
         }

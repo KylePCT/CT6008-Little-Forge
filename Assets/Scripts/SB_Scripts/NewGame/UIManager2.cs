@@ -22,7 +22,7 @@ public class UIManager2 : MonoBehaviour
     //// Functions
     private void Start()
     {
-        PlayersBank.Instance.SetMoney(100000);
+        PlayersBank.Instance.SetMoney(10062880000);
         m_moneyText.color = m_moneyColor;
     }
 
