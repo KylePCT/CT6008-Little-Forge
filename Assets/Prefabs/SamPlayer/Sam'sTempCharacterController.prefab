@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2006796355508747213}
   - component: {fileID: 2006796355508747203}
   - component: {fileID: 1733483261}
+  - component: {fileID: 229477012}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e643c5b162d15ef4db6982f516376f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 3
+  m_moveSpeed: 4
   m_isGrounded: 1
   m_jumpHeight: 2
 --- !u!114 &2006796355508747213
@@ -133,6 +134,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b14d5d77-9ae1-4011-8a6c-c14a80bd5d0c
     m_ActionName: Player/Zoom[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: InteractKey
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 81750660-480b-4937-9b35-73ad8b183cce
+    m_ActionName: Player/Interact[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 229477012}
+        m_MethodName: FireTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7a4b643b-882a-4c61-926a-6742a870e35b
+    m_ActionName: Player/Shoot[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -164,6 +195,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1.01, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &229477012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006796355508747208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a498098b99929b4487034d2ed9ea14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weaponEnabled: 1
+  m_fireRate: 0.2
+  m_damage: 10
+  m_dmgVariation: 0.2
 --- !u!1 &2006796355654475060
 GameObject:
   m_ObjectHideFlags: 0

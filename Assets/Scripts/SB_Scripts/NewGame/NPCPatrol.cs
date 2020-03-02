@@ -14,6 +14,7 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using TMPro;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCPatrol : MonoBehaviour
@@ -38,6 +39,7 @@ public class NPCPatrol : MonoBehaviour
     private GameObject m_cam = null;
     private GameObject m_player = null;
     private float m_waitTimer = 2.0f;
+    private GameObject m_interactionText = null;
     [Header("NPC Parameters")]
     [SerializeField] [Tooltip("Yellow circle indication")] private float m_wanderRadius = 15.0f;
     [SerializeField] private float m_speed = 3.0f;
@@ -54,6 +56,8 @@ public class NPCPatrol : MonoBehaviour
     private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
+        m_interactionText = GameObject.Find("NewCanvas/InteractText");
+        m_interactionText.SetActive(false);
         m_cam = Camera.main.gameObject;
         m_nameObject = transform.GetChild(0).gameObject;
         m_player = GameObject.Find("Sam'sTempCharacterController/Player");
@@ -94,7 +98,7 @@ public class NPCPatrol : MonoBehaviour
 
     private void InteractionTrigger()
     {
-        if(m_inRangeOfPlayer && m_interacted)
+        if (m_inRangeOfPlayer && m_interacted)
         {
             m_currentState = NPCStates.NPC_INTERACT;
             m_interacted = false;
@@ -140,6 +144,8 @@ public class NPCPatrol : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             m_inRangeOfPlayer = true;
+            m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to talk.";
+            m_interactionText.SetActive(true);
         }
     }
 
@@ -148,6 +154,7 @@ public class NPCPatrol : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             m_inRangeOfPlayer = false;
+            m_interactionText.SetActive(false);
         }
     }
 

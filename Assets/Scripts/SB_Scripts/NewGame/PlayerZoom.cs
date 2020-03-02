@@ -2,7 +2,7 @@
 /// File: PlayerZoom.cs
 /// Author: Sam Baker
 /// Date created: 28/02/20
-/// Last edit: 28/02/20
+/// Last edit: 02/03/20
 /// Description: 
 /// Comments:
 //////////////////////////////////////////////////
@@ -15,14 +15,21 @@ public class PlayerZoom : MonoBehaviour
 {
     //////////////////////////////////////////////////
     //// Variables
+    private static PlayerZoom m_instance;
+    public static PlayerZoom Instance { get { return m_instance; } }
+
     private GameObject m_cam = null;
     private Vector3 m_origPos = Vector3.zero;
-    private Quaternion m_origRot = Quaternion.Euler(0,0,0);
+    private Quaternion m_origRot = Quaternion.Euler(0, 0, 0);
     private bool m_zoomIn = false;
     [SerializeField] private float zoomSpeed = 5.0f;
 
     //////////////////////////////////////////////////
     //// Functions
+    private void Awake()
+    {
+        m_instance = this;
+    }
     private void Start()
     {
         m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
@@ -60,4 +67,8 @@ public class PlayerZoom : MonoBehaviour
             }
         }
     }
+
+    public void SetZoom(bool a_true) => m_zoomIn = a_true;
+
+    public bool GetZoom() => m_zoomIn;
 }
