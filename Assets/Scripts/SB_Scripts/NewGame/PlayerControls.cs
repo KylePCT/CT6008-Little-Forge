@@ -36,6 +36,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float m_jumpHeight = 2f;
     private float m_gravity = -10f;
     private float m_yAxisVelocity = 0;
+    private TextMesh m_healthInd = null;
     private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
@@ -46,6 +47,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Start()
     {
+        m_healthInd = gameObject.transform.Find("Health").GetComponent<TextMesh>();
         m_controller = GetComponent<CharacterController>();
         m_playerOrientation = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation");
     }
@@ -53,6 +55,7 @@ public class PlayerControls : MonoBehaviour
     private void Update()
     {
         Movement();
+        m_healthInd.text = GetComponent<ObjectHealth>().GetHealth().ToString("n0");
     }
 
     private void Movement()

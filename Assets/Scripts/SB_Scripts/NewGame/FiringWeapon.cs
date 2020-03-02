@@ -49,9 +49,8 @@ public class FiringWeapon : MonoBehaviour
                 {
                     //MUZZLE FLASH TRIGGERS HERE....................
 
-                    //Damage multiplier range
+                    //Damage range
                     m_actaulDamage = Random.Range(m_damage * ( 1 - m_dmgVariation), m_damage * (1 + m_dmgVariation));
-                    Debug.Log(m_actaulDamage);
 
                     RaycastHit hit;
                     if (Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f))
