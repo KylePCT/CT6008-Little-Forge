@@ -40,12 +40,6 @@ public class PlayerOrientation : MonoBehaviour
     private void Update()
     {
         transform.position = m_player.position;
-        
-        //Make player face camera always ??? can change if prefered any other way
-        Vector3 playerYRot = m_player.transform.eulerAngles;
-        playerYRot.y = transform.eulerAngles.y;
-        m_player.transform.eulerAngles = playerYRot;
-
         Rotate();
     }
 
