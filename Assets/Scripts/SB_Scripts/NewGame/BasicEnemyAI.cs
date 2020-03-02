@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
 /// File: BasicEnemyAI.cs
 /// Author: Sam Baker
-/// Date created: 1/03/20
-/// Last edit: 1/03/20
+/// Date created: 01/03/20
+/// Last edit: 01/03/20
 /// Description: Script that can be placed on any object that can be destroyed.
 /// Comments: 
 //////////////////////////////////////////////////
@@ -14,15 +14,6 @@ using UnityEngine.AI;
 
 public class BasicEnemyAI : MonoBehaviour
 {
-    [Header("_____________________________________________________")]
-    [Space(-20)]
-    [Header(" > 'F' triggers interaction.")]
-    [Space(-10)]
-    [Header(" > Interaction is closed with any input.")]
-    [Space(-10)]
-    [Header(" > Patrols to a random position in the yellow sphere.")]
-    [Space(-10)]
-    [Header("Basic Enemy AI")]
     //////////////////////////////////////////////////
     //// Variables
     private ENEMYStates m_currentState = ENEMYStates.ENE_FINDLOCATION;

@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
 /// File: ObjectHealth.cs
 /// Author: Sam Baker
-/// Date created: 1/03/20
-/// Last edit: 1/03/20
+/// Date created: 01/03/20
+/// Last edit: 01/03/20
 /// Description: Script that can be placed on any object that can be destroyed.
 /// Comments: 
 //////////////////////////////////////////////////

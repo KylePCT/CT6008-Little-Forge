@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
 /// File: FiringWeapon.cs
 /// Author: Sam Baker
-/// Date created: 1/03/20
-/// Last edit: 1/03/20
+/// Date created: 01/03/20
+/// Last edit: 01/03/20
 /// Description: Script to control the firing off a weapon.
 /// Comments: 
 //////////////////////////////////////////////////

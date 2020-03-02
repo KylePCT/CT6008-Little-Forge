@@ -22,11 +22,12 @@ public class UIManager2 : MonoBehaviour
     //// Functions
     private void Start()
     {
+        PlayersBank.Instance.SetMoney(100000);
         m_moneyText.color = m_moneyColor;
     }
 
     private void Update()
     {
-        m_moneyText.text = PlayersBank.Instance.GetMoney().ToString();
+        m_moneyText.text = PlayersBank.Instance.GetMoney().ToString("n0");
     }
 }
