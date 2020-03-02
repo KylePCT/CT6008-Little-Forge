@@ -30,12 +30,15 @@ public class ForgeManager : MonoBehaviour
     private GameObject m_theForge = null;
     private GameObject[] m_theForgeItems = new GameObject[7];
 
+    private float m_ignotsTickTimer = 0;
+
     private float m_productionRate = 0;
 
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
+        m_ignotsTickTimer = 2.0f;
         m_uiTheForge = gameObject.transform.Find("TheForgeUI").gameObject;
         m_uiItemHolder = gameObject.transform.Find("TheForgeUI/panel/UpgradeHolder").gameObject;
         m_uiProductionRate = gameObject.transform.Find("TheForgeUI/panel/TotalProduction").gameObject;
@@ -58,6 +61,18 @@ public class ForgeManager : MonoBehaviour
     {
         UpdateForgeUI();
         CheckIfMenuShouldBeOpen();
+        UpdateIngots();
+    }
+
+    private void UpdateIngots()
+    {
+        m_ignotsTickTimer -= Time.deltaTime;
+        if (m_ignotsTickTimer <= 0)
+        {
+            //(m_productionRate/60)/30) - this gets the production rate of every two seconds
+            PlayersBank.Instance.AddIngots(((m_productionRate/60)/30));
+            m_ignotsTickTimer = 2.0f;
+        }
     }
 
     private void CheckIfMenuShouldBeOpen()

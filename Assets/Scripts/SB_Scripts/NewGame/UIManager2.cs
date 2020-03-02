@@ -17,6 +17,8 @@ public class UIManager2 : MonoBehaviour
     //// Variables
     [SerializeField] private Text m_moneyText = null;
     [SerializeField] private Color m_moneyColor = Color.black;
+    [SerializeField] private Text m_ingotsText = null;
+    [SerializeField] private Color m_ingotsColor = Color.black;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -24,10 +26,12 @@ public class UIManager2 : MonoBehaviour
     {
         PlayersBank.Instance.SetMoney(10062880000);
         m_moneyText.color = m_moneyColor;
+        m_ingotsText.color = m_ingotsColor;
     }
 
     private void Update()
     {
         m_moneyText.text = PlayersBank.Instance.GetMoney().ToString("n0");
+        m_ingotsText.text = PlayersBank.Instance.GetIngots().ToString("n0");
     }
 }
