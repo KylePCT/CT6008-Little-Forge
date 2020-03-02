@@ -16,14 +16,7 @@ using UnityEngine.EventSystems;
 
 public class ForgeManager : MonoBehaviour
 {
-    [Header("Health Parameters:")]
-    [Space(-10)]
-    [Header("_____________________________________________________")]
-    [Space(-20)]
-    [Header("     can be destroyed.")]
-    [Space(-15)]
-    [Header(" > Can be placed on any object that")]
-    [Space(-10)]
+
     [Header("Forge Manager")]
     //////////////////////////////////////////////////
     //// Variables
