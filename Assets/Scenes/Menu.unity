@@ -1577,6 +1577,7 @@ MonoBehaviour:
   - {fileID: 661339432}
   - {fileID: 1867299313}
   - {fileID: 995939061}
+  m_deleteButtons: []
 --- !u!1 &478758675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,6 +1901,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: {fileID: 345007601}
   m_money: {fileID: 103932440}
+  m_characterFile:
+    m_saveSlotID: 0
+    m_name: 
+    m_money: 0
 --- !u!114 &661339433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,7 +2086,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2406,7 +2411,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3159,6 +3164,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: {fileID: 1978389073}
   m_money: {fileID: 1975892388}
+  m_characterFile:
+    m_saveSlotID: 0
+    m_name: 
+    m_money: 0
 --- !u!114 &995939062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3940,6 +3949,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: {fileID: 909372549}
   m_money: {fileID: 1739425953}
+  m_characterFile:
+    m_saveSlotID: 0
+    m_name: 
+    m_money: 0
 --- !u!114 &1383938662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4139,7 +4152,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -4759,6 +4772,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: {fileID: 1377341261}
   m_money: {fileID: 259967316}
+  m_characterFile:
+    m_saveSlotID: 0
+    m_name: 
+    m_money: 0
 --- !u!114 &1867299314
 MonoBehaviour:
   m_ObjectHideFlags: 0

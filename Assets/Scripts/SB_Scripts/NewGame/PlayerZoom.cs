@@ -15,6 +15,9 @@ public class PlayerZoom : MonoBehaviour
 {
     //////////////////////////////////////////////////
     //// Variables
+    private static PlayerZoom m_instance;
+    public static PlayerZoom Instance { get { return m_instance; } }
+
     private GameObject m_cam = null;
     private Vector3 m_origPos = Vector3.zero;
     private Quaternion m_origRot = Quaternion.Euler(0,0,0);
@@ -23,6 +26,10 @@ public class PlayerZoom : MonoBehaviour
 
     //////////////////////////////////////////////////
     //// Functions
+    private void Awake()
+    {
+        m_instance = this;
+    }
     private void Start()
     {
         m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
@@ -60,4 +67,8 @@ public class PlayerZoom : MonoBehaviour
             }
         }
     }
+
+    public void SetZoom(bool a_true) => m_zoomIn = a_true;
+
+    public bool GetZoom() => m_zoomIn;
 }
