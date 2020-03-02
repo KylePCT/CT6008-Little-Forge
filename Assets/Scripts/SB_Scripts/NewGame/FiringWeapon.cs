@@ -47,6 +47,12 @@ public class FiringWeapon : MonoBehaviour
                 m_timer -= Time.deltaTime;
                 if(m_timer <= 0)
                 {
+                    //FIX - player could shoot while zoomed out if zoom was untoggled while shooting.
+                    if(!PlayerZoom.Instance.GetZoom())
+                    {
+                        return;
+                    }
+
                     //MUZZLE FLASH TRIGGERS HERE....................
 
                     //Damage range
