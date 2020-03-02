@@ -30,6 +30,7 @@ public class PlayersBank : MonoBehaviour
     //////////////////////////////////////////////////
     //// Variables
     [SerializeField] private float m_playersMoney = 0;
+     private float m_playersIngots = 0;
     private static PlayersBank m_instance;
     public static PlayersBank Instance { get { return m_instance; } }
 
@@ -46,6 +47,11 @@ public class PlayersBank : MonoBehaviour
             m_instance = this;
         }
     }
+    
+    ////////////////////////////////////////////////////
+    /// CURRENCY
+    ////////////////////////////////////////////////////
+    
     /// <summary>
     /// Function inside the PlayersBank.cs, used to increase the amount of money in the players bank.
     /// </summary>
@@ -94,5 +100,59 @@ public class PlayersBank : MonoBehaviour
     public float GetMoney()
     {
         return m_playersMoney;
+    }
+
+    ////////////////////////////////////////////////////
+    /// INGOTS
+    //////////////////////////////////////////////////// 
+
+    /// <summary>
+    /// Function inside the PlayersBank.cs, used to increase the amount of ingots in the players bank.
+    /// </summary>
+    /// <param name="a_ingots">Amount to add to the players bank</param>
+    public void AddIngots(float a_ingots)
+    {
+        m_playersIngots += a_ingots;
+    }
+    /// <summary>
+    /// Function inside the PlayersBank.cs, used to decrease the amount of money in the players bank.
+    /// </summary>
+    /// <param name="a_ingots">Amount to takeaway from the players ingots bank</param>
+    public void TakeAwayIngots(float a_ingots)
+    {
+        if ((m_playersIngots - a_ingots) < 0)
+        {
+            Debug.LogWarning("Warning: Player does not have enough ingots");
+            return;
+        }
+        m_playersIngots -= a_ingots;
+    }
+    /// <summary>
+    /// Function inside the PlayersBank.cs, used to reset the amount of ingots in the players bank.
+    /// </summary>
+    public void ResetIngots()
+    {
+        m_playersIngots = 0;
+    }
+    /// <summary>
+    /// Function inside the PlayersBank.cs, used to set the players ingots to a specific amount.
+    /// </summary>
+    /// <param name="a_ingots">The specific amount to be set (ingots)</param>
+    public void SetIngots(float a_ingots)
+    {
+        if (a_ingots < 0)
+        {
+            Debug.LogWarning("Warning: Player can not have minus ingots!");
+            return;
+        }
+        m_playersIngots = a_ingots;
+    }
+    /// <summary>
+    /// Function inside the PlayersBank.cs, used to get the players current ingots.
+    /// </summary>
+    /// <returns>The int of the players ingots is returned.</returns>
+    public float GetIngots()
+    {
+        return m_playersIngots;
     }
 }
