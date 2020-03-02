@@ -18,7 +18,7 @@ public class PlayerOrientation : MonoBehaviour
     //// Variables
     [SerializeField] [Range(0.1f, 0.6f)] private float m_rotSensitivity = .2f;
     private Transform m_player = null;
-    [SerializeField] private float m_minAngle = -50; 
+    [SerializeField] private float m_minAngle = -50;
     [SerializeField] private float m_maxAngle = 0;
     private float m_yaw = 0.0f;
     private float m_pitch = 0.0f;
@@ -40,6 +40,12 @@ public class PlayerOrientation : MonoBehaviour
     private void Update()
     {
         transform.position = m_player.position;
+
+        //Make player face camera always ??? can change if prefered any other way
+        Vector3 playerYRot = m_player.transform.eulerAngles;
+        playerYRot.y = transform.eulerAngles.y;
+        m_player.transform.eulerAngles = playerYRot;
+
         Rotate();
     }
 
