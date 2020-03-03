@@ -134,11 +134,10 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
-                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
                 float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityObjectToClipPos( v.vertex );
@@ -438,11 +437,10 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
-                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
                 float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 float3 lightColor = _LightColor0.rgb;
                 o.pos = UnityObjectToClipPos( v.vertex );
@@ -666,11 +664,10 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
-                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
                 float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = UnityObjectToClipPos( v.vertex );
                 TRANSFER_SHADOW_CASTER(o)
@@ -833,11 +830,10 @@ Shader "Shader Forge/KT_Water" {
                 float4 _WaveNoise_var = tex2Dlod(_WaveNoise,float4(TRANSFORM_TEX(node_7278, _WaveNoise),0.0,0));
                 float _WaveSpeed_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpeed );
                 float _WaveCount_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveCount );
-                float3 node_554 = (((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var);
                 float _WaveSpread_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveSpread );
                 float _WaveIntensity_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveIntensity );
                 float _WaveHeight_var = UNITY_ACCESS_INSTANCED_PROP( Props, _WaveHeight );
-                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin(node_554)*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
+                v.vertex.xyz += float4(0.0,((_WaveNoise_var.rgb*(((sin((((node_8728.r*_WaveSpeed_var)+mul(unity_ObjectToWorld, v.vertex).rgb)*_WaveCount_var))*_WaveSpread_var)+_WaveIntensity_var)*0.5+0.5))*(_WaveHeight_var*0.05+0.0))).rgb;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
                 o.pos = UnityMetaVertexPosition(v.vertex, v.texcoord1.xy, v.texcoord2.xy, unity_LightmapST, unity_DynamicLightmapST );
                 o.projPos = ComputeScreenPos (o.pos);
