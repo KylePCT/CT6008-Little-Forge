@@ -70,7 +70,7 @@ public class ForgeManager : MonoBehaviour
         if (m_ignotsTickTimer <= 0)
         {
             //(m_productionRate/60)/30) - this gets the production rate of every two seconds
-            PlayersBank.Instance.AddIngots(((m_productionRate/60)/30));
+            PlayersBank.Instance.AddIngots(((m_productionRate)/30));
             m_ignotsTickTimer = 2.0f;
         }
     }
