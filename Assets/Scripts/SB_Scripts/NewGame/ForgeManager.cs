@@ -40,7 +40,7 @@ public class ForgeManager : MonoBehaviour
     {
         m_ignotsTickTimer = 2.0f;
         m_uiTheForge = gameObject.transform.Find("TheForgeUI").gameObject;
-        m_uiItemHolder = gameObject.transform.Find("TheForgeUI/panel/UpgradeHolder").gameObject;
+        m_uiItemHolder = gameObject.transform.Find("TheForgeUI/panel/ScrollRect/Viewport/Upgrades").gameObject;
         m_uiProductionRate = gameObject.transform.Find("TheForgeUI/panel/TotalProduction").gameObject;
         m_theForge = GameObject.Find("---- FORGE");
         StartErrorChecks();
@@ -97,7 +97,7 @@ public class ForgeManager : MonoBehaviour
         {
             m_uiItemID[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_theForgeItems[i].name + " - Level: " +
                 m_theForgeItems[i].GetComponent<ForgeItem>().GetLevel();
-            m_uiItemID[i].transform.GetChild(2).GetComponent<Text>().text = "Cost: " + m_theForgeItems[i].GetComponent<ForgeItem>().GetUpgradeCost().ToString("n0");
+            m_uiItemID[i].transform.GetChild(2).GetComponent<Text>().text = "COST: " + m_theForgeItems[i].GetComponent<ForgeItem>().GetUpgradeCost().ToString("n0");
 
             if(m_theForgeItems[i].GetComponent<ForgeItem>().GetLevel() == 9)
             {
@@ -112,7 +112,7 @@ public class ForgeManager : MonoBehaviour
     {
         if (m_uiItemHolder == null)
         {
-            Debug.LogError("ERROR: 'UpgradeHolder' is not in the 'New Canvas'.");
+            Debug.LogError("ERROR: 'UpgradeHolder or Upgrades' is not in the 'New Canvas'.");
         }
         if (m_theForge == null)
         {
