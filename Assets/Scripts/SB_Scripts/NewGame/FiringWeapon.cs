@@ -22,6 +22,7 @@ public class FiringWeapon : MonoBehaviour
     [Header(" > Left Mouse Button.")]
     [Space(-10)]
     [Header("FiringWeapon's functions")]
+
     //////////////////////////////////////////////////
     //// Variables
     [SerializeField] private bool m_weaponEnabled = true;
@@ -33,10 +34,19 @@ public class FiringWeapon : MonoBehaviour
     private bool m_isFiring = false;
     private GameObject m_cam = null;
 
+    
+
     //////////////////////////////////////////////////
     //// Functions
     private void Start() => m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
-    private void Update() => ShouldFire();
+
+    private void Update()
+    {
+        ShouldFire();
+
+        
+
+    }
 
     private void ShouldFire()
     {
@@ -44,7 +54,10 @@ public class FiringWeapon : MonoBehaviour
         {
             if (m_weaponEnabled)
             {
+                
+
                 m_timer -= Time.deltaTime;
+
                 if(m_timer <= 0)
                 {
                     //FIX - player could shoot while zoomed out if zoom was untoggled while shooting.
@@ -72,6 +85,8 @@ public class FiringWeapon : MonoBehaviour
                     }
                     m_timer = m_fireRate;
                 }
+                
+
             }
         }
     }
@@ -83,15 +98,18 @@ public class FiringWeapon : MonoBehaviour
             if (m_isFiring)
             {
                 m_isFiring = false;
+
             }
             else
             {
                 m_isFiring = true;
-                if(m_weaponEnabled)
+
+                if (m_weaponEnabled)
                 {
                     m_timer = m_fireRate;
                     PlayerZoom.Instance.SetZoom(true);
                 }
+
             }
         }
     }

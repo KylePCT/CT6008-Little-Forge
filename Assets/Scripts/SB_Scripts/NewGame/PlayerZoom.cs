@@ -2,7 +2,7 @@
 /// File: PlayerZoom.cs
 /// Author: Sam Baker
 /// Date created: 28/02/20
-/// Last edit: 02/03/20
+/// Last edit: 11/03/20 by Kyle Tugwell
 /// Description: 
 /// Comments:
 //////////////////////////////////////////////////
@@ -24,6 +24,8 @@ public class PlayerZoom : MonoBehaviour
     private bool m_zoomIn = false;
     [SerializeField] private float zoomSpeed = 5.0f;
 
+    Animator charAnimator;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Awake()
@@ -34,17 +36,26 @@ public class PlayerZoom : MonoBehaviour
     {
         m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
         m_origPos = m_cam.transform.localPosition;
+        charAnimator = GetComponentInChildren<Animator>();
+
     }
 
     private void Update()
     {
+
         if (m_zoomIn)
         {
             m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, new Vector3(0.5f, 0.7f, -1.5f), zoomSpeed * Time.deltaTime);
+
+            charAnimator.SetBool("isShooting", true);
+
         }
         else
         {
             m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, m_origPos, zoomSpeed * Time.deltaTime);
+
+            charAnimator.SetBool("isShooting", false);
+
         }
     }
 

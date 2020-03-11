@@ -2,8 +2,8 @@
 /// File: PlayerControls.cs
 /// Author: Sam Baker
 /// Date created: 28/02/20
-/// Last edit: 28/02/20
-/// Description: 
+/// Last edit: 11/03/2020 by Kyle Tugwell (Adding Animations)
+/// Description: Main player controls.
 /// Comments:
 //////////////////////////////////////////////////
 using System;
@@ -26,6 +26,7 @@ public class PlayerControls : MonoBehaviour
     [Header(" > WSAD & MOUSE - Move & Look")]
     [Space(-10)]
     [Header("CONTROLS")]
+
     //////////////////////////////////////////////////
     //// Variables
     [SerializeField] private float m_moveSpeed = 2.5f;
@@ -39,6 +40,8 @@ public class PlayerControls : MonoBehaviour
     private TextMesh m_healthInd = null;
     private InputSystem m_inputSystem = null;
 
+    Animator charAnimator;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Awake() => m_inputSystem = new InputSystem();
@@ -50,6 +53,9 @@ public class PlayerControls : MonoBehaviour
         m_healthInd = gameObject.transform.Find("Health").GetComponent<TextMesh>();
         m_controller = GetComponent<CharacterController>();
         m_playerOrientation = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation");
+
+        charAnimator = GetComponentInChildren<Animator>();
+
     }
 
     private void Update()
@@ -61,6 +67,9 @@ public class PlayerControls : MonoBehaviour
     private void Movement()
     {
         var moveInput = m_inputSystem.Player.Movement.ReadValue<Vector2>();
+        var zoomInput = m_inputSystem.Player.Zoom.ReadValue<bool>();
+
+        Debug.Log(zoomInput);
 
         Vector3 rotF = m_playerOrientation.transform.forward;
         Vector3 rotR = m_playerOrientation.transform.right;
@@ -76,6 +85,16 @@ public class PlayerControls : MonoBehaviour
 
         m_moveDirection *= Time.deltaTime;
         m_controller.Move(m_moveDirection);
+
+        if (moveInput.x != 0f || moveInput.y != 0f)
+        {
+            charAnimator.SetBool("isWalking", true);
+        }
+
+        else
+        {
+            charAnimator.SetBool("isWalking", false);
+        }
     }
 
     public void Jump(InputAction.CallbackContext ctx)
@@ -86,6 +105,14 @@ public class PlayerControls : MonoBehaviour
             {
                 m_yAxisVelocity = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
                 m_isGrounded = false;
+
+                charAnimator.SetBool("isJumping", true);
+
+            }
+
+            else
+            {
+                charAnimator.SetBool("isWalking", false);
             }
         }
     }
