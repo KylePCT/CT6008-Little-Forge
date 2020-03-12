@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerZoom : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerZoom : MonoBehaviour
     [SerializeField] private float zoomSpeed = 5.0f;
 
     Animator charAnimator;
+    public GameObject gun;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -38,6 +40,8 @@ public class PlayerZoom : MonoBehaviour
         m_origPos = m_cam.transform.localPosition;
         charAnimator = GetComponentInChildren<Animator>();
 
+        gun.SetActive(false);
+
     }
 
     private void Update()
@@ -48,6 +52,7 @@ public class PlayerZoom : MonoBehaviour
             m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, new Vector3(0.5f, 0.7f, -1.5f), zoomSpeed * Time.deltaTime);
 
             charAnimator.SetBool("isShooting", true);
+            gun.SetActive(true);
 
         }
         else
@@ -55,6 +60,7 @@ public class PlayerZoom : MonoBehaviour
             m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, m_origPos, zoomSpeed * Time.deltaTime);
 
             charAnimator.SetBool("isShooting", false);
+            gun.SetActive(false);
 
         }
     }
