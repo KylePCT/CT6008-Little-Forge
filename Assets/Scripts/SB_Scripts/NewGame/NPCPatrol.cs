@@ -144,10 +144,11 @@ public class NPCPatrol : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             m_inRangeOfPlayer = true;
-           //m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to talk.";
+            m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to talk.";
             m_interactionText.SetActive(true);
         }
     }
+
 
     private void OnTriggerExit(Collider col)
     {
