@@ -18,29 +18,47 @@ public class QuestManager : MonoBehaviour
     //// Variables
     [SerializeField] private Text m_questText = null;
     [SerializeField] private QuestGiver m_currentQuestGiver = null;
+    private static QuestManager m_instance;
+    public static QuestManager Instance { get { return m_instance; } }
 
     //////////////////////////////////////////////////
     //// Functions
-    private void Start()
+    private void Awake()
     {
-        FindQuestGiver();
-        UpdateQuest();
-    }
-
-    private void FindQuestGiver()
-    {
-        var tempQuestGivers = GameObject.FindObjectsOfType<QuestGiver>();
-        foreach (var QuestGivers in tempQuestGivers)
+        if (m_instance != null && m_instance != this)
         {
-            if(QuestGivers.GetActive())
-            {
-                m_currentQuestGiver = QuestGivers;
-            }
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            m_instance = this;
         }
     }
 
-    private void UpdateQuest()
+    private void Update()
     {
-        m_questText.text = m_currentQuestGiver.GetQuestDetails(0) + "\n" + m_currentQuestGiver.GetQuestDetails(1) + "\n" + m_currentQuestGiver.GetQuestReward();
+        UpdateQuestText();
+    }
+
+    private void UpdateQuestText()
+    {
+        if (m_currentQuestGiver != null)
+        {
+            if(m_currentQuestGiver.GetCompleted())
+            {
+                m_questText.text = m_currentQuestGiver.GetQuestDetails(0) + "\nReturn quest for reward.\n" + m_currentQuestGiver.GetQuestReward();
+                return;
+            }
+            m_questText.text = m_currentQuestGiver.GetQuestDetails(0) + "\n" + m_currentQuestGiver.GetQuestDetails(1) + "\n" + m_currentQuestGiver.GetQuestReward();
+        }
+        else
+        {
+            m_questText.text = "No current quest.";
+        }
+    }
+
+    public void UpdateQuestGiver(QuestGiver a_questGiver)
+    {
+        m_currentQuestGiver = a_questGiver;
     }
 }

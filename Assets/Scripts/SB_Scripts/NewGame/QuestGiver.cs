@@ -9,43 +9,65 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class QuestGiver : MonoBehaviour
 {
     //////////////////////////////////////////////////
     //// Variables
-    [SerializeField] private Quest m_quest = null;
+    [SerializeField] private Quest[] m_questList = new Quest[0];
+    private Quest m_quest = null;
     
-    [SerializeField] private float m_moneyReward = 0;
-    [SerializeField] private float m_ingotReward = 0;
-
-    [SerializeField] private bool m_active = false;
+    [SerializeField] private bool m_questActive = false;
+    [SerializeField] private bool m_inRange = false;
+    [SerializeField] private GameObject m_interactionText = null;
+    private int m_questsCompleted = 0;
 
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
-        m_quest.Assign();
+        m_interactionText = GameObject.Find("InteractText");
     }
     private void Update()
     {
-        m_quest.Update();
-        CheckCompletion();
+        if (m_questActive)
+        {
+            m_quest.Update();
+        }
+        if(m_quest == null)
+        {
+            CheckForNextQuest();
+        }
     }
 
-    private void CheckCompletion()
+    private void CheckForNextQuest()
     {
-        if (m_quest.GetCompleted())
+        if (m_questsCompleted < m_questList.Length)
         {
-            Debug.Log("Quest Complete");
-            PlayersBank.Instance.AddMoney(m_moneyReward);
-            PlayersBank.Instance.AddIngots(m_ingotReward);
+            m_quest = m_questList[m_questsCompleted];
+            m_quest.Assign();
+        }
+        else
+        {
             m_quest = null;
         }
     }
 
-    public bool GetActive() => m_active;
+    private void GetReward()
+    {
+        m_questsCompleted++;
+        PlayersBank.Instance.AddMoney(m_quest.GetMoneyReward());
+        PlayersBank.Instance.AddIngots(m_quest.GetIngotReward());
+        m_quest = null;
+        m_questActive = false;
+    }
+
+    public bool GetActive() => m_questActive;
+
+    public bool GetCompleted() => m_quest.GetCompleted();
     /// <summary>
     /// 
     /// </summary>
@@ -58,18 +80,77 @@ public class QuestGiver : MonoBehaviour
 
     public string GetQuestReward()
     {
-        if(m_moneyReward != 0 && m_ingotReward != 0)
+        if(m_quest.GetMoneyReward() != 0 && m_quest.GetIngotReward() != 0)
         {
-            return "Reward: \n$" + m_moneyReward.ToString() + "\n" + m_ingotReward.ToString() + " Ingots";
+            return "Reward: \n$" + m_quest.GetMoneyReward().ToString() + "\n" + m_quest.GetIngotReward().ToString() + " Ingots";
         }
-        else if(m_moneyReward != 0)
+        else if(m_quest.GetMoneyReward() != 0)
         {
-            return "Reward: \n$" + m_moneyReward.ToString();
+            return "Reward: \n$" + m_quest.GetMoneyReward().ToString();
         }
-        else if (m_ingotReward != 0)
+        else if (m_quest.GetIngotReward() != 0)
         {
-            return "Reward: \n" + m_ingotReward.ToString() + " Ingots";
+            return "Reward: \n" + m_quest.GetIngotReward().ToString() + " Ingots";
         }
         return null;
+    }
+
+    public void InteractKey(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (m_inRange)
+            {
+                if (!m_questActive)
+                {
+                    QuestManager.Instance.UpdateQuestGiver(this);
+                    m_questActive = true;
+                    m_interactionText.SetActive(false);
+                    return;
+                }
+                else
+                {
+                    if (m_quest.GetCompleted())
+                    {
+                        QuestManager.Instance.UpdateQuestGiver(null);
+                        GetReward();
+                        m_interactionText.SetActive(false);
+                        m_inRange = false;
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        if (m_quest != null)
+        {
+            if (col.gameObject.tag == "Player")
+            {
+                m_inRange = true;
+                if (!m_questActive)
+                {
+                    m_interactionText.SetActive(true);
+                    m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to accept " + m_quest.GetData(0) + " quest";
+                }
+                else
+                {
+                    if(m_quest.GetCompleted())
+                    {
+                        m_interactionText.SetActive(true);
+                        m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to claim reward";
+                    }
+                }
+            }
+        }
+    }
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            m_interactionText.SetActive(false);
+            m_inRange = false;
+        }
     }
 }

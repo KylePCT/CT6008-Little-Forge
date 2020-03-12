@@ -21,7 +21,12 @@ public class Quest : ScriptableObject
     [SerializeField] private string m_questDescription = "";
     [Tooltip("Can be left at 0 if ActionQuest")]
     [SerializeField] private int m_amount = 0;
+    [SerializeField] private float m_moneyReward = 0;
+    [SerializeField] private float m_ingotReward = 0;
     [SerializeField] private string[] m_actionKeys = new string[0];
+    [SerializeField] private string m_nameOfObjectToAttack = null;
+    private float m_startHealth = 0;
+    private ObjectHealth m_objectToAttack = null;
     private bool[] m_actionCompleted = new bool [0];
     private bool m_isCompleted = false;
 
@@ -34,8 +39,31 @@ public class Quest : ScriptableObject
 
     public void Assign()
     {
-        m_actionCompleted = new bool[m_actionKeys.Length];
         m_isCompleted = false;
+        switch (m_questType)
+        {
+            case QUEST_TYPE.QUEST_ACTION:
+                m_actionCompleted = new bool[m_actionKeys.Length];
+                break;
+            case QUEST_TYPE.QUEST_ATTACK:
+                if (m_nameOfObjectToAttack != "")
+                {
+                    if (GameObject.Find(m_nameOfObjectToAttack).GetComponent<ObjectHealth>())
+                    {
+                        m_objectToAttack = GameObject.Find(m_nameOfObjectToAttack).GetComponent<ObjectHealth>();
+                        m_startHealth = m_objectToAttack.GetHealth();
+                    }
+                }
+                else
+                {
+                    Debug.LogError("ERROR " + m_questName.ToString() + " Name Of Enemy To Attack Not Specified Or Found!");
+                }
+                break;
+            case QUEST_TYPE.QUEST_COLLECT:
+                break;
+            default:
+                break;
+        }
     }
 
     private void CheckQuest()
@@ -82,7 +110,10 @@ public class Quest : ScriptableObject
 
     private void AttackQuest()
     {
-        throw new NotImplementedException();
+        if (m_objectToAttack.GetHealth() < m_startHealth)
+        {
+            SetCompleted(true);
+        }
     }
 
     private void CollectQuest()
@@ -112,6 +143,9 @@ public class Quest : ScriptableObject
         }
         return null;
     }
+
+    public float GetMoneyReward() => m_moneyReward;
+    public float GetIngotReward() => m_ingotReward;
 
     private enum QUEST_TYPE
     {
