@@ -104,9 +104,5 @@ public class ObjectHealth : MonoBehaviour
         }
         UpdateNoHealth();
     }
-
-    public float GetHealth()
-    {
-        return m_currentHealth;
-    }
+    public float GetHealth() => m_currentHealth;
 }
