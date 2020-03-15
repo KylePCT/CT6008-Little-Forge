@@ -96,7 +96,7 @@ public class ForgeManager : MonoBehaviour
         for (int i = 0; i < m_uiItemID.Length; i++)
         {
             m_uiItemID[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_theForgeItems[i].name + " - Level: " +
-                m_theForgeItems[i].GetComponent<ForgeItem>().GetLevel();
+            m_theForgeItems[i].GetComponent<ForgeItem>().GetLevel();
             m_uiItemID[i].transform.GetChild(2).GetComponent<Text>().text = "COST: " + m_theForgeItems[i].GetComponent<ForgeItem>().GetUpgradeCost().ToString("n0");
 
             if(m_theForgeItems[i].GetComponent<ForgeItem>().GetLevel() == 9)

@@ -21,6 +21,8 @@ public class ForgeObject : MonoBehaviour
     private bool m_shouldMenuBeOpen = false;
     private GameObject m_interactionText = null;
 
+    public GameObject forgeUI;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
@@ -46,6 +48,7 @@ public class ForgeObject : MonoBehaviour
             m_interactionText.SetActive(true);
             m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
             m_inRange = true;
+            forgeUI.SetActive(true);
         }
     }
     private void OnTriggerExit(Collider col)
@@ -55,6 +58,7 @@ public class ForgeObject : MonoBehaviour
             m_interactionText.SetActive(false);
             m_inRange = false;
             m_shouldMenuBeOpen = false;
+            forgeUI.SetActive(false);
         }
     }
 
