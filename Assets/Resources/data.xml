@@ -1,14 +1,47 @@
 <?xml version="1.0"?>
+
+<!--HOW TO USE-->
+
+<!--XML works with nodes where you can have node children-->
+<!--every new text has to be inside Dialogue and inside a Line.-->
+
+<!--Different dialogues such as "DialogueTest" (being the main node right now, the parent) as the example can be added 
+for different NPC's but BM_DialogueSystem.cs would need some changes to adapt it.-->
+
+<!--types: regular for normal lines with no options, question for options-->
+<!--id as text ID-->
+<!--destination as next text id-->
+
+
+
 <DialogueTest>
- <Dialogue id="0">
-      <Line destination="1">test1</Line>
-    </Dialogue>
 
-    <Dialogue id="1">
-      <Line destination="2">teeest2</Line>
-    </Dialogue>
+  <Dialogue id="0" type="regular">
+    <Line destination="1">test1</Line>
+  </Dialogue>
 
-    <Dialogue id="2">
-      <Line destination="0">askjdkg</Line>
-    </Dialogue>
+  <Dialogue id="1" type="regular">
+    <Line destination="2">teeest2</Line>
+  </Dialogue>
+
+  <Dialogue id="2" type="regular">
+    <Line destination="3">askjdkg</Line>
+  </Dialogue>
+
+  <Dialogue id="3" type="question">
+    <Line>askjdkg</Line>
+    <Options>
+      <Option type="regular" destination="4">option1 idk</Option>
+      <Option type="regular" destination="4">option2</Option>
+    </Options>
+  </Dialogue>
+
+  <Dialogue id="4" type="regular">
+    <Line destination="0">you picked option 1</Line>
+  </Dialogue>
+
+  <Dialogue id="2" type="regular">
+    <Line destination="3">you picked option 2</Line>
+  </Dialogue>
+
 </DialogueTest>
