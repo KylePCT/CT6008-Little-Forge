@@ -34,7 +34,6 @@ public class FiringWeapon : MonoBehaviour
     private bool m_isFiring = false;
     private GameObject m_cam = null;
 
-    
 
     //////////////////////////////////////////////////
     //// Functions
@@ -43,9 +42,6 @@ public class FiringWeapon : MonoBehaviour
     private void Update()
     {
         ShouldFire();
-
-        
-
     }
 
     private void ShouldFire()

@@ -32,6 +32,10 @@ public class KT_Pause : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject playerOrientation;
+    [SerializeField]
+    private GameObject weapon;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -54,11 +58,14 @@ public class KT_Pause : MonoBehaviour
                 //show cursor, swap canvases
                 isPaused = true;
                 Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 pauseCanvas.SetActive(true);
                 mainCanvas.SetActive(false);
 
                 //stop inputs
                 player.GetComponent<PlayerControls>().OnDisable();
+                playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
+                weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
 
                 //have wedges zoom in
                 LeanTween.scale(wedge_1, new Vector3(1, 1, 1), 0.2f);
@@ -74,8 +81,11 @@ public class KT_Pause : MonoBehaviour
                 //if it's already paused, do the opposite
                 isPaused = false;
                 Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
 
                 player.GetComponent<PlayerControls>().OnEnable();
+                playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
+                weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
 
                 LeanTween.scale(wedge_1, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
                 LeanTween.scale(wedge_2, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
