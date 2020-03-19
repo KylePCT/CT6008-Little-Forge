@@ -9719,8 +9719,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 383543365}
-  - {fileID: 1575984755}
   - {fileID: 1019619548}
+  - {fileID: 1575984755}
   - {fileID: 1598914711}
   - {fileID: 496700253}
   - {fileID: 339060728}
@@ -18757,6 +18757,11 @@ PrefabInstance:
       propertyPath: gun
       value: 
       objectReference: {fileID: 173138665}
+    - target: {fileID: 2006796355508747203, guid: 583d446e0b9096f428e7e443539a0bd9,
+        type: 3}
+      propertyPath: zoomSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2006796355508747213, guid: 583d446e0b9096f428e7e443539a0bd9,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
@@ -21426,7 +21431,7 @@ RectTransform:
   - {fileID: 69712490}
   - {fileID: 21705575}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

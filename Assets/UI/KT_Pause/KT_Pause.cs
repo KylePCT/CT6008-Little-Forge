@@ -66,6 +66,7 @@ public class KT_Pause : MonoBehaviour
                 player.GetComponent<PlayerControls>().OnDisable();
                 playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
                 weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
+                player.GetComponent<PlayerZoom>().enabled = false;
 
                 //have wedges zoom in
                 LeanTween.scale(wedge_1, new Vector3(1, 1, 1), 0.2f);
@@ -86,6 +87,8 @@ public class KT_Pause : MonoBehaviour
                 player.GetComponent<PlayerControls>().OnEnable();
                 playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
                 weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
+                player.GetComponent<PlayerZoom>().enabled = true;
+
 
                 LeanTween.scale(wedge_1, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
                 LeanTween.scale(wedge_2, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
@@ -107,6 +110,8 @@ public class KT_Pause : MonoBehaviour
     {
         isPaused = false;
         Cursor.visible = false;
+        player.GetComponent<PlayerZoom>().enabled = true;
+
 
         player.GetComponent<PlayerControls>().OnEnable();
 
