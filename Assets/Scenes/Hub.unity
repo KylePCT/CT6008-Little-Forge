@@ -5202,7 +5202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20.7, y: -53.755005}
+  m_AnchoredPosition: {x: 20.699951, y: -53.755005}
   m_SizeDelta: {x: 183.24, y: 98.02}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &21705576
@@ -16291,6 +16291,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088955415}
   m_CullTransparentMesh: 0
+--- !u!1 &1098871530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2006796355654475060, guid: 583d446e0b9096f428e7e443539a0bd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308853981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1120086651
 GameObject:
   m_ObjectHideFlags: 0
@@ -21806,6 +21812,8 @@ MonoBehaviour:
   canvasGroup: {fileID: 496700257}
   fadeInDelay: 0.5
   player: {fileID: 1993414904}
+  playerOrientation: {fileID: 1098871530}
+  weapon: {fileID: 1993414904}
   changeTimeSeconds: 0.2
   startAlpha: 0
   endAlpha: 1

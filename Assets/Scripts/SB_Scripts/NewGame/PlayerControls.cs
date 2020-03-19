@@ -46,7 +46,7 @@ public class PlayerControls : MonoBehaviour
     //// Functions
     private void Awake() => m_inputSystem = new InputSystem();
     public void OnEnable() => m_inputSystem.Player.Enable();
-    public void OnDisable() => m_inputSystem.Player.Disable();
+    public void OnDisable() => m_inputSystem.Player.Disable(); 
 
     private void Start()
     {
