@@ -79,6 +79,8 @@ public class KT_CirclePause : MonoBehaviour
             buttons[oldMenuItem].sceneImage.color = buttons[oldMenuItem].idleColour;
             oldMenuItem = currentMenuItem;
             buttons[currentMenuItem].sceneImage.color = buttons[currentMenuItem].highlightColour;
+
+            LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
         }
     }
 

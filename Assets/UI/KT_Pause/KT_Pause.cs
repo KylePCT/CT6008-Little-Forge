@@ -30,6 +30,9 @@ public class KT_Pause : MonoBehaviour
     //fade for alpha
     public float fadeInDelay;
 
+    [SerializeField]
+    private GameObject player;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
@@ -43,8 +46,8 @@ public class KT_Pause : MonoBehaviour
     }
     void Update()
     {
-        //if 'Esc' or button 'Cancel is pressed
-        if (Input.GetButtonDown("Cancel"))
+        //if 'Esc' or button 'Cancel' is pressed
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (isPaused == false)
             {
@@ -53,6 +56,9 @@ public class KT_Pause : MonoBehaviour
                 Cursor.visible = true;
                 pauseCanvas.SetActive(true);
                 mainCanvas.SetActive(false);
+
+                //stop inputs
+                player.GetComponent<PlayerControls>().OnDisable();
 
                 //have wedges zoom in
                 LeanTween.scale(wedge_1, new Vector3(1, 1, 1), 0.2f);
@@ -68,6 +74,8 @@ public class KT_Pause : MonoBehaviour
                 //if it's already paused, do the opposite
                 isPaused = false;
                 Cursor.visible = false;
+
+                player.GetComponent<PlayerControls>().OnEnable();
 
                 LeanTween.scale(wedge_1, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
                 LeanTween.scale(wedge_2, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
@@ -89,6 +97,8 @@ public class KT_Pause : MonoBehaviour
     {
         isPaused = false;
         Cursor.visible = false;
+
+        player.GetComponent<PlayerControls>().OnEnable();
 
         LeanTween.scale(wedge_1, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
         LeanTween.scale(wedge_2, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
