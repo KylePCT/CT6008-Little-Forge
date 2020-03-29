@@ -94,7 +94,6 @@ public class FiringWeapon : MonoBehaviour
             if (m_isFiring)
             {
                 m_isFiring = false;
-
             }
             else
             {
@@ -103,9 +102,7 @@ public class FiringWeapon : MonoBehaviour
                 if (m_weaponEnabled)
                 {
                     m_timer = m_fireRate;
-                    PlayerZoom.Instance.SetZoom(true);
                 }
-
             }
         }
     }

@@ -34,6 +34,10 @@ public class ForgeManager : MonoBehaviour
 
     private float m_productionRate = 0;
 
+    [SerializeField] private GameObject m_player;
+    [SerializeField] private GameObject m_playerOrientation;
+    [SerializeField] private GameObject m_weapon;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
@@ -82,12 +86,22 @@ public class ForgeManager : MonoBehaviour
             m_uiTheForge.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+
+            m_player.GetComponent<PlayerControls>().OnDisable();
+            m_playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
+            m_weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
+            m_player.GetComponent<PlayerZoom>().enabled = false;
         }
         else
         {
             m_uiTheForge.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+
+            m_player.GetComponent<PlayerControls>().OnEnable();
+            m_playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
+            m_weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
+            m_player.GetComponent<PlayerZoom>().enabled = true;
         }
     }
 
