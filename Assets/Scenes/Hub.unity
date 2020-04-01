@@ -10028,6 +10028,7 @@ MonoBehaviour:
   m_questActive: 0
   m_inRange: 0
   m_interactionText: {fileID: 1289792189}
+  questText: {fileID: 21705574}
 --- !u!23 &344587770
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14267,7 +14268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_questText: {fileID: 21705576}
   m_currentQuestGiver: {fileID: 0}
-  questText: {fileID: 21705574}
 --- !u!4 &712408586
 Transform:
   m_ObjectHideFlags: 0
@@ -20989,7 +20989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpComponent: {fileID: 1289792191}
-  delay: 0.05
+  delay: 0.01
   fullText: Press 'F' to talk.
 --- !u!1 &1291584216
 GameObject:
