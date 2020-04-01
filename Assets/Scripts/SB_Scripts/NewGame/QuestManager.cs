@@ -11,12 +11,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
     //////////////////////////////////////////////////
     //// Variables
-    [SerializeField] private Text m_questText = null;
+    [SerializeField] private TextMeshProUGUI m_questText = null;
     [SerializeField] private QuestGiver m_currentQuestGiver = null;
     private static QuestManager m_instance;
     public static QuestManager Instance { get { return m_instance; } }
