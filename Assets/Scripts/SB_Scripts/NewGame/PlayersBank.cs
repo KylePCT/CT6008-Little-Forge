@@ -45,6 +45,7 @@ public class PlayersBank : MonoBehaviour
         else
         {
             m_instance = this;
+            DontDestroyOnLoad(this);
         }
     }
     
