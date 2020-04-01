@@ -19,6 +19,7 @@ public class QuestManager : MonoBehaviour
     //// Variables
     [SerializeField] private TextMeshProUGUI m_questText = null;
     [SerializeField] private QuestGiver m_currentQuestGiver = null;
+
     private static QuestManager m_instance;
     public static QuestManager Instance { get { return m_instance; } }
 
@@ -39,6 +40,7 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         UpdateQuestText();
+
     }
 
     private void UpdateQuestText()
@@ -47,10 +49,14 @@ public class QuestManager : MonoBehaviour
         {
             if(m_currentQuestGiver.GetCompleted())
             {
-                m_questText.text = m_currentQuestGiver.GetQuestDetails(0) + "\nReturn quest for reward.\n" + m_currentQuestGiver.GetQuestReward();
+                //GetQuestDetail(0) is heading, (1) is description
+
+                m_questText.text = "<size=+4>" + m_currentQuestGiver.GetQuestDetails(0) + "</size>\n- Return to the quest board for reward.";
+
                 return;
             }
-            m_questText.text = m_currentQuestGiver.GetQuestDetails(0) + "\n" + m_currentQuestGiver.GetQuestDetails(1) + "\n" + m_currentQuestGiver.GetQuestReward();
+
+            m_questText.text = "<size=+4>" + m_currentQuestGiver.GetQuestDetails(0) + "</size>\n- " + m_currentQuestGiver.GetQuestDetails(1) + "\n<color=#FFBD00>" + m_currentQuestGiver.GetQuestReward() + "</color>";
         }
         else
         {
