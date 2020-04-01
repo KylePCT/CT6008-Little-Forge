@@ -23,34 +23,58 @@ public class KT_Typewriter : MonoBehaviour
     public string fullText;
     private string currentText;
     private int characterIndex;
+    private float m_timer;
 
     //////////////////////////////////////////////////
     //// Functions
+    //void OnEnable()
+    //{
+    //    StartCoroutine(ShowText());
+    //}
+
+    //void Update()
+    //{
+    //    if (fullText != tmpComponent.text)
+    //    {
+    //        fullText = tmpComponent.text;
+    //    }
+    //}
+
+    //IEnumerator ShowText()
+    //{
+    //    int characterIndex = 0;
+
+    //    while(characterIndex++ != fullText.Length)
+    //    {
+    //        currentText = fullText.Substring(0, characterIndex);
+    //        this.GetComponent<TextMeshProUGUI>().text = currentText;
+
+    //        Debug.Log(characterIndex);
+
+    //        yield return new WaitForSeconds(delay);
+    //    }
+    //}
+
     void OnEnable()
     {
-        StartCoroutine(ShowText());
+        fullText = tmpComponent.text;
+        characterIndex = 0;
     }
 
     void Update()
     {
-        if (fullText != tmpComponent.text)
+        m_timer += Time.deltaTime;
+        if (m_timer >= delay)
         {
-            fullText = tmpComponent.text;
+            AddLetter();
+            m_timer = 0;
         }
+        tmpComponent.text = currentText;
     }
 
-    IEnumerator ShowText()
+    private void AddLetter()
     {
-        int characterIndex = 0;
-        
-        while(characterIndex++ != fullText.Length)
-        {
-            currentText = fullText.Substring(0, characterIndex);
-            this.GetComponent<TextMeshProUGUI>().text = currentText;
-
-            Debug.Log(characterIndex);
-
-            yield return new WaitForSeconds(delay);
-        }
+        characterIndex++;
+        currentText = fullText.Substring(0, characterIndex);
     }
 }
