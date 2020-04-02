@@ -10,14 +10,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager2 : MonoBehaviour
 {
     //////////////////////////////////////////////////
     //// Variables
-    [SerializeField] private Text m_moneyText = null;
+    [SerializeField] private TextMeshProUGUI m_moneyText = null;
     [SerializeField] private Color m_moneyColor = Color.black;
-    [SerializeField] private Text m_ingotsText = null;
+    [SerializeField] private TextMeshProUGUI m_ingotsText = null;
     [SerializeField] private Color m_ingotsColor = Color.black;
 
     //////////////////////////////////////////////////

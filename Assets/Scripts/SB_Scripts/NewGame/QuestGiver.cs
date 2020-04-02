@@ -82,15 +82,15 @@ public class QuestGiver : MonoBehaviour
     {
         if(m_quest.GetMoneyReward() != 0 && m_quest.GetIngotReward() != 0)
         {
-            return "Reward: \n$" + m_quest.GetMoneyReward().ToString() + "\n" + m_quest.GetIngotReward().ToString() + " Ingots";
+            return "Reward: $" + m_quest.GetMoneyReward().ToString() + " & " + m_quest.GetIngotReward().ToString() + " Ingots";
         }
         else if(m_quest.GetMoneyReward() != 0)
         {
-            return "Reward: \n$" + m_quest.GetMoneyReward().ToString();
+            return "Reward: $" + m_quest.GetMoneyReward().ToString();
         }
         else if (m_quest.GetIngotReward() != 0)
         {
-            return "Reward: \n" + m_quest.GetIngotReward().ToString() + " Ingots";
+            return "Reward: " + m_quest.GetIngotReward().ToString() + " Ingots";
         }
         return null;
     }
@@ -103,19 +103,23 @@ public class QuestGiver : MonoBehaviour
             {
                 if (!m_questActive)
                 {
-                    QuestManager.Instance.UpdateQuestGiver(this);
                     m_questActive = true;
                     m_interactionText.SetActive(false);
+
+                    QuestManager.Instance.UpdateQuestGiver(this);
+
                     return;
                 }
                 else
                 {
                     if (m_quest.GetCompleted())
                     {
-                        QuestManager.Instance.UpdateQuestGiver(null);
-                        GetReward();
                         m_interactionText.SetActive(false);
                         m_inRange = false;
+
+                        QuestManager.Instance.UpdateQuestGiver(null);
+
+                        GetReward();
                     }
                 }
             }
@@ -131,7 +135,7 @@ public class QuestGiver : MonoBehaviour
                 m_inRange = true;
                 if (!m_questActive)
                 {
-                    m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to accept '" + m_quest.GetData(0) + "' quest";
+                    m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to Accept '" + m_quest.GetData(0) + "' Quest!";
                     m_interactionText.SetActive(true);
 
                 }
@@ -139,7 +143,7 @@ public class QuestGiver : MonoBehaviour
                 {
                     if(m_quest.GetCompleted())
                     {
-                        m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to claim reward";
+                        m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to Claim Reward!";
                         m_interactionText.SetActive(true);
                     }
                 }
