@@ -62,7 +62,6 @@ public class PlayerOrientation : MonoBehaviour
         rotR.y = 0;
         rotF = rotF.normalized;
         rotR = rotR.normalized;
-        Debug.Log(moveInput);
         if (moveInput.x != 0 || moveInput.y != 0)
         {
             m_rotFaceObject.transform.position = transform.position + (rotF * moveInput.y + rotR * moveInput.x) * 150 * Time.deltaTime;
