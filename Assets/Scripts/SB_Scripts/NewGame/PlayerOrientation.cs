@@ -76,9 +76,12 @@ public class PlayerOrientation : MonoBehaviour
         }
         else
         {
-            Vector3 relativePos = m_rotFaceObject.transform.position - m_playerObject.transform.position;
-            Quaternion toRotation = Quaternion.LookRotation(relativePos);
-            m_playerObject.transform.rotation = Quaternion.Lerp(m_playerObject.transform.rotation, toRotation, 5 * Time.deltaTime);
+            if (moveInput.x != 0 || moveInput.y != 0)
+            {
+                Vector3 relativePos = m_rotFaceObject.transform.position - m_playerObject.transform.position;
+                Quaternion toRotation = Quaternion.LookRotation(relativePos);
+                m_playerObject.transform.rotation = Quaternion.Lerp(m_playerObject.transform.rotation, toRotation, 5 * Time.deltaTime);
+            }
         }
         Rotate();
 
