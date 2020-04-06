@@ -40,7 +40,7 @@ public class FiringWeapon : MonoBehaviour
     private void Start()
     {
         m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
-        m_damage = m_damage + KT_LevelSystem.Instance.GetStats().maxStrength;
+        m_damage = m_damage + KT_LevelSystem.Instance.GetStats().baseDamage;
     }
 
     private void Update()

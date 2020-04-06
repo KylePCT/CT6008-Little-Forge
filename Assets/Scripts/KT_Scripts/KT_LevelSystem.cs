@@ -25,6 +25,15 @@ public class KT_LevelSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI xpUI;
     [SerializeField] private TextMeshProUGUI levelUI;
 
+    [System.Serializable]
+    public struct Level
+    {
+        public int requiredXP;
+
+        public int maxHealth;
+        public int baseDamage;
+    }
+
     public Level[] levels;
 
     public void Start()
@@ -86,14 +95,5 @@ public class KT_LevelSystem : MonoBehaviour
     {
         return levels[currentLevel];
     }
-}
-
-[System.Serializable]
-public class CharLevel
-{
-    public int requiredXP;
-
-    public int maxHealth;
-    public int baseDamage;
 }
 
