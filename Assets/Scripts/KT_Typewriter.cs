@@ -2,9 +2,9 @@
 /// File: KT_Typewriter.cs
 /// Author: Kyle Tugwell
 /// Date created: 12/03/20
-/// Last edit: 12/03/20
+/// Last edit: 04/04/20
 /// Description: Allow all interaction text to animate like a typewriter. 
-/// Comments: 
+/// Comments: Rewrote the script to make it work, but left in kyles work  -Sam Baker
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -63,11 +63,14 @@ public class KT_Typewriter : MonoBehaviour
 
     void Update()
     {
-        m_timer += Time.deltaTime;
-        if (m_timer >= delay)
+        if (currentText != fullText)
         {
-            AddLetter();
-            m_timer = 0;
+            m_timer += Time.deltaTime;
+            if (m_timer >= delay)
+            {
+                AddLetter();
+                m_timer = 0;
+            }
         }
         tmpComponent.text = currentText;
     }

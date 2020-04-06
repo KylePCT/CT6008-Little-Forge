@@ -18,10 +18,13 @@ public class PlayerOrientation : MonoBehaviour
     //// Variables
     [SerializeField] [Range(0.1f, 0.6f)] private float m_rotSensitivity = .2f;
     private Transform m_player = null;
+    private GameObject m_playerObject = null;
+    private GameObject m_rotFaceObject = null;
     [SerializeField] private float m_minAngle = -50;
     [SerializeField] private float m_maxAngle = 0;
     private float m_yaw = 0.0f;
     private float m_pitch = 0.0f;
+    private PlayerZoom m_pZoom = null;
     private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
@@ -32,21 +35,57 @@ public class PlayerOrientation : MonoBehaviour
 
     private void Start()
     {
-        m_player = GameObject.Find("Sam'sTempCharacterController/Player").transform;
+        if (GameObject.Find("Sam'sTempCharacterController/Player"))
+        {
+            m_playerObject = GameObject.Find("Sam'sTempCharacterController/Player");
+            m_player = m_playerObject.transform;
+        }
+        if (GameObject.Find("Sam'sTempCharacterController/Player").GetComponent<PlayerZoom>())
+        {
+            m_pZoom = GameObject.Find("Sam'sTempCharacterController/Player").GetComponent<PlayerZoom>();
+        }
+        if (GameObject.Find("SB_RotFace"))
+        {
+            m_rotFaceObject = GameObject.Find("SB_RotFace");
+        }
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
+        var moveInput = m_inputSystem.Player.Movement.ReadValue<Vector2>();
+
+        Vector3 rotF = transform.forward;
+        Vector3 rotR = transform.right;
+        rotF.y = 0;
+        rotR.y = 0;
+        rotF = rotF.normalized;
+        rotR = rotR.normalized;
+        if (moveInput.x != 0 || moveInput.y != 0)
+        {
+            m_rotFaceObject.transform.position = transform.position + (rotF * moveInput.y + rotR * moveInput.x) * 150 * Time.deltaTime;
+        }
         transform.position = m_player.position;
+        if(m_pZoom.GetZoom())
+        {
+            Vector3 playerYRot = m_player.transform.eulerAngles;
+            playerYRot.y = transform.eulerAngles.y;
+            m_player.transform.eulerAngles = playerYRot;
+        }
+        else
+        {
+            if (moveInput.x != 0 || moveInput.y != 0)
+            {
+                Vector3 relativePos = m_rotFaceObject.transform.position - m_playerObject.transform.position;
+                Quaternion toRotation = Quaternion.LookRotation(relativePos);
+                m_playerObject.transform.rotation = Quaternion.Lerp(m_playerObject.transform.rotation, toRotation, 5 * Time.deltaTime);
+            }
+        }
+        Rotate();
 
         //Make player face camera always ??? can change if prefered any other way
-        Vector3 playerYRot = m_player.transform.eulerAngles;
-        playerYRot.y = transform.eulerAngles.y;
-        m_player.transform.eulerAngles = playerYRot;
 
-        Rotate();
     }
 
     private void Rotate()
