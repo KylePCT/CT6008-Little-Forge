@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////
+/// File: KT_LevelSystem.cs
+/// Author: Kyle Tugwell
+/// Date created: 06/04/20
+/// Last edit: 06/04/20
+/// Description: An XP and Level system.
+/// Comments: 
+//////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +15,9 @@ using TMPro;
 
 public class KT_LevelSystem : MonoBehaviour
 {
+    //////////////////////////////////////////////////
+    //// Variables
+    
     private int currentXP;
     private int currentLevel;
     private int xpToNextLevel;
@@ -25,6 +37,10 @@ public class KT_LevelSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI xpUI;
     [SerializeField] private TextMeshProUGUI levelUI;
 
+    //////////////////////////////////////////////////
+    //// Functions
+ 
+    //Struct allows for levels array to contain these parameters to customise
     [System.Serializable]
     public struct Level
     {
@@ -34,6 +50,7 @@ public class KT_LevelSystem : MonoBehaviour
         public int baseDamage;
     }
 
+    //Level array
     public Level[] levels;
 
     public void Start()
@@ -43,13 +60,16 @@ public class KT_LevelSystem : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<ObjectHealth>();
 
+        //Set parameters
         currentXP = 1;
         currentLevel = 0; //Example on getting a level object from the array instead of a single value
         xpToNextLevel = 300;
 
+        //TMP assigning
         xpUI.text = "XP:" + currentXP;
         levelUI.text = "Level: " + currentLevel;
 
+        //refer to Player class and get Health value
         health = player.GetHealth();
 
     }
@@ -67,6 +87,7 @@ public class KT_LevelSystem : MonoBehaviour
         xpUIPercentage = (xpToNextLevel - currentXP) / 100;
     }
 
+    //if the current XP is higher than the xp needed to level up, level up the player and reset
     public void gainXP(int xp)
     {
         currentXP += xp;
@@ -85,6 +106,7 @@ public class KT_LevelSystem : MonoBehaviour
         playerLevel = currentLevel;
     }
 
+    //update UI
     public void UIUpdate()
     {
         xpUI.text = "XP: " + currentXP;
