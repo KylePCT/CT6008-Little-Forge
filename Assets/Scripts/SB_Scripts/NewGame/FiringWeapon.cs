@@ -37,7 +37,11 @@ public class FiringWeapon : MonoBehaviour
 
     //////////////////////////////////////////////////
     //// Functions
-    private void Start() => m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
+    private void Start()
+    {
+        m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
+        m_damage = m_damage + KT_LevelSystem.Instance.GetStats().maxStrength;
+    }
 
     private void Update()
     {
@@ -108,4 +112,9 @@ public class FiringWeapon : MonoBehaviour
     }
 
     public void SetWeaponActive(bool a_true) => m_weaponEnabled = a_true;
+
+    public void SetDamage(float dmg)
+    {
+        m_damage = m_damage + dmg;
+    }
 }
