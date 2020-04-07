@@ -84,8 +84,6 @@ public class PlayerOrientation : MonoBehaviour
         }
         Rotate();
 
-        //Make player face camera always ??? can change if prefered any other way
-
     }
 
     private void Rotate()

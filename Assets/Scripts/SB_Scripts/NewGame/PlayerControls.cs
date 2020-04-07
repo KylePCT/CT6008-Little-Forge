@@ -67,7 +67,7 @@ public class PlayerControls : MonoBehaviour
     private void Movement()
     {
         var moveInput = m_inputSystem.Player.Movement.ReadValue<Vector2>();
-        var zoomInput = m_inputSystem.Player.Zoom.ReadValue<bool>();
+        //var zoomInput = m_inputSystem.Player.Zoom.ReadValue<bool>();
 
         Vector3 rotF = m_playerOrientation.transform.forward;
         Vector3 rotR = m_playerOrientation.transform.right;
