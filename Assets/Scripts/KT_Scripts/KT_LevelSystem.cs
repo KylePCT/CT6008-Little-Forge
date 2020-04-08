@@ -2,9 +2,10 @@
 /// File: KT_LevelSystem.cs
 /// Author: Kyle Tugwell
 /// Date created: 06/04/20
-/// Last edit: 06/04/20
+/// Last edit: 08/04/20
 /// Description: An XP and Level system.
-/// Comments: 
+/// Comments: Assisted in finishing the script all data is read from 
+///         the getstats and operates in game - Sam Baker
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -53,6 +54,9 @@ public class KT_LevelSystem : MonoBehaviour
         public int baseDamage;
     }
 
+    [Header("and ends at 10")]
+    [Space(-10)]
+    [Header("Level starts at 0")]
     //Level array
     public Level[] levels;
 
@@ -102,7 +106,6 @@ public class KT_LevelSystem : MonoBehaviour
 
             UIUpdate();
         }
-        Debug.Log(GetStats().baseDamage);
 
         //xpUIPercentage = (xpToNextLevel - currentXP) / 100;
     }
