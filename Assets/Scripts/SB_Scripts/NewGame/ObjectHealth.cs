@@ -27,6 +27,7 @@ public class ObjectHealth : MonoBehaviour
     //////////////////////////////////////////////////
     //// Variables
     [SerializeField] private float m_startHealth = 100f;
+    [SerializeField] private float m_maxHealth = 100f;
     private float m_currentHealth = 0f;
     [SerializeField] private bool m_hasHealthBar = false;
     [SerializeField] private GameObject m_dmgIndication = null;
@@ -105,4 +106,11 @@ public class ObjectHealth : MonoBehaviour
         UpdateNoHealth();
     }
     public float GetHealth() => m_currentHealth;
+
+    public void SetMaxHealth(int a_maxHealth) => m_maxHealth = a_maxHealth;
+
+    public void GiveMaxHealth()
+    {
+        m_currentHealth = m_maxHealth;
+    }
 }

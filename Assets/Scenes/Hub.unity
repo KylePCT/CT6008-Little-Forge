@@ -6343,6 +6343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -11465,6 +11466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -13491,6 +13493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 1000
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -18325,6 +18328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -20159,6 +20163,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1258527297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1263423163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7189281784597097599, guid: 6893dc11374b6db4ea56c541fee9acf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1504071887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1269074565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21432,6 +21442,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 399301061}
     m_Modifications:
+    - target: {fileID: 2006796355508747203, guid: 583d446e0b9096f428e7e443539a0bd9,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1263423163}
     - target: {fileID: 2006796355508747213, guid: 583d446e0b9096f428e7e443539a0bd9,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -25541,6 +25556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -26340,6 +26356,90 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5613867604693661769, guid: cc455230d4513b6498d5c3a2b96617aa, type: 3}
+--- !u!1001 &1504071887
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1671294630}
+    m_Modifications:
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.053
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.4870215
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.87339
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -58.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15601799
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15601799
+      objectReference: {fileID: 0}
+    - target: {fileID: 6169417372224347756, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15601799
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189281784597097599, guid: 6893dc11374b6db4ea56c541fee9acf3,
+        type: 3}
+      propertyPath: m_Name
+      value: KB_ArmGun
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6893dc11374b6db4ea56c541fee9acf3, type: 3}
 --- !u!1001 &1514727642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27936,6 +28036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -28379,6 +28480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -28693,6 +28795,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90.415, z: 0}
+--- !u!4 &1671294630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8077430231588239140, guid: 583d446e0b9096f428e7e443539a0bd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308853981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1680190852 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1235218775718055407, guid: f60c1eceec2d1864aaf90342288e0902,
@@ -30012,6 +30120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -36025,7 +36134,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -36923,6 +37032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_startHealth: 100
+  m_maxHealth: 100
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
@@ -37390,16 +37500,39 @@ MonoBehaviour:
   xpUI: {fileID: 1411457491}
   levelUI: {fileID: 1705546172}
   levels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - requiredXP: 100
+    maxHealth: 100
+    baseDamage: 1
+  - requiredXP: 200
+    maxHealth: 150
+    baseDamage: 2
+  - requiredXP: 300
+    maxHealth: 200
+    baseDamage: 3
+  - requiredXP: 400
+    maxHealth: 250
+    baseDamage: 4
+  - requiredXP: 500
+    maxHealth: 300
+    baseDamage: 5
+  - requiredXP: 600
+    maxHealth: 350
+    baseDamage: 6
+  - requiredXP: 700
+    maxHealth: 400
+    baseDamage: 7
+  - requiredXP: 800
+    maxHealth: 450
+    baseDamage: 8
+  - requiredXP: 900
+    maxHealth: 500
+    baseDamage: 9
+  - requiredXP: 1000
+    maxHealth: 550
+    baseDamage: 10
+  - requiredXP: 0
+    maxHealth: 600
+    baseDamage: 11
 --- !u!1001 &2018238065
 PrefabInstance:
   m_ObjectHideFlags: 0

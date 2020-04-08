@@ -29,6 +29,7 @@ public class FiringWeapon : MonoBehaviour
     [SerializeField] private float m_fireRate = 0.2f;
     private float m_timer = 0.0f;
     [SerializeField] private float m_damage = 10.0f;
+    private float m_startDamage = 10.0f;
     private float m_actaulDamage = 0.0f;
     [SerializeField] [Range(0.01f, 0.99f)] private float m_dmgVariation = 0.2f;
     private bool m_isFiring = false;
@@ -39,8 +40,9 @@ public class FiringWeapon : MonoBehaviour
     //// Functions
     private void Start()
     {
+        m_startDamage = m_damage;
         m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
-        m_damage = m_damage + KT_LevelSystem.Instance.GetStats().baseDamage;
+        m_damage = m_startDamage + KT_LevelSystem.Instance.GetStats().baseDamage;
     }
 
     private void Update()
@@ -67,6 +69,9 @@ public class FiringWeapon : MonoBehaviour
                     }
 
                     //MUZZLE FLASH TRIGGERS HERE....................
+
+                    //Calculate amount of damage based on level
+                    m_damage = m_startDamage + KT_LevelSystem.Instance.GetStats().baseDamage;
 
                     //Damage range
                     m_actaulDamage = Random.Range(m_damage * ( 1 - m_dmgVariation), m_damage * (1 + m_dmgVariation));
