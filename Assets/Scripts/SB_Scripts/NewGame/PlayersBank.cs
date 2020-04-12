@@ -48,11 +48,16 @@ public class PlayersBank : MonoBehaviour
             DontDestroyOnLoad(this);
         }
     }
-    
+
+    private void Start()
+    {
+        PlayersBank.Instance.SetMoney(10062880000);
+    }
+
     ////////////////////////////////////////////////////
     /// CURRENCY
     ////////////////////////////////////////////////////
-    
+
     /// <summary>
     /// Function inside the PlayersBank.cs, used to increase the amount of money in the players bank.
     /// </summary>

@@ -31,7 +31,7 @@ public class PlayerControls : MonoBehaviour
     //// Variables
     [SerializeField] private float m_moveSpeed = 2.5f;
     [SerializeField] private bool m_isGrounded = true;
-    private GameObject m_playerOrientation = null;
+    [SerializeField] private GameObject m_playerOrientation = null;
     private Vector3 m_moveDirection = Vector3.zero;
     private CharacterController m_controller;
     [SerializeField] private float m_jumpHeight = 2f;
@@ -51,7 +51,7 @@ public class PlayerControls : MonoBehaviour
     private void Start()
     {
         m_healthInd = gameObject.transform.Find("Health").GetComponent<TextMesh>();
-        m_controller = GetComponent<CharacterController>();
+        m_controller = this.GetComponent<CharacterController>();
         m_playerOrientation = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation");
 
         charAnimator = GetComponentInChildren<Animator>();
@@ -67,7 +67,7 @@ public class PlayerControls : MonoBehaviour
     private void Movement()
     {
         var moveInput = m_inputSystem.Player.Movement.ReadValue<Vector2>();
-        var zoomInput = m_inputSystem.Player.Zoom.ReadValue<bool>();
+        //var zoomInput = m_inputSystem.Player.Zoom.ReadValue<bool>();
 
         Vector3 rotF = m_playerOrientation.transform.forward;
         Vector3 rotR = m_playerOrientation.transform.right;

@@ -25,9 +25,6 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] private GameObject m_interactionText = null;
     private int m_questsCompleted = 0;
 
-    public GameObject questText;
-    private Animator anim;
-
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
@@ -106,25 +103,23 @@ public class QuestGiver : MonoBehaviour
             {
                 if (!m_questActive)
                 {
-                    QuestManager.Instance.UpdateQuestGiver(this);
                     m_questActive = true;
-
-                    anim.SetBool("isChanged", true);
-
                     m_interactionText.SetActive(false);
+
+                    QuestManager.Instance.UpdateQuestGiver(this);
+
                     return;
                 }
                 else
                 {
                     if (m_quest.GetCompleted())
                     {
-                        QuestManager.Instance.UpdateQuestGiver(null);
-                        GetReward();
-
-                        anim.SetBool("isChanged", true);
-
                         m_interactionText.SetActive(false);
                         m_inRange = false;
+
+                        QuestManager.Instance.UpdateQuestGiver(null);
+
+                        GetReward();
                     }
                 }
             }

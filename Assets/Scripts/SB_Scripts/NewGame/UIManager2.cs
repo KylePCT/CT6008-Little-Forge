@@ -25,7 +25,6 @@ public class UIManager2 : MonoBehaviour
     //// Functions
     private void Start()
     {
-        PlayersBank.Instance.SetMoney(10062880000);
         m_moneyText.color = m_moneyColor;
         m_ingotsText.color = m_ingotsColor;
     }
