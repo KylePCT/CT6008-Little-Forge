@@ -68,7 +68,7 @@ public class FiringWeapon : MonoBehaviour
                 RaycastHit hit;
                 Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
 
-                GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.Euler(0, 0, 0));
+                GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
                 Destroy(impactGO, 10f);
 
                 //if the raycast hits a collider, render the second laser point there
