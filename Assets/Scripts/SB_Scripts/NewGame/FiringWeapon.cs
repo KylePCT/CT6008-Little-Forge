@@ -42,6 +42,7 @@ public class FiringWeapon : MonoBehaviour
     public GameObject firePoint;
     public LineRenderer laserLR;
     public float maximumLength;
+    public GameObject laserMark;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -66,6 +67,9 @@ public class FiringWeapon : MonoBehaviour
             {
                 RaycastHit hit;
                 Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
+
+                GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.Euler(0, 0, 0));
+                Destroy(impactGO, 10f);
 
                 //if the raycast hits a collider, render the second laser point there
                 if (hit.collider)
@@ -102,6 +106,7 @@ public class FiringWeapon : MonoBehaviour
                     //Check to see if impacted object has health.
                     if (hit.transform.gameObject.GetComponent<ObjectHealth>() != null)
                     {
+
                         //if the raycast hits a collider, render the second laser point there
                         if (hit.collider)
                         {
