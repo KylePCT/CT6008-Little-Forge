@@ -36,8 +36,12 @@ public class FiringWeapon : MonoBehaviour
     private GameObject m_cam = null;
 
     public GameObject gun;
-    public GameObject laser;
     Animator gunAnim;
+
+    public GameObject laser;
+    public GameObject firePoint;
+    public LineRenderer laserLR;
+    public float maximumLength;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -53,6 +57,9 @@ public class FiringWeapon : MonoBehaviour
     private void Update()
     {
         ShouldFire();
+
+        //sets laser to shoot from gun
+        laserLR.SetPosition(0, firePoint.transform.position);
     }
 
     private void ShouldFire()
@@ -82,6 +89,18 @@ public class FiringWeapon : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f))
                     {
+                        //if the raycast hits a collider, render the second laser point there
+                        if (hit.collider)
+                        {
+                            laserLR.SetPosition(1, hit.point);
+                        }
+
+                        //this needs to be able to just shoot directly where the player is looking
+                        else
+                        {
+                            laserLR.SetPosition(1, hit.point);
+                        }
+
                         //Impact
                         //Check to see if impacted object has health.
                         if (hit.transform.gameObject.GetComponent<ObjectHealth>() != null)
