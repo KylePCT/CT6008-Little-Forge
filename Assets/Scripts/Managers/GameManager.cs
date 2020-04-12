@@ -24,4 +24,21 @@ public class GameManager : MonoBehaviour
         SaveGameManager.LoadHeader();
     }
 
+    private void Update()
+    {
+        GameSaver();
+    }
+
+    private void GameSaver()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            foreach(GameObjectSaverLoader o in GameObjectSaverLoader.CurrentWorldObjects)
+            {
+                o.SaveObjectData();
+            }
+            SaveGameManager.SaveCharacter(SaveGameManager.GetMainCharFile());
+        }
+    }
+
 }

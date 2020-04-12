@@ -23,6 +23,9 @@ public class SaveSlot
     public string m_name = null;
     public float m_money = 0;
 
+    // World data
+    public List<GameObject> m_worldObjects = null;
+
     public SaveSlot(int a_saveSlot)
     {
         m_saveSlotID = a_saveSlot;
@@ -194,6 +197,41 @@ public static class SaveGameManager
         }
 
         return a_characterInfo;
+    }
+
+    public static void SaveWorldObject(GameObject a_object, int a_objectID)
+    {
+        if (m_mainSaveSlot.m_worldObjects == null)
+            m_mainSaveSlot.m_worldObjects = new List<GameObject>(a_objectID + 1);
+
+        if (m_mainSaveSlot.m_worldObjects.Count < a_objectID)
+            m_mainSaveSlot.m_worldObjects.AddRange(new GameObject[a_objectID - m_mainSaveSlot.m_worldObjects.Count + 1]);
+
+        m_mainSaveSlot.m_worldObjects.Add(a_object);
+        //m_mainSaveSlot.m_worldObjects[a_objectID] = a_object;
+    }
+
+    public static GameObject LoadWorldObject(int a_objectID)
+    {
+        if (m_mainSaveSlot == null)
+        { 
+            Debug.LogError("m_mainSaveSlot is empty");
+            return null;
+        }
+
+        if (m_mainSaveSlot.m_worldObjects == null)
+        {
+            Debug.LogError("m_mainSaveSlot.m_worldObjects is null");
+            return null;
+        }
+
+        if (a_objectID > m_mainSaveSlot.m_worldObjects.Count)
+        {
+            Debug.LogError("a_objectID is greater than m_mainSaveSlot.m_worldObjects.Count");
+            return null;
+        }
+
+        return m_mainSaveSlot.m_worldObjects[a_objectID];
     }
 
     /// <summary>
