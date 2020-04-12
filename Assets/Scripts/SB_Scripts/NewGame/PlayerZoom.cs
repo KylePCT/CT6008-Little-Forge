@@ -26,13 +26,17 @@ public class PlayerZoom : MonoBehaviour
     [SerializeField] private float zoomSpeed = 5.0f;
 
     Animator charAnimator;
+
     public GameObject gun;
+    public GameObject laser;
+
 
     //////////////////////////////////////////////////
     //// Functions
     private void Awake()
     {
         m_instance = this;
+        
     }
     private void Start()
     {
@@ -84,7 +88,6 @@ public class PlayerZoom : MonoBehaviour
             }
         }
     }
-
     public void SetZoom(bool a_true) => m_zoomIn = a_true;
 
     public bool GetZoom() => m_zoomIn;

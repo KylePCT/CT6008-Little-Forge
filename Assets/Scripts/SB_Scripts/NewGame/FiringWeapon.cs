@@ -35,6 +35,9 @@ public class FiringWeapon : MonoBehaviour
     private bool m_isFiring = false;
     private GameObject m_cam = null;
 
+    public GameObject gun;
+    public GameObject laser;
+    Animator gunAnim;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -43,6 +46,8 @@ public class FiringWeapon : MonoBehaviour
         m_startDamage = m_damage;
         m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
         m_damage = m_startDamage + KT_LevelSystem.Instance.GetStats().baseDamage;
+
+        gunAnim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -56,8 +61,6 @@ public class FiringWeapon : MonoBehaviour
         {
             if (m_weaponEnabled)
             {
-                
-
                 m_timer -= Time.deltaTime;
 
                 if(m_timer <= 0)
@@ -94,6 +97,7 @@ public class FiringWeapon : MonoBehaviour
 
             }
         }
+
     }
 
     public void FireTrigger(InputAction.CallbackContext ctx)
@@ -103,6 +107,9 @@ public class FiringWeapon : MonoBehaviour
             if (m_isFiring)
             {
                 m_isFiring = false;
+
+                gunAnim.SetBool("isShooting", false);
+                laser.SetActive(false);
             }
             else
             {
@@ -111,6 +118,9 @@ public class FiringWeapon : MonoBehaviour
                 if (m_weaponEnabled)
                 {
                     m_timer = m_fireRate;
+
+                    gunAnim.SetBool("isShooting", true);
+                    laser.SetActive(true);
                 }
             }
         }
