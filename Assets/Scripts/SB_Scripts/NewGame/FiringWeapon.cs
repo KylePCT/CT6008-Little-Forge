@@ -33,7 +33,7 @@ public class FiringWeapon : MonoBehaviour
     private float m_actaulDamage = 0.0f;
     [SerializeField] [Range(0.01f, 0.99f)] private float m_dmgVariation = 0.2f;
     private bool m_isFiring = false;
-    private GameObject m_cam = null;
+    private Camera m_cam = null;
 
     public GameObject gun;
     Animator gunAnim;
@@ -48,7 +48,7 @@ public class FiringWeapon : MonoBehaviour
     private void Start()
     {
         m_startDamage = m_damage;
-        m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
+        m_cam = Camera.main;
         m_damage = m_startDamage + KT_LevelSystem.Instance.GetStats().baseDamage;
 
         gunAnim = GetComponentInChildren<Animator>();
@@ -98,7 +98,7 @@ public class FiringWeapon : MonoBehaviour
                         //this needs to be able to just shoot directly where the player is looking
                         else
                         {
-                            laserLR.SetPosition(1, hit.point);
+                            laserLR.SetPosition(1, new Vector3(0,0,maximumLength));
                         }
 
                         //Impact
