@@ -98,7 +98,7 @@ public class FiringWeapon : MonoBehaviour
                         //this needs to be able to just shoot directly where the player is looking
                         else
                         {
-                            laserLR.SetPosition(1, new Vector3(0,0,maximumLength));
+                            laserLR.SetPosition(1, new Vector3( 0, 0, maximumLength));
                         }
 
                         //Impact
