@@ -102,6 +102,26 @@ public class FiringWeapon : MonoBehaviour
                     //Check to see if impacted object has health.
                     if (hit.transform.gameObject.GetComponent<ObjectHealth>() != null)
                     {
+                        //if the raycast hits a collider, render the second laser point there
+                        if (hit.collider)
+                        {
+                            laserLR.SetPosition(1, hit.point);
+                        }
+
+                        //this needs to be able to just shoot directly where the player is looking
+                        else
+                        {
+                            laserLR.SetPosition(1, new Vector3( 0, 0, maximumLength));
+                        }
+
+                        //Impact
+                        //Check to see if impacted object has health.
+                        if (hit.transform.gameObject.GetComponent<ObjectHealth>() != null)
+                        {
+                            Debug.Log(hit.transform.name);
+                            hit.transform.gameObject.GetComponent<ObjectHealth>().TakeDamage(m_actaulDamage);
+                        }
+
                         Debug.Log(hit.transform.name);
                         hit.transform.gameObject.GetComponent<ObjectHealth>().TakeDamage(m_actaulDamage);
                     }
