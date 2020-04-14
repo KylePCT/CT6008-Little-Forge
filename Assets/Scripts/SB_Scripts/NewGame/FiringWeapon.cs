@@ -40,6 +40,7 @@ public class FiringWeapon : MonoBehaviour
 
     public GameObject laser;
     public GameObject firePoint;
+    public ParticleSystem laserFire;
     public LineRenderer laserLR;
     public float maximumLength;
     public GameObject laserMark;
@@ -70,6 +71,7 @@ public class FiringWeapon : MonoBehaviour
 
                 GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
                 Destroy(impactGO, 10f);
+
 
                 //if the raycast hits a collider, render the second laser point there
                 if (hit.collider)
@@ -159,6 +161,8 @@ public class FiringWeapon : MonoBehaviour
 
                     gunAnim.SetBool("isShooting", true);
                     laser.SetActive(true);
+                    laserFire.Play();
+
                 }
             }
         }
