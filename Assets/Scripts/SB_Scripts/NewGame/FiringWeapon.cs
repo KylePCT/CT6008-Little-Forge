@@ -15,11 +15,11 @@ using Random = UnityEngine.Random;
 
 public class FiringWeapon : MonoBehaviour
 {
-    [Header(" > Weapon Parameters:")]
+    [Header("> Weapon Parameters:")]
     [Space(-10)]
     [Header("_____________________________________________________")]
     [Space(-20)]
-    [Header(" > Left Mouse Button.")]
+    [Header("> Left Mouse Button.")]
     [Space(-10)]
     [Header("FiringWeapon's functions")]
 
@@ -35,6 +35,9 @@ public class FiringWeapon : MonoBehaviour
     private bool m_isFiring = false;
     [SerializeField] private Camera m_cam = null;
 
+    [Space(10)]
+    [Header("> Weapon Design Parameters")]
+
     public GameObject gun;
     Animator gunAnim;
 
@@ -44,6 +47,8 @@ public class FiringWeapon : MonoBehaviour
     public LineRenderer laserLR;
     public float maximumLength;
     public GameObject laserMark;
+    public int destroyMarkAfter = 5;
+    public GameObject laserImpact;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -69,9 +74,16 @@ public class FiringWeapon : MonoBehaviour
                 RaycastHit hit;
                 Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
 
-                GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
-                Destroy(impactGO, 10f);
+                if (hit.transform.tag != "Enemy")
+                {
+                    GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
+                    Destroy(impactGO, destroyMarkAfter);
+                }
 
+                else
+                {
+                    GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
+                }
 
                 //if the raycast hits a collider, render the second laser point there
                 if (hit.collider)
