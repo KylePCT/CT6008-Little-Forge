@@ -23,6 +23,9 @@ public class Menu_MainButton : MonoBehaviour, IPointerEnterHandler, IPointerClic
     [SerializeField] private float m_fontSizeSmall = 50f;
     [SerializeField] private float m_fontSizeLarge = 100f;
 
+    [SerializeField] private Menu_MainButton m_nextButton = null;
+    [SerializeField] private Menu_MainButton m_prevButton = null;
+
     [SerializeField] private UnityEvent m_OnClick = null;
 
     private TextMeshProUGUI m_TMP = null;
@@ -52,7 +55,10 @@ public class Menu_MainButton : MonoBehaviour, IPointerEnterHandler, IPointerClic
         if (m_currentIE != null)
             StopCoroutine(m_currentIE);
 
-        foreach(Menu_MainButton button in m_buttonInstances)
+        m_currentIE = ChangeFontSize(m_fontSizeSmall, m_fontSizeLarge);
+        StartCoroutine(m_currentIE);
+
+        foreach (Menu_MainButton button in m_buttonInstances)
         {
             if (button == this)
                 continue;
@@ -63,9 +69,6 @@ public class Menu_MainButton : MonoBehaviour, IPointerEnterHandler, IPointerClic
             button.m_currentIE = button.ChangeFontSize(m_fontSizeLarge, m_fontSizeSmall);
             button.StartCoroutine(button.m_currentIE);
         }
-
-        m_currentIE = ChangeFontSize(m_fontSizeSmall, m_fontSizeLarge);
-        StartCoroutine(m_currentIE);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -77,13 +80,17 @@ public class Menu_MainButton : MonoBehaviour, IPointerEnterHandler, IPointerClic
     private IEnumerator ChangeFontSize(float a_startFontSize, float a_targetFontSize)
     {
         float m_currentFontSize = m_TMP.fontSize;
-        float startTime = Time.time;
-        float offset = (m_currentFontSize - a_startFontSize) / (a_targetFontSize - a_startFontSize);
 
-        while (m_TMP.fontSize != a_targetFontSize)
+        if (m_currentFontSize != a_targetFontSize)
         {
-            m_TMP.fontSize = Mathf.Lerp(a_startFontSize, a_targetFontSize, ((Time.time - startTime) + offset) * m_animationSpeed);
-            yield return null;
+            float startTime = Time.time;
+            float offset = (m_currentFontSize - a_startFontSize) / (a_targetFontSize - a_startFontSize);
+
+            while (m_TMP.fontSize != a_targetFontSize)
+            {
+                m_TMP.fontSize = Mathf.Lerp(a_startFontSize, a_targetFontSize, ((Time.time - startTime) + offset) * m_animationSpeed);
+                yield return null;
+            }
         }
     }
 }
