@@ -83,6 +83,7 @@ public class FiringWeapon : MonoBehaviour
                 else
                 {
                     GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
+                    Destroy(enemyImpact, destroyMarkAfter);
                 }
 
                 //if the raycast hits a collider, render the second laser point there
