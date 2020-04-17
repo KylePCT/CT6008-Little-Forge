@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.InputSystem;
 
 public class PlantGrowth : MonoBehaviour
 {
     private InputSystem inputSystem;
+    public GameObject interactText;
+    private bool inRange;
 
     [Tooltip("This is the model and material of the crop.")]
     public Mesh cropMesh;
@@ -35,6 +39,8 @@ public class PlantGrowth : MonoBehaviour
     //Initialize the mesh elements
     private void Start()
     {
+        interactText = GameObject.Find("NewCanvas/InteractText");
+
         fullyGrownPS = GetComponent<ParticleSystem>();
         GetComponent<MeshFilter>().mesh = cropMesh;
         GetComponent<Renderer>().material = cropMaterial;
@@ -44,7 +50,13 @@ public class PlantGrowth : MonoBehaviour
     }
 
     //set the object scale to the startCropSize
-    void Awake() => transform.localScale = new Vector3(startCropSize, startCropSize, startCropSize);
+    void Awake()
+    {
+        inputSystem = new InputSystem();
+
+        transform.localScale = new Vector3(startCropSize, startCropSize, startCropSize);
+    }
+
     private void OnEnable() => inputSystem.Player.Enable();
     private void OnDisable() => inputSystem.Player.Disable();
 
@@ -74,7 +86,49 @@ public class PlantGrowth : MonoBehaviour
         isHarvestable = true;
     }
 
-    void Harvest()
-    { 
+    private void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "Player" && isHarvestable == true)
+        {
+            inRange = true;
+            interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to harvest crop!";
+            interactText.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            interactText.SetActive(false);
+            inRange = false;
+        }
+    }
+
+    void InteractKey(InputAction.CallbackContext ctx)
+    {
+        if (isHarvestable == true)
+        {
+            Debug.Log("Crop harvested");
+            Destroy(this);
+            //give player money or plants or whatever in their inventory
+        }
+
+        {
+            Debug.Log("Crop not harvested");
+            interactText.GetComponent<TextMeshProUGUI>().text = "This crop isn't grown yet!";
+            interactText.SetActive(true);
+        }
+    }
+
+    public bool checkIfHarvestable()
+    {
+        return isHarvestable;
+    }
+
+    public void DestroyMe()
+    {
+        Destroy(this);
+        Debug.Log("I haz ze food");
     }
 }

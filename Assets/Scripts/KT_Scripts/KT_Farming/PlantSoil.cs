@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.InputSystem;
 
 public class PlantSoil : MonoBehaviour
-
 {
     private InputSystem inputSystem;
     private bool inRange;
@@ -15,6 +14,9 @@ public class PlantSoil : MonoBehaviour
     public GameObject cropToGrow;
 
     [SerializeField] private GameObject interactText = null;
+
+    [SerializeField] List<GameObject> Crops;
+    GameObject harvestedPlant;
 
     private void Start()
     {
@@ -27,15 +29,24 @@ public class PlantSoil : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int layerMask = 1 << 9;
-
-        //invert layermask
-        layerMask = ~layerMask;
     }
 
     private void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player" && col.gameObject.tag != "Crop")
+        
+        bool isAnyPlanted = false;
+
+        foreach (GameObject crop in Crops)
+            {
+        if(crop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
+            {
+                isAnyPlanted = true;
+                break;
+            }
+        }
+
+
+        if (col.gameObject.tag == "Player" && isAnyPlanted == false)
         { 
             inRange = true;
             interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to plant crop!";
@@ -61,8 +72,31 @@ public class PlantSoil : MonoBehaviour
             if (ctx.performed && Physics.OverlapSphere(transform.position, 1f).Length > 0)
             {
                 GameObject plantedCrop = Instantiate(cropToGrow, Player.transform.position, Quaternion.identity);
+                Crops.Add(plantedCrop);
+
                 Debug.Log("Crop planted.");
             }
+        }
+
+        //handle harvesting override
+
+        bool isAnyPlanted = false;
+
+        foreach (GameObject crop in Crops)
+        {
+            if (crop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
+            {
+                isAnyPlanted = true;
+                harvestedPlant = crop;
+                Crops.Remove(harvestedPlant);
+                break;
+            }
+        }
+
+       if(isAnyPlanted)
+        {
+            harvestedPlant.GetComponent<PlantGrowth>().DestroyMe();
+            harvestedPlant = null;
         }
     }
 }

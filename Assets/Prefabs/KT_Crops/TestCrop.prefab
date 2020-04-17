@@ -95,12 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ba6eb0b49b53d4cbd5e90b1a87c028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactText: {fileID: 0}
   cropMesh: {fileID: -1995791670670675823, guid: cc455230d4513b6498d5c3a2b96617aa,
     type: 3}
   cropMaterial: {fileID: 2100000, guid: d394df6559d51e046a3a7f5c9e07a5aa, type: 2}
   startCropSize: 0.122
   endCropSize: 1.1
-  cropGrowthRate: 0.1
+  cropGrowthRate: 0.3
 --- !u!198 &4856631454078321174
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4858,8 +4859,8 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4856631454078321183}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 2
   m_Center: {x: -0.0000000037252903, y: 0.000000014901161, z: 0}
