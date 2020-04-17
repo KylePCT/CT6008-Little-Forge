@@ -15,11 +15,11 @@ using Random = UnityEngine.Random;
 
 public class FiringWeapon : MonoBehaviour
 {
-    [Header(" > Weapon Parameters:")]
+    [Header("> Weapon Parameters:")]
     [Space(-10)]
     [Header("_____________________________________________________")]
     [Space(-20)]
-    [Header(" > Left Mouse Button.")]
+    [Header("> Left Mouse Button.")]
     [Space(-10)]
     [Header("FiringWeapon's functions")]
 
@@ -33,22 +33,28 @@ public class FiringWeapon : MonoBehaviour
     private float m_actaulDamage = 0.0f;
     [SerializeField] [Range(0.01f, 0.99f)] private float m_dmgVariation = 0.2f;
     private bool m_isFiring = false;
-    private Camera m_cam = null;
+    [SerializeField] private Camera m_cam = null;
+
+    [Space(10)]
+    [Header("> Weapon Design Parameters")]
 
     public GameObject gun;
     Animator gunAnim;
 
     public GameObject laser;
     public GameObject firePoint;
+    public ParticleSystem laserFire;
     public LineRenderer laserLR;
     public float maximumLength;
+    public GameObject laserMark;
+    public int destroyMarkAfter = 5;
+    public GameObject laserImpact;
 
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
         m_startDamage = m_damage;
-        m_cam = Camera.main;
         m_damage = m_startDamage + KT_LevelSystem.Instance.GetStats().baseDamage;
 
         gunAnim = GetComponentInChildren<Animator>();
@@ -57,9 +63,6 @@ public class FiringWeapon : MonoBehaviour
     private void Update()
     {
         ShouldFire();
-
-        //sets laser to shoot from gun
-        laserLR.SetPosition(0, firePoint.transform.position);
     }
 
     private void ShouldFire()
@@ -68,8 +71,36 @@ public class FiringWeapon : MonoBehaviour
         {
             if (m_weaponEnabled)
             {
-                m_timer -= Time.deltaTime;
+                RaycastHit hit;
+                Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
 
+                if (hit.transform.tag != "Enemy")
+                {
+                    GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
+                    Destroy(impactGO, destroyMarkAfter);
+                }
+
+                else
+                {
+                    GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
+                    Destroy(enemyImpact, destroyMarkAfter);
+                }
+
+                //if the raycast hits a collider, render the second laser point there
+                if (hit.collider)
+                {
+                    //sets laser to shoot from gun
+                    laserLR.SetPosition(0, firePoint.transform.position);
+                    laserLR.SetPosition(1, hit.point);
+                }
+                //this needs to be able to just shoot directly where the player is looking
+                else
+                {
+                    laserLR.SetPosition(0, firePoint.transform.position);
+                    laserLR.SetPosition(1, m_cam.transform.position + (m_cam.transform.forward * maximumLength));
+                }
+
+                m_timer -= Time.deltaTime;
                 if(m_timer <= 0)
                 {
                     //FIX - player could shoot while zoomed out if zoom was untoggled while shooting.
@@ -86,9 +117,11 @@ public class FiringWeapon : MonoBehaviour
                     //Damage range
                     m_actaulDamage = Random.Range(m_damage * ( 1 - m_dmgVariation), m_damage * (1 + m_dmgVariation));
 
-                    RaycastHit hit;
-                    if (Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f))
+                    //Impact
+                    //Check to see if impacted object has health.
+                    if (hit.transform.gameObject.GetComponent<ObjectHealth>() != null)
                     {
+
                         //if the raycast hits a collider, render the second laser point there
                         if (hit.collider)
                         {
@@ -98,7 +131,7 @@ public class FiringWeapon : MonoBehaviour
                         //this needs to be able to just shoot directly where the player is looking
                         else
                         {
-                            laserLR.SetPosition(1, new Vector3(0,0,maximumLength));
+                            laserLR.SetPosition(1, new Vector3( 0, 0, maximumLength));
                         }
 
                         //Impact
@@ -109,11 +142,12 @@ public class FiringWeapon : MonoBehaviour
                             hit.transform.gameObject.GetComponent<ObjectHealth>().TakeDamage(m_actaulDamage);
                         }
 
+                        Debug.Log(hit.transform.name);
+                        hit.transform.gameObject.GetComponent<ObjectHealth>().TakeDamage(m_actaulDamage);
                     }
+
                     m_timer = m_fireRate;
                 }
-                
-
             }
         }
 
@@ -140,6 +174,8 @@ public class FiringWeapon : MonoBehaviour
 
                     gunAnim.SetBool("isShooting", true);
                     laser.SetActive(true);
+                    laserFire.Play();
+
                 }
             }
         }
