@@ -116,7 +116,7 @@ public class PlantGrowth : MonoBehaviour
 
         {
             Debug.Log("Crop not harvested");
-            interactText.GetComponent<TextMeshProUGUI>().text = "This crop isn't grown yet!";
+            interactText.GetComponent<TextMeshProUGUI>().text = "This crop isn't mature yet!";
             interactText.SetActive(true);
         }
     }
@@ -128,7 +128,7 @@ public class PlantGrowth : MonoBehaviour
 
     public void DestroyMe()
     {
-        Destroy(this);
-        Debug.Log("I haz ze food");
+        Destroy(this.gameObject);
+        Debug.Log("Crop harvested.");
     }
 }

@@ -12,11 +12,10 @@ public class PlantSoil : MonoBehaviour
 
     [Tooltip("This is the prefab of the crop model, material and script.")]
     public GameObject cropToGrow;
-
+    public GameObject plantedCrop;
+    bool cropPlanted = false;
+    [SerializeField] Transform placeToGrow;
     [SerializeField] private GameObject interactText = null;
-
-    [SerializeField] List<GameObject> Crops;
-    GameObject harvestedPlant;
 
     private void Start()
     {
@@ -33,29 +32,28 @@ public class PlantSoil : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        
-        bool isAnyPlanted = false;
 
-        foreach (GameObject crop in Crops)
-            {
-        if(crop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
-            {
-                isAnyPlanted = true;
-                break;
-            }
-        }
-
-
-        if (col.gameObject.tag == "Player" && isAnyPlanted == false)
+        if (col.gameObject.tag == "Player" && cropPlanted == false)
         { 
             inRange = true;
             interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to plant crop!";
+            interactText.SetActive(true);
+        }
+        else if(col.gameObject.tag == "Player" && cropPlanted == true && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == false)
+        {
+            interactText.GetComponent<TextMeshProUGUI>().text = "Crop Isnt Ready!";
+            interactText.SetActive(true);
+        }
+        else if (col.gameObject.tag == "Player" && cropPlanted == true && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
+        {
+            interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to harvest Crop!";
             interactText.SetActive(true);
         }
     }
 
     private void OnTriggerExit(Collider col)
     {
+        Debug.Log("Called");
         if (col.gameObject.tag == "Player")
         {
             interactText.SetActive(false);
@@ -69,34 +67,25 @@ public class PlantSoil : MonoBehaviour
         {
             Debug.Log("In range to plant.");
 
-            if (ctx.performed && Physics.OverlapSphere(transform.position, 1f).Length > 0)
+            if (ctx.performed && cropPlanted == false)
             {
-                GameObject plantedCrop = Instantiate(cropToGrow, Player.transform.position, Quaternion.identity);
-                Crops.Add(plantedCrop);
+                plantedCrop = new GameObject();
+                plantedCrop = Instantiate(cropToGrow, placeToGrow.position, placeToGrow.rotation);
+               // plantedCrop = Instantiate(cropToGrow, new Vector3(Player.transform.position.x, 67.47f, Player.transform.position.z), Quaternion.identity);
+                cropPlanted = true;
 
                 Debug.Log("Crop planted.");
             }
         }
 
+        if(ctx.performed && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
+        {
+            //harvest crop
+            plantedCrop.GetComponent<PlantGrowth>().DestroyMe();
+            plantedCrop = null;
+            cropPlanted = false;
+            interactText.SetActive(false);
+        }
         //handle harvesting override
-
-        bool isAnyPlanted = false;
-
-        foreach (GameObject crop in Crops)
-        {
-            if (crop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
-            {
-                isAnyPlanted = true;
-                harvestedPlant = crop;
-                Crops.Remove(harvestedPlant);
-                break;
-            }
-        }
-
-       if(isAnyPlanted)
-        {
-            harvestedPlant.GetComponent<PlantGrowth>().DestroyMe();
-            harvestedPlant = null;
-        }
     }
 }
