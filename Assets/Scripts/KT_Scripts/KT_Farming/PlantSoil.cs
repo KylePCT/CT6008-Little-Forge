@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////
+/// File: PlantSoil.cs
+/// Author: Kyle Tugwell
+/// Date created: 15/04/20
+/// Last edit: 20/04/20
+/// Description: Code to plant the seed in.
+/// Comments: 
+//////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -19,6 +28,7 @@ public class PlantSoil : MonoBehaviour
 
     private void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
         interactText = GameObject.Find("InteractText");
     }
     private void Awake() => inputSystem = new InputSystem();
@@ -30,20 +40,23 @@ public class PlantSoil : MonoBehaviour
     {
     }
 
+    //If the player is in the collision
     private void OnTriggerStay(Collider col)
     {
-
+        //is the crop is not planted, show text to prompt it
         if (col.gameObject.tag == "Player" && cropPlanted == false)
         { 
             inRange = true;
             interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to plant crop!";
             interactText.SetActive(true);
         }
+        //if it is planted but still growing
         else if(col.gameObject.tag == "Player" && cropPlanted == true && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == false)
         {
             interactText.GetComponent<TextMeshProUGUI>().text = "Crop Isnt Ready!";
             interactText.SetActive(true);
         }
+        //if it is fully grown
         else if (col.gameObject.tag == "Player" && cropPlanted == true && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
         {
             interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to harvest Crop!";
@@ -51,6 +64,7 @@ public class PlantSoil : MonoBehaviour
         }
     }
 
+    //if the player leaves the collision
     private void OnTriggerExit(Collider col)
     {
         Debug.Log("Called");
@@ -61,23 +75,28 @@ public class PlantSoil : MonoBehaviour
         }
     }
 
+    //if the interact key is pressed (f in inputmanager)
     public void InteractKey(InputAction.CallbackContext ctx)
     {
+        //if the player is in range
         if (inRange)
         {
             Debug.Log("In range to plant.");
 
+            //and the interact key is pressed with no crop planted
             if (ctx.performed && cropPlanted == false)
             {
                 plantedCrop = new GameObject();
                 plantedCrop = Instantiate(cropToGrow, placeToGrow.position, placeToGrow.rotation);
-               // plantedCrop = Instantiate(cropToGrow, new Vector3(Player.transform.position.x, 67.47f, Player.transform.position.z), Quaternion.identity);
+                plantedCrop.transform.parent = placeToGrow.transform;
+
                 cropPlanted = true;
 
                 Debug.Log("Crop planted.");
             }
         }
 
+        //check if the crop is fully grown
         if(ctx.performed && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
         {
             //harvest crop
@@ -86,6 +105,7 @@ public class PlantSoil : MonoBehaviour
             cropPlanted = false;
             interactText.SetActive(false);
         }
+
         //handle harvesting override
     }
 }

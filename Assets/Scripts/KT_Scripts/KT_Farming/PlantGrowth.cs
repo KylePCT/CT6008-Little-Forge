@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////
+/// File: PlantGrowth.cs
+/// Author: Kyle Tugwell
+/// Date created: 15/04/20
+/// Last edit: 20/04/20
+/// Description: Allows the crops to grow and be harvested.
+/// Comments: 
+//////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -26,6 +35,8 @@ public class PlantGrowth : MonoBehaviour
     [Tooltip("This dictates the growth rate of the crop.")]
     [Range(0f, 0.3f)]
     public float cropGrowthRate = 0.1f;
+
+    public float rotationRate = 30f;
 
     //RNG for plant variance
     private float cropVariance;
@@ -68,6 +79,8 @@ public class PlantGrowth : MonoBehaviour
         {
             //grow the object by growth rate
             transform.localScale += new Vector3(cropGrowthRate, cropGrowthRate, cropGrowthRate) * Time.deltaTime * (cropGrowthRate + cropVariance);
+
+            transform.Rotate(0, 0, rotationRate * Time.deltaTime);
 
             isHarvestable = false;
         }
