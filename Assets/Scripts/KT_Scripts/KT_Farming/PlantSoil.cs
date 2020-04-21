@@ -24,13 +24,14 @@ public class PlantSoil : MonoBehaviour
     public GameObject plantedCrop;
     bool cropPlanted = false;
     [SerializeField] Transform placeToGrow;
-    [SerializeField] private GameObject interactText = null;
+    [SerializeField] private GameObject interactText;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        interactText = GameObject.Find("InteractText");
+        interactText = GameObject.FindGameObjectWithTag("InteractText");
     }
+
     private void Awake() => inputSystem = new InputSystem();
     private void OnEnable() => inputSystem.Player.Enable();
     private void OnDisable() => inputSystem.Player.Disable();
