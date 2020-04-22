@@ -14,6 +14,11 @@ public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private Item m_itemData;
 
+    //please can you set these up sam -kyle
+    public int itemQuantity;
+    public int sellingValue;
+
+
     private void OnTriggerEnter(Collider col)
     {
         if(col.tag == "Player")
@@ -27,7 +32,7 @@ public class PickUpItem : MonoBehaviour
             else
             {
                 //Inventory is full
-                Debug.Log("Full Inventory!!! Remove some items");
+                Debug.Log("Full Inventory! Remove some items");
             }
         }
     }
