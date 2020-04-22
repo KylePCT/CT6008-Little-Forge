@@ -87,7 +87,8 @@ public class RemoveItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendFormat("<b>{0}</b>\n" +
-                                        "{1}", a_item.m_itemName, a_item.m_itemDescription);
+                                        "<size=8>{1}\n</size>" +
+                                        "<size=8>Sell Price: ${2}</size>", a_item.m_itemName, a_item.m_itemDescription, a_item.m_sellPrice);
             return stringBuilder.ToString();
         }
     }
