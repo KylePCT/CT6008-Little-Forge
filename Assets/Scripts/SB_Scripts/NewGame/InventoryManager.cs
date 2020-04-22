@@ -88,13 +88,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(Item a_item)
+    public void AddItem(Item a_item, int a_amount)
     {
         //item already in inv, add to existing
         if(!m_items.Contains(a_item))
         {
             m_items.Add(a_item);
-            m_itemNumbers.Add(1);
+            m_itemNumbers.Add(a_amount);
         }
         //item not already in inv, add to inv
         else
@@ -103,7 +103,7 @@ public class InventoryManager : MonoBehaviour
             {
                 if(a_item == m_items[i])
                 {
-                    m_itemNumbers[i]++;
+                    m_itemNumbers[i] += a_amount;
                 }
             }
         }

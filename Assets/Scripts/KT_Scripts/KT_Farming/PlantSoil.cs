@@ -26,6 +26,10 @@ public class PlantSoil : MonoBehaviour
     [SerializeField] Transform placeToGrow;
     [SerializeField] private GameObject interactText;
 
+    [SerializeField] private Item m_item0 = null;
+    [SerializeField] private Item m_item1 = null;
+    [SerializeField] private int m_minRange, m_maxRange = 0;
+
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -90,6 +94,10 @@ public class PlantSoil : MonoBehaviour
                 plantedCrop = new GameObject();
                 plantedCrop = Instantiate(cropToGrow, placeToGrow.position, placeToGrow.rotation);
                 plantedCrop.transform.parent = placeToGrow.transform;
+                plantedCrop.GetComponent<PlantGrowth>().m_item0 = m_item0;
+                plantedCrop.GetComponent<PlantGrowth>().m_item1 = m_item1;
+                plantedCrop.GetComponent<PlantGrowth>().m_minRange = m_minRange;
+                plantedCrop.GetComponent<PlantGrowth>().m_maxRange = m_maxRange;
 
                 cropPlanted = true;
 

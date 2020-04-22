@@ -19,6 +19,10 @@ public class PlantGrowth : MonoBehaviour
     public GameObject interactText;
     private bool inRange;
 
+    public Item m_item0 = null;
+    public Item m_item1 = null;
+    public int m_minRange, m_maxRange = 0;
+
     [Tooltip("This is the model and material of the crop.")]
     public Mesh cropMesh;
     public Material cropMaterial;
@@ -141,6 +145,8 @@ public class PlantGrowth : MonoBehaviour
 
     public void DestroyMe()
     {
+        InventoryManager.instance.AddItem(m_item0, Random.Range(m_minRange, m_maxRange));
+        InventoryManager.instance.AddItem(m_item1, Random.Range(m_minRange, m_maxRange));
         Destroy(this.gameObject);
         Debug.Log("Crop harvested.");
     }
