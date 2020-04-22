@@ -2,9 +2,10 @@
 /// File: KT_Pause.cs
 /// Author: Kyle Tugwell
 /// Date created: 19/03/20
-/// Last edit: 19/03/20
+/// Last edit: 19/04/20 - sam
 /// Description: A script to manage pausing and the menu's animations.
 /// Comments: Fading code attained from User: MichaelHouse at https://gamedev.stackexchange.com/questions/123938/unity-i-want-to-make-my-ui-text-fade-in-after-5-seconds on 19/03/2020 13:19; everything else is written by me
+///             Implementation of inventory - sam
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -18,6 +19,8 @@ public class KT_Pause : MonoBehaviour
     public bool isPaused = false;
     public GameObject pauseCanvas;
     public GameObject mainCanvas;
+    [SerializeField] private GameObject m_invCanvas = null;
+    [SerializeField] private GameObject m_toolTip = null;
 
     //each menu wedge
     public GameObject wedge_1;
@@ -47,6 +50,8 @@ public class KT_Pause : MonoBehaviour
         LeanTween.scale(wedge_3, new Vector3(0, 0, 0), 0f);
 
         canvasGroup.alpha = 0;
+
+        m_invCanvas.SetActive(false);
     }
     void Update()
     {
@@ -93,6 +98,9 @@ public class KT_Pause : MonoBehaviour
                 LeanTween.scale(wedge_1, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
                 LeanTween.scale(wedge_2, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
                 LeanTween.scale(wedge_3, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
+
+                m_invCanvas.SetActive(false);
+                m_toolTip.SetActive(false);
 
                 FadeOut();
             }

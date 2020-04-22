@@ -2,9 +2,9 @@
 /// File: KT_CirclePause.cs
 /// Author: Kyle Tugwell
 /// Date created: 19/03/20
-/// Last edit: 19/03/20
+/// Last edit: 19/04/20 - sam
 /// Description: A script to manage a circular pause menu which detects the mouse position to decide which wedge is activated.
-/// Comments: 
+/// Comments: inventory implementation - sam
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -21,6 +21,8 @@ public class KT_CirclePause : MonoBehaviour
     private Vector2 fromVector2M = new Vector2(0.5f, 1.0f);
     private Vector2 centerCircle = new Vector2(0.5f, 0.5f);
     private Vector2 toVector2M;
+
+    [SerializeField] private GameObject m_invCanvas = null;
 
     public int menuItems;
     public int currentMenuItem;
@@ -102,7 +104,10 @@ public class KT_CirclePause : MonoBehaviour
         
         else if(currentMenuItem == 2)
         {
+            //Open the inventory
             Debug.Log("2 TL pressed");
+            m_invCanvas.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }

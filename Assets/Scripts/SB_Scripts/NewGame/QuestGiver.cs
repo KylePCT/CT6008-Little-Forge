@@ -61,6 +61,7 @@ public class QuestGiver : MonoBehaviour
         m_questsCompleted++;
         PlayersBank.Instance.AddMoney(m_quest.GetMoneyReward());
         PlayersBank.Instance.AddIngots(m_quest.GetIngotReward());
+        KT_LevelSystem.Instance.gainXP(50);
         m_quest = null;
         m_questActive = false;
     }

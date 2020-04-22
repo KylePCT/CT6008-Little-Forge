@@ -98,14 +98,15 @@ public class KT_LevelSystem : MonoBehaviour
     public void Update()
     {
         UIUpdate();
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Debug.Log("XP yeet");
-            //currentXP = currentXP + 50;
-            gainXP(50);
+        ////DEBUG SETTING
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    Debug.Log("XP yeet");
+        //    //currentXP = currentXP + 50;
+        //    gainXP(50);
 
-            UIUpdate();
-        }
+        //    UIUpdate();
+        //}
 
         //xpUIPercentage = (xpToNextLevel - currentXP) / 100;
     }
