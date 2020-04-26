@@ -33,7 +33,6 @@ public class PlantSoil : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        interactText = GameObject.FindGameObjectWithTag("InteractText");
     }
 
     private void Awake() => inputSystem = new InputSystem();

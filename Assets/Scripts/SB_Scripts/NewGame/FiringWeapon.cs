@@ -41,6 +41,8 @@ public class FiringWeapon : MonoBehaviour
     public GameObject gun;
     Animator gunAnim;
 
+    public GameObject laserHand;
+
     public GameObject laser;
     public GameObject firePoint;
     public ParticleSystem laserFire;
@@ -71,6 +73,8 @@ public class FiringWeapon : MonoBehaviour
         {
             if (m_weaponEnabled)
             {
+                laserHand.SetActive(false);
+
                 RaycastHit hit;
                 Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
 
@@ -163,6 +167,7 @@ public class FiringWeapon : MonoBehaviour
 
                 gunAnim.SetBool("isShooting", false);
                 laser.SetActive(false);
+                laserHand.SetActive(true);
             }
             else
             {
@@ -175,6 +180,8 @@ public class FiringWeapon : MonoBehaviour
                     gunAnim.SetBool("isShooting", true);
                     laser.SetActive(true);
                     laserFire.Play();
+
+                    laserHand.SetActive(false);
 
                 }
             }
