@@ -65,6 +65,19 @@ public class FiringWeapon : MonoBehaviour
     private void Update()
     {
         ShouldFire();
+        CheckZoom();
+    }
+
+    private void CheckZoom()
+    {
+        if (PlayerZoom.Instance.GetZoom())
+        {
+            laserHand.SetActive(false);
+        }
+        else
+        {
+            laserHand.SetActive(true);
+        }
     }
 
     private void ShouldFire()
@@ -73,21 +86,26 @@ public class FiringWeapon : MonoBehaviour
         {
             if (m_weaponEnabled)
             {
-                laserHand.SetActive(false);
+                
 
                 RaycastHit hit;
                 Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
 
                 if (hit.transform.tag != "Enemy")
                 {
-                    GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
-                    Destroy(impactGO, destroyMarkAfter);
+                    if (PlayerZoom.Instance.GetZoom())
+                    {
+                        GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
+                        Destroy(impactGO, destroyMarkAfter);
+                    }
                 }
-
                 else
                 {
-                    GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
-                    Destroy(enemyImpact, destroyMarkAfter);
+                    if (PlayerZoom.Instance.GetZoom())
+                    {
+                        GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
+                        Destroy(enemyImpact, destroyMarkAfter);
+                    }
                 }
 
                 //if the raycast hits a collider, render the second laser point there
@@ -167,7 +185,7 @@ public class FiringWeapon : MonoBehaviour
 
                 gunAnim.SetBool("isShooting", false);
                 laser.SetActive(false);
-                laserHand.SetActive(true);
+                //laserHand.SetActive(true);
             }
             else
             {
@@ -181,7 +199,7 @@ public class FiringWeapon : MonoBehaviour
                     laser.SetActive(true);
                     laserFire.Play();
 
-                    laserHand.SetActive(false);
+                    //laserHand.SetActive(false);
 
                 }
             }
