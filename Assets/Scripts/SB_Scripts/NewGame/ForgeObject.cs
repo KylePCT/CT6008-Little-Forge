@@ -27,7 +27,7 @@ public class ForgeObject : MonoBehaviour
     //// Functions
     private void Start()
     {
-        m_interactionText = GameObject.Find("InteractText");
+        m_interactionText = EssentialSceneFlow.instance.gameObject.transform.GetChild(2).gameObject.transform.GetChild(2).gameObject;
     }
 
     public void InteractKey(InputAction.CallbackContext ctx)

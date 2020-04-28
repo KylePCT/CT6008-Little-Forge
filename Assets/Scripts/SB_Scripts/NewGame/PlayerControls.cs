@@ -39,6 +39,7 @@ public class PlayerControls : MonoBehaviour
     private float m_yAxisVelocity = 0;
     private TextMesh m_healthInd = null;
     private InputSystem m_inputSystem = null;
+    private Transform m_startPos = null;
 
     Animator charAnimator;
 
@@ -50,6 +51,7 @@ public class PlayerControls : MonoBehaviour
 
     private void Start()
     {
+        m_startPos = this.transform;
         m_healthInd = gameObject.transform.Find("Health").GetComponent<TextMesh>();
         m_controller = this.GetComponent<CharacterController>();
         m_playerOrientation = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation");
@@ -130,5 +132,10 @@ public class PlayerControls : MonoBehaviour
         {
             m_isGrounded = false;
         }
+    }
+
+    public void SetStartingPos()
+    {
+        gameObject.transform.position = m_startPos.position;
     }
 }

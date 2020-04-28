@@ -13,13 +13,13 @@ using UnityEngine.SceneManagement;
       
 public class KT_LoadForge : MonoBehaviour {
       
-void OnTriggerEnter(Collider p)
+    void OnTriggerEnter(Collider p)
     {
         //If the player enters the collision box
-              if (p.tag == "Player") 
-              {
-                  //Load the forge scene
-                  SceneManager.LoadScene(4);
-              }
-          }
-      }
+        if (p.tag == "Player") 
+        {
+            //Load the forge scene
+            SceneManager.LoadScene(4);
+        }
+    }
+}
