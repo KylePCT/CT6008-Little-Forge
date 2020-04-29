@@ -5,6 +5,7 @@
 /// Last edit: 01/03/20
 /// Description: Script to control the firing off a weapon.
 /// Comments: 
+/// Kyle added any effect instantiation with particles and visuals marked with KT.
 //////////////////////////////////////////////////
 using System;
 using System.Collections;
@@ -73,31 +74,36 @@ public class FiringWeapon : MonoBehaviour
         {
             if (m_weaponEnabled)
             {
-                laserHand.SetActive(false);
-
                 RaycastHit hit;
                 Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
 
-                if (hit.transform.tag != "Enemy")
+                //KT
+                if (PlayerZoom.Instance.GetZoom())
                 {
-                    GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
-                    Destroy(impactGO, destroyMarkAfter);
+                    laserHand.SetActive(false);
+
+                    if (hit.transform.tag != "Enemy")
+                    {
+                        GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
+                        Destroy(impactGO, destroyMarkAfter);
+                    }
+
+
+                    else
+                    {
+                        GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
+                        Destroy(enemyImpact, destroyMarkAfter);
+                    }
                 }
 
-                else
-                {
-                    GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
-                    Destroy(enemyImpact, destroyMarkAfter);
-                }
-
-                //if the raycast hits a collider, render the second laser point there
+                //if the raycast hits a collider, render the second laser point there - KT
                 if (hit.collider)
                 {
                     //sets laser to shoot from gun
                     laserLR.SetPosition(0, firePoint.transform.position);
                     laserLR.SetPosition(1, hit.point);
                 }
-                //this needs to be able to just shoot directly where the player is looking
+                //this needs to be able to just shoot directly where the player is looking - KT
                 else
                 {
                     laserLR.SetPosition(0, firePoint.transform.position);
@@ -113,8 +119,6 @@ public class FiringWeapon : MonoBehaviour
                         return;
                     }
 
-                    //MUZZLE FLASH TRIGGERS HERE....................
-
                     //Calculate amount of damage based on level
                     m_damage = m_startDamage + KT_LevelSystem.Instance.GetStats().baseDamage;
 
@@ -126,13 +130,13 @@ public class FiringWeapon : MonoBehaviour
                     if (hit.transform.gameObject.GetComponent<ObjectHealth>() != null)
                     {
 
-                        //if the raycast hits a collider, render the second laser point there
+                        //if the raycast hits a collider, render the second laser point there - KT
                         if (hit.collider)
                         {
                             laserLR.SetPosition(1, hit.point);
                         }
 
-                        //this needs to be able to just shoot directly where the player is looking
+                        //this needs to be able to just shoot directly where the player is looking - KT
                         else
                         {
                             laserLR.SetPosition(1, new Vector3( 0, 0, maximumLength));
