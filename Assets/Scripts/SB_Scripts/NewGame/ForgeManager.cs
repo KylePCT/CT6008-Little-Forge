@@ -22,7 +22,7 @@ public class ForgeManager : MonoBehaviour
     //////////////////////////////////////////////////
     //// Variables
     //UI
-    private GameObject m_uiTheForge = null;
+    [SerializeField] private GameObject m_uiTheForge = null;
     private GameObject m_uiItemHolder = null;
     private GameObject m_uiProductionRate = null;
     private GameObject[] m_uiItemID = new GameObject[7];
@@ -43,7 +43,10 @@ public class ForgeManager : MonoBehaviour
     private void Start()
     {
         m_ignotsTickTimer = 2.0f;
-        m_uiTheForge = gameObject.transform.Find("TheForgeUI").gameObject;
+        if (m_uiTheForge == null)
+        {
+            m_uiTheForge = gameObject.transform.Find("TheForgeUI").gameObject;
+        }
         m_uiItemHolder = gameObject.transform.Find("TheForgeUI/panel/ScrollRect/Viewport/Upgrades").gameObject;
         m_uiProductionRate = gameObject.transform.Find("TheForgeUI/panel/TotalProduction").gameObject;
         m_theForge = GameObject.Find("---- FORGE");
@@ -63,9 +66,20 @@ public class ForgeManager : MonoBehaviour
 
     private void Update()
     {
+        UpdateObjects();
         UpdateForgeUI();
         CheckIfMenuShouldBeOpen();
         UpdateIngots();
+    }
+
+    private void UpdateObjects()
+    {
+        if (m_player == null)
+        {
+            m_player = GameObject.FindGameObjectWithTag("Player");
+            m_weapon = GameObject.FindGameObjectWithTag("Player");
+            m_playerOrientation = GameObject.Find("PlayerOrientation");
+        }
     }
 
     private void UpdateIngots()

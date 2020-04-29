@@ -37,7 +37,6 @@ public class KT_SpawnEnemies : MonoBehaviour
 
             Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length - 1)], new Vector3(xPos, yHeight, zPos), Quaternion.identity);
             Instantiate(poofVFX, new Vector3(xPos, yHeight, zPos), Quaternion.identity);
-            Debug.Log("Enemy " + enemyCount + " spawned.");
             yield return new WaitForSeconds(5f);
             enemyCount += 1;
         }

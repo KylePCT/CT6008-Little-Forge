@@ -142,7 +142,6 @@ public class FiringWeapon : MonoBehaviour
                         //Check to see if impacted object has health.
                         if (hit.transform.gameObject.GetComponent<ObjectHealth>() != null)
                         {
-                            Debug.Log(hit.transform.name);
                             hit.transform.gameObject.GetComponent<ObjectHealth>().TakeDamage(m_actaulDamage);
                         }
 
