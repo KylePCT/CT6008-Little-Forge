@@ -29,6 +29,7 @@ public class PlayerZoom : MonoBehaviour
 
     public GameObject gun;
     public GameObject laser;
+    public GameObject rightHand;
 
 
     //////////////////////////////////////////////////
@@ -57,6 +58,7 @@ public class PlayerZoom : MonoBehaviour
 
             charAnimator.SetBool("isShooting", true);
             gun.SetActive(true);
+            rightHand.SetActive(false);
 
         }
         else
@@ -65,6 +67,7 @@ public class PlayerZoom : MonoBehaviour
 
             charAnimator.SetBool("isShooting", false);
             gun.SetActive(false);
+            rightHand.SetActive(true);
 
         }
     }
