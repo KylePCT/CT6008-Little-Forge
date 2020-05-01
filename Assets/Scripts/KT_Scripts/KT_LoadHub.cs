@@ -13,13 +13,14 @@ using UnityEngine.SceneManagement;
       
 public class KT_LoadHub : MonoBehaviour {
       
-void OnTriggerEnter(Collider p)
+    void OnTriggerEnter(Collider p)
     {
         //If the player enters the collision box
-              if (p.tag == "Player") 
-              {
-                  //Load the hub scene
-                  SceneManager.LoadScene(3);
-              }
-          }
-      }
+        if (p.tag == "Player") 
+        {
+            //Call LoadSpawn in 'PlayerControls' to load the main scene and set the player location
+            //EssentialSceneFlow.instance.transform.GetChild(0).GetChild(0).GetComponent<PlayerControls>().LoadSpawn();
+            SceneManager.LoadScene(3);
+        }
+    }
+}

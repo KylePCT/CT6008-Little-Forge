@@ -19,7 +19,7 @@ public class ForgeObject : MonoBehaviour
     //// Variables
     private bool m_inRange = false;
     private bool m_shouldMenuBeOpen = false;
-    private GameObject m_interactionText = null;
+    [SerializeField] private GameObject m_interactionText = null;
 
     private InputSystem m_inputSystem = null;
 
@@ -30,8 +30,13 @@ public class ForgeObject : MonoBehaviour
     public void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
-        m_interactionText = EssentialSceneFlow.instance.gameObject.transform.GetChild(2).gameObject.transform.GetChild(2).gameObject;
-        m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
+        //m_interactionText = EssentialSceneFlow.instance.gameObject.transform.GetChild(2).gameObject.transform.GetChild(2).gameObject;
+        //m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
+        if (m_interactionText == null)
+        {
+            m_interactionText = GameObject.Find("InteractText");
+        }
+        m_interactionText.SetActive(false);
     }
 
     private void Update()
@@ -43,7 +48,6 @@ public class ForgeObject : MonoBehaviour
     {
         if (m_inputSystem.Player.Interact.triggered)
         {
-            Debug.Log("F " + m_inRange);
             if (m_inRange)
             {
                 m_shouldMenuBeOpen = !m_shouldMenuBeOpen;

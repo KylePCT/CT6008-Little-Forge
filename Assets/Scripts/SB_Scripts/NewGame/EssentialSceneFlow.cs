@@ -16,6 +16,7 @@ public class EssentialSceneFlow : MonoBehaviour
         }
         else if (instance != this)
         {
+            EssentialSceneFlow.instance.transform.GetChild(0).GetChild(0).transform.position = this.transform.GetChild(0).GetChild(0).transform.position;
             Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
         }
     }

@@ -149,7 +149,6 @@ public class FiringWeapon : MonoBehaviour
                             hit.transform.gameObject.GetComponent<ObjectHealth>().TakeDamage(m_actaulDamage);
                         }
 
-                        Debug.Log(hit.transform.name);
                         hit.transform.gameObject.GetComponent<ObjectHealth>().TakeDamage(m_actaulDamage);
                     }
 
