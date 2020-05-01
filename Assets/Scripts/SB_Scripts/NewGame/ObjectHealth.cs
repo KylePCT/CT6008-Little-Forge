@@ -72,6 +72,12 @@ public class ObjectHealth : MonoBehaviour
                 //Restart the scene
                 //     or whatever happens when the player dies..................
             }
+            else if (gameObject.transform.tag == "Enemy")
+            {
+                Destroy(gameObject);
+                //10xp gained for killing enemy
+                KT_LevelSystem.Instance.gainXP(10);
+            }
             else
             {
                 Destroy(gameObject);
