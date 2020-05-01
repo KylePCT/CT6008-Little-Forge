@@ -12,14 +12,28 @@ using UnityEngine.SceneManagement;
       
       
 public class KT_LoadHub : MonoBehaviour {
-      
-void OnTriggerEnter(Collider p)
+
+    void OnTriggerEnter(Collider p)
     {
         //If the player enters the collision box
-              if (p.tag == "Player") 
-              {
-                  //Load the hub scene
-                  SceneManager.LoadScene(3);
-              }
-          }
-      }
+        if (p.tag == "Player")
+        {
+            //Disable the player controls
+            p.GetComponent<PlayerControls>().enabled = false;
+
+            //TP Player to the forge
+            p.transform.LookAt(GameObject.Find("HubSpawnPoint").transform.position);
+            p.transform.position = GameObject.Find("HubSpawnPoint").transform.position;
+            GameObject.Find("PlayerOrientation").gameObject.transform.rotation = Quaternion.Euler(8, -90, 0);
+        }
+    }
+
+    void OnTriggerExit(Collider p)
+    {
+        //If the player enters the collision box
+        if (p.tag == "Player")
+        {
+            p.GetComponent<PlayerControls>().enabled = true;
+        }
+    }
+}
