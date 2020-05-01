@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System;
 
 public class ForgeObject : MonoBehaviour
 {
@@ -22,12 +23,36 @@ public class ForgeObject : MonoBehaviour
     private GameObject m_interactionText = null;
 
     public GameObject forgeUI;
+    private InputSystem m_inputSystem = null;
+
+
+    //////////////////////////////////////////////////
+    //// Functions
+    private void Awake() => m_inputSystem = new InputSystem();
+    public void OnEnable() => m_inputSystem.Player.Enable();
+    public void OnDisable() => m_inputSystem.Player.Disable();
 
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
         m_interactionText = GameObject.Find("InteractText");
+    }
+
+    private void Update()
+    {
+        InteractionKey();
+    }
+
+    private void InteractionKey()
+    {
+        if (m_inputSystem.Player.Interact.triggered)
+        {
+            if (m_inRange)
+            {
+                m_shouldMenuBeOpen = !m_shouldMenuBeOpen;
+            }
+        }
     }
 
     public void InteractKey(InputAction.CallbackContext ctx)
@@ -38,6 +63,17 @@ public class ForgeObject : MonoBehaviour
             {
                 m_shouldMenuBeOpen = !m_shouldMenuBeOpen;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            m_interactionText.SetActive(true);
+            m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
+            m_inRange = true;
+            forgeUI.SetActive(true);
         }
     }
 
