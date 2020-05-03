@@ -2693,6 +2693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1391388638}
   - component: {fileID: 1391388639}
+  - component: {fileID: 1391388640}
   m_Layer: 5
   m_Name: CreditsHolder
   m_TagString: Untagged
@@ -2748,6 +2749,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1391388640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391388637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898b41f0d6c73db41834b5579889564a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creditHolder: {fileID: 1391388637}
 --- !u!1 &1479296629
 GameObject:
   m_ObjectHideFlags: 0

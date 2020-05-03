@@ -17,6 +17,7 @@ public class SaveItemManager : MonoBehaviour
     [SerializeField] private List<SaveItem> m_saveItems = null;
     [SerializeField] private List<GameObject> m_deleteButtons = null;
 
+
     //////////////////////////////////////////////////
     //// Functions
 
@@ -82,5 +83,26 @@ public class SaveItemManager : MonoBehaviour
             // Go to character creation
             SceneLoadManager.Instance.LoadCharacterCreation();
         }
+    }
+
+    public void deleteSave0()
+    {
+        SaveGameManager.DeleteCharacter(0);
+        SaveGameManager.SaveHeader();
+    }    
+    public void deleteSave1()
+    {
+        SaveGameManager.DeleteCharacter(1);
+        SaveGameManager.SaveHeader();
+    }    
+    public void deleteSave2()
+    {
+        SaveGameManager.DeleteCharacter(2);
+        SaveGameManager.SaveHeader();
+    }    
+    public void deleteSave3()
+    {
+        SaveGameManager.DeleteCharacter(3);
+        SaveGameManager.SaveHeader();
     }
 }
