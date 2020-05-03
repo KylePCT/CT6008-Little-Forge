@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
-// File: GameManager.cs
-// Author: Zack Raeburn
-// Date Created: 27/02/20
-// Description: A central manager for important managerial things
+// File: LoadCharCustom.cs
+// Author: Sam Baker
+// Date Created: 03/05/20
+// Description: Used to dress the player in the main hub scene using the saved customisations
 //////////////////////////////////////////////////
 using System;
 using System.Collections;
