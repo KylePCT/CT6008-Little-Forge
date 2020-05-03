@@ -2,7 +2,9 @@
 // File: SaveGameManager.cs
 // Author: Zack Raeburn
 // Date Created: 27/02/20
+// Last Edit: 03/05/20 - Sam Baker
 // Description: Manages saving and loading game save files
+// Comments: Edited to save the data of the character - Sam
 //////////////////////////////////////////////////
 
 using UnityEngine;
@@ -22,6 +24,20 @@ public class SaveSlot
     // Save data
     public string m_name = null;
     public float m_money = 0;
+
+    // Save Data for the customisation of the characters - Sam Baker
+    public string m_skinColour = null;
+    public string m_hairType = null;
+    public string m_hairColour = null;
+    public string m_eyeType = null;
+    public float[] m_eyeColour = new float[3];
+    public string m_noseType = null;
+    public string m_mouthType = null;
+    public string m_bodyTopType = null;
+    public float[] m_bodyTopColour = new float[3];
+    public string m_bodyBottomType = null;
+    public float[] m_bodyBottomColour = new float[3];
+    public float[] m_shoeColour = new float[3];
 
     public SaveSlot(int a_saveSlot)
     {

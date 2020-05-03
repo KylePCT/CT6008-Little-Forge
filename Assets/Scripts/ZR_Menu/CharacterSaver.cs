@@ -2,7 +2,9 @@
 // File: CharacterSaver.cs
 // Author: Zack Raeburn
 // Date Created: 28/02/20
+// Last Edit: 03/05/20 - Sam Baker
 // Description: Saving the character file from the character creation scene
+// Comments: Edited to save the customisations made to the character
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -17,6 +19,15 @@ public class CharacterSaver : MonoBehaviour
 
     [SerializeField] private TMP_InputField m_name = null;
 
+    //Objects for saving character customisation - Sam Baker
+    [SerializeField] private GameObject m_headObject = null;
+    [SerializeField] private GameObject m_hairObject = null;
+    [SerializeField] private GameObject m_eyeObject = null;
+    [SerializeField] private GameObject m_noseObject = null;
+    [SerializeField] private GameObject m_mouthObject = null;
+    [SerializeField] private GameObject m_bodyObject = null;
+    [SerializeField] private GameObject m_shoeObject = null;
+
     //////////////////////////////////////////////////
     //// Functions
 
@@ -28,6 +39,30 @@ public class CharacterSaver : MonoBehaviour
         SaveSlot save = SaveGameManager.GetMainCharFile();
         save.m_name = m_name.text;
         save.m_money = 10f;
+        //Sam Baker
+        save.m_skinColour = m_headObject.GetComponent<MeshRenderer>().material.name;
+        save.m_hairType = m_hairObject.GetComponent<MeshFilter>().mesh.name;
+        save.m_hairColour = m_hairObject.GetComponent<MeshRenderer>().material.name;
+        save.m_eyeType = m_eyeObject.GetComponent<Renderer>().material.GetTexture("_MainTex").name;
+        save.m_eyeColour[0] = m_eyeObject.GetComponent<Renderer>().material.color.r;
+        save.m_eyeColour[1] = m_eyeObject.GetComponent<Renderer>().material.color.g;
+        save.m_eyeColour[2] = m_eyeObject.GetComponent<Renderer>().material.color.b;
+        save.m_eyeType = m_eyeObject.GetComponent<Renderer>().material.GetTexture("_MainTex").name;
+        save.m_noseType = m_noseObject.GetComponent<Renderer>().material.GetTexture("_MainTex").name;
+        save.m_mouthType = m_mouthObject.GetComponent<Renderer>().material.GetTexture("_MainTex").name;
+        save.m_bodyTopType = m_bodyObject.GetComponent<Renderer>().materials[0].GetTexture("_MainTex").name;
+        save.m_bodyTopColour[0] = m_bodyObject.GetComponent<Renderer>().materials[0].color.r;
+        save.m_bodyTopColour[1] = m_bodyObject.GetComponent<Renderer>().materials[0].color.g;
+        save.m_bodyTopColour[2] = m_bodyObject.GetComponent<Renderer>().materials[0].color.b;
+        save.m_bodyBottomType = m_bodyObject.GetComponent<Renderer>().materials[1].GetTexture("_MainTex").name;
+        save.m_bodyBottomColour[0] = m_bodyObject.GetComponent<Renderer>().materials[1].color.r;
+        save.m_bodyBottomColour[1] = m_bodyObject.GetComponent<Renderer>().materials[1].color.g;
+        save.m_bodyBottomColour[2] = m_bodyObject.GetComponent<Renderer>().materials[1].color.b;
+        save.m_shoeColour[0] = m_shoeObject.GetComponent<Renderer>().material.color.r;
+        save.m_shoeColour[1] = m_shoeObject.GetComponent<Renderer>().material.color.g;
+        save.m_shoeColour[2] = m_shoeObject.GetComponent<Renderer>().material.color.b;
+
+
         SaveGameManager.SaveCharacter(save);
 
         // Load default scenes
