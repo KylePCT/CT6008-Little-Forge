@@ -42,7 +42,6 @@ public class LoadCharCustom : MonoBehaviour
     private void Start()
     {
         m_mainSave = SaveGameManager.LoadCharacter(SaveGameManager.GetMainCharFile().m_saveSlotID);
-        //Debug.Log(m_mainSave.m_hairType + " " + m_mainSave.m_hairColour);
         LoadHair();
         LoadSkin();
         LoadFace();
@@ -56,7 +55,7 @@ public class LoadCharCustom : MonoBehaviour
         {
             if (m_mainSave.m_bodyTopType == m_allBodyTopTextures[i].name)
             {
-                m_bodyObject.GetComponent<Renderer>().material.SetTexture(0, m_allBodyTopTextures[i]);
+                m_bodyObject.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", m_allBodyTopTextures[i]);
             }
         }
         //BodyTop Colour
@@ -67,7 +66,7 @@ public class LoadCharCustom : MonoBehaviour
         {
             if (m_mainSave.m_bodyBottomType == m_allBodyBottomTextures[i].name)
             {
-                m_bodyObject.GetComponent<Renderer>().material.SetTexture(0, m_allBodyBottomTextures[i]);
+                m_bodyObject.GetComponent<Renderer>().materials[1].SetTexture("_MainTex", m_allBodyBottomTextures[i]);
             }
         }
         //BodyBottom Colour
