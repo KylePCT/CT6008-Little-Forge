@@ -18,6 +18,7 @@ public class CharacterSaver : MonoBehaviour
     //// Variables
 
     [SerializeField] private TMP_InputField m_name = null;
+    public GameObject nameBox;
 
     //Objects for saving character customisation - Sam Baker
     [SerializeField] private GameObject m_headObject = null;
@@ -62,10 +63,19 @@ public class CharacterSaver : MonoBehaviour
         save.m_shoeColour[1] = m_shoeObject.GetComponent<Renderer>().material.color.g;
         save.m_shoeColour[2] = m_shoeObject.GetComponent<Renderer>().material.color.b;
 
+        //Kyle Tugwell
+        if(m_name.text == "")
+        {
+            nameBox.SetActive(true);
+            Debug.Log("No name specified. User must enter a name.");
+        }
 
-        SaveGameManager.SaveCharacter(save);
+        else
+        {
+            SaveGameManager.SaveCharacter(save);
 
-        // Load default scenes
-        SceneLoadManager.Instance.LoadScenesLoadingScreen(3);
+            // Load default scenes
+            SceneLoadManager.Instance.LoadScenesLoadingScreen(3);
+        }
     }
 }
