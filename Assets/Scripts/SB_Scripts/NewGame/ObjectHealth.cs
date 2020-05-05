@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -69,8 +70,7 @@ public class ObjectHealth : MonoBehaviour
         {
             if (gameObject.transform.tag == "Player")
             {
-                //Restart the scene
-                //     or whatever happens when the player dies..................
+                SceneManager.LoadScene("Hub");
             }
             else if (gameObject.transform.tag == "Enemy")
             {

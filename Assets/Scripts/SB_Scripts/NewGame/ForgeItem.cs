@@ -30,7 +30,7 @@ public class ForgeItem : MonoBehaviour
     private float m_previousCost = 0.0f;
     private float m_currentCost = 0.0f;
     private int m_itemLevel = 0;
-    private TextMesh m_itemText = null;
+    //private TextMesh m_itemText = null;
     private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
@@ -40,7 +40,7 @@ public class ForgeItem : MonoBehaviour
     private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
-        m_itemText = transform.GetChild(0).gameObject.GetComponent<TextMesh>();
+        //m_itemText = transform.GetChild(0).gameObject.GetComponent<TextMesh>();
         if(m_itemLevel > 0)
         {
             m_currentCost = m_baseCost;
@@ -50,12 +50,12 @@ public class ForgeItem : MonoBehaviour
             m_currentCost = m_baseCost;
             m_previousCost = m_baseCost;
         }
-        UpdateItemText();
+        //UpdateItemText();
     }
 
     private void Update()
     {
-        UpdateItemText();
+        //UpdateItemText();
     }
 
     private void BuyUpgrade()
@@ -76,21 +76,21 @@ public class ForgeItem : MonoBehaviour
         }
     }
 
-    private void UpdateItemText()
-    {
-        if(m_itemLevel == 10)
-        {
-            m_itemText.text = gameObject.name + "\nLevel: " + m_itemLevel + "\nUpgrade Cost:\n" + "MAX LEVEL";
-            return;
-        }
-        m_itemText.text = gameObject.name + "\nLevel: " + m_itemLevel + "\nUpgrade Cost:\n" + m_currentCost.ToString("n0");
-    }
+    //private void UpdateItemText()
+    //{
+    //    if(m_itemLevel == 10)
+    //    {
+    //        m_itemText.text = gameObject.name + "\nLevel: " + m_itemLevel + "\nUpgrade Cost:\n" + "MAX LEVEL";
+    //        return;
+    //    }
+    //    m_itemText.text = gameObject.name + "\nLevel: " + m_itemLevel + "\nUpgrade Cost:\n" + m_currentCost.ToString("n0");
+    //}
 
     private void CalculateNewCost()
     {
         m_previousCost = m_currentCost;
         m_currentCost = Mathf.Ceil(m_previousCost * (m_itemLevel + 1));
-        UpdateItemText();
+        //UpdateItemText();
     }
 
     public int GetLevel() => m_itemLevel;
