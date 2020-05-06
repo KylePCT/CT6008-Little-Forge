@@ -8,13 +8,14 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class KT_LoadForge : MonoBehaviour
 {
-
+    [SerializeField] private GameObject m_interactText = null;
     void OnTriggerEnter(Collider p)
     {
         //If the player enters the collision box
@@ -25,6 +26,7 @@ public class KT_LoadForge : MonoBehaviour
             p.GetComponent<PlayerControls>().enabled = false;
             //TP Player to the forge
             p.transform.position = GameObject.Find("ForgeSpawnPoint").transform.position;
+            m_interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
         }
     }
     void OnTriggerExit(Collider p)
