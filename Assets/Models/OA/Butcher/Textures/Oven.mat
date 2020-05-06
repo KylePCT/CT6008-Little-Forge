@@ -7,20 +7,20 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: KT_River
-  m_Shader: {fileID: 4800000, guid: 99dfc0199585bfc4db148a32717b5384, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Oven
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2900
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6f3a2cd78a3365941bcd91daeca6b00a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,16 +39,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _FoamTexture:
-        m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
-        m_Scale: {x: 30, y: 30}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f0063740f9635564ca80c3c722ae9706, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1711061833fe0054ba7b3e99bece419a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -59,25 +55,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _WaterTexture:
-        m_Texture: {fileID: 2800000, guid: 7d3f970cadeb3e6449dd234bcac8e2b1, type: 3}
-        m_Scale: {x: 60, y: 60}
-        m_Offset: {x: 0, y: 0}
-    - _WaveNoise:
-        m_Texture: {fileID: 2800000, guid: 24b09c91e320b264bac805eb4fe52a43, type: 3}
-        m_Scale: {x: 5, y: 5}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DepthMaximum: 1
-    - _DepthMinimum: 0
-    - _DepthValue: 3.2
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FoamIntensity: 1.77
-    - _FoamMaximum: 1
-    - _FoamMinimum: 0.338
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -85,29 +67,11 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PlaneTessellation: 10
-    - _Roughness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TilingSpeed: 0
-    - _UTilingAmount: 0.024
     - _UVSec: 0
-    - _VTilingAmount: 0
-    - _WaterLevel: 1.8
-    - _WaveCount: 3.82
-    - _WaveHeight: 0.039
-    - _WaveIntensity: 0.11
-    - _WaveSpeed: 6.57
-    - _WaveSpread: 1.58
-    - _WaveSpread_copy: 2.57
     - _ZWrite: 1
-    - _node_4848: 0
-    - _node_4848_copy: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColour: {r: 1, g: 1, b: 1, a: 1}
-    - _RiverBase: {r: 0.6462264, g: 0.96921766, b: 1, a: 1}
-    - _RiverComplementary: {r: 0.20266843, g: 0.19824672, b: 0.5188679, a: 1}
-    - _WaterColour: {r: 0.3820755, g: 0.7098851, b: 1, a: 1}
