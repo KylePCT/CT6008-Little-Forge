@@ -64,7 +64,7 @@ public class ForgeManager : MonoBehaviour
     private void Update()
     {
         UpdateForgeUI();
-        CheckIfMenuShouldBeOpen();
+        
         UpdateIngots();
     }
 
@@ -79,7 +79,7 @@ public class ForgeManager : MonoBehaviour
         }
     }
 
-    private void CheckIfMenuShouldBeOpen()
+    public void CheckIfMenuShouldBeOpen()
     {
         if (m_theForge.transform.GetChild(0).gameObject.GetComponent<ForgeObject>().ShouldMenuBeOpen())
         {

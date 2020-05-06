@@ -32,8 +32,6 @@ public class ForgeObject : MonoBehaviour
     public void OnEnable() => m_inputSystem.Player.Enable();
     public void OnDisable() => m_inputSystem.Player.Disable();
 
-    //////////////////////////////////////////////////
-    //// Functions
     private void Start()
     {
         m_interactionText = GameObject.Find("InteractText");
@@ -51,29 +49,30 @@ public class ForgeObject : MonoBehaviour
             if (m_inRange)
             {
                 m_shouldMenuBeOpen = !m_shouldMenuBeOpen;
+                GameObject.Find("NewCanvas").GetComponent<ForgeManager>().CheckIfMenuShouldBeOpen();
             }
         }
     }
 
-    public void InteractKey(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            if (m_inRange)
-            {
-                m_shouldMenuBeOpen = !m_shouldMenuBeOpen;
-            }
-        }
-    }
+    //public void InteractKey(InputAction.CallbackContext ctx)
+    //{
+    //    if (ctx.performed)
+    //    {
+    //        if (m_inRange)
+    //        {
+    //            m_shouldMenuBeOpen = !m_shouldMenuBeOpen;
+
+    //        }
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
-            m_interactionText.SetActive(true);
             m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
+            m_interactionText.SetActive(true);
             m_inRange = true;
-            forgeUI.SetActive(true);
         }
     }
 
@@ -81,10 +80,9 @@ public class ForgeObject : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            m_interactionText.SetActive(true);
             m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
+            m_interactionText.SetActive(true);
             m_inRange = true;
-            forgeUI.SetActive(true);
         }
     }
     private void OnTriggerExit(Collider col)
