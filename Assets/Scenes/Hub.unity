@@ -7166,6 +7166,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2127619229}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &96323891
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96323890}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &96323893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2b39dcb4d016a654eb46f52860b6e51c,
@@ -10697,6 +10713,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
 --- !u!1 &219880797 stripped
@@ -14056,6 +14077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart (7)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
 --- !u!1 &411574786 stripped
@@ -16164,6 +16190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stool
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0ebf55bb27a1ce940b15cad1cb3a8d2c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ebf55bb27a1ce940b15cad1cb3a8d2c, type: 3}
@@ -41940,6 +41971,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart (2)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
 --- !u!1 &1504440321 stripped
@@ -44011,6 +44047,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cart
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
@@ -47419,6 +47460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart (5)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
 --- !u!1 &1710614491 stripped
@@ -47743,6 +47789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cart (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
@@ -56743,6 +56794,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart (4)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
 --- !u!1 &1914331056 stripped
@@ -57795,6 +57851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cart (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9285a20662debc940bba954dcf0e62c3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9285a20662debc940bba954dcf0e62c3, type: 3}
@@ -60432,7 +60493,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1034567204}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &2096639728
+--- !u!64 &2096639731
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096639727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8884592712571033611, guid: 27898352fcb7c2b41882441e66c0d230, type: 3}
+--- !u!54 &2096639732
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60448,20 +60523,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!64 &2096639731
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096639727}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8884592712571033611, guid: 27898352fcb7c2b41882441e66c0d230, type: 3}
 --- !u!1001 &2101914246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61331,6 +61392,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desk
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2b39dcb4d016a654eb46f52860b6e51c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b39dcb4d016a654eb46f52860b6e51c, type: 3}
 --- !u!1001 &2130098479
@@ -61874,6 +61940,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8113768720884857512, guid: 0ebf55bb27a1ce940b15cad1cb3a8d2c, type: 3}
+--- !u!54 &2141988065
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141988062}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &18249971257760894
 GameObject:
   m_ObjectHideFlags: 0
