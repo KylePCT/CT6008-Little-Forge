@@ -55,14 +55,14 @@ public class SimpleFurniture : MonoBehaviour
             Debug.LogError("ERROR: SimpleFurniture.cs could not find NewCanvas game object!");
         }
 
-        if (GameObject.Find("InteractText"))
-        {
-            m_interactionText = GameObject.Find("InteractText");
-        }
-        else
-        {
-            Debug.LogError("ERROR: SimpleFurniture.cs could not find InteractText game object!");
-        }
+        //if (GameObject.Find("InteractText"))
+        //{
+        //    m_interactionText = GameObject.Find("InteractText");
+        //}
+        //else
+        //{
+        //    Debug.LogError("ERROR: SimpleFurniture.cs could not find InteractText game object!");
+        //}
     }
 
     private void Update()

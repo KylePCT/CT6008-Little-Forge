@@ -95,7 +95,6 @@ public class LoadCharCustom : MonoBehaviour
         //Nose Style
         for (int i = 0; i < m_allNoseTextures.Length; i++)
         {
-            Debug.Log(m_mainSave.m_noseType + "  |  " + m_allNoseTextures[i].name);
             if (m_mainSave.m_noseType == m_allNoseTextures[i].name)
             {
                 m_noseObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allNoseTextures[i]);
@@ -105,7 +104,6 @@ public class LoadCharCustom : MonoBehaviour
         //Mouth Style
         for (int i = 0; i < m_allMouthTextures.Length; i++)
         {
-            Debug.Log(m_mainSave.m_mouthType + "  |  " + m_allMouthTextures[i].name);
             if (m_mainSave.m_mouthType == m_allMouthTextures[i].name)
             {
                 m_mouthObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allMouthTextures[i]);
