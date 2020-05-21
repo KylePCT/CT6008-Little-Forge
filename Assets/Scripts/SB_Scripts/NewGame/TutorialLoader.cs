@@ -77,7 +77,6 @@ public class TutorialLoader : MonoBehaviour
         //if the text has reached the sentence length
         if (tutText.text == sentences[index])
         {
-            continueTextUI.SetActive(true);
             isTalking = false;
         }
 
@@ -86,6 +85,17 @@ public class TutorialLoader : MonoBehaviour
         {
             NextSentence();
             isTalking = true;
+        }
+
+        //show the continue UI dependant on speech
+        if (isTalking == true)
+        {
+            continueTextUI.SetActive(false);
+        }
+
+        else
+        {
+            continueTextUI.SetActive(true);
         }
     }
 
@@ -133,6 +143,8 @@ public class TutorialLoader : MonoBehaviour
     //Sentence elements for the NPC interaction dependant on what has been stated in the GUI for sentences
     public void NextSentence()
     {
+        isTalking = true;
+
         //if there are more sentences, continue calling the classes for interaction
         if (index < sentences.Length - 1)
         {
@@ -202,8 +214,8 @@ public class TutorialLoader : MonoBehaviour
     {
         if (tutorialComplete == false)
         {
-            playerCamera.transform.position = new Vector3(cameraTarget[index].position.x - camDistance, cameraTarget[index].position.y + camDistance, cameraTarget[index].position.z + camDistance);
-            playerCamera.transform.LookAt(cameraTarget[index]);
+            playerCamera.transform.position = new Vector3(cameraTarget[index].position.x, cameraTarget[index].position.y, cameraTarget[index].position.z);
+            playerCamera.transform.rotation = cameraTarget[index].rotation;
         }
 
         else
