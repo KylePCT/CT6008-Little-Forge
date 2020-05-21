@@ -12358,6 +12358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8bba6d5888add4bbd5455202632ece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1993414904}
+  playerOrientation: {fileID: 1443816176}
+  weapon: {fileID: 552833368}
+  tutCollision: {fileID: 284264578}
+  tutGuide: {fileID: 641270334}
   interactText: {fileID: 1289792189}
   tutText: {fileID: 1289792191}
   sentences:
@@ -12382,9 +12387,33 @@ MonoBehaviour:
   - I hope this helps!
   - Bye!
   textEmotions: 0100000002000000010000000000000002000000010000000000000000000000000000000100000002000000000000000100000002000000020000000000000000000000000000000100000000000000
+  playerCamera: {fileID: 1328941564}
+  cameraTarget:
+  - {fileID: 641270335}
+  - {fileID: 609719728}
+  - {fileID: 103991593}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1477614863}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1443816177}
+  camDistance: 5
   textSpeed: 0.02
   NPCAnimator: {fileID: 1240247238}
-  continueText: {fileID: 1501625678}
+  continueTextUI: {fileID: 1501625678}
+  tutorialComplete: 0
 --- !u!1001 &293309232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18463,6 +18492,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4298151383252579569, guid: c95bfc7717bd0bf4a911b379beabc452,
     type: 3}
   m_PrefabInstance: {fileID: 551601869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &552833368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7189281784423348845, guid: 583d446e0b9096f428e7e443539a0bd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308853981}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &554628364
 PrefabInstance:
@@ -34971,6 +35006,10 @@ PrefabInstance:
       propertyPath: laserImpact
       value: 
       objectReference: {fileID: 4802801325510658660}
+    - target: {fileID: 229477012, guid: 583d446e0b9096f428e7e443539a0bd9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1308853984, guid: 583d446e0b9096f428e7e443539a0bd9, type: 3}
       propertyPath: m_startHealth
       value: 100
@@ -34992,6 +35031,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc9ecb0c468c7e2428296fd1881c35d5, type: 2}
+    - target: {fileID: 2006796355508747203, guid: 583d446e0b9096f428e7e443539a0bd9,
+        type: 3}
+      propertyPath: tutCheck
+      value: 
+      objectReference: {fileID: 284264582}
     - target: {fileID: 2006796355508747213, guid: 583d446e0b9096f428e7e443539a0bd9,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -35047,6 +35091,11 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[10].m_Target
       value: 
       objectReference: {fileID: 923178428}
+    - target: {fileID: 2006796355508747213, guid: 583d446e0b9096f428e7e443539a0bd9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2006796355857500172, guid: 583d446e0b9096f428e7e443539a0bd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35810,6 +35859,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5190917367001422225, guid: 37691ae9b8782f94688a1e7bd8e19b43,
     type: 3}
   m_PrefabInstance: {fileID: 1322352178}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1328941564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2806011938872780286, guid: 583d446e0b9096f428e7e443539a0bd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308853981}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1341278555 stripped
 GameObject:
@@ -41308,6 +41363,12 @@ CanvasRenderer:
 --- !u!1 &1443816176 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2806011938463292623, guid: 583d446e0b9096f428e7e443539a0bd9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308853981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1443816177 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2806011938463292622, guid: 583d446e0b9096f428e7e443539a0bd9,
     type: 3}
   m_PrefabInstance: {fileID: 1308853981}
   m_PrefabAsset: {fileID: 0}

@@ -2,9 +2,10 @@
 /// File: PlayerZoom.cs
 /// Author: Sam Baker
 /// Date created: 28/02/20
-/// Last edit: 11/03/20 by Kyle Tugwell
+/// Last edit: 21/05/20 by Kyle Tugwell
 /// Description: 
 /// Comments:
+/// 21/05 - Added a check to see if the tutorial is complete.
 //////////////////////////////////////////////////
 using System.Collections;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ public class PlayerZoom : MonoBehaviour
     public GameObject laser;
     public GameObject rightHand;
 
+    public TutorialLoader tutCheck;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -51,24 +53,26 @@ public class PlayerZoom : MonoBehaviour
 
     private void Update()
     {
-
-        if (m_zoomIn)
+        if (tutCheck.tutorialComplete == true)
         {
-            m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, new Vector3(0.5f, 0.7f, -1.5f), zoomSpeed * Time.deltaTime);
+            if (m_zoomIn)
+            {
+                m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, new Vector3(0.5f, 0.7f, -1.5f), zoomSpeed * Time.deltaTime);
 
-            charAnimator.SetBool("isShooting", true);
-            gun.SetActive(true);
-            rightHand.SetActive(false);
+                charAnimator.SetBool("isShooting", true);
+                gun.SetActive(true);
+                rightHand.SetActive(false);
 
-        }
-        else
-        {
-            m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, m_origPos, zoomSpeed * Time.deltaTime);
+            }
+            else
+            {
+                m_cam.transform.localPosition = Vector3.Lerp(m_cam.transform.localPosition, m_origPos, zoomSpeed * Time.deltaTime);
 
-            charAnimator.SetBool("isShooting", false);
-            gun.SetActive(false);
-            rightHand.SetActive(true);
+                charAnimator.SetBool("isShooting", false);
+                gun.SetActive(false);
+                rightHand.SetActive(true);
 
+            }
         }
     }
 
