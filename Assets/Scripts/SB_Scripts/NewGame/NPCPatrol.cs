@@ -30,7 +30,7 @@ public class NPCPatrol : MonoBehaviour
     [Header("NPC PATROL")]
     //////////////////////////////////////////////////
     //// Variables
-    [SerializeField] private string[] m_dialogue = new string[6];
+    public string[] m_dialogue;
     private NPCStates m_currentState = NPCStates.NPC_FINDLOCATION;
     private NavMeshAgent m_navMeshAgent = null;
     private Vector3 m_destination;
@@ -39,7 +39,7 @@ public class NPCPatrol : MonoBehaviour
     private GameObject m_cam = null;
     private GameObject m_player = null;
     private float m_waitTimer = 2.0f;
-    private GameObject m_interactionText = null;
+    public GameObject m_interactionText;
     [Header("NPC Parameters")]
     [SerializeField] [Tooltip("Yellow circle indication")] private float m_wanderRadius = 15.0f;
     [SerializeField] private float m_speed = 3.0f;
@@ -49,6 +49,13 @@ public class NPCPatrol : MonoBehaviour
     private bool m_inRangeOfPlayer = false;
     private InputSystem m_inputSystem = null;
 
+    private Animator charAnimator;
+    private bool isTalking;
+
+    private int index;
+    public float textSpeed = 0.02f;
+    [SerializeField] private TextMeshProUGUI npcText = null;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Awake() => m_inputSystem = new InputSystem();
@@ -56,7 +63,6 @@ public class NPCPatrol : MonoBehaviour
     private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
-        m_interactionText = GameObject.Find("NewCanvas/InteractText");
         m_interactionText.SetActive(false);
         m_cam = Camera.main.gameObject;
         m_nameObject = transform.GetChild(0).gameObject;
@@ -70,6 +76,8 @@ public class NPCPatrol : MonoBehaviour
             Debug.LogWarning("Warning: Unable to locate NPC's NavMeshAgent component");
         }
         m_navMeshAgent.speed = m_speed;
+
+        charAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -102,6 +110,30 @@ public class NPCPatrol : MonoBehaviour
         {
             m_currentState = NPCStates.NPC_INTERACT;
             m_interacted = false;
+            isTalking = true;
+
+            m_interactionText.SetActive(true);
+            StartCoroutine(Type());
+
+            if (index < m_dialogue.Length - 1)
+            {
+                index++;
+                npcText.text = "";
+            }
+
+            else
+            {
+                isTalking = false;
+            }
+        }
+    }
+
+    IEnumerator Type()
+    {
+        foreach (char letter in m_dialogue[index].ToCharArray())
+        {
+            npcText.text += letter;
+            yield return new WaitForSeconds(textSpeed);
         }
     }
 
@@ -141,10 +173,10 @@ public class NPCPatrol : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && isTalking == false && m_interacted == false)
         {
             m_inRangeOfPlayer = true;
-            m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to talk";
+            npcText.text = "Press 'F' to talk";
             m_interactionText.SetActive(true);
         }
     }
@@ -166,6 +198,7 @@ public class NPCPatrol : MonoBehaviour
             if (m_inRangeOfPlayer)
             {
                 m_interacted = true;
+                isTalking = true;
             }
         }
     }
@@ -178,6 +211,7 @@ public class NPCPatrol : MonoBehaviour
         m_destination = m_randPosition;
         SetDestination();
         m_currentState = NPCStates.NPC_WALKTOLOCATION;
+        charAnimator.SetBool("isWalking", true);
     }
     private void WalkToLocation()
     {
@@ -185,13 +219,18 @@ public class NPCPatrol : MonoBehaviour
         {
             //m_currentState = NPCStates.NPC_INTERACT;
             m_currentState = NPCStates.NPC_FINDLOCATION;
+            charAnimator.SetBool("isWalking", false);
         }
     }
     private void InteractedWith()
     {
-        Debug.Log("NPC Said: " + m_dialogue[Random.Range(0, m_dialogue.Length)]);
         m_waitTimer = 2.0f;
         m_currentState = NPCStates.NPC_WAITFORPLAYER;
+
+        m_interactionText.SetActive(true);
+        npcText.text = m_dialogue[Random.Range(0, m_dialogue.Length)];
+
+        charAnimator.SetBool("isWalking", false);
     }
     private void WaitForPlayerInput()
     {
@@ -201,12 +240,15 @@ public class NPCPatrol : MonoBehaviour
         Vector3 m_lookAt = new Vector3(m_player.transform.position.x, transform.position.y, m_player.transform.position.z);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(m_lookAt), Time.deltaTime * 2.5f);
         m_navMeshAgent.isStopped = true;
+        charAnimator.SetBool("isWalking", false);
+
         if (m_waitTimer <= 0)
         {
             if (Input.anyKey)
             {
                 m_currentState = NPCStates.NPC_FINDLOCATION;
                 m_navMeshAgent.isStopped = false;
+                m_interactionText.SetActive(false);
             }
         }
         else

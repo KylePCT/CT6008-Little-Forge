@@ -101,16 +101,17 @@ public class PlayerControls : MonoBehaviour
         {
             if (m_isGrounded)
             {
+                charAnimator.SetBool("isJumping", true);
+                charAnimator.SetBool("isWalking", false);
+
                 m_yAxisVelocity = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
                 m_isGrounded = false;
-
-                charAnimator.SetBool("isJumping", true);
-
             }
 
             else
             {
-                charAnimator.SetBool("isWalking", false);
+                charAnimator.SetBool("isWalking", true);
+                charAnimator.SetBool("isJumping", false);
             }
         }
     }
@@ -129,6 +130,7 @@ public class PlayerControls : MonoBehaviour
         if (col.gameObject.tag == "Ground")
         {
             m_isGrounded = false;
+            charAnimator.SetBool("isJumping", true);
         }
     }
 }
