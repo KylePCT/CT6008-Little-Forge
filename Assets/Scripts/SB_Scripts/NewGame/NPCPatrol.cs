@@ -208,7 +208,6 @@ public class NPCPatrol : MonoBehaviour
     }
     private void InteractedWith()
     {
-        Debug.Log("NPC Said: " + m_dialogue[Random.Range(0, m_dialogue.Length)]);
         m_waitTimer = 1.0f;
         m_currentState = NPCStates.NPC_WAITFORPLAYER;
         m_charAnimator.SetBool("isWalking", false);
@@ -240,6 +239,7 @@ public class NPCPatrol : MonoBehaviour
         }
         else
         {
+            m_isTalking = true;
             m_waitTimer -= Time.deltaTime;
         }
     }
