@@ -35,6 +35,7 @@ public class TutorialLoader : MonoBehaviour
     private Vector3 origPos = Vector3.zero;
     private Quaternion origRot = Quaternion.Euler(0, 0, 0);
     public float camDistance = 5.0f;
+    public bool m_cameraSmoothMove = false;
 
     //This designates UI elements such as the text GameObjects and Animators
     [Header("UI Parameters")]
@@ -96,6 +97,12 @@ public class TutorialLoader : MonoBehaviour
         else
         {
             continueTextUI.SetActive(true);
+        }
+
+        //Smoothly move the camera - SB
+        if (m_cameraSmoothMove)
+        {
+            MoveCamera();
         }
     }
 
@@ -214,8 +221,17 @@ public class TutorialLoader : MonoBehaviour
     {
         if (tutorialComplete == false)
         {
-            playerCamera.transform.position = new Vector3(cameraTarget[index].position.x, cameraTarget[index].position.y, cameraTarget[index].position.z);
-            playerCamera.transform.rotation = cameraTarget[index].rotation;
+            //Cameras movement smoothing or snap - SB
+            if (m_cameraSmoothMove)
+            {
+                playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, cameraTarget[index].position, 5.0f * Time.deltaTime);
+                playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation, cameraTarget[index].rotation, 5.0f * Time.deltaTime); ;
+            }
+            else
+            {
+                playerCamera.transform.position = cameraTarget[index].position;
+                playerCamera.transform.rotation = cameraTarget[index].rotation;
+            }
         }
 
         else

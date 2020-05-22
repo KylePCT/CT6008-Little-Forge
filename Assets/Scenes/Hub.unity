@@ -13413,9 +13413,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1993414904}
   playerOrientation: {fileID: 1443816176}
-  weapon: {fileID: 552833368}
+  weapon: {fileID: 1993414904}
   playerCamera: {fileID: 1328941564}
   camDistance: 5
+  m_cameraSmoothMove: 1
   interactText: {fileID: 1289792189}
   tutText: {fileID: 1289792191}
   textSpeed: 0.02
@@ -21377,12 +21378,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4298151383252579569, guid: c95bfc7717bd0bf4a911b379beabc452,
     type: 3}
   m_PrefabInstance: {fileID: 551601869}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &552833368 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7189281784423348845, guid: 583d446e0b9096f428e7e443539a0bd9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1308853981}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &554628364
 PrefabInstance:
