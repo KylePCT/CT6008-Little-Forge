@@ -85,7 +85,7 @@ public class PlayerZoom : MonoBehaviour
                 //ZoomOut
                 m_cam.transform.localRotation = m_origRot;
                 m_zoomIn = false;
-                charAnimator.SetBool("isShooting", false);
+                //charAnimator.SetBool("isShooting", false);
             }
             else
             {
@@ -93,7 +93,7 @@ public class PlayerZoom : MonoBehaviour
                 m_origRot = m_cam.transform.localRotation;
                 m_cam.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                 m_zoomIn = true;
-                charAnimator.SetBool("isShooting", true);
+                //charAnimator.SetBool("isShooting", true);
             }
         }
     }
