@@ -187,7 +187,7 @@ public class TutorialLoader : MonoBehaviour
 
                 gameObject.SetActive(false);
 
-                Debug.Log("Tutorial Completed.");
+                //Debug.Log("Tutorial Completed.");
             }
         }
     }
@@ -197,7 +197,7 @@ public class TutorialLoader : MonoBehaviour
     {
         string Emotion = textEmotions[index].ToString();
 
-        Debug.Log("Playing animation: " + Emotion + ".");
+        //Debug.Log("Playing animation: " + Emotion + ".");
 
         if (Emotion == "Idle")
         {
