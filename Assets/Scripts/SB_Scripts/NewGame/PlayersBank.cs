@@ -49,10 +49,10 @@ public class PlayersBank : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        PlayersBank.Instance.SetMoney(10062880000);
-    }
+    //private void Start()
+    //{
+    //    PlayersBank.Instance.SetMoney(10062880000);
+    //}
 
     ////////////////////////////////////////////////////
     /// CURRENCY

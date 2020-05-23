@@ -79,6 +79,9 @@ public class Quest : ScriptableObject
             case QUEST_TYPE.QUEST_COLLECT:
                 CollectQuest();
                 break;
+            case QUEST_TYPE.QUEST_MISC:
+                //This type of quest does not check completion here
+                break;
             default:
                 break;
         }
@@ -151,6 +154,7 @@ public class Quest : ScriptableObject
     {
         QUEST_ACTION,
         QUEST_ATTACK,
-        QUEST_COLLECT
+        QUEST_COLLECT,
+        QUEST_MISC
     }
 }

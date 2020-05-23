@@ -40,7 +40,6 @@ public class QuestManager : MonoBehaviour
     private void Update()
     {
         UpdateQuestText();
-
     }
 
     private void UpdateQuestText()
@@ -67,5 +66,17 @@ public class QuestManager : MonoBehaviour
     public void UpdateQuestGiver(QuestGiver a_questGiver)
     {
         m_currentQuestGiver = a_questGiver;
+    }
+
+    public QuestGiver CurrentQuestGiver()
+    {
+        if(m_currentQuestGiver != null)
+        {
+            return m_currentQuestGiver;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

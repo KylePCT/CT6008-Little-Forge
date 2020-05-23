@@ -228,7 +228,21 @@ public class NPCPatrol : MonoBehaviour
         m_interactionText.GetComponent<TextMeshProUGUI>().text = m_dialogue[m_index];
         m_interactionText.SetActive(true);
         m_isTalking = true;
+        CheckQuest();
     }
+
+    private void CheckQuest()
+    {
+        if(QuestManager.Instance.CurrentQuestGiver() == null)
+        {
+            return;
+        }
+        else if(QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_SpeakQuest")
+        {
+            QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
+        }
+    }
+
     private void WaitForPlayerInput()
     {
         //TO DO

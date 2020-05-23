@@ -34,7 +34,7 @@ public class ForgeObject : MonoBehaviour
 
     private void Start()
     {
-        m_interactionText = GameObject.Find("InteractText");
+        m_interactionText = GetInteractText.Instance.m_interactionText;
     }
 
     private void Update()

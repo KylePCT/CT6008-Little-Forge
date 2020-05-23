@@ -20,7 +20,7 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] private Quest[] m_questList = new Quest[0];
     private Quest m_quest = null;
     
-    [SerializeField] private bool m_questActive = false;
+    public bool m_questActive = false;
     [SerializeField] private bool m_inRange = false;
     [SerializeField] private GameObject m_interactionText = null;
     private int m_questsCompleted = 0;
@@ -157,6 +157,18 @@ public class QuestGiver : MonoBehaviour
         {
             m_interactionText.SetActive(false);
             m_inRange = false;
+        }
+    }
+
+    public Quest GetCurrentQuest()
+    {
+        if (m_questActive)
+        {
+            return m_quest;
+        }
+        else
+        {
+            return null;
         }
     }
 }

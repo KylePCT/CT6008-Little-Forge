@@ -58,6 +58,18 @@ public class ForgeItem : MonoBehaviour
         //UpdateItemText();
     }
 
+    private void CheckQuest()
+    {
+        if (QuestManager.Instance.CurrentQuestGiver() == null)
+        {
+            return;
+        }
+        else if (QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_UpgradeForge")
+        {
+            QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
+        }
+    }
+
     private void BuyUpgrade()
     {
         if (m_itemLevel == 9)
@@ -69,6 +81,7 @@ public class ForgeItem : MonoBehaviour
             PlayersBank.Instance.TakeAwayMoney(m_currentCost);
             m_itemLevel++;
             CalculateNewCost();
+            CheckQuest();
         }
         else
         {
