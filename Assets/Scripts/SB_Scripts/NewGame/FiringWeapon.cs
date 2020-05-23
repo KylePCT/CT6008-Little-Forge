@@ -87,6 +87,7 @@ public class FiringWeapon : MonoBehaviour
         {
             if (m_weaponEnabled)
             {
+                //SB
                 RaycastHit hit;
                 Physics.Raycast(m_cam.transform.position, m_cam.transform.forward, out hit, 100.0f);
 
@@ -95,17 +96,19 @@ public class FiringWeapon : MonoBehaviour
                 {
                     laserHand.SetActive(false);
 
-                    if (hit.transform.tag != "Enemy")
+                    //Fixing errors - SB
+                    if (hit.collider != null)
                     {
-                        GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
-                        Destroy(impactGO, destroyMarkAfter);
-                    }
-
-
-                    else
-                    {
-                        GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
-                        Destroy(enemyImpact, destroyMarkAfter);
+                        if (hit.transform.tag != "Enemy")
+                        {
+                            GameObject impactGO = Instantiate(laserMark, hit.point, Quaternion.LookRotation(hit.normal) * Quaternion.Euler(90f, 0f, 0f));
+                            Destroy(impactGO, destroyMarkAfter);
+                        }
+                        else
+                        {
+                            GameObject enemyImpact = Instantiate(laserImpact, hit.point, Quaternion.identity);
+                            Destroy(enemyImpact, destroyMarkAfter);
+                        }
                     }
                 }
 
@@ -126,6 +129,7 @@ public class FiringWeapon : MonoBehaviour
                 m_timer -= Time.deltaTime;
                 if(m_timer <= 0)
                 {
+                    //SB
                     //FIX - player could shoot while zoomed out if zoom was untoggled while shooting.
                     if(!PlayerZoom.Instance.GetZoom())
                     {
