@@ -52,6 +52,7 @@ public class KT_Pause : MonoBehaviour
         canvasGroup.alpha = 0;
 
         m_invCanvas.SetActive(false);
+        gameObject.SetActive(false);
     }
     void Update()
     {

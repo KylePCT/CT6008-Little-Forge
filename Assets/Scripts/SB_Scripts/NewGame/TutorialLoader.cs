@@ -15,6 +15,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using System;
 
 public class TutorialLoader : MonoBehaviour
 {
@@ -58,6 +59,8 @@ public class TutorialLoader : MonoBehaviour
     [SerializeField] Emotion[] textEmotions;
     public Transform[] cameraTarget;
 
+    [SerializeField] private GameObject m_pauseFunctuality = null;
+
     //////////////////////////////////////////////////
     //// Functions
 
@@ -65,13 +68,14 @@ public class TutorialLoader : MonoBehaviour
     private void Start()
     {
         //Store camera locals
-        origPos = playerCamera.transform.localPosition;
+        origPos = playerCamera.transform.position;
 
         //Stop inputs
         player.GetComponent<PlayerControls>().OnDisable();
         playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
         weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
         player.GetComponent<PlayerZoom>().enabled = false;
+        player.GetComponent<PlayerInput>().enabled = false;
     }
     private void Update()
     {
@@ -163,7 +167,6 @@ public class TutorialLoader : MonoBehaviour
             isTalking = true;
             continueTextUI.SetActive(false);
         }
-
         //if all interaction is complete, reset ui, player controls and camera transform
         else
         {
@@ -185,6 +188,8 @@ public class TutorialLoader : MonoBehaviour
                 weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
                 player.GetComponent<PlayerZoom>().enabled = true;
 
+                m_pauseFunctuality.SetActive(true);
+                player.GetComponent<PlayerInput>().enabled = true;
                 gameObject.SetActive(false);
 
                 //Debug.Log("Tutorial Completed.");
