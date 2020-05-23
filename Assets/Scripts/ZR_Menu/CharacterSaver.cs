@@ -1,8 +1,8 @@
 ﻿//////////////////////////////////////////////////
 // File: CharacterSaver.cs
-// Author: Zack Raeburn
+// Author: Sam Baker
 // Date Created: 28/02/20
-// Last Edit: 03/05/20 - Sam Baker
+// Last Edit: 23/05/20 - Sam Baker
 // Description: Saving the character file from the character creation scene
 // Comments: Edited to save the customisations made to the character
 //////////////////////////////////////////////////
@@ -63,6 +63,15 @@ public class CharacterSaver : MonoBehaviour
         save.m_shoeColour[1] = m_shoeObject.GetComponent<Renderer>().material.color.g;
         save.m_shoeColour[2] = m_shoeObject.GetComponent<Renderer>().material.color.b;
         save.m_tutComplete = 0;
+        save.m_money = 0;
+        save.m_ingots = 0;
+        save.m_level = 0;
+        save.m_xp = 0;
+        for (int i = 0; i < save.m_forgeItems.Length; i++)
+        {
+            save.m_forgeItems[i] = 0;
+        }
+        LoadSecret(save);
 
         //Kyle Tugwell
         if(m_name.text == "")
@@ -77,6 +86,22 @@ public class CharacterSaver : MonoBehaviour
 
             // Load default scenes
             SceneLoadManager.Instance.LoadScenesLoadingScreen(3);
+        }
+    }
+
+    private void LoadSecret(SaveSlot a_save)
+    {
+        if (a_save.m_name == "SAMISTHEBEST")
+        {
+            a_save.m_tutComplete = 1;
+            a_save.m_money = 999999999999;
+            a_save.m_ingots = 9999999;
+            a_save.m_level = 10;
+
+            for (int i = 0; i < a_save.m_forgeItems.Length; i++)
+            {
+                a_save.m_forgeItems[i] = 9;
+            }
         }
     }
 }

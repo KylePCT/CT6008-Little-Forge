@@ -40,7 +40,10 @@ public class ObjectHealth : MonoBehaviour
     //// Functions
     private void Start()
     {
-        m_currentHealth = m_startHealth;
+        if (m_currentHealth != m_maxHealth)
+        {
+            m_currentHealth = m_startHealth;
+        }
         m_cam = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation/MainCamera");
         if (m_hasHealthBar)
         {

@@ -23,7 +23,6 @@ public class SaveSlot
 
     // Save data
     public string m_name = null;
-    public float m_money = 0;
 
     // Save Data for the customisation of the characters - Sam Baker
     public string m_skinColour = null;
@@ -39,6 +38,11 @@ public class SaveSlot
     public float[] m_bodyBottomColour = new float[3];
     public float[] m_shoeColour = new float[3];
     public int m_tutComplete = 0;
+    public float m_money = 0;
+    public float m_ingots = 0;
+    public int m_level = 0;
+    public int m_xp = 0;
+    public int[] m_forgeItems = new int[7];
 
     public SaveSlot(int a_saveSlot)
     {

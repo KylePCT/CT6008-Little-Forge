@@ -1,6 +1,6 @@
 ﻿//////////////////////////////////////////////////
 /// File: KT_LevelSystem.cs
-/// Author: Kyle Tugwell
+/// Author: Kyle Tugwell/Sam Baker
 /// Date created: 06/04/20
 /// Last edit: 08/04/20
 /// Description: An XP and Level system.
@@ -30,10 +30,11 @@ public class KT_LevelSystem : MonoBehaviour
 
     private ObjectHealth player;
 
-    private int playerLevel;
+    private int playerLevel = 0;
 
     public Image xpBarImage;
 
+    private SaveSlot m_save = null;
 
     public static KT_LevelSystem m_instance;
     public static KT_LevelSystem Instance { get { return m_instance; } }
@@ -74,12 +75,25 @@ public class KT_LevelSystem : MonoBehaviour
 
     public void Start()
     {
+        if (SaveGameManager.GetMainCharFile() != null)
+        {
+            m_save = SaveGameManager.GetMainCharFile();
+            currentLevel = m_save.m_level;
+            currentXP = m_save.m_xp;
+            UIUpdate();
+        }
+        else
+        {
+            //You must be starting the game from the hub!!!
+            //Nothing wrong here let the game continue.
+            currentXP = 0;
+            currentLevel = 0;
+        }
 
         player = GetComponent<ObjectHealth>();
 
         //Set parameters
-        currentXP = 0;
-        currentLevel = 0; //Example on getting a level object from the array instead of a single value
+        //Example on getting a level object from the array instead of a single value
         xpToNextLevel = GetStats().requiredXP;
 
         //TMP assigning
@@ -93,6 +107,7 @@ public class KT_LevelSystem : MonoBehaviour
         player.GiveMaxHealth();
 
         UIUpdate();
+        player.GiveMaxHealth();
     }
 
     public void Update()
@@ -124,7 +139,7 @@ public class KT_LevelSystem : MonoBehaviour
                 OnLevelUp();
             }
         }
-        
+        SaveLevel();
         UIUpdate();
     }
 
@@ -161,6 +176,16 @@ public class KT_LevelSystem : MonoBehaviour
     public Level GetStats()
     {
         return levels[currentLevel];
+    }
+
+    private void SaveLevel()
+    {
+        if (m_save != null)
+        {
+            m_save.m_level = currentLevel;
+            m_save.m_xp = currentXP;
+            SaveGameManager.SaveCharacter(m_save);
+        }
     }
 }
 

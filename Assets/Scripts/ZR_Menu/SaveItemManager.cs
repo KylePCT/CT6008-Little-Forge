@@ -58,7 +58,7 @@ public class SaveItemManager : MonoBehaviour
             SaveSlot save = SaveGameManager.LoadCharacter(i);
             m_saveItems[i].m_characterFile = save;
             m_saveItems[i].SetName(save.m_name);
-            m_saveItems[i].SetMoney(save.m_money);
+            m_saveItems[i].SetBottomText("Level: " + save.m_level + "   $" + save.m_money);
             
         }
     }

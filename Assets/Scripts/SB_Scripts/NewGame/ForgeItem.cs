@@ -30,7 +30,8 @@ public class ForgeItem : MonoBehaviour
     private float m_previousCost = 0.0f;
     private float m_currentCost = 0.0f;
     private int m_itemLevel = 0;
-    //private TextMesh m_itemText = null;
+    public int m_id;
+    private SaveSlot m_save = null;
     private InputSystem m_inputSystem = null;
 
     //////////////////////////////////////////////////
@@ -40,10 +41,24 @@ public class ForgeItem : MonoBehaviour
     private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
-        //m_itemText = transform.GetChild(0).gameObject.GetComponent<TextMesh>();
-        if(m_itemLevel > 0)
+        if (SaveGameManager.GetMainCharFile() != null)
+        {
+            m_save = SaveGameManager.GetMainCharFile();
+            m_itemLevel = m_save.m_forgeItems[m_id];
+
+            CalculateNewCost();
+        }
+        else
+        {
+            //You must be starting the game from the hub!!!
+            //SET MONEY FOR DEBUG
+            
+        }
+
+        if (m_itemLevel > 0)
         {
             m_currentCost = m_baseCost;
+            CalculateUpToNewCost(m_itemLevel);
         }
         else
         {
@@ -80,6 +95,7 @@ public class ForgeItem : MonoBehaviour
         {
             PlayersBank.Instance.TakeAwayMoney(m_currentCost);
             m_itemLevel++;
+            m_save.m_forgeItems[m_id] = m_itemLevel;
             CalculateNewCost();
             CheckQuest();
         }
@@ -101,9 +117,22 @@ public class ForgeItem : MonoBehaviour
 
     private void CalculateNewCost()
     {
+        //Ceil.Math(previousLevelXP * (nextLevel))
+
         m_previousCost = m_currentCost;
         m_currentCost = Mathf.Ceil(m_previousCost * (m_itemLevel + 1));
         //UpdateItemText();
+    }
+
+    private void CalculateUpToNewCost(int a_i)
+    {
+        m_previousCost = m_baseCost;
+        m_currentCost = m_baseCost;
+        for (int i = 0; i < a_i; i++)
+        {
+            m_previousCost = m_currentCost;
+            m_currentCost = Mathf.Ceil(m_previousCost * (m_itemLevel + 1));
+        }
     }
 
     public int GetLevel() => m_itemLevel;

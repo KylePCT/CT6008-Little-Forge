@@ -30,7 +30,8 @@ public class PlayersBank : MonoBehaviour
     //////////////////////////////////////////////////
     //// Variables
     [SerializeField] private float m_playersMoney = 0;
-     private float m_playersIngots = 0;
+    private float m_playersIngots = 0;
+    private SaveSlot m_save = null;
     private static PlayersBank m_instance;
     public static PlayersBank Instance { get { return m_instance; } }
 
@@ -38,21 +39,26 @@ public class PlayersBank : MonoBehaviour
     //// Functions
     private void Awake()
     {
-        if (m_instance != null && m_instance != this)
+        m_instance = this;
+    }
+
+    private void Start()
+    {
+        if (SaveGameManager.GetMainCharFile() != null)
         {
-            Destroy(this.gameObject);
+            m_save = SaveGameManager.GetMainCharFile();
+            m_playersMoney = m_save.m_money;
+            m_playersIngots = m_save.m_ingots;
         }
         else
         {
-            m_instance = this;
-            DontDestroyOnLoad(this);
+            //You must be starting the game from the hub!!!
+            //SET MONEY FOR DEBUG
+            SetMoney(9999999);
+            SetIngots(9999999);
         }
-    }
 
-    //private void Start()
-    //{
-    //    PlayersBank.Instance.SetMoney(10062880000);
-    //}
+    }
 
     ////////////////////////////////////////////////////
     /// CURRENCY
@@ -65,6 +71,7 @@ public class PlayersBank : MonoBehaviour
     public void AddMoney(float a_money)
     {
         m_playersMoney += a_money;
+        SaveMoney();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to decrease the amount of money in the players bank.
@@ -78,6 +85,7 @@ public class PlayersBank : MonoBehaviour
             return;
         }
         m_playersMoney -= a_money;
+        SaveMoney();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to reset the amount of money in the players bank.
@@ -85,6 +93,7 @@ public class PlayersBank : MonoBehaviour
     public void ResetMoney()
     {
         m_playersMoney = 0;
+        SaveMoney();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to set the players money to a specific amount.
@@ -98,6 +107,7 @@ public class PlayersBank : MonoBehaviour
             return;
         }
         m_playersMoney = a_money;
+        SaveMoney();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to get the players current money.
@@ -106,6 +116,17 @@ public class PlayersBank : MonoBehaviour
     public float GetMoney()
     {
         return m_playersMoney;
+    }
+    /// <summary>
+    /// Function used to save the players currency
+    /// </summary>
+    public void SaveMoney()
+    {
+        if (m_save != null)
+        {
+            m_save.m_money = m_playersMoney;
+            SaveGameManager.SaveCharacter(m_save);
+        }
     }
 
     ////////////////////////////////////////////////////
@@ -119,6 +140,7 @@ public class PlayersBank : MonoBehaviour
     public void AddIngots(float a_ingots)
     {
         m_playersIngots += a_ingots;
+        SaveIngots();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to decrease the amount of money in the players bank.
@@ -132,6 +154,7 @@ public class PlayersBank : MonoBehaviour
             return;
         }
         m_playersIngots -= a_ingots;
+        SaveIngots();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to reset the amount of ingots in the players bank.
@@ -139,6 +162,7 @@ public class PlayersBank : MonoBehaviour
     public void ResetIngots()
     {
         m_playersIngots = 0;
+        SaveIngots();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to set the players ingots to a specific amount.
@@ -152,6 +176,7 @@ public class PlayersBank : MonoBehaviour
             return;
         }
         m_playersIngots = a_ingots;
+        SaveIngots();
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to get the players current ingots.
@@ -160,5 +185,16 @@ public class PlayersBank : MonoBehaviour
     public float GetIngots()
     {
         return m_playersIngots;
+    }
+    /// <summary>
+    /// Function used to save the players ingots
+    /// </summary>
+    public void SaveIngots()
+    {
+        if (m_save != null)
+        {
+            m_save.m_ingots = m_playersIngots;
+            SaveGameManager.SaveCharacter(m_save);
+        }
     }
 }

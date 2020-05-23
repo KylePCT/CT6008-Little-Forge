@@ -35,9 +35,9 @@ public class SaveItem : MonoBehaviour
         m_name.text = a_name;
     }
 
-    public void SetMoney(float a_money)
+    public void SetBottomText(string a_string)
     {
-        m_money.text = a_money.ToString();
+        m_money.text = a_string;
     }
 
 }
