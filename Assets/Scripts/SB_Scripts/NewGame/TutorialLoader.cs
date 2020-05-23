@@ -36,6 +36,7 @@ public class TutorialLoader : MonoBehaviour
     private Vector3 origPos = Vector3.zero;
     private Quaternion origRot = Quaternion.Euler(0, 0, 0);
     public float camDistance = 5.0f;
+    [SerializeField] private float m_cameraMoveSpeed = 5.0f;
     public bool m_cameraSmoothMove = false;
 
     //This designates UI elements such as the text GameObjects and Animators
@@ -60,6 +61,8 @@ public class TutorialLoader : MonoBehaviour
     public Transform[] cameraTarget;
 
     [SerializeField] private GameObject m_pauseFunctuality = null;
+    private bool m_eightTrigger = false;
+    private bool m_nineTrigger = false;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -180,7 +183,7 @@ public class TutorialLoader : MonoBehaviour
                 interactText.SetActive(false);
 
                 //reset camera
-                playerCamera.transform.localPosition = origPos;
+                playerCamera.transform.position = origPos;
                 playerCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 player.GetComponent<PlayerControls>().OnEnable();
@@ -229,20 +232,28 @@ public class TutorialLoader : MonoBehaviour
             //Cameras movement smoothing or snap - SB
             if (m_cameraSmoothMove)
             {
-                playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, cameraTarget[index].position, 5.0f * Time.deltaTime);
-                playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation, cameraTarget[index].rotation, 5.0f * Time.deltaTime); ;
+                //camera MUST snap to forge to prevent the player seeing under the map - SB
+                if (index == 8 && m_eightTrigger == false)
+                {
+                    Vector3 temp = cameraTarget[8].position;
+                    temp.z += 20;
+                    playerCamera.transform.position = temp;
+                    m_eightTrigger = true;
+                }
+                else if (index == 9 && m_nineTrigger == false)
+                {
+                    playerCamera.transform.position = cameraTarget[7].position;
+                    playerCamera.transform.rotation = cameraTarget[7].rotation;
+                    m_nineTrigger = true;
+                }
+                playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, cameraTarget[index].position, m_cameraMoveSpeed * Time.deltaTime);
+                playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation, cameraTarget[index].rotation, m_cameraMoveSpeed * Time.deltaTime);
             }
             else
             {
                 playerCamera.transform.position = cameraTarget[index].position;
                 playerCamera.transform.rotation = cameraTarget[index].rotation;
             }
-        }
-
-        else
-        {
-            playerCamera.transform.position = origPos;
-            playerCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }
