@@ -18,6 +18,7 @@ public class GetInteractText : MonoBehaviour
     public static GetInteractText Instance { get { return m_instance; } }
 
     public GameObject m_interactionText;
+    public GameObject m_invPanel;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -29,5 +30,6 @@ public class GetInteractText : MonoBehaviour
     private void Start()
     {
         m_interactionText.SetActive(false);
+        m_invPanel.SetActive(false);
     }
 }
