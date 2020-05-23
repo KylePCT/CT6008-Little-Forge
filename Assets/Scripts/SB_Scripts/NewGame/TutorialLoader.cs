@@ -23,6 +23,13 @@ public class TutorialLoader : MonoBehaviour
     //// Variables
     //SB
     private bool m_tutorialCalled = false;
+    [SerializeField] private float m_cameraMoveSpeed = 5.0f;
+    public bool m_cameraSmoothMove = false;
+    private SaveSlot m_save = null;
+
+    [SerializeField] private GameObject m_pauseFunctuality = null;
+    private bool m_eightTrigger = false;
+    private bool m_nineTrigger = false;
 
     //KT
     [Header("Player Parameters")]
@@ -36,8 +43,6 @@ public class TutorialLoader : MonoBehaviour
     private Vector3 origPos = Vector3.zero;
     private Quaternion origRot = Quaternion.Euler(0, 0, 0);
     public float camDistance = 5.0f;
-    [SerializeField] private float m_cameraMoveSpeed = 5.0f;
-    public bool m_cameraSmoothMove = false;
 
     //This designates UI elements such as the text GameObjects and Animators
     [Header("UI Parameters")]
@@ -60,9 +65,6 @@ public class TutorialLoader : MonoBehaviour
     [SerializeField] Emotion[] textEmotions;
     public Transform[] cameraTarget;
 
-    [SerializeField] private GameObject m_pauseFunctuality = null;
-    private bool m_eightTrigger = false;
-    private bool m_nineTrigger = false;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -70,18 +72,35 @@ public class TutorialLoader : MonoBehaviour
     //KT
     private void Start()
     {
-        //Store camera locals
-        origPos = playerCamera.transform.position;
+        m_save = SaveGameManager.GetMainCharFile();
+        if (m_save.m_tutComplete == 0)
+        {
+            //Store camera locals
+            origPos = playerCamera.transform.position;
 
-        //Stop inputs
-        player.GetComponent<PlayerControls>().OnDisable();
-        playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
-        weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
-        player.GetComponent<PlayerZoom>().enabled = false;
-        player.GetComponent<PlayerInput>().enabled = false;
+            //Stop inputs
+            player.GetComponent<PlayerControls>().OnDisable();
+            playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
+            weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
+            player.GetComponent<PlayerZoom>().enabled = false;
+            player.GetComponent<PlayerInput>().enabled = false;
+        }
+        else
+        {
+            playerCamera = null;
+            tutorialComplete = true;
+            player.GetComponent<PlayerControls>().OnEnable();
+            playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
+            weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
+            player.GetComponent<PlayerZoom>().enabled = true;
+            player.GetComponent<PlayerInput>().enabled = true;
+            gameObject.SetActive(false);
+            gameObject.GetComponent<TutorialLoader>().enabled = false;
+        }
     }
     private void Update()
     {
+
         //if the text has reached the sentence length
         if (tutText.text == sentences[index])
         {
@@ -191,11 +210,13 @@ public class TutorialLoader : MonoBehaviour
                 weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
                 player.GetComponent<PlayerZoom>().enabled = true;
 
+                //Save that the player has viewed the tut
+                m_save.m_tutComplete = 1;
+                SaveGameManager.SaveCharacter(m_save);
+                Debug.Log(m_save.m_tutComplete);
                 m_pauseFunctuality.SetActive(true);
                 player.GetComponent<PlayerInput>().enabled = true;
                 gameObject.SetActive(false);
-
-                //Debug.Log("Tutorial Completed.");
             }
         }
     }

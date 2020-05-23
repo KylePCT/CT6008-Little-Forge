@@ -62,6 +62,7 @@ public class CharacterSaver : MonoBehaviour
         save.m_shoeColour[0] = m_shoeObject.GetComponent<Renderer>().material.color.r;
         save.m_shoeColour[1] = m_shoeObject.GetComponent<Renderer>().material.color.g;
         save.m_shoeColour[2] = m_shoeObject.GetComponent<Renderer>().material.color.b;
+        save.m_tutComplete = 0;
 
         //Kyle Tugwell
         if(m_name.text == "")

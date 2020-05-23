@@ -38,6 +38,7 @@ public class SaveSlot
     public string m_bodyBottomType = null;
     public float[] m_bodyBottomColour = new float[3];
     public float[] m_shoeColour = new float[3];
+    public int m_tutComplete = 0;
 
     public SaveSlot(int a_saveSlot)
     {
