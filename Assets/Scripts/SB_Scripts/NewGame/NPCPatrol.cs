@@ -218,6 +218,10 @@ public class NPCPatrol : MonoBehaviour
             m_currentState = NPCStates.NPC_FINDLOCATION;
             m_charAnimator.SetBool("isWalking", false);
         }
+        else if(m_navMeshAgent.velocity == Vector3.zero)
+        {
+            m_currentState = NPCStates.NPC_FINDLOCATION;
+        }
     }
     private void InteractedWith()
     {
