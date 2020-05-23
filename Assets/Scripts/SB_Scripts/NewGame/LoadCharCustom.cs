@@ -41,7 +41,14 @@ public class LoadCharCustom : MonoBehaviour
     //// Functions
     private void Start()
     {
-        m_mainSave = SaveGameManager.LoadCharacter(SaveGameManager.GetMainCharFile().m_saveSlotID);
+        if (SaveGameManager.GetMainCharFile() != null)
+        {
+            m_mainSave = SaveGameManager.LoadCharacter(SaveGameManager.GetMainCharFile().m_saveSlotID);
+        }
+        else
+        {
+            return;
+        }
         LoadHair();
         LoadSkin();
         LoadFace();

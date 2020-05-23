@@ -73,7 +73,21 @@ public class TutorialLoader : MonoBehaviour
     private void Start()
     {
         m_save = SaveGameManager.GetMainCharFile();
-        if (m_save.m_tutComplete == 0)
+        if (m_save == null)
+        {
+            Debug.Log("YOU ARE PLAYING STRAIGHT FROM THE HUB SCENE, PLAY FROM PRELOADER TO UTILISE THE TUTORIAL!");
+            m_pauseFunctuality.SetActive(true);
+            playerCamera = null;
+            tutorialComplete = true;
+            player.GetComponent<PlayerControls>().OnEnable();
+            playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
+            weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
+            player.GetComponent<PlayerZoom>().enabled = true;
+            player.GetComponent<PlayerInput>().enabled = true;
+            gameObject.SetActive(false);
+            gameObject.GetComponent<TutorialLoader>().enabled = false;
+        }
+        else if (m_save.m_tutComplete == 0)
         {
             //Store camera locals
             origPos = playerCamera.transform.position;
@@ -84,9 +98,12 @@ public class TutorialLoader : MonoBehaviour
             weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
             player.GetComponent<PlayerZoom>().enabled = false;
             player.GetComponent<PlayerInput>().enabled = false;
+            m_pauseFunctuality.SetActive(false);
+
         }
         else
         {
+            m_pauseFunctuality.SetActive(true);
             playerCamera = null;
             tutorialComplete = true;
             player.GetComponent<PlayerControls>().OnEnable();
@@ -211,9 +228,11 @@ public class TutorialLoader : MonoBehaviour
                 player.GetComponent<PlayerZoom>().enabled = true;
 
                 //Save that the player has viewed the tut
-                m_save.m_tutComplete = 1;
-                SaveGameManager.SaveCharacter(m_save);
-                Debug.Log(m_save.m_tutComplete);
+                if (m_save != null)
+                {
+                    m_save.m_tutComplete = 1;
+                    SaveGameManager.SaveCharacter(m_save);
+                }
                 m_pauseFunctuality.SetActive(true);
                 player.GetComponent<PlayerInput>().enabled = true;
                 gameObject.SetActive(false);

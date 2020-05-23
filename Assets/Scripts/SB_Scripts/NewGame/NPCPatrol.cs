@@ -61,8 +61,7 @@ public class NPCPatrol : MonoBehaviour
     private void Start()
     {
         m_charAnimator = GetComponentInChildren<Animator>();
-        m_interactionText = GameObject.Find("NewCanvas/InteractText");
-        m_interactionText.SetActive(false);
+        m_interactionText = GetInteractText.Instance.m_interactionText;
         m_cam = Camera.main.gameObject;
         m_nameObject = transform.GetChild(0).gameObject;
         m_player = GameObject.Find("Sam'sTempCharacterController/Player");
@@ -75,6 +74,8 @@ public class NPCPatrol : MonoBehaviour
             Debug.LogWarning("Warning: Unable to locate NPC's NavMeshAgent component");
         }
         m_navMeshAgent.speed = m_speed;
+        
+
     }
 
     private void Update()
@@ -97,7 +98,8 @@ public class NPCPatrol : MonoBehaviour
             default:
                 break;
         }
-        InteractionTrigger();        
+        InteractionTrigger();
+        Interaction();
     }
 
     private void ContinueUI()
@@ -176,9 +178,20 @@ public class NPCPatrol : MonoBehaviour
         }
     }
 
-    public void InteractKey(InputAction.CallbackContext ctx)
+    //public void InteractKey(InputAction.CallbackContext ctx)
+    //{
+    //    if (ctx.performed)
+    //    {
+    //        if (m_inRangeOfPlayer)
+    //        {
+    //            m_interacted = true;
+    //        }
+    //    }
+    //}
+
+    private void Interaction()
     {
-        if (ctx.performed)
+        if (m_inputSystem.Player.Interact.triggered)
         {
             if (m_inRangeOfPlayer)
             {
