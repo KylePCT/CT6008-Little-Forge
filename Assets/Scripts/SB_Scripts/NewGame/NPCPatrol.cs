@@ -31,7 +31,8 @@ public class NPCPatrol : MonoBehaviour
     //////////////////////////////////////////////////
     //// Variables
     public string[] m_dialogue;
-    private NPCStates m_currentState = NPCStates.NPC_FINDLOCATION;
+    [Tooltip("Set to no move for stationary NPC else find location.")]
+    [SerializeField] private NPCStates m_currentState = NPCStates.NPC_FINDLOCATION;
     private NavMeshAgent m_navMeshAgent = null;
     private Vector3 m_destination;
     private Vector3 m_randPosition;
@@ -67,7 +68,6 @@ public class NPCPatrol : MonoBehaviour
         m_player = GameObject.Find("Sam'sTempCharacterController/Player");
         m_nameObject.GetComponentInChildren<TextMesh>().text = m_name;
         m_nameObject.GetComponentInChildren<TextMesh>().color = m_nameColour;
-        m_currentState = NPCStates.NPC_FINDLOCATION;
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         if (m_navMeshAgent == null)
         {
@@ -94,6 +94,9 @@ public class NPCPatrol : MonoBehaviour
                 break;
             case NPCStates.NPC_WAITFORPLAYER:
                 WaitForPlayerInput();
+                break;
+            case NPCStates.NPC_NOMOVE:
+                //DO NOTHING
                 break;
             default:
                 break;
@@ -280,6 +283,7 @@ public class NPCPatrol : MonoBehaviour
         NPC_FINDLOCATION,
         NPC_WALKTOLOCATION,
         NPC_INTERACT,
-        NPC_WAITFORPLAYER
+        NPC_WAITFORPLAYER,
+        NPC_NOMOVE
     };
 }

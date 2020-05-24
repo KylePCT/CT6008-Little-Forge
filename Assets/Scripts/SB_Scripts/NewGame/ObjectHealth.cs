@@ -35,6 +35,7 @@ public class ObjectHealth : MonoBehaviour
     private Image m_healthBar = null;
     private GameObject m_healthCanvas = null;
     private GameObject m_cam = null;
+    public GameObject m_slimeItemDrop;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -80,6 +81,7 @@ public class ObjectHealth : MonoBehaviour
                 Destroy(gameObject);
                 //10xp gained for killing enemy
                 KT_LevelSystem.Instance.gainXP(10);
+                Instantiate(m_slimeItemDrop, transform.position, Quaternion.identity);
             }
             else
             {

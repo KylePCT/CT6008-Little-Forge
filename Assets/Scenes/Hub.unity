@@ -11356,6 +11356,7 @@ MonoBehaviour:
   - Ever wonder the real name of Oakley? They always seem so distant.
   - I can't wait to sleep! I love being awake, but sleep, oh that's good!
   - Ever wonder what's on the other islands?
+  m_currentState: 0
   m_wanderRadius: 25
   m_speed: 2
   m_name: Jess
@@ -11565,8 +11566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemData: {fileID: 11400000, guid: 79556570fe9133947a160588d7be1c3d, type: 2}
-  itemQuantity: 5
-  sellingValue: 50
 --- !u!1 &205707834
 GameObject:
   m_ObjectHideFlags: 0
@@ -14731,6 +14730,87 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &299287052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299287054}
+  - component: {fileID: 299287056}
+  - component: {fileID: 299287055}
+  m_Layer: 0
+  m_Name: NPC_ShopKeeper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &299287054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299287052}
+  m_LocalRotation: {x: -0, y: 0.30415836, z: -0, w: 0.9526215}
+  m_LocalPosition: {x: -14.526703, y: -1.9218521, z: -4.090432}
+  m_LocalScale: {x: 1.9000001, y: 1.9, z: 1.9000001}
+  m_Children:
+  - {fileID: 1990661185}
+  - {fileID: 1591080924}
+  m_Father: {fileID: 824178035}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 35.415, z: 0}
+--- !u!114 &299287055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299287052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960be40e17b60874e985d92a6aea8a3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dialogue:
+  - I'm not short, you're just really tall!
+  - Nice day, right?
+  - I wonder why this grass is green yet the forge has red grass. Aliens?
+  - The world is flat, you can't argue with me!
+  - AAAAAAAHHHHHHH! Sorry, that's me practicing for rehearsals.
+  - Hey, looking good! I love your hair!
+  m_currentState: 4
+  m_wanderRadius: 0
+  m_speed: 0
+  m_name: Shop
+  m_nameColour: {r: 0.1033731, g: 0.9528302, b: 0.91083837, a: 1}
+  m_continueTextUI: {fileID: 1501625678}
+--- !u!195 &299287056
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299287052}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.25
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &305169708
 GameObject:
   m_ObjectHideFlags: 0
@@ -27444,6 +27524,7 @@ MonoBehaviour:
   m_hasHealthBar: 1
   m_dmgIndication: {fileID: 1123412327320178311, guid: 453f4d9e0d43d2044a695977934f2457,
     type: 3}
+  m_slimeItemDrop: {fileID: 0}
 --- !u!65 &678245000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30138,6 +30219,7 @@ MonoBehaviour:
   - I love wearing different coloured shoes.
   - The forge always looks so cool. You're so lucky to get to go there!
   - Yeet! Did I do it right? Am I a meme?
+  m_currentState: 0
   m_wanderRadius: 25
   m_speed: 2
   m_name: Ghost
@@ -31993,6 +32075,7 @@ Transform:
   - {fileID: 1419634998}
   - {fileID: 987948448}
   - {fileID: 757933086}
+  - {fileID: 299287054}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36074,6 +36157,7 @@ MonoBehaviour:
   - I am wearing shoes. They just match my skin colour!
   - Eh, what's up?
   - Do you have other things to do?
+  m_currentState: 0
   m_wanderRadius: 25
   m_speed: 2
   m_name: Oakley
@@ -40728,6 +40812,99 @@ Transform:
   m_Father: {fileID: 1618071615}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1131299775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131299776}
+  - component: {fileID: 1131299778}
+  - component: {fileID: 1131299777}
+  m_Layer: 0
+  m_Name: Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1131299776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131299775}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1990661185}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!102 &1131299777
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131299775}
+  m_Text: Shop
+  m_OffsetZ: 0
+  m_CharacterSize: 0.1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 28
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278255369
+--- !u!23 &1131299778
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131299775}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1131798720
 GameObject:
   m_ObjectHideFlags: 0
@@ -43166,6 +43343,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202273256}
   m_CullTransparentMesh: 0
+--- !u!1001 &1205179036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 299287054}
+    m_Modifications:
+    - target: {fileID: 1395859907078633462, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_Name
+      value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.057994284
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.51529855
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04864224
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.052509163
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99862045
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 6.0200005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.97745
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9774503
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.97745
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0e788d4d518fe494fa71670669fe52e6, type: 3}
 --- !u!20 &1206525435 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2806011938872780259, guid: 583d446e0b9096f428e7e443539a0bd9,
@@ -43496,6 +43757,7 @@ MonoBehaviour:
   - The world is flat, you can't argue with me!
   - AAAAAAAHHHHHHH! Sorry, that's me practicing for rehearsals.
   - Hey, looking good! I love your hair!
+  m_currentState: 0
   m_wanderRadius: 25
   m_speed: 2
   m_name: Sokka
@@ -53372,6 +53634,7 @@ MonoBehaviour:
   - I wish we had more purple flowers!
   - Ever heard of COMX? Someone told me about it but I don't have access to the internet.
   - You should subscribe to me on YouForge! I stream daily!
+  m_currentState: 0
   m_wanderRadius: 25
   m_speed: 2
   m_name: Isla
@@ -59914,6 +60177,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590613756}
   m_CullTransparentMesh: 0
+--- !u!4 &1591080924 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2667343639565780453, guid: 0e788d4d518fe494fa71670669fe52e6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1205179036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1598914710
 GameObject:
   m_ObjectHideFlags: 0
@@ -75832,8 +76101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemData: {fileID: 11400000, guid: 3e997412e79510b489737286f894bedd, type: 2}
-  itemQuantity: 1
-  sellingValue: 10
 --- !u!135 &1916849391
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -77976,6 +78243,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 202b1218f056f8f47bd861e76ef0fa2d, type: 3}
+--- !u!1 &1990661184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1990661185}
+  m_Layer: 0
+  m_Name: NameHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1990661185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990661184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.051, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1131299776}
+  m_Father: {fileID: 299287054}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991026653 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7376394806075445415, guid: 37691ae9b8782f94688a1e7bd8e19b43,

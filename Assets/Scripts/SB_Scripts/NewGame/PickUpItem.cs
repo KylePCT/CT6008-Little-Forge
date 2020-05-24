@@ -10,14 +10,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SphereCollider))]
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private Item m_itemData;
-
-    //please can you set these up sam -kyle
-    public int itemQuantity;
-    public int sellingValue;
-
 
     private void OnTriggerEnter(Collider col)
     {
