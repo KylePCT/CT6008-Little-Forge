@@ -77,15 +77,16 @@ public class PlayersBank : MonoBehaviour
     /// Function inside the PlayersBank.cs, used to decrease the amount of money in the players bank.
     /// </summary>
     /// <param name="a_money">Amount to takeaway from the players bank</param>
-    public void TakeAwayMoney(float a_money)
+    public bool TakeAwayMoney(float a_money)
     {
         if ((m_playersMoney - a_money) < 0)
         {
             Debug.LogWarning("Warning: Player does not have enough currency to purchase item!");
-            return;
+            return false;
         }
         m_playersMoney -= a_money;
         SaveMoney();
+        return true;
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to reset the amount of money in the players bank.

@@ -110,7 +110,7 @@ public class InventoryManager : MonoBehaviour
         DisplayItems();
     }
 
-    public void RemoveItem(Item a_item)
+    public bool RemoveItem(Item a_item)
     {
         //If a stack, remove one
         //      if last one remove the item completely
@@ -129,13 +129,18 @@ public class InventoryManager : MonoBehaviour
                     }
                 }
             }
+            ResetButton();
+            DisplayItems();
+            return true;
         }
         else
         {
             Debug.Log("This item is not present in the inventory");
+            ResetButton();
+            DisplayItems();
+            return false;
         }
-        ResetButton();
-        DisplayItems();
+        
     }
 
     public void ResetButton()

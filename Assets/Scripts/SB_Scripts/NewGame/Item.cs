@@ -18,5 +18,6 @@ public class Item : ScriptableObject
     [Tooltip("Desription is not used in the prototype")]
     public string m_itemDescription = "";
     public Sprite m_itemSprite = null;
+    public int m_buyPrice = 0;
     public int m_sellPrice = 0;
 }
