@@ -19,6 +19,7 @@ public class GetInteractText : MonoBehaviour
 
     public GameObject m_interactionText;
     public GameObject m_invPanel;
+    public GameObject m_enemySpawner;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -31,5 +32,6 @@ public class GetInteractText : MonoBehaviour
     {
         m_interactionText.SetActive(false);
         m_invPanel.SetActive(false);
+        m_enemySpawner.SetActive(false);
     }
 }

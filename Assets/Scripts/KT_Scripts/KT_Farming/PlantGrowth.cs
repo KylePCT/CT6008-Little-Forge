@@ -42,6 +42,8 @@ public class PlantGrowth : MonoBehaviour
 
     public float rotationRate = 30f;
 
+    private GameObject m_enemySpawner = null;
+
     //RNG for plant variance
     private float cropVariance;
 
@@ -55,6 +57,8 @@ public class PlantGrowth : MonoBehaviour
     private void Start()
     {
         interactText = GameObject.Find("NewCanvas/InteractText");
+
+        m_enemySpawner = GetInteractText.Instance.m_enemySpawner;
 
         fullyGrownPS = GetComponent<ParticleSystem>();
         GetComponent<MeshFilter>().mesh = cropMesh;
@@ -147,7 +151,6 @@ public class PlantGrowth : MonoBehaviour
     {
         InventoryManager.instance.AddItem(m_item0, Random.Range(m_minRange, m_maxRange));
         InventoryManager.instance.AddItem(m_item1, Random.Range(m_minRange, m_maxRange));
-        Destroy(this.gameObject);
         Debug.Log("Crop harvested.");
 
         if (QuestManager.Instance.CurrentQuestGiver() == null)
@@ -157,6 +160,11 @@ public class PlantGrowth : MonoBehaviour
         else if (QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_GrowCrop")
         {
             QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
+            if(!m_enemySpawner.activeInHierarchy)
+            {
+                m_enemySpawner.SetActive(true);
+            }
         }
+        Destroy(this.gameObject);
     }
 }

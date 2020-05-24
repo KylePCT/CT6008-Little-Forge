@@ -31,6 +31,15 @@ public class KT_SpawnEnemies : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
+    private void OnEnable()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+
+        yHeight = 67;
+
+        StartCoroutine(SpawnEnemy());
+    }
+
     private IEnumerator SpawnEnemy()
     {
         while (enemyCount < enemySpawnCount)
