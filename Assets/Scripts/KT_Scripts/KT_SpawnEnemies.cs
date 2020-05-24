@@ -11,9 +11,9 @@ public class KT_SpawnEnemies : MonoBehaviour
 
     public int enemySpawnCount;
 
-    private int xPos;
+    public int xPos;
     private int yHeight;
-    private int zPos;
+    public int zPos;
 
     public GameObject poofVFX;
 
@@ -50,7 +50,7 @@ public class KT_SpawnEnemies : MonoBehaviour
             //Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length - 1)], new Vector3(xPos, yHeight, zPos), Quaternion.identity);
             
             //Edited to stop enemies spawning inside of objects - Sam Baker
-            m_randPointOnMesh = RandomNavSphere(new Vector3(345f, 67f, 23f), 999f, -1);
+            m_randPointOnMesh = RandomNavSphere(new Vector3(xPos, 67f, zPos), 40f, -1);
             Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length - 1)], m_randPointOnMesh, Quaternion.identity);
             Instantiate(poofVFX, new Vector3(xPos, yHeight, zPos), Quaternion.identity);
             yield return new WaitForSeconds(5f);
