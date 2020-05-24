@@ -82,6 +82,14 @@ public class ObjectHealth : MonoBehaviour
                 //10xp gained for killing enemy
                 KT_LevelSystem.Instance.gainXP(10);
                 Instantiate(m_slimeItemDrop, transform.position, Quaternion.identity);
+                if (QuestManager.Instance.CurrentQuestGiver() == null)
+                {
+                    return;
+                }
+                else if (QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_KillSlime")
+                {
+                    QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
+                }
             }
             else
             {

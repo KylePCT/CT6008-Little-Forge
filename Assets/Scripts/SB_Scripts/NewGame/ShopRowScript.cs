@@ -46,6 +46,17 @@ public class ShopRowScript : MonoBehaviour
         if(InventoryManager.instance.RemoveItem(m_item))
         {
             PlayersBank.Instance.AddMoney(m_item.m_sellPrice);
+            if (m_item.name == "item_slime")
+            {
+                if (QuestManager.Instance.CurrentQuestGiver() == null)
+                {
+                    return;
+                }
+                else if (QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_SellSlime")
+                {
+                    QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
+                }
+            }
         }
     }
 }

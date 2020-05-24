@@ -157,7 +157,6 @@ public class PlantGrowth : MonoBehaviour
         else if (QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_GrowCrop")
         {
             QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
-            Debug.Log("TRigger");
         }
     }
 }
