@@ -149,5 +149,14 @@ public class PlantGrowth : MonoBehaviour
         InventoryManager.instance.AddItem(m_item1, Random.Range(m_minRange, m_maxRange));
         Destroy(this.gameObject);
         Debug.Log("Crop harvested.");
+
+        if (QuestManager.Instance.CurrentQuestGiver() == null)
+        {
+            return;
+        }
+        else if (QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_GrowCrop")
+        {
+            QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
+        }
     }
 }
