@@ -28,7 +28,7 @@ public class ShopRowScript : MonoBehaviour
 
     private void UpdateRowDetails()
     {
-        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_item.m_itemName;
+        transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_item.m_itemName.ToUpper();
         transform.GetChild(1).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "$" + m_item.m_buyPrice.ToString("n0");
         transform.GetChild(2).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "$" + m_item.m_sellPrice.ToString("n0");
     }

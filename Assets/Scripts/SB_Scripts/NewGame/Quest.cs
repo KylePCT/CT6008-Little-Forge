@@ -91,7 +91,7 @@ public class Quest : ScriptableObject
     {
         for (int i = 0; i < m_actionKeys.Length; i++)
         {
-            if (Input.inputString == m_actionKeys[i])
+            if (Input.inputString.ToLower() == m_actionKeys[i].ToLower())
             {
                 m_actionCompleted[i] = true;
             }
