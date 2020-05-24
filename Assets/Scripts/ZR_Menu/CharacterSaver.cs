@@ -94,14 +94,9 @@ public class CharacterSaver : MonoBehaviour
         if (a_save.m_name == "SAMISTHEBEST")
         {
             a_save.m_tutComplete = 1;
-            a_save.m_money = 999999999999;
+            a_save.m_money = 1200000000;
             a_save.m_ingots = 9999999;
             a_save.m_level = 10;
-
-            for (int i = 0; i < a_save.m_forgeItems.Length; i++)
-            {
-                a_save.m_forgeItems[i] = 9;
-            }
         }
     }
 }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4343962979006393951}
   - component: {fileID: 7941812070971450786}
   - component: {fileID: 2478104544031325043}
-  - component: {fileID: 5130452339043029398}
   m_Layer: 0
   m_Name: plantAleeks
   m_TagString: Untagged
@@ -96,6 +95,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 0}
+  m_item0: {fileID: 0}
+  m_item1: {fileID: 0}
+  m_minRange: 0
+  m_maxRange: 0
   cropMesh: {fileID: -951608786083511892, guid: 410b9f7acb43ffc469515eb5dad88692,
     type: 3}
   cropMaterial: {fileID: 2100000, guid: 530f7f0d19c8762429feb85ad3bcac1d, type: 2}
@@ -4852,16 +4855,3 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!135 &5130452339043029398
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257679650016557286}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.66
-  m_Center: {x: -0.10947307, y: 0.00097615295, z: 0.6055836}

@@ -1,10 +1,10 @@
 ﻿//////////////////////////////////////////////////
 /// File: PlantSoil.cs
-/// Author: Kyle Tugwell
+/// Author: Kyle Tugwell/Sam Baker
 /// Date created: 15/04/20
-/// Last edit: 20/04/20
+/// Last edit: 24/05/20
 /// Description: Code to plant the seed in.
-/// Comments: 
+/// Comments: Reworked to rid errors and adopt clean system
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -15,14 +15,17 @@ using UnityEngine.InputSystem;
 
 public class PlantSoil : MonoBehaviour
 {
-    private InputSystem inputSystem;
-    private bool inRange;
+    private InputSystem m_inputSystem;
+    private bool m_inRange;
     public GameObject Player;
 
     [Tooltip("This is the prefab of the crop model, material and script.")]
     public GameObject cropToGrow;
     public GameObject plantedCrop;
-    bool cropPlanted = false;
+    public Item m_seedsNeeded;
+    bool m_cropPlanted = false;
+    private float m_timer = 2.0f; //The amount of seconds texts pops up saying not enough seeds
+    private bool m_seedCheck = false;
     [SerializeField] Transform placeToGrow;
     [SerializeField] private GameObject interactText;
 
@@ -30,90 +33,122 @@ public class PlantSoil : MonoBehaviour
     [SerializeField] private Item m_item1 = null;
     [SerializeField] private int m_minRange, m_maxRange = 0;
 
+
+    private void Awake() => m_inputSystem = new InputSystem();
+    private void OnEnable() => m_inputSystem.Player.Enable();
+    private void OnDisable() => m_inputSystem.Player.Disable();
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
-
-    private void Awake() => inputSystem = new InputSystem();
-    private void OnEnable() => inputSystem.Player.Enable();
-    private void OnDisable() => inputSystem.Player.Disable();
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        InteractionKey();
+        Debug.Log(m_cropPlanted);
     }
-
-    //If the player is in the collision
     private void OnTriggerStay(Collider col)
     {
-        //is the crop is not planted, show text to prompt it
-        if (col.gameObject.tag == "Player" && cropPlanted == false)
-        { 
-            inRange = true;
-            interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to plant crop!";
-            interactText.SetActive(true);
-        }
-        //if it is planted but still growing
-        else if(col.gameObject.tag == "Player" && cropPlanted == true && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == false)
-        {
-            interactText.GetComponent<TextMeshProUGUI>().text = "Crop Isnt Ready!";
-            interactText.SetActive(true);
-        }
-        //if it is fully grown
-        else if (col.gameObject.tag == "Player" && cropPlanted == true && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
-        {
-            interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to harvest Crop!";
-            interactText.SetActive(true);
-        }
+        PlantCheck(col);
     }
 
     //if the player leaves the collision
     private void OnTriggerExit(Collider col)
     {
-        Debug.Log("Called");
         if (col.gameObject.tag == "Player")
         {
             interactText.SetActive(false);
-            inRange = false;
+            m_inRange = false;
+            m_seedCheck = false;
         }
     }
 
-    //if the interact key is pressed (f in inputmanager)
-    public void InteractKey(InputAction.CallbackContext ctx)
+    private void PlantCheck(Collider a_col)
     {
-        //if the player is in range
-        if (inRange)
+        //is the crop is not planted, show text to prompt it
+        if(a_col.gameObject.tag == "Player")
         {
-            Debug.Log("In range to plant.");
-
-            //and the interact key is pressed with no crop planted
-            if (ctx.performed && cropPlanted == false)
+            m_inRange = true;
+            if (m_cropPlanted == false)
             {
-                plantedCrop = new GameObject();
-                plantedCrop = Instantiate(cropToGrow, placeToGrow.position, placeToGrow.rotation);
-                plantedCrop.transform.parent = placeToGrow.transform;
-                plantedCrop.GetComponent<PlantGrowth>().m_item0 = m_item0;
-                plantedCrop.GetComponent<PlantGrowth>().m_item1 = m_item1;
-                plantedCrop.GetComponent<PlantGrowth>().m_minRange = m_minRange;
-                plantedCrop.GetComponent<PlantGrowth>().m_maxRange = m_maxRange;
-
-                cropPlanted = true;
-
-                Debug.Log("Crop planted.");
+                if (!m_seedCheck)
+                {
+                    interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to plant crop!";
+                    interactText.SetActive(true);
+                }
+                else
+                {
+                    interactText.GetComponent<TextMeshProUGUI>().text = "Not enough seeds!";
+                    interactText.SetActive(true);
+                    m_timer -= Time.deltaTime;
+                    if (m_timer <= 0)
+                    {
+                        m_seedCheck = false;
+                        interactText.SetActive(false);
+                    }
+                }
+            }
+            //if it is planted
+            else
+            {
+                if (plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == false)
+                {
+                    //Planted but not fully grown
+                    interactText.GetComponent<TextMeshProUGUI>().text = "Crop Isnt Ready!";
+                    interactText.SetActive(true);
+                }
+                else
+                {
+                    //if it is fully grown
+                    interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to harvest Crop!";
+                    interactText.SetActive(true);
+                }
             }
         }
+    }
 
-        //check if the crop is fully grown
-        if(ctx.performed && plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
+    void InteractionKey()
+    {
+        if (m_inputSystem.Player.Interact.triggered)
         {
-            //harvest crop
-            plantedCrop.GetComponent<PlantGrowth>().DestroyMe();
-            plantedCrop = null;
-            cropPlanted = false;
-            interactText.SetActive(false);
-        }
+            if (m_inRange)
+            {
+                if (m_cropPlanted == false)
+                {
+                    if (InventoryManager.instance.RemoveItem(m_seedsNeeded))
+                    {
+                        plantedCrop = new GameObject();
+                        plantedCrop = Instantiate(cropToGrow, placeToGrow.position, placeToGrow.rotation);
+                        plantedCrop.transform.parent = placeToGrow.transform;
+                        plantedCrop.GetComponent<PlantGrowth>().m_item0 = m_item0;
+                        plantedCrop.GetComponent<PlantGrowth>().m_item1 = m_item1;
+                        plantedCrop.GetComponent<PlantGrowth>().m_minRange = m_minRange;
+                        plantedCrop.GetComponent<PlantGrowth>().m_maxRange = m_maxRange;
 
-        //handle harvesting override
+                        m_cropPlanted = true;
+
+                        interactText.SetActive(false);
+                    }
+                    else
+                    {
+                        m_seedCheck = true;
+                        m_timer = 2.0f;
+                        interactText.GetComponent<TextMeshProUGUI>().text = "Not enough seeds!";
+                        interactText.SetActive(false);
+                    }
+                }
+                else
+                {
+                    if (plantedCrop.GetComponent<PlantGrowth>().checkIfHarvestable() == true)
+                    {
+                        //harvest crop
+                        Debug.Log("Should Be Destroyed");
+                        plantedCrop.GetComponent<PlantGrowth>().DestroyMe();
+                        plantedCrop = null;
+                        m_cropPlanted = false;
+                        interactText.SetActive(false);
+                    }
+                }
+            }
+        }
     }
 }

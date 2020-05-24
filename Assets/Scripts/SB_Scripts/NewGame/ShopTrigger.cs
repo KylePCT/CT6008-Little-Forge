@@ -78,7 +78,7 @@ public class ShopTrigger : MonoBehaviour
                     //MENU CLOSED ENABLE INPUT
                     Cursor.visible = false;
                     Cursor.lockState = CursorLockMode.Locked;
-                    m_interactionText.SetActive(false);
+                    m_interactionText.SetActive(true);
                     m_player.GetComponent<PlayerInput>().enabled = true;
                     m_player.GetComponent<PlayerControls>().OnEnable();
                     m_playerOrientation.GetComponent<PlayerOrientation>().OnEnable();

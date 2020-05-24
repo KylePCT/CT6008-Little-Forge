@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7322556990102184927}
   - component: {fileID: -8310239775796643188}
   - component: {fileID: -3874943610338868315}
-  - component: {fileID: -1247185037851704972}
   m_Layer: 0
   m_Name: plantLettuvia
   m_TagString: Untagged
@@ -96,6 +95,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 0}
+  m_item0: {fileID: 0}
+  m_item1: {fileID: 0}
+  m_minRange: 0
+  m_maxRange: 0
   cropMesh: {fileID: 973877516759717424, guid: 982e541b882b7b54b821514de11e9dae, type: 3}
   cropMaterial: {fileID: 2100000, guid: 677faa90279d9454e91e8f3c60485781, type: 2}
   startCropSize: 0.0821
@@ -4851,16 +4854,3 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!135 &-1247185037851704972
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639063833577749204}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.53397346
-  m_Center: {x: 0.000000059604645, y: 0.00000005960466, z: -0.2415799}
