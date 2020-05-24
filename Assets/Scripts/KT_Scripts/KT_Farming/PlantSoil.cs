@@ -44,7 +44,6 @@ public class PlantSoil : MonoBehaviour
     private void Update()
     {
         InteractionKey();
-        Debug.Log(m_cropPlanted);
     }
     private void OnTriggerStay(Collider col)
     {
