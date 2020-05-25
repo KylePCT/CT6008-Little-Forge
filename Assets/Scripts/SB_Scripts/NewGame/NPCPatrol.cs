@@ -16,6 +16,13 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 using TMPro;
 
+//Enum for male or female voice
+public enum Voice
+{
+    Male,
+    Female
+}
+
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCPatrol : MonoBehaviour
 {
@@ -54,6 +61,8 @@ public class NPCPatrol : MonoBehaviour
     private int m_index;
     private InputSystem m_inputSystem = null;
 
+    [SerializeField] Voice charVoice;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Awake() => m_inputSystem = new InputSystem();
@@ -71,10 +80,9 @@ public class NPCPatrol : MonoBehaviour
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         if (m_navMeshAgent == null)
         {
-            Debug.LogWarning("Warning: Unable to locate NPC's NavMeshAgent component");
+            Debug.LogWarning("Warning: Unable to locate NPC's NavMeshAgent component.");
         }
         m_navMeshAgent.speed = m_speed;
-        
 
     }
 
@@ -115,6 +123,12 @@ public class NPCPatrol : MonoBehaviour
         {
             m_continueTextUI.SetActive(true);
         }
+    }
+
+    public Voice GetNPCVoiceType()
+    {
+        Debug.Log("charvoice" + charVoice);
+        return charVoice;
     }
 
     private void InteractionTrigger()
@@ -199,6 +213,7 @@ public class NPCPatrol : MonoBehaviour
             if (m_inRangeOfPlayer)
             {
                 m_interacted = true;
+
             }
         }
     }
@@ -260,6 +275,7 @@ public class NPCPatrol : MonoBehaviour
         m_navMeshAgent.isStopped = true;
         m_charAnimator.SetBool("isWalking", false);
         ContinueUI();
+
         if (m_interactionText.GetComponent<TextMeshProUGUI>().text == m_dialogue[m_index])
         {
             m_isTalking = false;

@@ -2,9 +2,10 @@
 /// File: PlayerControls.cs
 /// Author: Sam Baker
 /// Date created: 28/02/20
-/// Last edit: 11/03/2020 by Kyle Tugwell (Adding Animations)
+/// Last edit: 15/05/2020 by Kyle Tugwell (Adding Sounds)
 /// Description: Main player controls.
 /// Comments:
+/// + Any audio additions with KT_ are by Kyle.
 //////////////////////////////////////////////////
 using System;
 using System.Collections;
@@ -19,7 +20,7 @@ public class PlayerControls : MonoBehaviour
     [Space(-20)]
     [Header(" > RightMouseBut - Zoom")]
     [Space(-10)]
-    [Header(" > 'F'- Intereact")]
+    [Header(" > 'F'- Interact")]
     [Space(-10)]
     [Header(" > Space - Jump")]
     [Space(-10)]
@@ -41,6 +42,7 @@ public class PlayerControls : MonoBehaviour
     private InputSystem m_inputSystem = null;
 
     Animator charAnimator;
+    private bool walkingSoundPlaying;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -87,11 +89,19 @@ public class PlayerControls : MonoBehaviour
         if (moveInput.x != 0f || moveInput.y != 0f)
         {
             charAnimator.SetBool("isWalking", true);
+
+            if (walkingSoundPlaying == false && m_isGrounded == true)
+            {
+                KT_AudioManager.instance.playSound("GrassSteps");
+                walkingSoundPlaying = true;
+            }
         }
 
         else
         {
             charAnimator.SetBool("isWalking", false);
+            KT_AudioManager.instance.stopSound("GrassSteps");
+            walkingSoundPlaying = false;
         }
     }
 
@@ -103,6 +113,7 @@ public class PlayerControls : MonoBehaviour
             {
                 charAnimator.SetBool("isJumping", true);
                 //charAnimator.SetBool("isWalking", false);
+
 
                 m_yAxisVelocity = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
                 m_isGrounded = false;

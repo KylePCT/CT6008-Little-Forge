@@ -186,6 +186,8 @@ public class FiringWeapon : MonoBehaviour
             {
                 m_isFiring = false;
 
+                KT_AudioManager.instance.stopSound("LaserShoot");
+
                 gunAnim.SetBool("isShooting", false);
                 laser.SetActive(false);
                 //laserHand.SetActive(true);
@@ -197,6 +199,8 @@ public class FiringWeapon : MonoBehaviour
                 if (m_weaponEnabled)
                 {
                     m_timer = m_fireRate;
+
+                    KT_AudioManager.instance.playSound("LaserShoot");
 
                     gunAnim.SetBool("isShooting", true);
                     laser.SetActive(true);
