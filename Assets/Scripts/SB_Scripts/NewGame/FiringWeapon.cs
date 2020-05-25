@@ -43,6 +43,7 @@ public class FiringWeapon : MonoBehaviour
     Animator gunAnim;
 
     public GameObject laserHand;
+    public GameObject crossHair;
 
     public GameObject laser;
     public GameObject firePoint;
@@ -74,10 +75,12 @@ public class FiringWeapon : MonoBehaviour
         if (PlayerZoom.Instance.GetZoom())
         {
             laserHand.SetActive(false);
+            crossHair.SetActive(true);
         }
         else
         {
             laserHand.SetActive(true);
+            crossHair.SetActive(false);
         }
     }
 
