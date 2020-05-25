@@ -38,6 +38,8 @@ public class ButtonSelector : MonoBehaviour
 
         m_currentEnumerator = SnapToIE(a_transform);
         StartCoroutine(m_currentEnumerator);
+        KT_AudioManager.instance.playSound("UIClick");
+
     }
 
     /// <summary>

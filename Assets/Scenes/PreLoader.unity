@@ -195,6 +195,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553755453}
   m_CullTransparentMesh: 0
+--- !u!1 &812614208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812614210}
+  - component: {fileID: 812614209}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &812614209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812614208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a493209a46edf448a362c227724e18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - name: GrassSteps
+    clip: {fileID: 8300000, guid: 962f93065f289cd4ba3d60523bfe9748, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: LaserShoot
+    clip: {fileID: 8300000, guid: f20dc7628cce78c4da1e6936495ffc9e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: UIClick
+    clip: {fileID: 8300000, guid: 3cda2ebaa1fb32a4fa25563457dac2df, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: UIHigh
+    clip: {fileID: 8300000, guid: afab24d0957c5b64d84d31ad673b6fa7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: UIComplete
+    clip: {fileID: 8300000, guid: fe0c5d1d333f3494092c327ac96c8cfb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+--- !u!4 &812614210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812614208}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 267.3253, y: 168.84764, z: 118.07284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980819235
 GameObject:
   m_ObjectHideFlags: 0
