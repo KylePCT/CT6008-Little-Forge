@@ -108,6 +108,7 @@ public class QuestGiver : MonoBehaviour
                     m_interactionText.SetActive(false);
 
                     QuestManager.Instance.UpdateQuestGiver(this);
+                    KT_AudioManager.instance.playSound("UIHigh");
 
                     return;
                 }
@@ -119,6 +120,7 @@ public class QuestGiver : MonoBehaviour
                         m_inRange = false;
 
                         QuestManager.Instance.UpdateQuestGiver(null);
+                        KT_AudioManager.instance.playSound("UIComplete");
 
                         GetReward();
                     }

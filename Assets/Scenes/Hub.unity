@@ -5443,7 +5443,7 @@ RectTransform:
   m_Children:
   - {fileID: 449500762}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5637,7 +5637,7 @@ Transform:
   m_Children:
   - {fileID: 1546923072}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &17722907
 MonoBehaviour:
@@ -9630,6 +9630,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &116211461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11516,6 +11527,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &163228921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12195,6 +12217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterfallBottom
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 82c7739e83ea8ea4d888793b2c5570ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82c7739e83ea8ea4d888793b2c5570ec, type: 3}
@@ -13428,6 +13455,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &208248424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13822,7 +13860,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 399301061}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &212322649
 PrefabInstance:
@@ -13999,6 +14037,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1196862684}
         m_MethodName: SellItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16927,7 +16976,7 @@ MonoBehaviour:
   continueTextUI: {fileID: 1501625678}
   tutorialComplete: 0
   sentences:
-  - Hey, you!
+  - ' Hey, you!'
   - I haven't seen you around before. Who are you?
   - Oh! You're that new arrival!
   - Well, great to meet you champ! I'm Libra.
@@ -17501,6 +17550,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1575984761}
         m_MethodName: Item2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18699,6 +18759,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &319299024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19518,6 +19589,7 @@ GameObject:
   - component: {fileID: 339060728}
   - component: {fileID: 339060727}
   - component: {fileID: 339060726}
+  - component: {fileID: 339060729}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -19590,8 +19662,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 399301061}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &339060729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339060725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e180944fc728af4fa9283f094dd8550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &339159508
 GameObject:
   m_ObjectHideFlags: 0
@@ -21830,7 +21914,6 @@ Transform:
   m_Children:
   - {fileID: 1019619548}
   - {fileID: 3844724}
-  - {fileID: 846443646}
   - {fileID: 13715148}
   - {fileID: 1575984755}
   - {fileID: 1598914711}
@@ -21845,6 +21928,7 @@ Transform:
   - {fileID: 210949248}
   - {fileID: 846290348}
   - {fileID: 2055496786}
+  - {fileID: 448028705}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23290,6 +23374,85 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4188242243173542922, guid: 78e4a914d8c7ed54e9f041cd1b4e0e4c, type: 3}
+--- !u!1 &448028704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 448028705}
+  - component: {fileID: 448028706}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &448028705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448028704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 399301061}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &448028706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448028704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a493209a46edf448a362c227724e18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - name: GrassSteps
+    clip: {fileID: 8300000, guid: 962f93065f289cd4ba3d60523bfe9748, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: LaserShoot
+    clip: {fileID: 8300000, guid: f20dc7628cce78c4da1e6936495ffc9e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 1
+  - name: UIClick
+    clip: {fileID: 8300000, guid: 3cda2ebaa1fb32a4fa25563457dac2df, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: UIHigh
+    clip: {fileID: 8300000, guid: afab24d0957c5b64d84d31ad673b6fa7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
+  - name: UIComplete
+    clip: {fileID: 8300000, guid: fe0c5d1d333f3494092c327ac96c8cfb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    playOnAwake: 0
+    loop: 0
 --- !u!1 &449059939 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7376394806075445415, guid: 37691ae9b8782f94688a1e7bd8e19b43,
@@ -26413,7 +26576,7 @@ RectTransform:
   - {fileID: 1411457490}
   - {fileID: 1897492424}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29737,7 +29900,7 @@ Transform:
   m_LocalScale: {x: 2.0644, y: 2.0644, z: 2.0644}
   m_Children: []
   m_Father: {fileID: 399301061}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &573119202
 MonoBehaviour:
@@ -31233,6 +31396,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1575984761}
         m_MethodName: Item4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33968,6 +34142,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &666718848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36605,6 +36790,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 938550859}
         m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41349,66 +41545,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 399301061}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &846443645
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 846443646}
-  - component: {fileID: 846443647}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &846443646
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846443645}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 399301061}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &846443647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846443645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a493209a46edf448a362c227724e18e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sounds:
-  - name: GrassSteps
-    clip: {fileID: 8300000, guid: 962f93065f289cd4ba3d60523bfe9748, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-    playOnAwake: 0
-    loop: 1
-  - name: LaserShoot
-    clip: {fileID: 8300000, guid: f20dc7628cce78c4da1e6936495ffc9e, type: 3}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-    playOnAwake: 0
-    loop: 1
 --- !u!1 &850880825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 871527025650080161, guid: c97620e352faf984e8cfbf6897026fa3,
@@ -42870,7 +43008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923178426}
   m_LocalRotation: {x: -0, y: -0.5540844, z: -0, w: 0.8324605}
-  m_LocalPosition: {x: 16.53, y: 0.4900055, z: 6.32}
+  m_LocalPosition: {x: 13.84, y: 0.4900055, z: 7.44}
   m_LocalScale: {x: 2.2225, y: 2.2225, z: 2.2225}
   m_Children: []
   m_Father: {fileID: 1618071615}
@@ -43804,6 +43942,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1253317657}
         m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -44952,6 +45101,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &961821642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45072,6 +45232,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1575984761}
         m_MethodName: Item5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -57551,7 +57722,7 @@ RectTransform:
   - {fileID: 747933443}
   - {fileID: 1893627617}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -58997,6 +59168,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1253317657}
         m_MethodName: SellItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -61188,6 +61370,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1196862684}
         m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65934,6 +66127,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1370461043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66055,6 +66259,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 512778260}
         m_MethodName: BuyItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -70468,7 +70683,7 @@ RectTransform:
   - {fileID: 699399744}
   - {fileID: 2007239522}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -72788,6 +73003,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1512512221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74191,7 +74417,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 399301061}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1543887927 stripped
 GameObject:
@@ -76279,7 +76505,7 @@ RectTransform:
   - {fileID: 1546379007}
   - {fileID: 362223576}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -76837,7 +77063,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 399301061}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1598914712
 MonoBehaviour:
@@ -100076,6 +100302,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1999863226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101522,6 +101759,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 339060729}
+        m_MethodName: playHClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2027720767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102706,7 +102954,7 @@ Transform:
   m_Children:
   - {fileID: 631960374}
   m_Father: {fileID: 399301061}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2055496787
 MeshRenderer:
@@ -105719,7 +105967,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 399301061}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2125621860
 MonoBehaviour:
@@ -107602,6 +107850,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655504564031400635, guid: 543b935596a1d574e8e1f10cb306f084,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 5748568184186605678, guid: 543b935596a1d574e8e1f10cb306f084,
         type: 3}

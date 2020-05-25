@@ -93,6 +93,8 @@ public class ForgeItem : MonoBehaviour
         }
         if(PlayersBank.Instance.GetMoney() > m_currentCost)
         {
+            KT_AudioManager.instance.playSound("UIHigh");
+
             PlayersBank.Instance.TakeAwayMoney(m_currentCost);
             m_itemLevel++;
             m_save.m_forgeItems[m_id] = m_itemLevel;
@@ -102,6 +104,8 @@ public class ForgeItem : MonoBehaviour
         else
         {
             Debug.Log("Log: Not Enough To Purchase Upgrade!!!");
+            KT_AudioManager.instance.playSound("UIClick");
+
         }
     }
 

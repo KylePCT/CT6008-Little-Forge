@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1792383411294565822}
   - component: {fileID: 1192787428843769901}
   - component: {fileID: 3055944033966410270}
+  - component: {fileID: 4346078453000057517}
   m_Layer: 0
   m_Name: SlimeItemDrop
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0b7dc2b5fc91e38489dc66cca7b338f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,3 +139,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemData: {fileID: 11400000, guid: c3be6608001ff5d4fbab4eee7be24dae, type: 2}
+--- !u!114 &4346078453000057517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8271732675053516569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50dfb1660ed5854c8eaaa364c5c55ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  ForwardX: 0
+  ForwardY: 1
+  ForwardZ: 0
+  ReverseX: 0
+  ReverseY: 0
+  ReverseZ: 0

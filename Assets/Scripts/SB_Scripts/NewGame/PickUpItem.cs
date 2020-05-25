@@ -23,6 +23,8 @@ public class PickUpItem : MonoBehaviour
             {
                 Destroy(gameObject);
 
+                KT_AudioManager.instance.playSound("UIHigh");
+
                 InventoryManager.instance.AddItem(m_itemData, 1);
             }
             else

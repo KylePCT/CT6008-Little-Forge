@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class KT_CirclePause : MonoBehaviour
 {
@@ -82,6 +83,8 @@ public class KT_CirclePause : MonoBehaviour
             oldMenuItem = currentMenuItem;
             buttons[currentMenuItem].sceneImage.color = buttons[currentMenuItem].highlightColour;
 
+            KT_AudioManager.instance.playSound("UIClick");
+
             LeanTween.scale(this.gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
         }
     }
@@ -92,18 +95,26 @@ public class KT_CirclePause : MonoBehaviour
         buttons[currentMenuItem].sceneImage.color = buttons[currentMenuItem].downColour;
 
         //wedge actions
-        if(currentMenuItem == 0)
+        if(currentMenuItem == 0) //customisation
         {
+            KT_AudioManager.instance.playSound("UIHigh");
+
             Debug.Log("0 TR pressed");
+            //SceneManager.LoadScene("CharacterCreation"); //Can't make this work without breaking stuff :( - KT
         }
 
-        else if(currentMenuItem == 1)
+        else if(currentMenuItem == 1) //settings
         {
+            KT_AudioManager.instance.playSound("UIHigh");
+
             Debug.Log("1 M pressed");
-        }        
-        
-        else if(currentMenuItem == 2)
+            SceneManager.LoadScene("PreLoader");
+        }
+
+        else if(currentMenuItem == 2) //inventory
         {
+            KT_AudioManager.instance.playSound("UIHigh");
+
             //Open the inventory
             Debug.Log("2 TL pressed");
             m_invCanvas.SetActive(true);
