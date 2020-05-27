@@ -749,10 +749,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1522840100}
   m_HandleRect: {fileID: 1379960917}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 10
+  m_MinValue: 0.01
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1509,6 +1509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 575127327}
   - component: {fileID: 575127326}
+  - component: {fileID: 575127328}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -1626,6 +1627,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &575127328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575127325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a5579d565550341a2f472c9a5e2abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &645209645
 GameObject:
   m_ObjectHideFlags: 0
@@ -5123,8 +5136,8 @@ RectTransform:
   m_Father: {fileID: 36478791}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.05, y: 0}
-  m_AnchorMax: {x: 0.05, y: 1}
+  m_AnchorMin: {x: 0.74747473, y: 0}
+  m_AnchorMax: {x: 0.74747473, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5877,10 +5890,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 891629436}
   m_HandleRect: {fileID: 1339683177}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 10
+  m_MinValue: 0.01
+  m_MaxValue: 0.6
   m_WholeNumbers: 0
-  m_Value: 0.33
+  m_Value: 0.6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5928,7 +5941,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.05, y: 1}
+  m_AnchorMax: {x: 0.74747473, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

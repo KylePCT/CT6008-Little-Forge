@@ -28,7 +28,7 @@ public class KT_AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-            s.source.volume = s.volume;
+            s.source.volume = OptionsData.Instance.GetVolume();
             s.source.pitch = s.pitch;
             s.source.playOnAwake = s.playOnAwake;
             s.source.loop = s.loop;
@@ -43,6 +43,7 @@ public class KT_AudioManager : MonoBehaviour
             Debug.Log(s + " does not currently exist. Is there a typo?");
             return;
         }
+        s.source.volume = OptionsData.Instance.GetVolume();
         s.source.Play();
     }
 

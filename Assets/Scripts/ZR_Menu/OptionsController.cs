@@ -1,7 +1,8 @@
 ﻿//////////////////////////////////////////////////
 /// File: OptionsController.cs
-/// Author: Zack Raeburn
+/// Author: Zack Raeburn/Sam Baker
 /// Date Created: 27/02/20
+/// Last Edit: 27/05/20
 /// Description: Allows for controlling and saving options
 //////////////////////////////////////////////////
 
@@ -31,11 +32,18 @@ public class OptionsController : MonoBehaviour
         // Setting the UI to the saved options
         m_audioVolume.value = audioVolume;
         m_sensitivity.value = sensitivity;
+
+        //SB
+        OptionsData.Instance.SetVolume(audioVolume);
+        OptionsData.Instance.SetSensitivity(sensitivity);
     }
 
     public void SaveOptions()
     {
         SaveGameManager.SetOptions(m_audioVolume.value, m_sensitivity.value);
+        //SB
+        OptionsData.Instance.SetVolume(m_audioVolume.value);
+        OptionsData.Instance.SetSensitivity(m_sensitivity.value);
     }
 
     private void OnDestroy()

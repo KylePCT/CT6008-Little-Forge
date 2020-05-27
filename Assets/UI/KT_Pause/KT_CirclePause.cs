@@ -11,7 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class KT_CirclePause : MonoBehaviour
 {
@@ -24,6 +23,7 @@ public class KT_CirclePause : MonoBehaviour
     private Vector2 toVector2M;
 
     [SerializeField] private GameObject m_invCanvas = null;
+    [SerializeField] private GameObject m_optCanvas = null;
 
     public int menuItems;
     public int currentMenuItem;
@@ -108,7 +108,8 @@ public class KT_CirclePause : MonoBehaviour
             KT_AudioManager.instance.playSound("UIHigh");
 
             Debug.Log("1 M pressed");
-            SceneManager.LoadScene("PreLoader");
+            m_optCanvas.SetActive(true);
+            gameObject.SetActive(false);
         }
 
         else if(currentMenuItem == 2) //inventory

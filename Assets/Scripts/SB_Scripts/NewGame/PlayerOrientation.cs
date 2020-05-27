@@ -16,7 +16,7 @@ public class PlayerOrientation : MonoBehaviour
 {
     //////////////////////////////////////////////////
     //// Variables
-    [SerializeField] [Range(0.1f, 0.6f)] private float m_rotSensitivity = .2f;
+    [SerializeField] [Range(0.01f, 0.6f)] private float m_rotSensitivity = .2f;
     private Transform m_player = null;
     private GameObject m_playerObject = null;
     private GameObject m_rotFaceObject = null;
@@ -54,6 +54,7 @@ public class PlayerOrientation : MonoBehaviour
 
     private void Update()
     {
+        m_rotSensitivity = OptionsData.Instance.GetSensitivity();
         var moveInput = m_inputSystem.Player.Movement.ReadValue<Vector2>();
 
         Vector3 rotF = transform.forward;

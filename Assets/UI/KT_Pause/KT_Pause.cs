@@ -20,6 +20,7 @@ public class KT_Pause : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject mainCanvas;
     [SerializeField] private GameObject m_invCanvas = null;
+    [SerializeField] private GameObject m_optCanvas = null;
     [SerializeField] private GameObject m_toolTip = null;
 
     //each menu wedge
@@ -52,6 +53,7 @@ public class KT_Pause : MonoBehaviour
         canvasGroup.alpha = 0;
 
         m_invCanvas.SetActive(false);
+        m_optCanvas.SetActive(false);
     }
     void Update()
     {
@@ -73,6 +75,7 @@ public class KT_Pause : MonoBehaviour
             LeanTween.scale(wedge_3, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
 
             m_invCanvas.SetActive(false);
+            m_optCanvas.SetActive(false);
             m_toolTip.SetActive(false);
 
             FadeOut();
@@ -122,6 +125,7 @@ public class KT_Pause : MonoBehaviour
                 LeanTween.scale(wedge_3, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
 
                 m_invCanvas.SetActive(false);
+                m_optCanvas.SetActive(false);
                 m_toolTip.SetActive(false);
 
                 FadeOut();
