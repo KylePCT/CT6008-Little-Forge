@@ -71,6 +71,7 @@ public class KT_Typewriter : MonoBehaviour
         characterIndex = 0;
         charAudioSource.GetComponent<AudioSource>();
 
+        //Error in your code here kyle ???? maybe add a null check as the interact text can come up for other occasions not just the npc
         voiceType = npcPatrol.GetNPCVoiceType();
     }
 

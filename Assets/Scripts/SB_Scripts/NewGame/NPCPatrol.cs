@@ -2,8 +2,8 @@
 /// File: NPCPatrol.cs
 /// Author: Sam Baker
 /// Date created: 27/02/20
-/// Last edit: 22/05/20
-/// Description: 
+/// Last edit: 27/05/20
+/// Description: Script used to control everything on the NPC
 /// Comments: 
 //////////////////////////////////////////////////
 using System;
@@ -75,8 +75,12 @@ public class NPCPatrol : MonoBehaviour
         m_cam = Camera.main.gameObject;
         m_nameObject = transform.GetChild(0).gameObject;
         m_player = GameObject.Find("Sam'sTempCharacterController/Player");
-        m_nameObject.GetComponentInChildren<TextMesh>().text = m_name;
-        m_nameObject.GetComponentInChildren<TextMesh>().color = m_nameColour;
+        //Null check
+        if (m_nameObject.GetComponentInChildren<TextMesh>())
+        {
+            m_nameObject.GetComponentInChildren<TextMesh>().text = m_name;
+            m_nameObject.GetComponentInChildren<TextMesh>().color = m_nameColour;
+        }
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         if (m_navMeshAgent == null)
         {
@@ -118,10 +122,14 @@ public class NPCPatrol : MonoBehaviour
         if (m_isTalking)
         {
             m_continueTextUI.SetActive(false);
+            //Pause the player
+            m_player.GetComponent<PlayerControls>().enabled = false;
         }
         else
         {
             m_continueTextUI.SetActive(true);
+            //Unpause
+            m_player.GetComponent<PlayerControls>().enabled = true;
         }
     }
 
@@ -190,6 +198,13 @@ public class NPCPatrol : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+            //incase the player intereacts but manages to be out of range
+            m_player.GetComponent<PlayerControls>().enabled = true;
+            if (m_currentState == NPCStates.NPC_INTERACT)
+            {
+                m_currentState = NPCStates.NPC_FINDLOCATION;
+            }
+
             m_inRangeOfPlayer = false;
             m_interactionText.SetActive(false);
         }
