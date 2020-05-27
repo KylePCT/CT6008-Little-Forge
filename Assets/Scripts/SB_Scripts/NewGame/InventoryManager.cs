@@ -18,11 +18,13 @@ public class InventoryManager : MonoBehaviour
     public List<int> m_itemNumbers = new List<int>();
 
     public GameObject[] m_slots = null;
+    public GameObject[] m_slots2 = null;
 
+    public RemoveItem[] m_buttons;
+    public RemoveItem[] m_buttons2;
+    
     public static InventoryManager instance;
 
-    public RemoveItem m_button;
-    public RemoveItem[] m_buttons;
 
     private void Awake()
     {
@@ -37,7 +39,6 @@ public class InventoryManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -73,6 +74,15 @@ public class InventoryManager : MonoBehaviour
                 m_slots[i].transform.GetChild(1).GetComponent<Text>().text = m_itemNumbers[i].ToString();
 
                 m_slots[i].transform.GetChild(2).gameObject.SetActive(true);
+
+                //Second inv
+                m_slots2[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
+                m_slots2[i].transform.GetChild(0).GetComponent<Image>().sprite = m_items[i].m_itemSprite;
+                //Update slot quantity
+                m_slots2[i].transform.GetChild(1).GetComponent<Text>().color = new Color(0, 0, 0, 1);
+                m_slots2[i].transform.GetChild(1).GetComponent<Text>().text = m_itemNumbers[i].ToString();
+
+                m_slots2[i].transform.GetChild(2).gameObject.SetActive(true);
             }
             else
             {
@@ -84,6 +94,15 @@ public class InventoryManager : MonoBehaviour
                 m_slots[i].transform.GetChild(1).GetComponent<Text>().text = null;
 
                 m_slots[i].transform.GetChild(2).gameObject.SetActive(false);
+
+                //Second inv
+                m_slots2[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
+                m_slots2[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
+                //Update slot quantity
+                m_slots2[i].transform.GetChild(1).GetComponent<Text>().color = new Color(0, 0, 0, 0);
+                m_slots2[i].transform.GetChild(1).GetComponent<Text>().text = null;
+
+                m_slots2[i].transform.GetChild(2).gameObject.SetActive(false);
             }
         }
     }
@@ -150,10 +169,12 @@ public class InventoryManager : MonoBehaviour
             if(i < m_items.Count)
             {
                 m_buttons[i].m_item = m_items[i];
+                m_buttons2[i].m_item = m_items[i];
             }
             else
             {
                 m_buttons[i].m_item = null;
+                m_buttons2[i].m_item = null;
             }
         }
     }
