@@ -138,6 +138,10 @@ public class BasicEnemyAI : MonoBehaviour
         {
             m_currentState = ENEMYStates.ENE_FINDLOCATION;
         }
+        else if (m_navMeshAgent.velocity == Vector3.zero)
+        {
+            m_currentState = ENEMYStates.ENE_FINDLOCATION;
+        }
     }
 
     private void HuntPlayer()
