@@ -87,6 +87,25 @@ public class ShopTrigger : MonoBehaviour
                 }
             }
         }
+        //Second key used to close the shop
+        if(m_inputSystem.Player.ESCkey.triggered)
+        {
+            if (m_inRange)
+            {
+                m_shouldMenuBeOpen = false;
+                Debug.Log("TRigger");
+                //MENU CLOSED ENABLE INPUT
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Shop";
+                m_interactionText.SetActive(true);
+                m_player.GetComponent<PlayerInput>().enabled = true;
+                m_player.GetComponent<PlayerControls>().OnEnable();
+                m_playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
+                m_player.GetComponent<FiringWeapon>().SetWeaponActive(true);
+                m_player.GetComponent<PlayerZoom>().enabled = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider col)

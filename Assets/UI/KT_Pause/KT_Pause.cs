@@ -55,6 +55,28 @@ public class KT_Pause : MonoBehaviour
     }
     void Update()
     {
+        //Quick trigger to cause the UI to close - SB
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            isPaused = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+
+            player.GetComponent<PlayerControls>().OnEnable();
+            playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
+            weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
+            player.GetComponent<PlayerZoom>().enabled = true;
+
+
+            LeanTween.scale(wedge_1, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
+            LeanTween.scale(wedge_2, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
+            LeanTween.scale(wedge_3, new Vector3(0, 0, 0), 0.2f).setOnComplete(mainCanvHidden);
+
+            m_invCanvas.SetActive(false);
+            m_toolTip.SetActive(false);
+
+            FadeOut();
+        }
         //if 'Esc' or button 'Cancel' is pressed
         if (Input.GetKeyDown(KeyCode.E))
         {

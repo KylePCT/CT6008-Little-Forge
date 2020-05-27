@@ -55,14 +55,7 @@ public class SimpleFurniture : MonoBehaviour
             Debug.LogError("ERROR: SimpleFurniture.cs could not find NewCanvas game object!");
         }
 
-        //if (GameObject.Find("InteractText"))
-        //{
-        //    m_interactionText = GameObject.Find("InteractText");
-        //}
-        //else
-        //{
-        //    Debug.LogError("ERROR: SimpleFurniture.cs could not find InteractText game object!");
-        //}
+        m_interactionText = GetInteractText.Instance.m_interactionText;
     }
 
     private void Update()
@@ -78,6 +71,7 @@ public class SimpleFurniture : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
+            m_interactionText.SetActive(false);
             m_player.GetComponent<PlayerControls>().OnDisable();
             m_playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
             m_player.GetComponent<FiringWeapon>().SetWeaponActive(false);
@@ -89,6 +83,8 @@ public class SimpleFurniture : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
 
+            m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to place furniture";
+            m_interactionText.SetActive(true);
             m_player.GetComponent<PlayerControls>().OnEnable();
             m_playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
             m_player.GetComponent<FiringWeapon>().SetWeaponActive(true);
@@ -107,6 +103,17 @@ public class SimpleFurniture : MonoBehaviour
                 ShouldFurnitureMenuBeOpen();
             }
         }
+        //Second key to close
+        if (m_inputSystem.Player.ESCkey.triggered)
+        {
+            if (m_inRange)
+            {
+                //Open Furniture Menu
+                m_showUI = false;
+                ShouldFurnitureMenuBeOpen();
+            }
+        }
+
     }
     //Detect range of player
     private void OnTriggerEnter(Collider col)

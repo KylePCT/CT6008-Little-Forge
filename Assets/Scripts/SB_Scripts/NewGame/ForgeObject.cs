@@ -52,6 +52,16 @@ public class ForgeObject : MonoBehaviour
                 GameObject.Find("NewCanvas").GetComponent<ForgeManager>().CheckIfMenuShouldBeOpen();
             }
         }
+        //Second key used to close the shop
+        if (m_inputSystem.Player.ESCkey.triggered)
+        {
+            if (m_inRange)
+            {
+                m_shouldMenuBeOpen = false;
+                m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
+                GameObject.Find("NewCanvas").GetComponent<ForgeManager>().CheckIfMenuShouldBeOpen();
+            }
+        }
     }
 
     //public void InteractKey(InputAction.CallbackContext ctx)
@@ -81,7 +91,6 @@ public class ForgeObject : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
-            m_interactionText.SetActive(true);
             m_inRange = true;
         }
     }

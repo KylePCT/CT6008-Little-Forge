@@ -60,6 +60,14 @@
                     "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "ESCkey",
+                    "type": "Button",
+                    "id": "3d33fd91-ec67-4c08-9eaa-4a5883c99531",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
                 }
             ],
             "bindings": [
@@ -181,6 +189,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac745ee7-f091-485f-9b70-33deba52ef1e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ESCkey",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

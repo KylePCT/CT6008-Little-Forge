@@ -38,11 +38,13 @@ public class ForgeManager : MonoBehaviour
     [SerializeField] private GameObject m_playerOrientation;
     [SerializeField] private GameObject m_weapon;
 
+    private GameObject m_interactionText = null;
+
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
-
+        m_interactionText = GetInteractText.Instance.m_interactionText;
         m_ignotsTickTimer = 2.0f;
         m_uiTheForge = gameObject.transform.Find("TheForgeUI").gameObject;
         m_uiItemHolder = gameObject.transform.Find("TheForgeUI/panel/ScrollRect/Viewport/Upgrades").gameObject;
@@ -91,6 +93,7 @@ public class ForgeManager : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
+            m_interactionText.SetActive(false);
             m_player.GetComponent<PlayerControls>().OnDisable();
             m_playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
             m_weapon.GetComponent<FiringWeapon>().SetWeaponActive(false);
@@ -102,6 +105,8 @@ public class ForgeManager : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
 
+            m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to open Forge";
+            m_interactionText.SetActive(true);
             m_player.GetComponent<PlayerControls>().OnEnable();
             m_playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
             m_weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
