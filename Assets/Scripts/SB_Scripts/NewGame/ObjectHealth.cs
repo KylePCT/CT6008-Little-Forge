@@ -36,7 +36,9 @@ public class ObjectHealth : MonoBehaviour
     private GameObject m_healthCanvas = null;
     private GameObject m_cam = null;
     public GameObject m_slimeItemDrop;
+    private KT_SpawnEnemies m_spawner = null;
     public GameObject celebratePS;
+    private bool m_dead = false;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -79,14 +81,18 @@ public class ObjectHealth : MonoBehaviour
             }
             else if (gameObject.transform.tag == "Enemy")
             {
-                Destroy(gameObject);
-                Instantiate(celebratePS, transform.position, Quaternion.Euler(-90,0,0));
+                if (!m_dead)
+                {
+                    Destroy(gameObject);
+                    Instantiate(celebratePS, transform.position, Quaternion.Euler(-90, 0, 0));
 
-                //10xp gained for killing enemy
-                KT_LevelSystem.Instance.gainXP(10);
-                Instantiate(m_slimeItemDrop, transform.position, Quaternion.identity);
-                KT_AudioManager.instance.playSound("SlimeDead");
-
+                    //10xp gained for killing enemy
+                    KT_LevelSystem.Instance.gainXP(10);
+                    Instantiate(m_slimeItemDrop, transform.position, Quaternion.identity);
+                    KT_AudioManager.instance.playSound("SlimeDead");
+                    m_spawner.EnemyHasDied();
+                    m_dead = true;
+                }
                 if (QuestManager.Instance.CurrentQuestGiver() == null)
                 {
                     return;
@@ -136,5 +142,10 @@ public class ObjectHealth : MonoBehaviour
     public void GiveMaxHealth()
     {
         m_currentHealth = m_maxHealth;
+    }
+
+    public void SetSpawner(KT_SpawnEnemies a_spawner)
+    {
+        m_spawner = a_spawner;
     }
 }

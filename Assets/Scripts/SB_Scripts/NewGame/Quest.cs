@@ -20,7 +20,7 @@ public class Quest : ScriptableObject
     [SerializeField] private string m_questName = "";
     [SerializeField] private string m_questDescription = "";
     [Tooltip("Can be left at 0 if ActionQuest")]
-    [SerializeField] private int m_amount = 0;
+    public int m_amount = 0;
     [SerializeField] private float m_moneyReward = 0;
     [SerializeField] private float m_ingotReward = 0;
     [SerializeField] private string[] m_actionKeys = new string[0];
