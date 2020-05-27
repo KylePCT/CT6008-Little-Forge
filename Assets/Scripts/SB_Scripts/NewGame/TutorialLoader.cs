@@ -15,7 +15,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
-using System;
 
 public class TutorialLoader : MonoBehaviour
 {
@@ -67,6 +66,10 @@ public class TutorialLoader : MonoBehaviour
     [SerializeField] Emotion[] textEmotions;
     public Transform[] cameraTarget;
 
+    public AudioSource charAudioSource;
+    public AudioClip[] charSounds;
+    AudioClip charClip;
+
 
     //////////////////////////////////////////////////
     //// Functions
@@ -76,6 +79,7 @@ public class TutorialLoader : MonoBehaviour
     {
         m_save = SaveGameManager.GetMainCharFile();
         contTutView = false;
+        charAudioSource = GetComponent<AudioSource>();
 
         if (m_save == null)
         {
@@ -193,6 +197,9 @@ public class TutorialLoader : MonoBehaviour
         {
             tutText.text += letter;
             yield return new WaitForSeconds(textSpeed);
+
+            charAudioSource.clip = charSounds[Random.Range(0, charSounds.Length)];
+            charAudioSource.PlayOneShot(charAudioSource.clip);
         }
     }
 
@@ -214,6 +221,7 @@ public class TutorialLoader : MonoBehaviour
         {
             index++;
             tutText.text = "";
+
             StartCoroutine(Type());
             DisplayEmotion();
             MoveCamera();
