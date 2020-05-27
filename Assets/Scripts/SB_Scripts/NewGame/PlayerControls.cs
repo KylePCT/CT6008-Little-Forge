@@ -30,7 +30,7 @@ public class PlayerControls : MonoBehaviour
 
     //////////////////////////////////////////////////
     //// Variables
-    [SerializeField] private float m_moveSpeed = 2.5f;
+    [SerializeField] private float m_moveSpeed = 6.0f;
     [SerializeField] private bool m_isGrounded = true;
     [SerializeField] private GameObject m_playerOrientation = null;
     private Vector3 m_moveDirection = Vector3.zero;
@@ -62,8 +62,21 @@ public class PlayerControls : MonoBehaviour
 
     private void Update()
     {
+        CheckSprint();
         Movement();
         m_healthInd.text = GetComponent<ObjectHealth>().GetHealth().ToString("n0");
+    }
+
+    private void CheckSprint()
+    {
+        if (m_inputSystem.Player.Sprint.ReadValue<float>() == 1)
+        {
+            m_moveSpeed = 8.0f;
+        }
+        else if (m_inputSystem.Player.Sprint.ReadValue<float>() == 0)
+        {
+            m_moveSpeed = 6.0f;
+        }
     }
 
     private void Movement()
