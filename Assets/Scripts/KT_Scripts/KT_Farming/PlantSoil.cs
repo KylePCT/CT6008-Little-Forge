@@ -2,7 +2,7 @@
 /// File: PlantSoil.cs
 /// Author: Kyle Tugwell/Sam Baker
 /// Date created: 15/04/20
-/// Last edit: 24/05/20
+/// Last edit: 27/05/20
 /// Description: Code to plant the seed in.
 /// Comments: Reworked to rid errors and adopt clean system
 //////////////////////////////////////////////////
@@ -20,6 +20,11 @@ public class PlantSoil : MonoBehaviour
     public GameObject Player;
 
     [Tooltip("This is the prefab of the crop model, material and script.")]
+    public GameObject soilArea;
+    public Material soilMat;
+    public Material soilCanPlant;
+    public Material soilCantPlant;
+
     public GameObject cropToGrow;
     public GameObject plantedCrop;
     public Item m_seedsNeeded;
@@ -40,6 +45,7 @@ public class PlantSoil : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        soilArea = this.gameObject;
     }
     private void Update()
     {
@@ -58,6 +64,8 @@ public class PlantSoil : MonoBehaviour
             interactText.SetActive(false);
             m_inRange = false;
             m_seedCheck = false;
+
+            soilArea.GetComponent<MeshRenderer>().material = soilMat;
         }
     }
 
@@ -67,22 +75,31 @@ public class PlantSoil : MonoBehaviour
         if(a_col.gameObject.tag == "Player")
         {
             m_inRange = true;
+
             if (m_cropPlanted == false)
             {
                 if (!m_seedCheck)
                 {
                     interactText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to plant crop!";
                     interactText.SetActive(true);
+
+                    soilArea.GetComponent<MeshRenderer>().material = soilCanPlant;
+
                 }
                 else
                 {
                     interactText.GetComponent<TextMeshProUGUI>().text = "Not enough seeds!";
                     interactText.SetActive(true);
+                    soilArea.GetComponent<MeshRenderer>().material = soilCantPlant;
+
                     m_timer -= Time.deltaTime;
                     if (m_timer <= 0)
                     {
                         m_seedCheck = false;
+                        soilArea.GetComponent<MeshRenderer>().material = soilCantPlant;
+
                         interactText.SetActive(false);
+
                     }
                 }
             }
@@ -126,6 +143,7 @@ public class PlantSoil : MonoBehaviour
                         m_cropPlanted = true;
 
                         interactText.SetActive(false);
+
                     }
                     else
                     {
@@ -144,6 +162,11 @@ public class PlantSoil : MonoBehaviour
                         plantedCrop.GetComponent<PlantGrowth>().DestroyMe();
                         plantedCrop = null;
                         m_cropPlanted = false;
+
+                        //Destroy the child of the placeToGrow (the crop gameobject) -KT 27/05
+                        var child = placeToGrow.GetChild(0);
+                        Destroy(child.gameObject);
+
                         interactText.SetActive(false);
                     }
                 }

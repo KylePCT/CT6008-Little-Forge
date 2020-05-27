@@ -165,6 +165,7 @@ public class PlantGrowth : MonoBehaviour
                 m_enemySpawner.SetActive(true);
             }
         }
+
         Destroy(this.gameObject);
     }
 }

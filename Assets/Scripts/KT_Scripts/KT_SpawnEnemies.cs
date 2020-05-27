@@ -52,7 +52,9 @@ public class KT_SpawnEnemies : MonoBehaviour
             //Edited to stop enemies spawning inside of objects - Sam Baker
             m_randPointOnMesh = RandomNavSphere(new Vector3(xPos, 67f, zPos), 40f, -1);
             Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length - 1)], m_randPointOnMesh, Quaternion.identity);
-            Instantiate(poofVFX, new Vector3(xPos, yHeight, zPos), Quaternion.identity);
+            Instantiate(poofVFX, m_randPointOnMesh, Quaternion.Euler(0,0,0));
+            KT_AudioManager.instance.playSound("Poof");
+
             yield return new WaitForSeconds(5f);
             enemyCount += 1;
         }

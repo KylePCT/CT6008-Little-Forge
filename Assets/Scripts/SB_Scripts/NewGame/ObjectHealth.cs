@@ -36,6 +36,7 @@ public class ObjectHealth : MonoBehaviour
     private GameObject m_healthCanvas = null;
     private GameObject m_cam = null;
     public GameObject m_slimeItemDrop;
+    public GameObject celebratePS;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -79,9 +80,13 @@ public class ObjectHealth : MonoBehaviour
             else if (gameObject.transform.tag == "Enemy")
             {
                 Destroy(gameObject);
+                Instantiate(celebratePS, transform.position, Quaternion.Euler(-90,0,0));
+
                 //10xp gained for killing enemy
                 KT_LevelSystem.Instance.gainXP(10);
                 Instantiate(m_slimeItemDrop, transform.position, Quaternion.identity);
+                KT_AudioManager.instance.playSound("SlimeDead");
+
                 if (QuestManager.Instance.CurrentQuestGiver() == null)
                 {
                     return;

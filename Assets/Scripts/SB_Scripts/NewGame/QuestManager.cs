@@ -20,6 +20,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_questText = null;
     [SerializeField] private QuestGiver m_currentQuestGiver = null;
 
+    private bool hasNotifPlayed;
+
     private static QuestManager m_instance;
     public static QuestManager Instance { get { return m_instance; } }
 
@@ -52,6 +54,12 @@ public class QuestManager : MonoBehaviour
 
                 m_questText.text = "<size=+4>" + m_currentQuestGiver.GetQuestDetails(0) + "</size>\n- Return to the quest board for reward.";
 
+                if (hasNotifPlayed == false)
+                {
+                    KT_AudioManager.instance.playSound("UIHigh");
+                    hasNotifPlayed = true;
+                }
+
                 return;
             }
 
@@ -60,6 +68,7 @@ public class QuestManager : MonoBehaviour
         else
         {
             m_questText.text = "No current quest.";
+            hasNotifPlayed = false;
         }
     }
 

@@ -98,6 +98,7 @@ public class FiringWeapon : MonoBehaviour
                 if (PlayerZoom.Instance.GetZoom())
                 {
                     laserHand.SetActive(false);
+                    SetWeaponActive(true);
 
                     //Fixing errors - SB
                     if (hit.collider != null)

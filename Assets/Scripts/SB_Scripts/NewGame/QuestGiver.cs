@@ -120,7 +120,7 @@ public class QuestGiver : MonoBehaviour
                         m_inRange = false;
 
                         QuestManager.Instance.UpdateQuestGiver(null);
-                        KT_AudioManager.instance.playSound("UIComplete");
+                        KT_AudioManager.instance.playSound("Victory");
 
                         GetReward();
                     }

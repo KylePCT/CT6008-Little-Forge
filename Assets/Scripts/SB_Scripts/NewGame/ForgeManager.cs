@@ -42,11 +42,14 @@ public class ForgeManager : MonoBehaviour
     //// Functions
     private void Start()
     {
+        m_uiTheForge.SetActive(false);
+
         m_ignotsTickTimer = 2.0f;
         m_uiTheForge = gameObject.transform.Find("TheForgeUI").gameObject;
         m_uiItemHolder = gameObject.transform.Find("TheForgeUI/panel/ScrollRect/Viewport/Upgrades").gameObject;
         m_uiProductionRate = gameObject.transform.Find("TheForgeUI/panel/TotalProduction").gameObject;
         m_theForge = GameObject.Find("---- FORGE");
+
         StartErrorChecks();
         for (int i = 0; i < m_uiItemID.Length; i++)
         {
@@ -57,8 +60,8 @@ public class ForgeManager : MonoBehaviour
             btn.onClick.AddListener(m_theForgeItems[i].GetComponent<ForgeItem>().ButtonBuyUpgrade);
 
         }
+
         UpdateForgeUI();
-        m_uiTheForge.SetActive(false);
     }
 
     private void Update()

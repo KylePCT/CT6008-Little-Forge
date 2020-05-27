@@ -2,7 +2,7 @@
 // File: TutorialLoader.cs
 // Author: Sam Baker/Kyle Tugwell
 // Date Created: 17/05/20
-// Last Edit: 21/05
+// Last Edit: 27/05
 // Description: Script used to start the tutorial cinematic
 // Comments: 
 // (Kyle)
@@ -56,6 +56,8 @@ public class TutorialLoader : MonoBehaviour
     public Animator NPCAnimator;
 
     public GameObject continueTextUI;
+    public GameObject howToContinueUI;
+    private bool contTutView;
 
     public bool tutorialComplete = false;
 
@@ -73,15 +75,19 @@ public class TutorialLoader : MonoBehaviour
     private void Start()
     {
         m_save = SaveGameManager.GetMainCharFile();
+        contTutView = false;
+
         if (m_save == null)
         {
+            //This only calls if you are playing straight from the hub.
+
             Debug.Log("YOU ARE PLAYING STRAIGHT FROM THE HUB SCENE, PLAY FROM PRELOADER TO UTILISE THE TUTORIAL!");
             m_pauseFunctuality.SetActive(true);
             playerCamera = null;
             tutorialComplete = true;
             player.GetComponent<PlayerControls>().OnEnable();
             playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
-            weapon.GetComponent<FiringWeapon>().SetWeaponActive(true);
+            weapon.GetComponent<FiringWeapon>().SetWeaponActive(false); //set to false to stop showing in tut -KT 27/5
             player.GetComponent<PlayerZoom>().enabled = true;
             player.GetComponent<PlayerInput>().enabled = true;
             gameObject.SetActive(false);
@@ -122,6 +128,13 @@ public class TutorialLoader : MonoBehaviour
         if (tutText.text == sentences[index])
         {
             isTalking = false;
+
+            //shows how to continue an interaction once
+            if (contTutView == false)
+            {
+                howToContinueUI.SetActive(true);
+                contTutView = true;
+            }
         }
 
         //if any key is pressed, move on to the next sentence
@@ -129,6 +142,7 @@ public class TutorialLoader : MonoBehaviour
         {
             NextSentence();
             isTalking = true;
+            howToContinueUI.SetActive(false);
         }
 
         //show the continue UI dependant on speech
