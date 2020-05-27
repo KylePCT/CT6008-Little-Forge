@@ -8663,13 +8663,27 @@ GameObject:
   - component: {fileID: 90667859}
   - component: {fileID: 90667858}
   - component: {fileID: 90667857}
+  - component: {fileID: 90667856}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: DeathBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &90667856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90667855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: 2.2204459e-16, z: 9.999999}
+  m_Center: {x: 0, y: 0, z: -0.000000014901161}
 --- !u!23 &90667857
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22259,6 +22273,8 @@ Transform:
   - {fileID: 846290348}
   - {fileID: 2055496786}
   - {fileID: 448028705}
+  - {fileID: 972634409}
+  - {fileID: 1256984238}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46877,6 +46893,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387aa6ddd03ce4548817d6eeacb1b023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &972634408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 972634409}
+  m_Layer: 0
+  m_Name: RespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &972634409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972634408}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 77.67471, y: -99.41764, z: -92.61284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 399301061}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &974049861 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ec83e318db4ddbd48ab941d5ff22655e,
@@ -58681,6 +58727,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1690008344}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1256984237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256984238}
+  - component: {fileID: 1256984239}
+  m_Layer: 0
+  m_Name: DeathBox
+  m_TagString: DeathBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1256984238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256984237}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 82.53189, y: -323, z: -325.3}
+  m_LocalScale: {x: 200, y: 1, z: 200}
+  m_Children: []
+  m_Father: {fileID: 399301061}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1256984239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256984237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1257632343 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 202b1218f056f8f47bd861e76ef0fa2d,
@@ -78068,25 +78158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a05b49b8e25f6458dc77119f15d3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_uiTheForge: {fileID: 0}
-  m_uiItemHolder: {fileID: 0}
-  m_uiItemID:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_theForge: {fileID: 0}
-  m_theForgeItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   m_player: {fileID: 1993414904}
   m_playerOrientation: {fileID: 1443816176}
   m_weapon: {fileID: 1993414904}

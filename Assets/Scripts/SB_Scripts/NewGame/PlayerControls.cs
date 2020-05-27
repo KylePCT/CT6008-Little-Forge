@@ -138,6 +138,16 @@ public class PlayerControls : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter(Collider col)
+    {
+        //Deathbox in water and below world
+        if (col.gameObject.tag == "DeathBox")
+        {
+            //Returns player to the start and disables control
+            gameObject.GetComponent<PlayerControls>().enabled = false;
+            transform.position = GameObject.Find("RespawnPoint").gameObject.transform.position;
+        }
+    }
 
     void OnTriggerStay(Collider col)
     {
@@ -158,6 +168,13 @@ public class PlayerControls : MonoBehaviour
         {
             m_isGrounded = false;
             //charAnimator.SetBool("isJumping", true);
+        }
+
+        //Deathbox in water and below world
+        if (col.gameObject.tag == "DeathBox")
+        {
+            //Reenables the controls
+            gameObject.GetComponent<PlayerControls>().enabled = true;
         }
     }
 }
