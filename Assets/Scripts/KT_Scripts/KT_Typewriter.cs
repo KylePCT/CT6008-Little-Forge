@@ -2,9 +2,10 @@
 /// File: KT_Typewriter.cs
 /// Author: Kyle Tugwell/Sam Baker
 /// Date created: 12/03/20
-/// Last edit: 25/05/20
+/// Last edit: 27/05/20
 /// Description: Allow all interaction text to animate like a typewriter. 
 /// Comments: Rewrote the script to make it work, but left in kyles work  -Sam Baker
+///             Fixed the male/female voices - Sam Baker
 //////////////////////////////////////////////////
 
 using System.Collections;
@@ -31,9 +32,7 @@ public class KT_Typewriter : MonoBehaviour
     public AudioClip[] charSounds;
     AudioClip charClip;
 
-    NPCPatrol npcPatrol;
-
-    public Voice voiceType;
+    private Voice voiceType = Voice.Null;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -70,9 +69,6 @@ public class KT_Typewriter : MonoBehaviour
         fullText = tmpComponent.text;
         characterIndex = 0;
         charAudioSource.GetComponent<AudioSource>();
-
-        //Error in your code here kyle ???? maybe add a null check as the interact text can come up for other occasions not just the npc
-        voiceType = npcPatrol.GetNPCVoiceType();
     }
 
     void Update()
@@ -98,19 +94,25 @@ public class KT_Typewriter : MonoBehaviour
         charAudioSource.clip = charSounds[Random.Range(0, charSounds.Length)];
         charAudioSource.PlayOneShot(charAudioSource.clip);
 
-        Debug.Log(voiceType);
-
         if (voiceType == Voice.Male)
         {
-            charAudioSource.pitch = Random.Range(0.5f, 0.7f);
+            Debug.Log(voiceType);
+            charAudioSource.pitch = Random.Range(0.8f, 1.0f);
         }
         else if (voiceType == Voice.Female)
         {
+            Debug.Log(voiceType);
             charAudioSource.pitch = Random.Range(1.1f, 1.4f);
         }
         else
         {
+            Debug.Log(voiceType);
             charAudioSource.pitch = 1f;
         }
+    }
+
+    public void SetVoice(Voice a_voice)
+    {
+        voiceType = a_voice;
     }
 }

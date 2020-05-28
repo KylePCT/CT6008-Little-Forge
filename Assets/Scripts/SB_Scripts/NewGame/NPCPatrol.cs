@@ -20,7 +20,8 @@ using TMPro;
 public enum Voice
 {
     Male,
-    Female
+    Female,
+    Null
 }
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -61,7 +62,7 @@ public class NPCPatrol : MonoBehaviour
     private int m_index;
     private InputSystem m_inputSystem = null;
 
-    [SerializeField] Voice charVoice;
+    [SerializeField] private Voice charVoice;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -124,6 +125,10 @@ public class NPCPatrol : MonoBehaviour
             m_continueTextUI.SetActive(false);
             //Pause the player
             m_player.GetComponent<PlayerControls>().enabled = false;
+            if (!m_inRangeOfPlayer)
+            {
+                LateInteractFix();
+            }
         }
         else
         {
@@ -133,12 +138,6 @@ public class NPCPatrol : MonoBehaviour
         }
     }
 
-    public Voice GetNPCVoiceType()
-    {
-        Debug.Log("charvoice" + charVoice);
-        return charVoice;
-    }
-
     private void InteractionTrigger()
     {
         if (m_inRangeOfPlayer && m_interacted)
@@ -146,6 +145,10 @@ public class NPCPatrol : MonoBehaviour
             m_interactionText.SetActive(false);
             m_currentState = NPCStates.NPC_INTERACT;
             m_interacted = false;
+            if (!m_inRangeOfPlayer)
+            {
+                LateInteractFix();
+            }
         }
     }
 
@@ -187,27 +190,39 @@ public class NPCPatrol : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+            m_interactionText.GetComponent<KT_Typewriter>().SetVoice(charVoice);
             m_inRangeOfPlayer = true;
             m_interactionText.GetComponent<TextMeshProUGUI>().text = "Press 'F' to talk.";
             m_interactionText.SetActive(true);
         }
     }
-
-
     private void OnTriggerExit(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
+            m_inRangeOfPlayer = false;
             //incase the player intereacts but manages to be out of range
+            m_interactionText.GetComponent<KT_Typewriter>().SetVoice(Voice.Null);
             m_player.GetComponent<PlayerControls>().enabled = true;
             if (m_currentState == NPCStates.NPC_INTERACT)
             {
                 m_currentState = NPCStates.NPC_FINDLOCATION;
             }
-
-            m_inRangeOfPlayer = false;
             m_interactionText.SetActive(false);
         }
+    }
+
+    private void LateInteractFix()
+    {
+        m_inRangeOfPlayer = false;
+        //incase the player intereacts but manages to be out of range
+        m_interactionText.GetComponent<KT_Typewriter>().SetVoice(Voice.Null);
+        m_player.GetComponent<PlayerControls>().enabled = true;
+        if (m_currentState == NPCStates.NPC_INTERACT)
+        {
+            m_currentState = NPCStates.NPC_FINDLOCATION;
+        }
+        m_interactionText.SetActive(false);
     }
 
     //public void InteractKey(InputAction.CallbackContext ctx)
@@ -251,7 +266,7 @@ public class NPCPatrol : MonoBehaviour
             m_currentState = NPCStates.NPC_FINDLOCATION;
             m_charAnimator.SetBool("isWalking", false);
         }
-        else if(m_navMeshAgent.velocity == Vector3.zero)
+        else if (m_navMeshAgent.velocity == Vector3.zero)
         {
             m_currentState = NPCStates.NPC_FINDLOCATION;
         }
@@ -270,11 +285,11 @@ public class NPCPatrol : MonoBehaviour
 
     private void CheckQuest()
     {
-        if(QuestManager.Instance.CurrentQuestGiver() == null)
+        if (QuestManager.Instance.CurrentQuestGiver() == null)
         {
             return;
         }
-        else if(QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_SpeakQuest")
+        else if (QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().name == "SB_SpeakQuest")
         {
             QuestManager.Instance.CurrentQuestGiver().GetCurrentQuest().SetCompleted(true);
         }

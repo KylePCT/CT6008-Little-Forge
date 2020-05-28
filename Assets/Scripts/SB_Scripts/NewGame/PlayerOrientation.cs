@@ -48,6 +48,7 @@ public class PlayerOrientation : MonoBehaviour
         {
             m_rotFaceObject = GameObject.Find("SB_RotFace");
         }
+        m_rotSensitivity = .2f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -68,7 +69,7 @@ public class PlayerOrientation : MonoBehaviour
             m_rotFaceObject.transform.position = transform.position + (rotF * moveInput.y + rotR * moveInput.x) * 150 * Time.deltaTime;
         }
         transform.position = m_player.position;
-        if(m_pZoom.GetZoom())
+        if (m_pZoom.GetZoom())
         {
             Vector3 playerYRot = m_player.transform.eulerAngles;
             playerYRot.y = transform.eulerAngles.y;

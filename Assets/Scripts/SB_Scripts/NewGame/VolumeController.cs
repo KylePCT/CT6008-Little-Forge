@@ -23,6 +23,7 @@ public class VolumeController : MonoBehaviour
     {
         m_as = gameObject.GetComponent<AudioSource>();
         m_startVolume = m_as.volume;
+        m_as.volume = m_startVolume * OptionsData.Instance.GetVolume();
     }
     private void Update()
     {

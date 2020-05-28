@@ -43,7 +43,7 @@ public class OptionsData : MonoBehaviour
         float sensitivity;
         SaveGameManager.GetOptions(out audioVolume, out sensitivity);
         m_gameVoulume = audioVolume;
-        m_gameSensitivity = audioVolume;
+        m_gameSensitivity = sensitivity;
     }
 
     public void SetVolume(float a_value) => m_gameVoulume = a_value;
