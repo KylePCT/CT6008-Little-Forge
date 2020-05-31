@@ -44,6 +44,12 @@ public class ShopRowScript : MonoBehaviour
             {
                 QuestCheck("SB_GetSeeds");
             }
+
+            if (m_item.name == "item_ingot")
+            {
+                PlayersBank.Instance.AddIngots(1);
+                PlayersBank.Instance.TakeAwayMoney(1000);
+            }
         }
 
         else
@@ -63,6 +69,12 @@ public class ShopRowScript : MonoBehaviour
             if (m_item.name == "item_slime")
             {
                 QuestCheck("SB_SellSlime");
+            }
+
+            if (m_item.name == "item_ingot")
+            {
+                PlayersBank.Instance.TakeAwayIngots(1);
+                PlayersBank.Instance.AddMoney(500);
             }
         }
 
