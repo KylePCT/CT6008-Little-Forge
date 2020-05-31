@@ -21,6 +21,7 @@ public class BasicEnemyAI : MonoBehaviour
     private Vector3 m_destination;
     private Vector3 m_randPosition;
     private GameObject m_player = null;
+    private GameObject playerHealthUI;
     [Header("Enemy Parameters")]
     [Header("_____________________________________________________")]
     [Space(-20)]
@@ -40,6 +41,7 @@ public class BasicEnemyAI : MonoBehaviour
     private void Start()
     {
         m_player = GameObject.Find("Sam'sTempCharacterController/Player");
+
         m_currentState = ENEMYStates.ENE_FINDLOCATION;
         m_navMeshAgent = GetComponent<NavMeshAgent>();
         if (m_navMeshAgent == null)
@@ -47,6 +49,8 @@ public class BasicEnemyAI : MonoBehaviour
             Debug.LogWarning("Warning: Unable to locate NPC's NavMeshAgent component");
         }
         m_navMeshAgent.speed = m_speed;
+
+        playerHealthUI = GameObject.Find("Health");
     }
 
     private void Update()
@@ -154,6 +158,12 @@ public class BasicEnemyAI : MonoBehaviour
             {
                 m_player.GetComponent<ObjectHealth>().TakeDamage(m_damagePerSecond/2);
                 m_attackTimer = 0.5f;
+                Debug.Log("Player hit.");
+                playerHealthUI.SetActive(false);
+            }
+            else
+            {
+                playerHealthUI.SetActive(true);
             }
         }
         else

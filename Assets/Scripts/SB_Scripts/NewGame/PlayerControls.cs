@@ -40,6 +40,7 @@ public class PlayerControls : MonoBehaviour
     private float m_yAxisVelocity = 0;
     private TextMesh m_healthInd = null;
     private InputSystem m_inputSystem = null;
+    private GameObject healthUI;
 
     Animator charAnimator;
     private bool walkingSoundPlaying;
@@ -57,7 +58,8 @@ public class PlayerControls : MonoBehaviour
         m_playerOrientation = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation");
 
         charAnimator = GetComponentInChildren<Animator>();
-
+        healthUI = GameObject.FindGameObjectWithTag("HealthUI");
+        healthUI.SetActive(false);
     }
 
     private void Update()
