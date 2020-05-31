@@ -37,11 +37,18 @@ public class ShopRowScript : MonoBehaviour
     {
         if(PlayersBank.Instance.TakeAwayMoney(m_item.m_buyPrice))
         {
+            KT_AudioManager.instance.playSound("UIHigh");
+
             InventoryManager.instance.AddItem(m_item, 1);
             if (m_item.name == "item_SeedLettuvia" || m_item.name == "item_SeedAleeks")
             {
                 QuestCheck("SB_GetSeeds");
             }
+        }
+
+        else
+        {
+            KT_AudioManager.instance.playSound("Decline");
         }
     }
 
@@ -50,10 +57,18 @@ public class ShopRowScript : MonoBehaviour
         if(InventoryManager.instance.RemoveItem(m_item))
         {
             PlayersBank.Instance.AddMoney(m_item.m_sellPrice);
+
+            KT_AudioManager.instance.playSound("UIHigh");
+
             if (m_item.name == "item_slime")
             {
                 QuestCheck("SB_SellSlime");
             }
+        }
+
+        else
+        {
+            KT_AudioManager.instance.playSound("Decline");
         }
     }
     private void QuestCheck(string a_questName)

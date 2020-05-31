@@ -70,7 +70,7 @@ public class InventoryManager : MonoBehaviour
                 m_slots[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 m_slots[i].transform.GetChild(0).GetComponent<Image>().sprite = m_items[i].m_itemSprite;
                 //Update slot quantity
-                m_slots[i].transform.GetChild(1).GetComponent<Text>().color = new Color(0, 0, 0, 1);
+                m_slots[i].transform.GetChild(1).GetComponent<Text>().color = new Color(1, 1, 1, 1);
                 m_slots[i].transform.GetChild(1).GetComponent<Text>().text = m_itemNumbers[i].ToString();
 
                 m_slots[i].transform.GetChild(2).gameObject.SetActive(true);
@@ -79,7 +79,7 @@ public class InventoryManager : MonoBehaviour
                 m_slots2[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 1);
                 m_slots2[i].transform.GetChild(0).GetComponent<Image>().sprite = m_items[i].m_itemSprite;
                 //Update slot quantity
-                m_slots2[i].transform.GetChild(1).GetComponent<Text>().color = new Color(0, 0, 0, 1);
+                m_slots2[i].transform.GetChild(1).GetComponent<Text>().color = new Color(1, 1, 1, 1);
                 m_slots2[i].transform.GetChild(1).GetComponent<Text>().text = m_itemNumbers[i].ToString();
 
                 m_slots2[i].transform.GetChild(2).gameObject.SetActive(true);
@@ -90,7 +90,7 @@ public class InventoryManager : MonoBehaviour
                 m_slots[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                 m_slots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
                 //Update slot quantity
-                m_slots[i].transform.GetChild(1).GetComponent<Text>().color = new Color(0, 0, 0, 0);
+                m_slots[i].transform.GetChild(1).GetComponent<Text>().color = new Color(1, 1, 1, 0);
                 m_slots[i].transform.GetChild(1).GetComponent<Text>().text = null;
 
                 m_slots[i].transform.GetChild(2).gameObject.SetActive(false);
@@ -99,7 +99,7 @@ public class InventoryManager : MonoBehaviour
                 m_slots2[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1, 0);
                 m_slots2[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
                 //Update slot quantity
-                m_slots2[i].transform.GetChild(1).GetComponent<Text>().color = new Color(0, 0, 0, 0);
+                m_slots2[i].transform.GetChild(1).GetComponent<Text>().color = new Color(1, 1, 1, 0);
                 m_slots2[i].transform.GetChild(1).GetComponent<Text>().text = null;
 
                 m_slots2[i].transform.GetChild(2).gameObject.SetActive(false);
