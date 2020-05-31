@@ -3,7 +3,7 @@
 /// Author: Kyle Tugwell
 /// Date created: 05/03/2020
 /// Last edit: 05/03/2020
-/// Description: For the use of the character customiser's top half.
+/// Description: For the use of the character customiser's clothing.
 /// Comments:
 //////////////////////////////////////////////////
 

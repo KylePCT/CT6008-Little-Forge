@@ -48,40 +48,47 @@ public class RandomiseCharacter : MonoBehaviour
         m_rhandObject.GetComponent<MeshRenderer>().material = m_allSkinMaterials[rand].GetComponent<MaterialHolder>().GetMat();
 
         //Hair Type and Colour
-        rand = UnityEngine.Random.Range(0, m_allHairMeshes.Length);
-        m_hairObject.GetComponent<MeshFilter>().mesh = m_allHairMeshes[rand];
-        rand = UnityEngine.Random.Range(0, m_allHairMaterials.Length);
-        m_hairObject.GetComponent<MeshRenderer>().material = m_allHairMaterials[rand].GetComponent<MaterialHolder>().GetMat();
+ 
+        int rand1 = UnityEngine.Random.Range(0, m_allHairMeshes.Length);
+        m_hairObject.GetComponent<MeshFilter>().mesh = m_allHairMeshes[rand1];
+
+        int rand2 = UnityEngine.Random.Range(0, m_allHairMaterials.Length);
+        m_hairObject.GetComponent<MeshRenderer>().material = m_allHairMaterials[rand2].GetComponent<MaterialHolder>().GetMat();
 
         //Eyes Type and Colour
-        rand = UnityEngine.Random.Range(0, m_allEyeTextures.Length);
-        m_leyeObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allEyeTextures[rand]);
-        m_reyeObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allEyeTextures[rand]);
-        rand = UnityEngine.Random.Range(0, m_allEyeMaterials.Length);
-        m_leyeObject.GetComponent<Renderer>().material.color = m_allEyeMaterials[rand].GetComponent<Image>().color;
-        m_reyeObject.GetComponent<Renderer>().material.color = m_allEyeMaterials[rand].GetComponent<Image>().color;
+        int rand3 = UnityEngine.Random.Range(0, m_allEyeTextures.Length);
+        m_leyeObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allEyeTextures[rand3]);
+        m_reyeObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allEyeTextures[rand3]);
+
+        int rand4 = UnityEngine.Random.Range(0, m_allEyeMaterials.Length);
+        m_leyeObject.GetComponent<Renderer>().material.color = m_allEyeMaterials[rand4].GetComponent<Image>().color;
+        m_reyeObject.GetComponent<Renderer>().material.color = m_allEyeMaterials[rand4].GetComponent<Image>().color;
 
         //Nose Type
-        rand = UnityEngine.Random.Range(0, m_allNoseTextures.Length);
-        m_noseObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allNoseTextures[rand]);
+        int rand5 = UnityEngine.Random.Range(0, m_allNoseTextures.Length);
+        m_noseObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allNoseTextures[rand5]);
 
         //Mouth Type
-        rand = UnityEngine.Random.Range(0, m_allMouthTextures.Length);
-        m_mouthObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allMouthTextures[rand]);
+        int rand6 = UnityEngine.Random.Range(0, m_allMouthTextures.Length);
+        m_mouthObject.GetComponent<Renderer>().material.SetTexture("_MainTex", m_allMouthTextures[rand6]);
 
-        //Body Type nad Colour
-        rand = UnityEngine.Random.Range(0, m_allBodyTopTextures.Length);
-        m_bodyObject.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", m_allBodyTopTextures[rand]);
-        rand = UnityEngine.Random.Range(0, m_allBodyBottomTextures.Length);
-        m_bodyObject.GetComponent<Renderer>().materials[1].SetTexture("_MainTex", m_allBodyBottomTextures[rand]);
-        rand = UnityEngine.Random.Range(0, m_allBodyMaterials.Length);
-        m_bodyObject.GetComponent<Renderer>().materials[0].color = m_allBodyMaterials[rand].GetComponent<Image>().color;
-        rand = UnityEngine.Random.Range(0, m_allBodyMaterials.Length);
-        m_bodyObject.GetComponent<Renderer>().materials[1].color = m_allBodyMaterials[rand].GetComponent<Image>().color;
+        //Body Type and Colour
+        //All elements changed to sharedMaterials to stop bug of randomisation stopping customisation working - KT 31/05
+        int rand7 = UnityEngine.Random.Range(0, m_allBodyTopTextures.Length);
+        m_bodyObject.GetComponent<Renderer>().sharedMaterials[0].SetTexture("_MainTex", m_allBodyTopTextures[rand7]);
+
+        int rand8 = UnityEngine.Random.Range(0, m_allBodyBottomTextures.Length);
+        m_bodyObject.GetComponent<Renderer>().sharedMaterials[1].SetTexture("_MainTex", m_allBodyBottomTextures[rand8]);
+
+        int rand9 = UnityEngine.Random.Range(0, m_allBodyMaterials.Length);
+        m_bodyObject.GetComponent<Renderer>().sharedMaterials[0].color = m_allBodyMaterials[rand9].GetComponent<Image>().color;
+
+        int rand10 = UnityEngine.Random.Range(0, m_allBodyMaterials.Length);
+        m_bodyObject.GetComponent<Renderer>().sharedMaterials[1].color = m_allBodyMaterials[rand10].GetComponent<Image>().color;
 
         //Shoe Colour
-        rand = UnityEngine.Random.Range(0, m_allShoeMaterials.Length);
-        m_lshoeObject.GetComponent<Renderer>().material.color = m_allShoeMaterials[rand].GetComponent<Image>().color;
-        m_rshoeObject.GetComponent<Renderer>().material.color = m_allShoeMaterials[rand].GetComponent<Image>().color;
+        int rand11 = UnityEngine.Random.Range(0, m_allShoeMaterials.Length);
+        m_lshoeObject.GetComponent<Renderer>().material.color = m_allShoeMaterials[rand11].GetComponent<Image>().color;
+        m_rshoeObject.GetComponent<Renderer>().material.color = m_allShoeMaterials[rand11].GetComponent<Image>().color;
     }
 }

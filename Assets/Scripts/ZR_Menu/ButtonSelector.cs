@@ -37,7 +37,9 @@ public class ButtonSelector : MonoBehaviour
             StopCoroutine(m_currentEnumerator);
 
         m_currentEnumerator = SnapToIE(a_transform);
+        Debug.Log(this.gameObject.name);
         StartCoroutine(m_currentEnumerator);
+        Debug.Log(this.gameObject.name + " 2");
         KT_AudioManager.instance.playSound("UIClick");
 
     }
