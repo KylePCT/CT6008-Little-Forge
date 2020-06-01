@@ -91,7 +91,10 @@ public class BasicEnemyAI : MonoBehaviour
     {
         if (m_destination != null)
         {
-            m_navMeshAgent.SetDestination(m_destination);
+            if (gameObject.activeSelf == true)
+            {
+                m_navMeshAgent.SetDestination(m_destination);
+            }
         }
     }
     /// <summary>
@@ -101,6 +104,8 @@ public class BasicEnemyAI : MonoBehaviour
     public void SetMDestination(Vector3 a_dest)
     {
         m_destination = a_dest;
+        m_currentState = ENEMYStates.ENE_WALKTOLOCATION;
+        SetDestination();
     }
 
     /// <summary>

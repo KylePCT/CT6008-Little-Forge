@@ -163,10 +163,9 @@ public class ObjectHealth : MonoBehaviour
         }
         if (gameObject.tag == "Enemy")
         {
-            if (GameObject.Find("Player"))
+            if (GameObject.Find("Player") && m_currentHealth > 0)
             {
                 gameObject.GetComponent<BasicEnemyAI>().SetMDestination(GameObject.Find("Player").transform.position);
-                gameObject.GetComponent<BasicEnemyAI>().SetDestination();
             }
         }
 

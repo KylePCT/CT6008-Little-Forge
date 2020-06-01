@@ -43,6 +43,10 @@ public class QuestGiver : MonoBehaviour
             //Nothing wrong here let the game continue.
             m_questsCompleted = 0;
         }
+        if (m_questsCompleted >= 5)
+        {
+            GetInteractText.Instance.m_enemySpawner.SetActive(true);
+        }
     }
     private void Update()
     {
@@ -70,6 +74,13 @@ public class QuestGiver : MonoBehaviour
         else
         {
             m_quest = null;
+            if (GetInteractText.Instance.m_enemySpawner.activeInHierarchy == false)
+            {
+                if (m_questsCompleted >= 5)
+                {
+                    GetInteractText.Instance.m_enemySpawner.SetActive(true);
+                }
+            }
         }
     }
 

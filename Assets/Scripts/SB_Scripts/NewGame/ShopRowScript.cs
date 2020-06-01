@@ -57,6 +57,7 @@ public class ShopRowScript : MonoBehaviour
             else if (m_item.name == "item_ROW")
             {
                 GetInteractText.Instance.m_congratsUI.SetActive(true);
+                QuestCheck("SB_ROWQuest");
             }
         }
         else
