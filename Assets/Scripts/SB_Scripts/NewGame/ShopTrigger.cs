@@ -59,6 +59,7 @@ public class ShopTrigger : MonoBehaviour
             m_playerOrientation.GetComponent<PlayerOrientation>().OnDisable();
             m_player.GetComponent<FiringWeapon>().SetWeaponActive(false);
             m_player.GetComponent<PlayerZoom>().enabled = false;
+            Time.timeScale = 0f;
         }
         else
         {
@@ -84,6 +85,7 @@ public class ShopTrigger : MonoBehaviour
                     m_playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
                     m_player.GetComponent<FiringWeapon>().SetWeaponActive(true);
                     m_player.GetComponent<PlayerZoom>().enabled = true;
+                    Time.timeScale = 1f;
                 }
             }
         }
@@ -104,6 +106,7 @@ public class ShopTrigger : MonoBehaviour
                 m_playerOrientation.GetComponent<PlayerOrientation>().OnEnable();
                 m_player.GetComponent<FiringWeapon>().SetWeaponActive(true);
                 m_player.GetComponent<PlayerZoom>().enabled = true;
+                Time.timeScale = 1f;
             }
         }
     }
