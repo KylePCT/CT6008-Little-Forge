@@ -40,6 +40,7 @@ public class ShopRowScript : MonoBehaviour
             KT_AudioManager.instance.playSound("UIHigh");
 
             //SPECIAL ITEM (does not have any inventory vaule)
+            //  needs to be at the top
             if (m_item.name == "item_ingot")
             {
                 //Player had enough funds
@@ -53,11 +54,9 @@ public class ShopRowScript : MonoBehaviour
             {
                 QuestCheck("SB_GetSeeds");
             }
-
-            if (m_item.name == "item_ingot")
+            else if (m_item.name == "item_ROW")
             {
-                PlayersBank.Instance.AddIngots(1);
-                PlayersBank.Instance.TakeAwayMoney(1000);
+                GetInteractText.Instance.m_congratsUI.SetActive(true);
             }
         }
         else
@@ -95,9 +94,7 @@ public class ShopRowScript : MonoBehaviour
             {
                 QuestCheck("SB_SellSlime");
             }
-
         }
-
         else
         {
             KT_AudioManager.instance.playSound("Decline");

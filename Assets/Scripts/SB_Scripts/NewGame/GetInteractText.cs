@@ -3,7 +3,7 @@
 // Author: Sam Baker
 // Date Created: 23/05/20
 // Last Edit: 
-// Description: Singleton script used to for retrieving the interaction text
+// Description: Singleton script used to for retrieving the objects from multiple scripts
 // Comments: 
 //////////////////////////////////////////////////
 using System.Collections;
@@ -20,6 +20,7 @@ public class GetInteractText : MonoBehaviour
     public GameObject m_interactionText;
     public GameObject m_invPanel;
     public GameObject m_enemySpawner;
+    public GameObject m_congratsUI;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -33,5 +34,6 @@ public class GetInteractText : MonoBehaviour
         m_interactionText.SetActive(false);
         m_invPanel.SetActive(false);
         m_enemySpawner.SetActive(false);
+        m_congratsUI.SetActive(false);
     }
 }
