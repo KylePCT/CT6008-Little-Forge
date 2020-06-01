@@ -51,7 +51,6 @@ public class MistPlayerCollision : MonoBehaviour
             m_iteractionText.SetActive(true);
             m_timer = m_displayTime;
             m_collided = true;
-            Debug.Log("aaaaaaaaaaaaaaa");
         }
     }
 }
