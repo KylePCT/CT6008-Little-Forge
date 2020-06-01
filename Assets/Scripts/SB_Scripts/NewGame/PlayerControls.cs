@@ -58,8 +58,6 @@ public class PlayerControls : MonoBehaviour
         m_playerOrientation = GameObject.Find("Sam'sTempCharacterController/PlayerOrientation");
 
         charAnimator = GetComponentInChildren<Animator>();
-        healthUI = GameObject.FindGameObjectWithTag("HealthUI");
-        healthUI.SetActive(false);
     }
 
     private void Update()

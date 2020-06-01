@@ -137,6 +137,7 @@ public class FiringWeapon : MonoBehaviour
                     //FIX - player could shoot while zoomed out if zoom was untoggled while shooting.
                     if(!PlayerZoom.Instance.GetZoom())
                     {
+                        KT_AudioManager.instance.stopSound("LaserShoot");
                         return;
                     }
 
@@ -175,6 +176,7 @@ public class FiringWeapon : MonoBehaviour
                     m_timer = m_fireRate;
                 }
             }
+
         }
 
     }
@@ -201,7 +203,15 @@ public class FiringWeapon : MonoBehaviour
                 {
                     m_timer = m_fireRate;
 
-                    KT_AudioManager.instance.playSound("LaserShoot");
+                    if (PlayerZoom.Instance.GetZoom())
+                    {
+                        KT_AudioManager.instance.playSound("LaserShoot");
+                    }
+
+                    else
+                    {
+                        KT_AudioManager.instance.stopSound("LaserShoot");
+                    }
 
                     gunAnim.SetBool("isShooting", true);
                     laser.SetActive(true);
