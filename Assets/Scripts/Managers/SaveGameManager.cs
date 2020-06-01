@@ -44,6 +44,9 @@ public class SaveSlot
     public int m_xp = 0;
     public int[] m_forgeItems = new int[7];
     public int m_questsComplete = 0;
+    public string[] m_invItems = new string[27];
+    public int[] m_invQuantity = new int[27];
+
 
     public SaveSlot(int a_saveSlot)
     {

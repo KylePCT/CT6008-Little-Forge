@@ -6,6 +6,7 @@
 /// Description: Script for managing the inventory
 /// Comments:
 //////////////////////////////////////////////////
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class InventoryManager : MonoBehaviour
     public List<Item> m_items = new List<Item>();
     public List<int> m_itemNumbers = new List<int>();
 
+    public Item[] m_allItems;
+
     public GameObject[] m_slots = null;
     public GameObject[] m_slots2 = null;
 
@@ -24,7 +27,7 @@ public class InventoryManager : MonoBehaviour
     public RemoveItem[] m_buttons2;
     
     public static InventoryManager instance;
-
+    private SaveSlot m_save = null;
 
     private void Awake()
     {
@@ -39,11 +42,52 @@ public class InventoryManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        //Check for a save
+        if (SaveGameManager.GetMainCharFile() != null)
+        {
+            m_save = SaveGameManager.GetMainCharFile();
+        }
+        else
+        {
+            //You must be starting the game from the hub!!!
+            //Nothing wrong here let the game continue.
+        }
     }
 
     private void Start()
     {
+        if(m_save != null)
+        {
+            LoadSavedInv();
+        }
         DisplayItems();
+    }
+
+    private void LoadSavedInv()
+    {
+        for (int i = 0; i < m_save.m_invItems.Length; i++)
+        {
+            if (m_save.m_invItems[i] != "")
+            {
+                for (int k = 0; k < m_allItems.Length; k++)
+                {
+                    if (m_allItems[k].name == m_save.m_invItems[i])
+                    {
+                        AddItem(m_allItems[k], m_save.m_invQuantity[i]);
+                    }
+                }
+            }
+        }
+    }
+
+    private void SaveInv()
+    {
+        for (int i = 0; i < m_items.Count; i++)
+        {
+            m_save.m_invItems[i] = m_items[i].name;
+            m_save.m_invQuantity[i] = m_itemNumbers[i];
+        }
     }
 
     private void DisplayItems()
@@ -105,6 +149,7 @@ public class InventoryManager : MonoBehaviour
                 m_slots2[i].transform.GetChild(2).gameObject.SetActive(false);
             }
         }
+        SaveInv();
     }
 
     public void AddItem(Item a_item, int a_amount)

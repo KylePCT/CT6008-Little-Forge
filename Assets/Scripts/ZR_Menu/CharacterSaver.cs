@@ -69,6 +69,12 @@ public class CharacterSaver : MonoBehaviour
         save.m_xp = 0;
         save.m_questsComplete = 0;
 
+        for (int i = 0; i < save.m_invItems.Length; i++)
+        {
+            save.m_invItems[i] = "";
+            save.m_invQuantity[i] = 0;
+        }
+
         for (int i = 0; i < save.m_forgeItems.Length; i++)
         {
             save.m_forgeItems[i] = 0;
