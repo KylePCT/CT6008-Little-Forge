@@ -17,7 +17,6 @@ public class CongratsTrigger : MonoBehaviour
     [SerializeField] private float m_displayTime = 3.0f;
     private float m_timer = 0.0f;
 
-
     //////////////////////////////////////////////////
     //// Functions
     private void OnEnable()
@@ -31,7 +30,7 @@ public class CongratsTrigger : MonoBehaviour
         if (m_timer <= 0)
         {
             //Maybe a fade out animation here, triggering this DisableTrigger()
-            //  at the end of the animation
+            //  at the end of the animation (uncomment code at bottom if gonna use this)
             gameObject.SetActive(false);
         }
         else

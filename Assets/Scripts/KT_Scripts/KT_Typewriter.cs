@@ -96,17 +96,14 @@ public class KT_Typewriter : MonoBehaviour
 
         if (voiceType == Voice.Male)
         {
-            Debug.Log(voiceType);
             charAudioSource.pitch = Random.Range(0.8f, 1.0f);
         }
         else if (voiceType == Voice.Female)
         {
-            Debug.Log(voiceType);
             charAudioSource.pitch = Random.Range(1.1f, 1.4f);
         }
         else
         {
-            Debug.Log(voiceType);
             charAudioSource.pitch = 1f;
         }
     }
