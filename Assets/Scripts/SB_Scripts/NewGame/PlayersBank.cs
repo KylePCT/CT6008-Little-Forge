@@ -147,15 +147,16 @@ public class PlayersBank : MonoBehaviour
     /// Function inside the PlayersBank.cs, used to decrease the amount of money in the players bank.
     /// </summary>
     /// <param name="a_ingots">Amount to takeaway from the players ingots bank</param>
-    public void TakeAwayIngots(float a_ingots)
+    public bool TakeAwayIngots(float a_ingots)
     {
         if ((m_playersIngots - a_ingots) < 0)
         {
             Debug.LogWarning("Warning: Player does not have enough ingots");
-            return;
+            return false;
         }
         m_playersIngots -= a_ingots;
         SaveIngots();
+        return true;
     }
     /// <summary>
     /// Function inside the PlayersBank.cs, used to reset the amount of ingots in the players bank.

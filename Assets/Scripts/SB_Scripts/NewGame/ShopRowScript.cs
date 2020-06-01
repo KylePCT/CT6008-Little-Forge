@@ -39,7 +39,16 @@ public class ShopRowScript : MonoBehaviour
         {
             KT_AudioManager.instance.playSound("UIHigh");
 
+            //SPECIAL ITEM (does not have any inventory vaule)
+            if (m_item.name == "item_ingot")
+            {
+                //Player had enough funds
+                PlayersBank.Instance.AddIngots(1);
+                return;
+            }
+
             InventoryManager.instance.AddItem(m_item, 1);
+
             if (m_item.name == "item_SeedLettuvia" || m_item.name == "item_SeedAleeks")
             {
                 QuestCheck("SB_GetSeeds");
@@ -51,7 +60,6 @@ public class ShopRowScript : MonoBehaviour
                 PlayersBank.Instance.TakeAwayMoney(1000);
             }
         }
-
         else
         {
             KT_AudioManager.instance.playSound("Decline");
@@ -60,7 +68,24 @@ public class ShopRowScript : MonoBehaviour
 
     public void SellItem()
     {
-        if(InventoryManager.instance.RemoveItem(m_item))
+        //SPECIAL ITEM (does not have any inventory vaule)
+        if (m_item.name == "item_ingot")
+        {
+            if (PlayersBank.Instance.TakeAwayIngots(1))
+            {
+                //Player has enough ingots
+                PlayersBank.Instance.AddMoney(m_item.m_sellPrice);
+                KT_AudioManager.instance.playSound("UIHigh");
+            }
+            else
+            {
+                //No ingots
+                KT_AudioManager.instance.playSound("Decline");
+            }
+            return;
+        }
+
+        if (InventoryManager.instance.RemoveItem(m_item))
         {
             PlayersBank.Instance.AddMoney(m_item.m_sellPrice);
 
@@ -71,11 +96,6 @@ public class ShopRowScript : MonoBehaviour
                 QuestCheck("SB_SellSlime");
             }
 
-            if (m_item.name == "item_ingot")
-            {
-                PlayersBank.Instance.TakeAwayIngots(1);
-                PlayersBank.Instance.AddMoney(500);
-            }
         }
 
         else
