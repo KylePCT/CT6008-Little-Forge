@@ -24,12 +24,25 @@ public class QuestGiver : MonoBehaviour
     [SerializeField] private bool m_inRange = false;
     [SerializeField] private GameObject m_interactionText = null;
     private int m_questsCompleted = 0;
+    private SaveSlot m_save = null;
 
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
         m_interactionText = GameObject.Find("InteractText");
+
+        if (SaveGameManager.GetMainCharFile() != null)
+        {
+            m_save = SaveGameManager.GetMainCharFile();
+            m_questsCompleted = m_save.m_questsComplete;
+        }
+        else
+        {
+            //You must be starting the game from the hub!!!
+            //Nothing wrong here let the game continue.
+            m_questsCompleted = 0;
+        }
     }
     private void Update()
     {
@@ -49,6 +62,10 @@ public class QuestGiver : MonoBehaviour
         {
             m_quest = m_questList[m_questsCompleted];
             m_quest.Assign();
+            if(m_questsCompleted >= 5)
+            {
+                GetInteractText.Instance.m_enemySpawner.SetActive(true);
+            }
         }
         else
         {
@@ -59,6 +76,8 @@ public class QuestGiver : MonoBehaviour
     private void GetReward()
     {
         m_questsCompleted++;
+        m_save.m_questsComplete = m_questsCompleted;
+        SaveGameManager.SaveCharacter(m_save);
         PlayersBank.Instance.AddMoney(m_quest.GetMoneyReward());
         PlayersBank.Instance.AddIngots(m_quest.GetIngotReward());
         KT_LevelSystem.Instance.gainXP(50);

@@ -21,7 +21,6 @@ public class BasicEnemyAI : MonoBehaviour
     private Vector3 m_destination;
     private Vector3 m_randPosition;
     private GameObject m_player = null;
-    private GameObject playerHealthUI;
     [Header("Enemy Parameters")]
     [Header("_____________________________________________________")]
     [Space(-20)]
@@ -35,6 +34,7 @@ public class BasicEnemyAI : MonoBehaviour
     [SerializeField] private float m_damagePerSecond = 15.0f;
     private float m_waitTimer = 0.0f;
     private float m_attackTimer = 0.0f;
+    private float m_deathTimer = 0.0f;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -49,12 +49,12 @@ public class BasicEnemyAI : MonoBehaviour
             Debug.LogWarning("Warning: Unable to locate NPC's NavMeshAgent component");
         }
         m_navMeshAgent.speed = m_speed;
-
-        playerHealthUI = GameObject.Find("Health");
     }
 
     private void Update()
     {
+        DeathTimer();
+
         switch(m_currentState)
         {
             case ENEMYStates.ENE_FINDLOCATION:
@@ -74,16 +74,35 @@ public class BasicEnemyAI : MonoBehaviour
         }
     }
 
+    private void DeathTimer()
+    {
+        m_deathTimer += Time.deltaTime;
+        //90 second death timer incase slimes get to unreachable areas
+        if (m_deathTimer >= 90.0f)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     /// <summary>
     /// Function used to send the AI to a position on the navigatable mesh.
     /// </summary>
-    private void SetDestination()
+    public void SetDestination()
     {
         if (m_destination != null)
         {
             m_navMeshAgent.SetDestination(m_destination);
         }
     }
+    /// <summary>
+    /// Function used to set the ai's destination from outside the script
+    /// </summary>
+    /// <param name="a_dest"></param>
+    public void SetMDestination(Vector3 a_dest)
+    {
+        m_destination = a_dest;
+    }
+
     /// <summary>
     /// Function used to get a random point on the navmesh, gets a random point within a sphere.
     /// </summary>
@@ -158,12 +177,10 @@ public class BasicEnemyAI : MonoBehaviour
             {
                 m_player.GetComponent<ObjectHealth>().TakeDamage(m_damagePerSecond/2);
                 m_attackTimer = 0.5f;
-                Debug.Log("Player hit.");
-                playerHealthUI.SetActive(false);
             }
             else
             {
-                playerHealthUI.SetActive(true);
+
             }
         }
         else
@@ -173,6 +190,7 @@ public class BasicEnemyAI : MonoBehaviour
             SetDestination();
         }
     }
+
     private void LoosePlayer()
     {
         m_waitTimer -= Time.deltaTime;

@@ -9,6 +9,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -34,11 +35,13 @@ public class ObjectHealth : MonoBehaviour
     [SerializeField] private GameObject m_dmgIndication = null;
     private Image m_healthBar = null;
     private GameObject m_healthCanvas = null;
+    private GameObject m_playerHealthCanvas = null;
     private GameObject m_cam = null;
     public GameObject m_slimeItemDrop;
     private KT_SpawnEnemies m_spawner = null;
     public GameObject celebratePS;
     private bool m_dead = false;
+    private float m_showHealthTimer = 0.0f;
 
     //////////////////////////////////////////////////
     //// Functions
@@ -54,6 +57,12 @@ public class ObjectHealth : MonoBehaviour
             m_healthBar = gameObject.transform.Find("Canvas").transform.Find("Health").GetComponent<Image>();
             m_healthCanvas = gameObject.transform.Find("Canvas").gameObject;
         }
+
+        if (gameObject.tag == "Player")
+        {
+            m_playerHealthCanvas = transform.GetChild(1).gameObject;
+            m_playerHealthCanvas.SetActive(false);
+        }
     }
 
     private void Update()
@@ -62,6 +71,26 @@ public class ObjectHealth : MonoBehaviour
         {
             UpdateHealthLookAt();
         }
+
+        if (gameObject.tag == "Player")
+        {
+            UpdatePlayerHealthDisplay();
+        }
+    }
+
+    private void UpdatePlayerHealthDisplay()
+    {
+        if (m_showHealthTimer <= 0)
+        {
+            m_playerHealthCanvas.SetActive(false);
+        }
+        else
+        {
+            m_showHealthTimer -= Time.deltaTime;
+            m_playerHealthCanvas.transform.LookAt(m_cam.transform.position);
+            m_playerHealthCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = m_currentHealth.ToString("n0");
+        }
+
     }
 
     private void UpdateHealthLookAt()
@@ -127,12 +156,27 @@ public class ObjectHealth : MonoBehaviour
 
     public void TakeDamage(float a_fvalue)
     {
+        if (gameObject.tag == "Player")
+        {
+            m_showHealthTimer = 5.0f;
+            m_playerHealthCanvas.SetActive(true);
+        }
+        if (gameObject.tag == "Enemy")
+        {
+            if (GameObject.Find("Player"))
+            {
+                gameObject.GetComponent<BasicEnemyAI>().SetMDestination(GameObject.Find("Player").transform.position);
+                gameObject.GetComponent<BasicEnemyAI>().SetDestination();
+            }
+        }
+
         m_currentHealth -= a_fvalue;
         if (m_hasHealthBar)
         {
             UpdateHealth();
             ShowDamage(a_fvalue);
         }
+        
         UpdateNoHealth();
     }
     public float GetHealth() => m_currentHealth;

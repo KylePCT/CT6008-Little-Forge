@@ -43,6 +43,7 @@ public class SaveSlot
     public int m_level = 0;
     public int m_xp = 0;
     public int[] m_forgeItems = new int[7];
+    public int m_questsComplete = 0;
 
     public SaveSlot(int a_saveSlot)
     {
