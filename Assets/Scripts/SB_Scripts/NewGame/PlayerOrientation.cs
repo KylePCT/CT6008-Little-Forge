@@ -55,7 +55,14 @@ public class PlayerOrientation : MonoBehaviour
 
     private void Update()
     {
-        m_rotSensitivity = OptionsData.Instance.GetSensitivity();
+        if(OptionsData.Instance.GetSensitivity() > 0.6f || OptionsData.Instance.GetSensitivity() < 0.01f)
+        {
+            m_rotSensitivity = .2f;
+        }
+        else
+        {
+            m_rotSensitivity = OptionsData.Instance.GetSensitivity();
+        }
         var moveInput = m_inputSystem.Player.Movement.ReadValue<Vector2>();
 
         Vector3 rotF = transform.forward;

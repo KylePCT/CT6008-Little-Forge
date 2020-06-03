@@ -42,11 +42,13 @@ public class ObjectHealth : MonoBehaviour
     public GameObject celebratePS;
     private bool m_dead = false;
     private float m_showHealthTimer = 0.0f;
+    private string m_goName = "";
 
     //////////////////////////////////////////////////
     //// Functions
     private void Start()
     {
+        m_goName = gameObject.name;
         if (m_currentHealth != m_maxHealth)
         {
             m_currentHealth = m_startHealth;
@@ -168,7 +170,6 @@ public class ObjectHealth : MonoBehaviour
                 gameObject.GetComponent<BasicEnemyAI>().SetMDestination(GameObject.Find("Player").transform.position);
             }
         }
-
         m_currentHealth -= a_fvalue;
         if (m_hasHealthBar)
         {

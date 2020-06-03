@@ -54,6 +54,7 @@ public class TutorialLoader : MonoBehaviour
 
     public Animator NPCAnimator;
 
+    public GameObject m_npcHolder;
     public GameObject continueTextUI;
     public GameObject howToContinueUI;
     private bool contTutView;
@@ -109,6 +110,7 @@ public class TutorialLoader : MonoBehaviour
             player.GetComponent<PlayerZoom>().enabled = false;
             player.GetComponent<PlayerInput>().enabled = false;
             m_pauseFunctuality.SetActive(false);
+            m_npcHolder.SetActive(false);
 
         }
         else
@@ -123,6 +125,7 @@ public class TutorialLoader : MonoBehaviour
             player.GetComponent<PlayerInput>().enabled = true;
             gameObject.SetActive(false);
             gameObject.GetComponent<TutorialLoader>().enabled = false;
+            m_npcHolder.SetActive(true);
         }
     }
     private void Update()
@@ -239,6 +242,8 @@ public class TutorialLoader : MonoBehaviour
                 tutText.text = "";
                 continueTextUI.SetActive(false);
                 interactText.SetActive(false);
+                m_npcHolder.SetActive(true);
+
 
                 //reset camera
                 playerCamera.transform.position = origPos;

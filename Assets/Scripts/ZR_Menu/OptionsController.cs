@@ -34,6 +34,10 @@ public class OptionsController : MonoBehaviour
         m_sensitivity.value = sensitivity;
 
         //SB
+        if (sensitivity > 0.6f || sensitivity < 0.01f)
+        {
+            sensitivity = .2f;
+        }
         OptionsData.Instance.SetVolume(audioVolume);
         OptionsData.Instance.SetSensitivity(sensitivity);
     }
